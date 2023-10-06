@@ -11,7 +11,7 @@
     <style>
         #app {
             background-color: none;
-            background-image: url("{{ url('') }}/imgs/login.png");
+            background-image: url("{{ url('') }}/imgs/login.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
