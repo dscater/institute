@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg text-white font-weight-bold">
-                        Ingresa tu usuario y contraseña para inicar sesión
+                        Ingresa tu correo y contraseña para inicar sesión
                     </p>
 
                     <div>
@@ -19,14 +19,14 @@
                             <input
                                 type="email"
                                 class="form-control"
-                                placeholder="Usuario"
+                                placeholder="Correo"
                                 v-model="usuario"
                                 @keypress.enter="login()"
                                 autofocus
                             />
                             <div class="input-group-append">
                                 <div class="input-group-text bg-orange">
-                                    <span class="fas fa-user"></span>
+                                    <span class="fas fa-envelope"></span>
                                 </div>
                             </div>
                         </div>

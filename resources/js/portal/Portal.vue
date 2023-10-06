@@ -1,7 +1,14 @@
 <template>
     <div>
         <Header></Header>
-        <Slider :ruta_asset="ruta_asset"></Slider>
+        <Slider
+            :ruta_asset="ruta_asset"
+            v-if="$route.name == 'portal.inicio'"
+        ></Slider>
+        <SliderGestoria
+            :ruta_asset="ruta_asset"
+            v-if="$route.name == 'portal.gestoria'"
+        ></SliderGestoria>
 
         <transition name="fade" mode="out-in">
             <router-view></router-view>
@@ -21,12 +28,14 @@
 <script>
 import Header from "./componentes/Header.vue";
 import Slider from "./componentes/Slider.vue";
+import SliderGestoria from "./componentes/SliderGestoria.vue";
 import Footer from "./componentes/Footer.vue";
 
 export default {
     components: {
         Header,
         Slider,
+        SliderGestoria,
         Footer,
     },
     props: {

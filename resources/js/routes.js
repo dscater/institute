@@ -16,6 +16,34 @@ export default new Router({
             component: require("./portal/Inicio.vue").default,
         },
 
+        // CURSOS
+        {
+            path: "/cursos",
+            name: "portal.cursos",
+            component: require("./portal/Cursos.vue").default,
+        },
+
+        // INSCRIPCIONES
+        {
+            path: "/inscripciones",
+            name: "portal.inscripciones",
+            component: require("./portal/Inscripciones.vue").default,
+        },
+
+        // HORARIOS
+        {
+            path: "/horarios",
+            name: "portal.horarios",
+            component: require("./portal/Horarios.vue").default,
+        },
+
+        // GESTORÍA
+        {
+            path: "/gestoria",
+            name: "portal.gestoria",
+            component: require("./portal/Gestoria.vue").default,
+        },
+
         /* ************************* *
          *     ADMINISTRACIÓN
          * ************************* */

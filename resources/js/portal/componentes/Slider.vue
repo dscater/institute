@@ -61,6 +61,40 @@
                 </div>
             </div>
         </div>
+        <!-- Start feature Area -->
+        <section class="feature-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="single-feature">
+                            <!-- <div class="title">
+                                <h4>Learn Online Courses</h4>
+                            </div> -->
+                            <div class="desc-wrap">
+                                <p class="text-principal">
+                                    Programa de inglés intensivo
+                                </p>
+                                <p class="text-principal">
+                                    Aprende el idioma inglés de forma
+                                    estructurada y efectiva.
+                                </p>
+                                <p class="text-principal">
+                                    En BEI, trabajamos contigo para desarrollar
+                                    tus habilidades y mejorar tu dominio del
+                                    idioma inglés para que puedas tener más
+                                    éxito en la vida.
+                                </p>
+                                <p class="text-principal">
+                                    ¡Estudiante F-1 bienvenidos!
+                                </p>
+                                <!-- <a href="#">Join Now</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End feature Area -->
     </section>
     <!-- End banner Area -->
 </template>
@@ -76,7 +110,7 @@ export default {
                     url_img: this.ruta_asset + "imgs/sliders/1.jpg",
                     posicion: 0,
                     desc1: "TÍTULO 1",
-                    desc2: "Descripcion 1",
+                    desc2: "Portal institute",
                     muestra_boton: 0,
                 },
                 {
@@ -85,7 +119,7 @@ export default {
                     url_img: this.ruta_asset + "imgs/sliders/2.jpg",
                     posicion: 0,
                     desc1: "TÍTULO 1",
-                    desc2: "Descripcion 1",
+                    desc2: "Portal institute",
                     muestra_boton: 0,
                 },
                 {
@@ -94,7 +128,7 @@ export default {
                     url_img: this.ruta_asset + "imgs/sliders/3.jpg",
                     posicion: 0,
                     desc1: "TÍTULO 1",
-                    desc2: "Descripcion 1",
+                    desc2: "Portal institute",
                     muestra_boton: 0,
                 },
             ],

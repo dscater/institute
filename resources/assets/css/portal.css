@@ -1,16 +1,76 @@
 :root {
-    --principal: #f7631b;
-    --principal_hover: #e48033;
-    --principal_transparent: #c57a40cb;
-    --secundario: #222222;
-    --secundario_transparent: #222222f3;
+    --principal: #13161c;
+    --principal_hover: #000000;
+    --principal2: #f7631b;
+    --principal2_hover: #e04f06;
+    --principal_transparent: #13161ce1;
+    --principal_transparent2: #13161c88;
+    --secundario: #ffffff;
+    --secundario_transparent: #ffffffd2;
+    --secundario2: #08090b;
     --correcto: #d2e7c9;
     --secondary: #da1900;
     --transparente: #000000bd;
 }
 
+.oculto {
+    display: none;
+}
+
+body {
+    color: #ffffff;
+}
+
 section {
-    background-color: #04091e;
+    background-color: var(--principal);
+}
+.section-gap {
+    padding: 90px 0px;
+}
+
+.bg-principal {
+    background-color: var(--principal);
+}
+
+.bg-principal2 {
+    background-color: var(--principal2);
+}
+
+.bg-secundario {
+    background-color: var(--secundario);
+}
+
+.bg-secundario2 {
+    background-color: var(--secundario2);
+}
+
+.text-principal {
+    color: var(--principal);
+}
+
+.text-principal:hover {
+    color: var(--principal2);
+}
+
+.footer-area {
+    background-color: var(--secundario2);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--secundario);
+}
+
+.owl-item {
+    background-color: var(--secundario);
+}
+
+.owl-item .details {
+    padding: 15px;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -22,7 +82,7 @@ section {
     height: 38px;
     bottom: 0px;
     right: 40px;
-    background-color: #f7631b;
+    background-color: var(--principal2);
     opacity: 0.5;
     justify-content: center;
     align-items: center;
@@ -42,7 +102,7 @@ section {
 
 .btn-back-to-top:hover {
     opacity: 1;
-    background-color: #f7631b;
+    background-color: var(--principal_transparent);
 }
 
 @media (max-width: 575px) {
@@ -53,6 +113,14 @@ section {
 }
 
 /* HEADER NAV */
+.nav-menu a.active {
+    color: var(--principal2);
+    font-weight: bold;
+}
+.nav-menu a.active:hover {
+    color: var(--principal2);
+}
+
 .sf-arrows .sf-with-ul:after {
     content: "\f107";
     position: absolute;
@@ -61,14 +129,31 @@ section {
     font-weight: 900;
 }
 
-#header {
-    background-color: #04091e;
+#header,
+.header-top {
+    background-color: var(--principal);
+}
+#header.header-scrolled {
+    /* #header.header-scrolled .main-menu { */
+    background-color: var(--principal_transparent);
 }
 
+.about-content {
+    padding: 50px 0px;
+}
 /* SLIDER */
+.banner-area .overlay-bg {
+    background-color: var(--principal_transparent2);
+}
+
+.feature-area {
+    margin-top: -80px;
+}
+
 /*//////////////////////////////////////////////////////////////////
 [ Slick1 ]*/
-.wrap-slick1 {
+.wrap-slick1,
+.wrap-slick1-gestoria {
     margin-top: 110px;
     position: relative;
 }
@@ -91,6 +176,14 @@ section {
 @media (max-width: 991px) {
     .item-slick1 {
         height: calc(100vh - 70px) !important;
+    }
+    .about-content h1 {
+        font-size: 2em;
+    }
+
+    .about-banner {
+        background-position: center !important;
+        background-size: 100% 100% !important;
     }
 }
 
@@ -124,12 +217,13 @@ section {
     font-size: 50px;
 }
 
+.wrap-slick1-gestoria:hover .arrow-slick1,
 .wrap-slick1:hover .arrow-slick1 {
     opacity: 1;
 }
 
 .arrow-slick1:hover {
-    color: #f7631b;
+    color: var(--principal2);
 }
 
 .next-slick1 {
@@ -412,7 +506,7 @@ section {
 }
 
 .ltext-104 {
-    font-size: 60px;
+    font-size: 40px;
     line-height: 1.1;
     text-transform: uppercase;
 }
@@ -532,4 +626,53 @@ section {
     .respon7 {
         padding-left: 60px;
     }
+}
+
+.contact-page-area .address-wrap .single-contact-address .icon {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 480px) {
+    .header-top .header-top-left a .lnr {
+        display: inline-block;
+    }
+    .header-top .header-top-left a .text {
+        display: none;
+    }
+}
+
+.btn-flat {
+    border-radius: 0px;
+}
+
+.btn-warning {
+    background-color: var(--principal2);
+    border-color: var(--principal2);
+    color: var(--secundario);
+}
+
+.btn-warning:hover {
+    background-color: var(--principal2_hover);
+    color: var(--secundario);
+    border-color: var(--principal2_hover);
+}
+
+.text-warning {
+    color: var(--principal2);
+}
+
+.form-control {
+    border: none;
+    font-weight: 300;
+    background: #f9f9ff;
+    padding-left: 20px;
+    border-radius: 0;
+    font-size: 14px;
+    line-height: normal !important;
+    color: #222;
+}
+
+.btn {
+    border-radius: 0;
 }
