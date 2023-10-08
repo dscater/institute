@@ -27,17 +27,22 @@
                                 >
                                     <p>
                                         <span class="lnr lnr-users"></span> 355
-                                        <span class="lnr lnr-bubble"></span>35
+                                        <!-- <span class="lnr lnr-bubble"></span>35 -->
                                     </p>
                                     <h4>$150</h4>
                                 </div>
                             </div>
                             <div class="details">
-                                <a href="#">
+                                <router-link
+                                    :to="{
+                                        name: 'portal.curso',
+                                        params: { id: 1 },
+                                    }"
+                                >
                                     <h4 class="text-principal mt-2 mb-2">
                                         Inglés
                                     </h4>
-                                </a>
+                                </router-link>
                                 <p class="text-principal">
                                     When television was young, there was a
                                     hugely popular show based on the still
@@ -45,14 +50,18 @@
                                 </p>
                                 <div class="row mt-2">
                                     <div class="col-md-12">
-                                        <button
+                                        <router-link
+                                            :to="{
+                                                name: 'portal.curso',
+                                                params: { id: 1 },
+                                            }"
                                             class="btn btn-warning btn-block btn-flat"
                                         >
                                             Ver más
                                             <span
                                                 class="lnr lnr-arrow-right text-white"
                                             ></span>
-                                        </button>
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -72,17 +81,22 @@
                                 >
                                     <p>
                                         <span class="lnr lnr-users"></span> 355
-                                        <span class="lnr lnr-bubble"></span>35
+                                        <!-- <span class="lnr lnr-bubble"></span>35 -->
                                     </p>
                                     <h4>$150</h4>
                                 </div>
                             </div>
                             <div class="details">
-                                <a href="#">
+                                <router-link
+                                    :to="{
+                                        name: 'portal.curso',
+                                        params: { id: 1 },
+                                    }"
+                                >
                                     <h4 class="text-principal mt-2 mb-2">
                                         Programación
                                     </h4>
-                                </a>
+                                </router-link>
                                 <p class="text-principal">
                                     When television was young, there was a
                                     hugely popular show based on the still
@@ -90,14 +104,18 @@
                                 </p>
                                 <div class="row mt-2">
                                     <div class="col-md-12">
-                                        <button
+                                        <router-link
+                                            :to="{
+                                                name: 'portal.curso',
+                                                params: { id: 1 },
+                                            }"
                                             class="btn btn-warning btn-block btn-flat"
                                         >
                                             Ver más
                                             <span
                                                 class="lnr lnr-arrow-right text-white"
                                             ></span>
-                                        </button>
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -117,17 +135,22 @@
                                 >
                                     <p>
                                         <span class="lnr lnr-users"></span> 355
-                                        <span class="lnr lnr-bubble"></span>35
+                                        <!-- <span class="lnr lnr-bubble"></span>35 -->
                                     </p>
                                     <h4>$150</h4>
                                 </div>
                             </div>
                             <div class="details">
-                                <a href="#">
+                                <router-link
+                                    :to="{
+                                        name: 'portal.curso',
+                                        params: { id: 1 },
+                                    }"
+                                >
                                     <h4 class="text-principal mt-2 mb-2">
                                         Fotografía
                                     </h4>
-                                </a>
+                                </router-link>
                                 <p class="text-principal">
                                     When television was young, there was a
                                     hugely popular show based on the still
@@ -135,14 +158,18 @@
                                 </p>
                                 <div class="row mt-2">
                                     <div class="col-md-12">
-                                        <button
+                                        <router-link
+                                            :to="{
+                                                name: 'portal.curso',
+                                                params: { id: 1 },
+                                            }"
                                             class="btn btn-warning btn-block btn-flat"
                                         >
                                             Ver más
                                             <span
                                                 class="lnr lnr-arrow-right text-white"
                                             ></span>
-                                        </button>
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -162,17 +189,22 @@
                                 >
                                     <p>
                                         <span class="lnr lnr-users"></span> 355
-                                        <span class="lnr lnr-bubble"></span>35
+                                        <!-- <span class="lnr lnr-bubble"></span>35 -->
                                     </p>
                                     <h4>$150</h4>
                                 </div>
                             </div>
                             <div class="details">
-                                <a href="#">
+                                <router-link
+                                    :to="{
+                                        name: 'portal.curso',
+                                        params: { id: 1 },
+                                    }"
+                                >
                                     <h4 class="text-principal mt-2 mb-2">
                                         Diseño
                                     </h4>
-                                </a>
+                                </router-link>
                                 <p class="text-principal">
                                     When television was young, there was a
                                     hugely popular show based on the still
@@ -180,14 +212,18 @@
                                 </p>
                                 <div class="row mt-2">
                                     <div class="col-md-12">
-                                        <button
+                                        <router-link
+                                            :to="{
+                                                name: 'portal.curso',
+                                                params: { id: 1 },
+                                            }"
                                             class="btn btn-warning btn-block btn-flat"
                                         >
                                             Ver más
                                             <span
                                                 class="lnr lnr-arrow-right text-white"
                                             ></span>
-                                        </button>
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -207,17 +243,22 @@
                                 >
                                     <p>
                                         <span class="lnr lnr-users"></span> 355
-                                        <span class="lnr lnr-bubble"></span>35
+                                        <!-- <span class="lnr lnr-bubble"></span>35 -->
                                     </p>
                                     <h4>$150</h4>
                                 </div>
                             </div>
                             <div class="details">
-                                <a href="#">
+                                <router-link
+                                    :to="{
+                                        name: 'portal.curso',
+                                        params: { id: 1 },
+                                    }"
+                                >
                                     <h4 class="text-principal mt-2 mb-2">
                                         Computación
                                     </h4>
-                                </a>
+                                </router-link>
                                 <p class="text-principal">
                                     When television was young, there was a
                                     hugely popular show based on the still
@@ -225,14 +266,18 @@
                                 </p>
                                 <div class="row mt-2">
                                     <div class="col-md-12">
-                                        <button
+                                        <router-link
+                                            :to="{
+                                                name: 'portal.curso',
+                                                params: { id: 1 },
+                                            }"
                                             class="btn btn-warning btn-block btn-flat"
                                         >
                                             Ver más
                                             <span
                                                 class="lnr lnr-arrow-right text-white"
                                             ></span>
-                                        </button>
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -296,12 +341,10 @@
                 <div
                     class="row justify-content-between align-items-center pt-3"
                 >
-                    <div class="col-lg-6 col-md-6 search-course-right p-0">
-                        <img
-                            :src="url_principal + '/imgs/gestoriaImg.jpg'"
-                            width="100%"
-                        />
-                    </div>
+                    <div
+                        class="col-lg-6 col-md-6 search-course-right p-0"
+                        id="google_map_inicio"
+                    ></div>
                     <div class="col-lg-6 d-flex flex-column address-wrap">
                         <div
                             class="single-contact-address d-flex flex-row pt-3 pb-3"
@@ -375,6 +418,13 @@ export default {
                 fullscreen: this.fullscreenLoading,
             }),
             url_principal: main_url,
+            oContacto: {
+                direccion: "",
+                fonos: "",
+                correo: "",
+                lat: "-16.50405",
+                lng: "-68.13081",
+            },
         };
     },
     mounted() {
@@ -382,6 +432,7 @@ export default {
         let self = this;
         setTimeout(function () {
             self.initCarousel();
+            self.cargaMapaGoogle(self.oContacto.lat, self.oContacto.lng);
         }, 300);
     },
     methods: {
@@ -410,7 +461,58 @@ export default {
                 },
             });
         },
+
+        cargaMapaGoogle(lat, lng, drag = false, dir = "") {
+            lat = parseFloat(lat);
+            lng = parseFloat(lng);
+
+            // Inicializa el mapa
+            this.map = new google.maps.Map(
+                document.getElementById("google_map_inicio"),
+                {
+                    center: { lat: lat, lng: lng },
+                    zoom: 18,
+                }
+            );
+
+            // Configura el icono personalizado
+            const customIcon = {
+                url: main_url + "/imgs/pinmap.gif", // Ruta a tu icono personalizado
+                scaledSize: new google.maps.Size(50, 50), // Tamaño del icono
+            };
+
+            // Crea un marcador en el centro del mapa
+            this.marker = new google.maps.Marker({
+                position: { lat: lat, lng: lng },
+                map: this.map,
+                icon: customIcon,
+                draggable: drag,
+            });
+
+            // Escucha el evento de arrastrar del marcador
+            google.maps.event.addListener(this.marker, "dragend", () => {
+                const newPosition = this.marker.getPosition();
+                this.oContacto.lat = newPosition.lat();
+                this.oContacto.lng = newPosition.lng();
+            });
+
+            if (dir != "") {
+                // Crea una ventana de información (infowindow) con el contenido deseado
+                let self = this;
+                this.infowindow = new google.maps.InfoWindow({
+                    content: `<strong>DIRECCIÓN:</strong><br>${self.oContacto.direccion}`,
+                });
+                // Escucha el evento 'click' en el marcador para abrir la ventana de información
+                this.marker.addListener("click", () => {
+                    this.infowindow.open(this.map, this.marker);
+                });
+            }
+        },
     },
 };
 </script>
-<style></style>
+<style>
+#google_map_inicio {
+    height: 400px;
+}
+</style>

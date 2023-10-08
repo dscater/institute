@@ -63,7 +63,7 @@
             <!-- Sidebar Menu -->
             <nav class="mt-2 pr-1 pl-1">
                 <ul
-                    class="nav nav-pills nav-sidebar flex-column text-xs nav-flat"
+                    class="nav nav-pills nav-sidebar flex-column nav-compact nav-child-indent text-xs"
                     data-widget="treeview"
                     role="menu"
                     data-accordion="false"
@@ -76,19 +76,123 @@
                             class="nav-link"
                         >
                             <i class="nav-icon fas fa-home"></i>
-                            <p>Inicio</p>
+                            <p>Pandel de Administración</p>
                         </router-link>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-list-alt"></i>
+                            <p>
+                                Administración de cursos
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a
+                                    href=""
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Cursos</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href=""
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Incripciones</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href=""
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Horarios</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href=""
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Recursos</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href=""
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Comunicados</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-list-alt"></i>
+                            <p class="text-xs">
+                                Administración Gestoría de Visa
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a
+                                    href=""
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Servicios</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href=""
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Solicitudes de Servicios</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href=""
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Tips Para Lograr Tú Visa</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href=""
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Configurar Gestoría de Visa</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li
-                        class="nav-header font-weight-bold"
-                        v-if="
-                            permisos.includes('usuarios.index') ||
-                            permisos.includes('portals.index') ||
-                            permisos.includes('catalogos.index') ||
-                            permisos.includes('productos.index')
-                        "
+                        class="nav-item"
+                        v-if="permisos.includes('portals.index')"
                     >
-                        ADMINISTRACIÓN:
+                        <a
+                            class="nav-link"
+                            v-loading.fullscreen.lock="fullscreenLoading"
+                        >
+                            <i class="nav-icon fa fa-table"></i>
+                            <p>Configurar Portal</p>
+                        </a>
                     </li>
                     <li
                         class="nav-item"
@@ -101,110 +205,9 @@
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >
                             <i class="nav-icon fas fa-users"></i>
-                            <p>Personal</p>
+                            <p>Gestión de Usuarios</p>
                         </router-link>
                     </li>
-                    <li
-                        class="nav-item"
-                        v-if="permisos.includes('portals.index')"
-                    >
-                        <router-link
-                            :to="{
-                                name: 'admin_portal.index',
-                            }"
-                            class="nav-link"
-                            v-loading.fullscreen.lock="fullscreenLoading"
-                        >
-                            <i class="nav-icon fa fa-table"></i>
-                            <p>Portal</p>
-                        </router-link>
-                    </li>
-                    <li
-                        class="nav-item"
-                        v-if="permisos.includes('catalogos.index')"
-                    >
-                        <router-link
-                            :to="{ name: 'productos.index' }"
-                            class="nav-link"
-                            v-loading.fullscreen.lock="fullscreenLoading"
-                        >
-                            <i class="nav-icon fa fa-tags"></i>
-                            <p>Productos</p>
-                        </router-link>
-                    </li>
-                    <li
-                        class="nav-item"
-                        v-if="permisos.includes('catalogos.index')"
-                    >
-                        <router-link
-                            exact
-                            :to="{ name: 'catalogos.index' }"
-                            class="nav-link"
-                            v-loading.fullscreen.lock="fullscreenLoading"
-                        >
-                            <i class="nav-icon fa fa-list-alt"></i>
-                            <p>Catálogos</p>
-                        </router-link>
-                    </li>
-                    <li class="nav-item">
-                        <a
-                            href=""
-                            class="nav-link"
-                            v-loading.fullscreen.lock="fullscreenLoading"
-                        >
-                            <i class="nav-icon fas fa-clipboard-list"></i>
-                            <p>Pedidos</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a
-                            href=""
-                            class="nav-link"
-                            v-loading.fullscreen.lock="fullscreenLoading"
-                        >
-                            <i class="nav-icon fas fa-truck-moving"></i>
-                            <p>Distribución de Pedidos</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a
-                            href=""
-                            class="nav-link"
-                            v-loading.fullscreen.lock="fullscreenLoading"
-                        >
-                            <i class="nav-icon fas fa-hand-holding-usd"></i>
-                            <p>Pagos</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a
-                            href=""
-                            class="nav-link"
-                            v-loading.fullscreen.lock="fullscreenLoading"
-                        >
-                            <i class="nav-icon fas fa-cash-register"></i>
-                            <p>Cajas</p>
-                        </a>
-                    </li>
-                    <li
-                        class="nav-header font-weight-bold"
-                        v-if="permisos.includes('reportes.usuarios')"
-                    >
-                        REPORTES:
-                    </li>
-                    <li
-                        class="nav-item"
-                        v-if="permisos.includes('reportes.usuarios')"
-                    >
-                        <router-link
-                            :to="{ name: 'reportes.usuarios' }"
-                            class="nav-link"
-                        >
-                            <i class="fas fa-file-pdf nav-icon"></i>
-                            <p>Lista de Usuarios</p>
-                        </router-link>
-                    </li>
-                    <li class="nav-header font-weight-bold">OTRAS OPCIONES:</li>
                     <li
                         class="nav-item"
                         v-if="permisos.includes('configuracion.index')"
@@ -214,7 +217,7 @@
                             class="nav-link"
                         >
                             <i class="nav-icon fas fa-cog"></i>
-                            <p>Configuración</p>
+                            <p>Configurar Sistema</p>
                         </router-link>
                     </li>
                     <li class="nav-item">
@@ -238,7 +241,7 @@
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >
                             <i class="fas fa-power-off nav-icon"></i>
-                            <p>Salir</p>
+                            <p>Cerrar Sesión</p>
                         </a>
                     </li>
                 </ul>

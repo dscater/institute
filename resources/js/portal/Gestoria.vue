@@ -404,12 +404,10 @@
                 <div
                     class="row justify-content-between align-items-center pt-3"
                 >
-                    <div class="col-lg-6 col-md-6 search-course-right p-0">
-                        <img
-                            :src="url_principal + '/imgs/gestoriaImg.jpg'"
-                            width="100%"
-                        />
-                    </div>
+                    <div
+                        class="col-lg-6 col-md-6 search-course-right p-0"
+                        id="google_map_gestoria"
+                    ></div>
                     <div class="col-lg-6 d-flex flex-column address-wrap">
                         <div
                             class="single-contact-address d-flex flex-row pt-3 pb-3"
@@ -464,6 +462,13 @@ export default {
                 fullscreen: this.fullscreenLoading,
             }),
             url_principal: main_url,
+            oContacto: {
+                direccion: "",
+                fonos: "",
+                correo: "",
+                lat: "-16.50405",
+                lng: "-68.13081",
+            },
         };
     },
     mounted() {
@@ -471,6 +476,7 @@ export default {
         let self = this;
         setTimeout(() => {
             self.initCaruselTips();
+            self.cargaMapaGoogle(self.oContacto.lat, self.oContacto.lng);
         }, 300);
     },
     methods: {
@@ -498,6 +504,53 @@ export default {
                     },
                 },
             });
+        },
+
+        cargaMapaGoogle(lat, lng, drag = false, dir = "") {
+            lat = parseFloat(lat);
+            lng = parseFloat(lng);
+
+            // Inicializa el mapa
+            this.map = new google.maps.Map(
+                document.getElementById("google_map_gestoria"),
+                {
+                    center: { lat: lat, lng: lng },
+                    zoom: 18,
+                }
+            );
+
+            // Configura el icono personalizado
+            const customIcon = {
+                url: main_url + "/imgs/pinmap.gif", // Ruta a tu icono personalizado
+                scaledSize: new google.maps.Size(50, 50), // Tamaño del icono
+            };
+
+            // Crea un marcador en el centro del mapa
+            this.marker = new google.maps.Marker({
+                position: { lat: lat, lng: lng },
+                map: this.map,
+                icon: customIcon,
+                draggable: drag,
+            });
+
+            // Escucha el evento de arrastrar del marcador
+            google.maps.event.addListener(this.marker, "dragend", () => {
+                const newPosition = this.marker.getPosition();
+                this.oContacto.lat = newPosition.lat();
+                this.oContacto.lng = newPosition.lng();
+            });
+
+            if (dir != "") {
+                // Crea una ventana de información (infowindow) con el contenido deseado
+                let self = this;
+                this.infowindow = new google.maps.InfoWindow({
+                    content: `<strong>DIRECCIÓN:</strong><br>${self.oContacto.direccion}`,
+                });
+                // Escucha el evento 'click' en el marcador para abrir la ventana de información
+                this.marker.addListener("click", () => {
+                    this.infowindow.open(this.map, this.marker);
+                });
+            }
         },
     },
 };
@@ -534,6 +587,10 @@ export default {
 }
 .contenedor_gestoria .contenedor_servicio .descripcion {
     text-align: justify;
+}
+
+#google_map_gestoria {
+    height: 400px;
 }
 
 @media (max-width: 800px) {

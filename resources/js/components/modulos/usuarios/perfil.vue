@@ -105,9 +105,11 @@
                     </div>
                     <div class="col-md-9">
                         <div class="card">
-                            <div class="card-header p-2 bg-orange">
-                                <div class="col-md-12">
-                                    <h4>Actualizar contreña</h4>
+                            <div class="card-header bg-orange">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>Actualizar contreña</h4>
+                                    </div>
                                 </div>
                                 <!-- <ul class="nav nav-pills">
                                     <li class="nav-item">

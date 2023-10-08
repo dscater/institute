@@ -18,10 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        "usuario", "nombre", "paterno", "materno", "ci", "ci_exp", "fecha_nac",
-        "genero", "cargo", "fecha_ingreso", "taller", "dir", "fono",
-        "tipo_personal", "p_discapacidad", "tipo", "foto", "validez_credencial",
-        "password", "estado", "fecha_registro",
+        "usuario", "nombre", "paterno", "materno", "dir", "correo", "fono", "tipo", "foto", "password", "acceso", "fecha_registro",
     ];
 
     /**
@@ -89,15 +86,5 @@ class User extends Authenticatable
             return asset('imgs/users/' . $this->foto);
         }
         return asset('imgs/users/default.png');
-    }
-
-    public function empresas()
-    {
-        return $this->hasMany(Empresa::class, 'user_id');
-    }
-
-    public function valoracion_user()
-    {
-        return $this->hasMany(ValoracionUser::class, 'user_id');
     }
 }

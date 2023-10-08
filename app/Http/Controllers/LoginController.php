@@ -14,9 +14,15 @@ class LoginController extends Controller
         $res = Auth::attempt(['usuario' => $usuario, 'password' => $password]);
         if ($res) {
             $user = Auth::user();
+            if ($user->acceso == 1) {
+                return response()->JSON([
+                    'user' => Auth::user(),
+                ], 200);
+            }
+            Auth::logout();
             return response()->JSON([
-                'user' => Auth::user(),
-            ], 200);
+                "message" => "El acceso a este usuario fue restringido"
+            ], 401);
         }
 
         return response()->JSON([], 401);

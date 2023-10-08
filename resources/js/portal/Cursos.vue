@@ -61,15 +61,20 @@
                             <div class="meta d-flex justify-content-between">
                                 <p>
                                     <span class="lnr lnr-users"></span> 355
-                                    <span class="lnr lnr-bubble"></span>35
+                                    <!-- <span class="lnr lnr-bubble"></span>35 -->
                                 </p>
                                 <h4>$150</h4>
                             </div>
                         </div>
                         <div class="details p-3">
-                            <a href="#">
+                            <router-link
+                                :to="{
+                                    name: 'portal.curso',
+                                    params: { id: 1 },
+                                }"
+                            >
                                 <h4 class="text-principal mt-2 mb-2">Inglés</h4>
-                            </a>
+                            </router-link>
                             <p class="text-principal">
                                 When television was young, there was a hugely
                                 popular show based on the still popular
@@ -77,14 +82,18 @@
                             </p>
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <button
+                                    <router-link
+                                        :to="{
+                                            name: 'portal.curso',
+                                            params: { id: 1 },
+                                        }"
                                         class="btn btn-warning btn-block btn-flat"
                                     >
                                         Ver más
                                         <span
                                             class="lnr lnr-arrow-right text-white"
                                         ></span>
-                                    </button>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -102,17 +111,22 @@
                             <div class="meta d-flex justify-content-between">
                                 <p>
                                     <span class="lnr lnr-users"></span> 355
-                                    <span class="lnr lnr-bubble"></span>35
+                                    <!-- <span class="lnr lnr-bubble"></span>35 -->
                                 </p>
                                 <h4>$150</h4>
                             </div>
                         </div>
                         <div class="details p-3">
-                            <a href="#">
+                            <router-link
+                                :to="{
+                                    name: 'portal.curso',
+                                    params: { id: 1 },
+                                }"
+                            >
                                 <h4 class="text-principal mt-2 mb-2">
                                     Programación
                                 </h4>
-                            </a>
+                            </router-link>
                             <p class="text-principal">
                                 When television was young, there was a hugely
                                 popular show based on the still popular
@@ -120,14 +134,18 @@
                             </p>
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <button
+                                    <router-link
+                                        :to="{
+                                            name: 'portal.curso',
+                                            params: { id: 1 },
+                                        }"
                                         class="btn btn-warning btn-block btn-flat"
                                     >
                                         Ver más
                                         <span
                                             class="lnr lnr-arrow-right text-white"
                                         ></span>
-                                    </button>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -145,17 +163,22 @@
                             <div class="meta d-flex justify-content-between">
                                 <p>
                                     <span class="lnr lnr-users"></span> 355
-                                    <span class="lnr lnr-bubble"></span>35
+                                    <!-- <span class="lnr lnr-bubble"></span>35 -->
                                 </p>
                                 <h4>$150</h4>
                             </div>
                         </div>
                         <div class="details p-3">
-                            <a href="#">
+                            <router-link
+                                :to="{
+                                    name: 'portal.curso',
+                                    params: { id: 1 },
+                                }"
+                            >
                                 <h4 class="text-principal mt-2 mb-2">
                                     Fotografía
                                 </h4>
-                            </a>
+                            </router-link>
                             <p class="text-principal">
                                 When television was young, there was a hugely
                                 popular show based on the still popular
@@ -163,14 +186,18 @@
                             </p>
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <button
+                                    <router-link
+                                        :to="{
+                                            name: 'portal.curso',
+                                            params: { id: 1 },
+                                        }"
                                         class="btn btn-warning btn-block btn-flat"
                                     >
                                         Ver más
                                         <span
                                             class="lnr lnr-arrow-right text-white"
                                         ></span>
-                                    </button>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -188,15 +215,20 @@
                             <div class="meta d-flex justify-content-between">
                                 <p>
                                     <span class="lnr lnr-users"></span> 355
-                                    <span class="lnr lnr-bubble"></span>35
+                                    <!-- <span class="lnr lnr-bubble"></span>35 -->
                                 </p>
                                 <h4>$150</h4>
                             </div>
                         </div>
                         <div class="details p-3">
-                            <a href="#">
+                            <router-link
+                                :to="{
+                                    name: 'portal.curso',
+                                    params: { id: 1 },
+                                }"
+                            >
                                 <h4 class="text-principal mt-2 mb-2">Diseño</h4>
-                            </a>
+                            </router-link>
                             <p class="text-principal">
                                 When television was young, there was a hugely
                                 popular show based on the still popular
@@ -204,14 +236,18 @@
                             </p>
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <button
+                                    <router-link
+                                        :to="{
+                                            name: 'portal.curso',
+                                            params: { id: 1 },
+                                        }"
                                         class="btn btn-warning btn-block btn-flat"
                                     >
                                         Ver más
                                         <span
                                             class="lnr lnr-arrow-right text-white"
                                         ></span>
-                                    </button>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -229,17 +265,22 @@
                             <div class="meta d-flex justify-content-between">
                                 <p>
                                     <span class="lnr lnr-users"></span> 355
-                                    <span class="lnr lnr-bubble"></span>35
+                                    <!-- <span class="lnr lnr-bubble"></span>35 -->
                                 </p>
                                 <h4>$150</h4>
                             </div>
                         </div>
                         <div class="details p-3">
-                            <a href="#">
+                            <router-link
+                                :to="{
+                                    name: 'portal.curso',
+                                    params: { id: 1 },
+                                }"
+                            >
                                 <h4 class="text-principal mt-2 mb-2">
                                     Computación
                                 </h4>
-                            </a>
+                            </router-link>
                             <p class="text-principal">
                                 When television was young, there was a hugely
                                 popular show based on the still popular
@@ -247,14 +288,18 @@
                             </p>
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <button
+                                    <router-link
+                                        :to="{
+                                            name: 'portal.curso',
+                                            params: { id: 1 },
+                                        }"
                                         class="btn btn-warning btn-block btn-flat"
                                     >
                                         Ver más
                                         <span
                                             class="lnr lnr-arrow-right text-white"
                                         ></span>
-                                    </button>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -272,17 +317,22 @@
                             <div class="meta d-flex justify-content-between">
                                 <p>
                                     <span class="lnr lnr-users"></span> 355
-                                    <span class="lnr lnr-bubble"></span>35
+                                    <!-- <span class="lnr lnr-bubble"></span>35 -->
                                 </p>
                                 <h4>$150</h4>
                             </div>
                         </div>
                         <div class="details p-3">
-                            <a href="#">
+                            <router-link
+                                :to="{
+                                    name: 'portal.curso',
+                                    params: { id: 1 },
+                                }"
+                            >
                                 <h4 class="text-principal mt-2 mb-2">
                                     Computación
                                 </h4>
-                            </a>
+                            </router-link>
                             <p class="text-principal">
                                 When television was young, there was a hugely
                                 popular show based on the still popular
@@ -290,14 +340,18 @@
                             </p>
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <button
+                                    <router-link
+                                        :to="{
+                                            name: 'portal.curso',
+                                            params: { id: 1 },
+                                        }"
                                         class="btn btn-warning btn-block btn-flat"
                                     >
                                         Ver más
                                         <span
                                             class="lnr lnr-arrow-right text-white"
                                         ></span>
-                                    </button>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -315,17 +369,22 @@
                             <div class="meta d-flex justify-content-between">
                                 <p>
                                     <span class="lnr lnr-users"></span> 355
-                                    <span class="lnr lnr-bubble"></span>35
+                                    <!-- <span class="lnr lnr-bubble"></span>35 -->
                                 </p>
                                 <h4>$150</h4>
                             </div>
                         </div>
                         <div class="details p-3">
-                            <a href="#">
+                            <router-link
+                                :to="{
+                                    name: 'portal.curso',
+                                    params: { id: 1 },
+                                }"
+                            >
                                 <h4 class="text-principal mt-2 mb-2">
                                     Computación
                                 </h4>
-                            </a>
+                            </router-link>
                             <p class="text-principal">
                                 When television was young, there was a hugely
                                 popular show based on the still popular
@@ -333,14 +392,18 @@
                             </p>
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <button
+                                    <router-link
+                                        :to="{
+                                            name: 'portal.curso',
+                                            params: { id: 1 },
+                                        }"
                                         class="btn btn-warning btn-block btn-flat"
                                     >
                                         Ver más
                                         <span
                                             class="lnr lnr-arrow-right text-white"
                                         ></span>
-                                    </button>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -358,17 +421,22 @@
                             <div class="meta d-flex justify-content-between">
                                 <p>
                                     <span class="lnr lnr-users"></span> 355
-                                    <span class="lnr lnr-bubble"></span>35
+                                    <!-- <span class="lnr lnr-bubble"></span>35 -->
                                 </p>
                                 <h4>$150</h4>
                             </div>
                         </div>
                         <div class="details p-3">
-                            <a href="#">
+                            <router-link
+                                :to="{
+                                    name: 'portal.curso',
+                                    params: { id: 1 },
+                                }"
+                            >
                                 <h4 class="text-principal mt-2 mb-2">
                                     Computación
                                 </h4>
-                            </a>
+                            </router-link>
                             <p class="text-principal">
                                 When television was young, there was a hugely
                                 popular show based on the still popular
@@ -376,14 +444,18 @@
                             </p>
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <button
+                                    <router-link
+                                        :to="{
+                                            name: 'portal.curso',
+                                            params: { id: 1 },
+                                        }"
                                         class="btn btn-warning btn-block btn-flat"
                                     >
                                         Ver más
                                         <span
                                             class="lnr lnr-arrow-right text-white"
                                         ></span>
-                                    </button>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>

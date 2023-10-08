@@ -61,10 +61,12 @@
                                         </el-descriptions-item>
                                         <el-descriptions-item>
                                             <template slot="label">
-                                                <i class="el-icon-document"></i>
-                                                Razon social
+                                                <i
+                                                    class="el-icon-map-location"
+                                                ></i>
+                                                Dirección
                                             </template>
-                                            {{ oConfiguracion.razon_social }}
+                                            {{ oConfiguracion.dir }}
                                         </el-descriptions-item>
                                         <el-descriptions-item>
                                             <template slot="label">
@@ -76,60 +78,14 @@
                                         <el-descriptions-item>
                                             <template slot="label">
                                                 <i
-                                                    class="el-icon-map-location"
-                                                ></i>
-                                                Dirección
-                                            </template>
-                                            {{ oConfiguracion.dir }}
-                                        </el-descriptions-item>
-                                        <el-descriptions-item>
-                                            <template slot="label">
-                                                <i class="el-icon-phone"></i>
-                                                Teléfono
-                                            </template>
-                                            {{ oConfiguracion.fono }}
-                                        </el-descriptions-item>
-                                        <el-descriptions-item>
-                                            <template slot="label">
-                                                <i class="el-icon-link"></i>
-                                                Web
-                                            </template>
-                                            {{ oConfiguracion.web }}
-                                        </el-descriptions-item>
-                                        <el-descriptions-item>
-                                            <template slot="label">
-                                                <i class="el-icon-message"></i>
-                                                Correo eléctronico
-                                            </template>
-                                            {{ oConfiguracion.correo }}
-                                        </el-descriptions-item>
-                                        <el-descriptions-item>
-                                            <template slot="label">
-                                                <i class="el-icon-message"></i>
-                                                Correo eléctronico pedido 1
-                                            </template>
-                                            {{ oConfiguracion.correo_pedido }}
-                                        </el-descriptions-item>
-                                        <el-descriptions-item>
-                                            <template slot="label">
-                                                <i class="el-icon-message"></i>
-                                                Correo eléctronico pedido 2
-                                            </template>
-                                            {{ oConfiguracion.correo_pedido2 }}
-                                        </el-descriptions-item>
-                                        <el-descriptions-item>
-                                            <template slot="label">
-                                                <i
                                                     class="el-icon-picture-outline-round"
                                                 ></i>
                                                 Logo
                                             </template>
-                                            <el-avatar
-                                                shape="square"
-                                                :size="120"
-                                                :fit="'fill'"
+                                            <img
                                                 :src="oConfiguracion.path_image"
-                                            ></el-avatar>
+                                                style="height: 120px"
+                                            />
                                         </el-descriptions-item>
                                     </el-descriptions>
                                 </div>
@@ -211,25 +167,24 @@
                                 <div class="form-group col-md-6">
                                     <label
                                         :class="{
-                                            'text-danger': errors.razon_social,
+                                            'text-danger': errors.dir,
                                         }"
-                                        >Razon social*</label
+                                        >Dirección</label
                                     >
                                     <input
                                         type="text"
                                         class="form-control"
-                                        :class="{
-                                            'is-invalid': errors.razon_social,
-                                        }"
-                                        placeholder="Alias"
-                                        v-model="oConfiguracion.razon_social"
+                                        :class="{ 'is-invalid': errors.dir }"
+                                        placeholder="Dirección"
+                                        v-model="oConfiguracion.dir"
                                     />
                                     <span
                                         class="error invalid-feedback"
-                                        v-if="errors.razon_social"
-                                        v-text="errors.razon_social[0]"
+                                        v-if="errors.dir"
+                                        v-text="errors.dir[0]"
                                     ></span>
                                 </div>
+
                                 <div class="form-group col-md-6">
                                     <label
                                         :class="{
@@ -250,146 +205,6 @@
                                         class="error invalid-feedback"
                                         v-if="errors.actividad"
                                         v-text="errors.actividad[0]"
-                                    ></span>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label
-                                        :class="{
-                                            'text-danger': errors.ciudad,
-                                        }"
-                                        >Ciudad*</label
-                                    >
-                                    <input
-                                        type="email"
-                                        class="form-control"
-                                        :class="{
-                                            'is-invalid': errors.ciudad,
-                                        }"
-                                        placeholder="Ciudad"
-                                        v-model="oConfiguracion.ciudad"
-                                    />
-                                    <span
-                                        class="error invalid-feedback"
-                                        v-if="errors.ciudad"
-                                        v-text="errors.ciudad[0]"
-                                    ></span>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label
-                                        :class="{
-                                            'text-danger': errors.dir,
-                                        }"
-                                        >Dirección*</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        :class="{ 'is-invalid': errors.dir }"
-                                        placeholder="Dirección"
-                                        v-model="oConfiguracion.dir"
-                                    />
-                                    <span
-                                        class="error invalid-feedback"
-                                        v-if="errors.dir"
-                                        v-text="errors.dir[0]"
-                                    ></span>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label
-                                        :class="{ 'text-danger': errors.fono }"
-                                        >Teléfono*</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        :class="{
-                                            'is-invalid': errors.fono,
-                                        }"
-                                        placeholder="Teléfono"
-                                        v-model="oConfiguracion.fono"
-                                    />
-                                    <span
-                                        class="error invalid-feedback"
-                                        v-if="errors.fono"
-                                        v-text="errors.fono[0]"
-                                    ></span>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label
-                                        :class="{ 'text-danger': errors.web }"
-                                        >Web</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        :class="{ 'is-invalid': errors.web }"
-                                        placeholder="Web"
-                                        v-model="oConfiguracion.web"
-                                    />
-                                    <span
-                                        class="error invalid-feedback"
-                                        v-if="errors.web"
-                                        v-text="errors.web[0]"
-                                    ></span>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label
-                                        :class="{
-                                            'text-danger': errors.correo,
-                                        }"
-                                        >Correo</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        :class="{ 'is-invalid': errors.correo }"
-                                        placeholder="Correo"
-                                        v-model="oConfiguracion.correo"
-                                    />
-                                    <span
-                                        class="error invalid-feedback"
-                                        v-if="errors.correo"
-                                        v-text="errors.correo[0]"
-                                    ></span>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label
-                                        :class="{
-                                            'text-danger': errors.correo_pedido,
-                                        }"
-                                        >Correo eléctronico pedido 1</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        :class="{ 'is-invalid': errors.correo_pedido }"
-                                        placeholder="Correo eléctronico pedido 1"
-                                        v-model="oConfiguracion.correo_pedido"
-                                    />
-                                    <span
-                                        class="error invalid-feedback"
-                                        v-if="errors.correo_pedido"
-                                        v-text="errors.correo_pedido[0]"
-                                    ></span>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label
-                                        :class="{
-                                            'text-danger': errors.correo_pedido2,
-                                        }"
-                                        >Correo electrónico pedido 2</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        :class="{ 'is-invalid': errors.correo_pedido2 }"
-                                        placeholder="Correo electrónico pedido 2"
-                                        v-model="oConfiguracion.correo_pedido2"
-                                    />
-                                    <span
-                                        class="error invalid-feedback"
-                                        v-if="errors.correo_pedido2"
-                                        v-text="errors.correo_pedido2[0]"
                                     ></span>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -461,13 +276,8 @@ export default {
                 id: 0,
                 nombre_sistema: "",
                 alias: "",
-                ciudad: "",
                 dir: "",
-                fono: "",
-                web: "",
-                correo: "",
-                correo_pedido: "",
-                correo_pedido2: "",
+                actividad: "",
                 logo: "",
             },
             errors: [],
@@ -505,34 +315,8 @@ export default {
                     this.oConfiguracion.nombre_sistema
                 );
                 formdata.append("alias", this.oConfiguracion.alias);
-                formdata.append(
-                    "razon_social",
-                    this.oConfiguracion.razon_social
-                );
-                formdata.append("actividad", this.oConfiguracion.actividad);
-                formdata.append("ciudad", this.oConfiguracion.ciudad);
                 formdata.append("dir", this.oConfiguracion.dir);
-                formdata.append("fono", this.oConfiguracion.fono);
-                formdata.append(
-                    "web",
-                    this.oConfiguracion.web ? this.oConfiguracion.web : ""
-                );
-                formdata.append(
-                    "correo",
-                    this.oConfiguracion.correo ? this.oConfiguracion.correo : ""
-                );
-                formdata.append(
-                    "correo_pedido",
-                    this.oConfiguracion.correo_pedido
-                        ? this.oConfiguracion.correo_pedido
-                        : ""
-                );
-                formdata.append(
-                    "correo_pedido2",
-                    this.oConfiguracion.correo_pedido2
-                        ? this.oConfiguracion.correo_pedido2
-                        : ""
-                );
+                formdata.append("actividad", this.oConfiguracion.actividad);
                 formdata.append("logo", this.oConfiguracion.logo);
 
                 let config = {
@@ -607,13 +391,8 @@ export default {
             this.textoBtn = "Actualizar";
             this.oConfiguracion.nombre_sistema = "";
             this.oConfiguracion.alias = "";
-            this.oConfiguracion.ciudad = "";
             this.oConfiguracion.dir = "";
-            this.oConfiguracion.fono = "";
-            this.oConfiguracion.web = "";
-            this.oConfiguracion.correo = "";
-            this.oConfiguracion.correo_pedido = "";
-            this.oConfiguracion.correo_pedido2 = "";
+            this.oConfiguracion.actividad = "";
             this.oConfiguracion.logo = "";
         },
     },

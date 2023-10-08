@@ -87,209 +87,6 @@
                             <div class="form-group col-md-6">
                                 <label
                                     :class="{
-                                        'text-danger': errors.ci,
-                                    }"
-                                    >C.I.*</label
-                                >
-                                <el-input
-                                    placeholder="Número de C.I."
-                                    :class="{ 'is-invalid': errors.ci }"
-                                    v-model="usuario.ci"
-                                    clearable
-                                >
-                                </el-input>
-                                <span
-                                    class="error invalid-feedback"
-                                    v-if="errors.ci"
-                                    v-text="errors.ci[0]"
-                                ></span>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label
-                                    :class="{
-                                        'text-danger': errors.ci_exp,
-                                    }"
-                                    >Expedido*</label
-                                >
-                                <el-select
-                                    class="w-100 d-block"
-                                    :class="{
-                                        'is-invalid': errors.ci_exp,
-                                    }"
-                                    v-model="usuario.ci_exp"
-                                    clearable
-                                >
-                                    <el-option
-                                        v-for="(item, index) in listExpedido"
-                                        :key="index"
-                                        :value="item.value"
-                                        :label="item.label"
-                                    >
-                                    </el-option>
-                                </el-select>
-                                <span
-                                    class="error invalid-feedback"
-                                    v-if="errors.ci_exp"
-                                    v-text="errors.ci_exp[0]"
-                                ></span>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label
-                                    :class="{
-                                        'text-danger': errors.fecha_nac,
-                                    }"
-                                    >Fecha de nacimiento*</label
-                                >
-                                <input
-                                    type="date"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': errors.fecha_nac,
-                                    }"
-                                    v-model="usuario.fecha_nac"
-                                />
-                                <span
-                                    class="error invalid-feedback"
-                                    v-if="errors.fecha_nac"
-                                    v-text="errors.fecha_nac[0]"
-                                ></span>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label
-                                    :class="{
-                                        'text-danger': errors.genero,
-                                    }"
-                                    >Genero*</label
-                                >
-
-                                <el-input
-                                    placeholder="Genero"
-                                    :class="{ 'is-invalid': errors.genero }"
-                                    v-model="usuario.genero"
-                                    clearable
-                                >
-                                </el-input>
-                                <span
-                                    class="error invalid-feedback"
-                                    v-if="errors.genero"
-                                    v-text="errors.genero[0]"
-                                ></span>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label
-                                    :class="{
-                                        'text-danger': errors.cargo,
-                                    }"
-                                    >Cargo*</label
-                                >
-
-                                <el-input
-                                    placeholder="Cargo"
-                                    :class="{ 'is-invalid': errors.cargo }"
-                                    v-model="usuario.cargo"
-                                    clearable
-                                >
-                                </el-input>
-                                <span
-                                    class="error invalid-feedback"
-                                    v-if="errors.cargo"
-                                    v-text="errors.cargo[0]"
-                                ></span>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label
-                                    :class="{
-                                        'text-danger': errors.fecha_ingreso,
-                                    }"
-                                    >Fecha de ingreso*</label
-                                >
-                                <input
-                                    type="date"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': errors.fecha_ingreso,
-                                    }"
-                                    v-model="usuario.fecha_ingreso"
-                                />
-                                <span
-                                    class="error invalid-feedback"
-                                    v-if="errors.fecha_ingreso"
-                                    v-text="errors.fecha_ingreso[0]"
-                                ></span>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label
-                                    :class="{
-                                        'text-danger': errors.taller,
-                                    }"
-                                    >Taller al que pertenece*</label
-                                >
-
-                                <el-input
-                                    placeholder="Taller al que pertenece"
-                                    :class="{ 'is-invalid': errors.taller }"
-                                    v-model="usuario.taller"
-                                    clearable
-                                >
-                                </el-input>
-                                <span
-                                    class="error invalid-feedback"
-                                    v-if="errors.taller"
-                                    v-text="errors.taller[0]"
-                                ></span>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label
-                                    :class="{
-                                        'text-danger': errors.estado,
-                                    }"
-                                    >Estado*</label
-                                >
-                                <el-switch
-                                    :class="{
-                                        'is-invalid': errors.estado,
-                                    }"
-                                    style="display: block"
-                                    v-model="usuario.estado"
-                                    active-color="#13ce66"
-                                    inactive-color="#ff4949"
-                                    active-text="ACTIVO"
-                                    inactive-text="RETIRADO"
-                                    active-value="1"
-                                    inactive-value="0"
-                                >
-                                </el-switch>
-                                <span
-                                    class="error invalid-feedback"
-                                    v-if="errors.estado"
-                                    v-text="errors.estado[0]"
-                                ></span>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label
-                                    :class="{
-                                        'text-danger': errors.fono,
-                                    }"
-                                    >Teléfono/Celular*</label
-                                >
-                                <b-form-tags
-                                    input-id="tags-basic"
-                                    placeholder="Teléfono/Celular"
-                                    :class="{ 'is-invalid': errors.fono }"
-                                    v-model="usuario.fono"
-                                    addButtonText="Añadir"
-                                    separator=" ,;"
-                                    remove-on-delete
-                                ></b-form-tags>
-                                <span
-                                    class="error invalid-feedback"
-                                    v-if="errors.fono"
-                                    v-text="errors.fono[0]"
-                                ></span>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label
-                                    :class="{
                                         'text-danger': errors.dir,
                                     }"
                                     >Dirección*</label
@@ -310,58 +107,64 @@
                             <div class="form-group col-md-6">
                                 <label
                                     :class="{
-                                        'text-danger': errors.tipo_personal,
+                                        'text-danger': errors.correo,
                                     }"
-                                    >Tipo de Personal*</label
+                                    >Correo electrónico*</label
                                 >
-                                <el-select
-                                    class="w-100"
-                                    :class="{
-                                        'is-invalid': errors.tipo_personal,
-                                    }"
-                                    v-model="usuario.tipo_personal"
+                                <el-input
+                                    placeholder="Correo electrónico"
+                                    :class="{ 'is-invalid': errors.correo }"
+                                    v-model="usuario.correo"
                                     clearable
                                 >
-                                    <el-option
-                                        v-for="item in listTiposPersonal"
-                                        :key="item"
-                                        :value="item"
-                                        :label="item"
-                                    ></el-option>
-                                </el-select>
+                                </el-input>
                                 <span
                                     class="error invalid-feedback"
-                                    v-if="errors.tipo_personal"
-                                    v-text="errors.tipo_personal[0]"
+                                    v-if="errors.correo"
+                                    v-text="errors.correo[0]"
                                 ></span>
                             </div>
                             <div class="form-group col-md-6">
                                 <label
                                     :class="{
-                                        'text-danger': errors.p_discapacidad,
+                                        'text-danger': errors.password,
                                     }"
-                                    >Porcentaje de discapacidad(%)*</label
+                                    >Contraseña*</label
                                 >
-                                <input
-                                    type="number"
-                                    placeholder="Porcentaje de discapacidad(%)"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': errors.p_discapacidad,
-                                    }"
-                                    v-model="usuario.p_discapacidad"
+                                <el-input
+                                    placeholder="Contraseña"
+                                    :class="{ 'is-invalid': errors.password }"
+                                    v-model="usuario.password"
                                     clearable
-                                />
+                                >
+                                </el-input>
                                 <span
                                     class="error invalid-feedback"
-                                    v-if="errors.p_discapacidad"
-                                    v-text="errors.p_discapacidad[0]"
+                                    v-if="errors.password"
+                                    v-text="errors.password[0]"
                                 ></span>
                             </div>
-                            <div
-                                class="form-group col-md-6"
-                                v-show="usuario.tipo_personal == 'SOCIO'"
-                            >
+                            <div class="form-group col-md-6">
+                                <label
+                                    :class="{
+                                        'text-danger': errors.fono,
+                                    }"
+                                    >Teléfono/Celular</label
+                                >
+                                <el-input
+                                    placeholder="Teléfono/Celular"
+                                    :class="{ 'is-invalid': errors.fono }"
+                                    v-model="usuario.fono"
+                                    clearable
+                                >
+                                </el-input>
+                                <span
+                                    class="error invalid-feedback"
+                                    v-if="errors.fono"
+                                    v-text="errors.fono[0]"
+                                ></span>
+                            </div>
+                            <div class="form-group col-md-6">
                                 <label
                                     :class="{
                                         'text-danger': errors.tipo,
@@ -414,23 +217,28 @@
                             <div class="form-group col-md-6">
                                 <label
                                     :class="{
-                                        'text-danger':
-                                            errors.validez_credencial,
+                                        'text-danger': errors.acceso,
                                     }"
-                                    >Validez del Credencial*</label
+                                    >Acceso al sistema*</label
                                 >
-                                <el-input
-                                    placeholder="Validez del Credencial"
+                                <el-switch
                                     :class="{
-                                        'is-invalid': errors.validez_credencial,
+                                        'is-invalid': errors.acceso,
                                     }"
-                                    v-model="usuario.validez_credencial"
-                                    clearable
-                                ></el-input>
+                                    style="display: block"
+                                    v-model="usuario.acceso"
+                                    active-color="#13ce66"
+                                    inactive-color="#ff4949"
+                                    active-text="HABILITADO"
+                                    inactive-text="DESHABILITADO"
+                                    active-value="1"
+                                    inactive-value="0"
+                                >
+                                </el-switch>
                                 <span
                                     class="error invalid-feedback"
-                                    v-if="errors.validez_credencial"
-                                    v-text="errors.validez_credencial[0]"
+                                    v-if="errors.acceso"
+                                    v-text="errors.acceso[0]"
                                 ></span>
                             </div>
                         </div>
@@ -475,21 +283,13 @@ export default {
                 nombre: "",
                 paterno: "",
                 materno: "",
-                ci: "",
-                ci_exp: "",
-                fecha_nac: "",
-                genero: "",
-                cargo: "",
-                fecha_ingreso: "",
-                taller: "",
                 dir: "",
-                fono: [],
-                tipo_personal: "",
-                p_discapacidad: "",
+                correo: "",
+                fono: "",
                 tipo: "",
                 foto: null,
-                validez_credencial: "",
-                estado: "0",
+                password: "",
+                acceso: "0",
             },
         },
     },
@@ -507,7 +307,7 @@ export default {
     computed: {
         tituloModal() {
             if (this.accion == "nuevo") {
-                return "AGREGAR PERSONAL";
+                return "AGREGAR USUARIO";
             } else {
                 return "MODIFICAR REGISTRO";
             }
@@ -537,7 +337,7 @@ export default {
                 { value: "BN", label: "Beni" },
             ],
             listTiposPersonal: ["SOCIO", "TRABAJADOR"],
-            listTipos: ["ADMINISTRADOR", "REPRESENTANTE", "SOCIO"],
+            listTipos: ["ADMINISTRADOR", "AUXILIAR"],
             errors: [],
         };
     },
@@ -568,48 +368,17 @@ export default {
                     "materno",
                     this.usuario.materno ? this.usuario.materno : ""
                 );
-                formdata.append("ci", this.usuario.ci ? this.usuario.ci : "");
-                formdata.append(
-                    "ci_exp",
-                    this.usuario.ci_exp ? this.usuario.ci_exp : ""
-                );
-                formdata.append(
-                    "fecha_nac",
-                    this.usuario.fecha_nac ? this.usuario.fecha_nac : ""
-                );
-                formdata.append(
-                    "genero",
-                    this.usuario.genero ? this.usuario.genero : ""
-                );
-                formdata.append(
-                    "cargo",
-                    this.usuario.cargo ? this.usuario.cargo : ""
-                );
-                formdata.append(
-                    "fecha_ingreso",
-                    this.usuario.fecha_ingreso ? this.usuario.fecha_ingreso : ""
-                );
-                formdata.append(
-                    "taller",
-                    this.usuario.taller ? this.usuario.taller : ""
-                );
                 formdata.append(
                     "dir",
                     this.usuario.dir ? this.usuario.dir : ""
                 );
                 formdata.append(
+                    "correo",
+                    this.usuario.correo ? this.usuario.correo : ""
+                );
+                formdata.append(
                     "fono",
-                    this.usuario.fono ? this.usuario.fono.join("; ") : ""
-                );
-                formdata.append(
-                    "tipo_personal",
-                    this.usuario.tipo_personal ? this.usuario.tipo_personal : ""
-                );
-                formdata.append(
-                    "p_discapacidad",
-                    this.usuario.p_discapacidad
-                        ? this.usuario.p_discapacidad
-                        : ""
+                    this.usuario.fono ? this.usuario.fono : ""
                 );
                 formdata.append(
                     "tipo",
@@ -620,14 +389,12 @@ export default {
                     this.usuario.foto ? this.usuario.foto : ""
                 );
                 formdata.append(
-                    "validez_credencial",
-                    this.usuario.validez_credencial
-                        ? this.usuario.validez_credencial
-                        : ""
+                    "acceso",
+                    this.usuario.acceso ? this.usuario.acceso : "0"
                 );
                 formdata.append(
-                    "estado",
-                    this.usuario.estado ? this.usuario.estado : "0"
+                    "password",
+                    this.usuario.password ? this.usuario.password : ""
                 );
 
                 if (this.accion == "edit") {
@@ -700,21 +467,13 @@ export default {
             this.usuario.nombre = "";
             this.usuario.paterno = "";
             this.usuario.materno = "";
-            this.usuario.ci = "";
-            this.usuario.ci_exp = "";
-            this.usuario.fecha_nac = "";
-            this.usuario.genero = "";
-            this.usuario.cargo = "";
-            this.usuario.fecha_ingreso = "";
-            this.usuario.taller = "";
             this.usuario.dir = "";
-            this.usuario.fono = [];
-            this.usuario.tipo_personal = "";
-            this.usuario.p_discapacidad = "";
+            this.usuario.correo = "";
+            this.usuario.fono = "";
             this.usuario.tipo = "";
             this.usuario.foto = null;
-            this.usuario.validez_credencial = "";
-            this.usuario.estado = "0";
+            this.usuario.acceso = "0";
+            this.usuario.password = "";
             this.$refs.input_file.value = null;
         },
     },
