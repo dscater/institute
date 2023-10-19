@@ -476,7 +476,6 @@ export default {
         let self = this;
         setTimeout(() => {
             self.initCaruselTips();
-            self.cargaMapaGoogle(self.oContacto.lat, self.oContacto.lng);
         }, 300);
     },
     methods: {

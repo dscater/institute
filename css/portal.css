@@ -6504,6 +6504,10 @@ h6 {
     background-color: var(--principal_transparent);
 }
 
+.about-content{
+    margin-top: 0px;
+}
+
 .about-content {
     padding: 50px 0px;
 }
@@ -6514,6 +6518,10 @@ h6 {
 
 .feature-area {
     margin-top: -80px;
+}
+
+.navegacion {
+    margin-top: 110px;
 }
 
 /*//////////////////////////////////////////////////////////////////

@@ -2,7 +2,7 @@
     <div class="contenedor_horarios">
         <!-- start banner Area -->
         <section
-            class="banner-area relative about-banner"
+            class="navegacion banner-area relative about-banner"
             id="home"
             :style="
                 'background:url(' + url_principal + '/imgs/banner_seccion.jpg)'

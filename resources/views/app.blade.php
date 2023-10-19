@@ -39,7 +39,7 @@
         var app_base = "";
         // var app_base = "qhana"; //habilitar esta linea si existe la carpeta public en el proyecto con el nombre del sistema
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ config('app.google_map_api') }}"></script>
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key={{ config('app.google_map_api') }}"></script> --}}
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/plantilla.js') }}"></script>

@@ -8,56 +8,7 @@
                     class="item-slick1 banner-area overlay-bg"
                     :style="'background-image: url(' + item.url_img + ')'"
                 >
-                    <div class="overlay overlay-bg"></div>
-                    <div
-                        class="container-fluid h-full info_slider"
-                        v-if="
-                            item.desc1 != '' ||
-                            item.desc2 != '' ||
-                            item.muestra_boton != 0
-                        "
-                    >
-                        <div class="flex-col-l-m h-full p-t-100 p-b-30">
-                            <div
-                                class="layer-slick1 animated visible-false"
-                                data-appear="rollIn"
-                                data-delay="0"
-                                v-if="item.desc1 != ''"
-                            >
-                                <span
-                                    class="ltext-202 respon2"
-                                    v-text="item.desc1"
-                                >
-                                </span>
-                            </div>
-
-                            <div
-                                class="layer-slick1 animated visible-false"
-                                data-appear="lightSpeedIn"
-                                data-delay="800"
-                                v-if="item.desc2 != ''"
-                            >
-                                <h2
-                                    class="ltext-104 p-t-19 p-b-43 respon1 text-white"
-                                    v-text="item.desc2"
-                                ></h2>
-                            </div>
-
-                            <div
-                                class="layer-slick1 animated visible-false"
-                                data-appear="slideInUp"
-                                data-delay="1600"
-                                v-if="item.muestra_boton != 0"
-                            >
-                                <a
-                                    href="product.html"
-                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
-                                >
-                                    Comprar ahora
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- <div class="overlay overlay-bg"></div> -->
                 </div>
             </div>
         </div>
