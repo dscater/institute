@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\HistorialAccion;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -45,6 +46,12 @@ class BannerController extends Controller
         $request->validate($this->validacion, $this->mensajes);
         DB::beginTransaction();
         try {
+            // validar minimo de slides
+            $banners_existentes = Banner::all();
+            if (count($banners_existentes) >= 5) {
+                throw new Exception("Se alcanzó el limite maximo de imagénes para mostrar en el portal");
+            }
+
             // crear el Banner
             $file_img = $request->img;
             $request["img"] = "default.png";

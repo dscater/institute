@@ -289,6 +289,13 @@
         <section class="review-area section-gap relative bg-secundario2">
             <div class="overlay overlay-bg"></div>
             <div class="container">
+                <div class="row d-flex justify-content-center mb-3">
+                    <div class="menu-content text-principal col-lg-8">
+                        <div class="title text-center">
+                            <h1 class="mb-10">TIPS PARA LOGRAR TU VISA</h1>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="active-review-carusel-gestoria">
                         <div class="single-review item bg-principal p-3">

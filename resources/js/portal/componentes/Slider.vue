@@ -22,20 +22,14 @@
                                 <h4>Learn Online Courses</h4>
                             </div> -->
                             <div class="desc-wrap">
-                                <p class="text-principal">
-                                    Programa de inglés intensivo
-                                </p>
-                                <p class="text-principal">
+                                <p>
+                                    Programa de inglés intensivo<br />
                                     Aprende el idioma inglés de forma
-                                    estructurada y efectiva.
-                                </p>
-                                <p class="text-principal">
+                                    estructurada y efectiva.<br />
                                     En BEI, trabajamos contigo para desarrollar
                                     tus habilidades y mejorar tu dominio del
                                     idioma inglés para que puedas tener más
-                                    éxito en la vida.
-                                </p>
-                                <p class="text-principal">
+                                    éxito en la vida.<br />
                                     ¡Estudiante F-1 bienvenidos!
                                 </p>
                                 <!-- <a href="#">Join Now</a> -->
@@ -58,7 +52,7 @@ export default {
                 {
                     id: 0,
                     img: "",
-                    url_img: this.ruta_asset + "imgs/sliders/1.jpg",
+                    url_img: this.ruta_asset + "imgs/banners/1.jpg",
                     posicion: 0,
                     desc1: "TÍTULO 1",
                     desc2: "Portal institute",
@@ -67,7 +61,7 @@ export default {
                 {
                     id: 0,
                     img: "",
-                    url_img: this.ruta_asset + "imgs/sliders/2.jpg",
+                    url_img: this.ruta_asset + "imgs/banners/2.jpg",
                     posicion: 0,
                     desc1: "TÍTULO 1",
                     desc2: "Portal institute",
@@ -76,7 +70,7 @@ export default {
                 {
                     id: 0,
                     img: "",
-                    url_img: this.ruta_asset + "imgs/sliders/3.jpg",
+                    url_img: this.ruta_asset + "imgs/banners/3.jpg",
                     posicion: 0,
                     desc1: "TÍTULO 1",
                     desc2: "Portal institute",
@@ -87,13 +81,21 @@ export default {
         };
     },
     mounted() {
-        let self = this;
-        setTimeout(function () {
-            self.initSlick1();
-            $(".slick1").slick("slickGoTo", 0);
-        }, 300);
+        this.getSliders();
     },
     methods: {
+        getSliders() {
+            axios.get(main_url + "/portal/getSliders").then((response) => {
+                if (response.data.total > 0) {
+                    this.listSliders = response.data.banners;
+                }
+                let self = this;
+                setTimeout(function () {
+                    self.initSlick1();
+                    $(".slick1").slick("slickGoTo", 0);
+                }, 300);
+            });
+        },
         initSlick1() {
             $(".wrap-slick1").each(function () {
                 var wrapSlick1 = $(this);

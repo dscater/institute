@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ConfiguracionController;
+use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RedSocialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +21,12 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/configuracion/getConfiguracion', [ConfiguracionController::class, 'getConfiguracion']);
 
 // ACCIONES PORTAL
-
+// sliders
+Route::get('portal/getSliders', [BannerController::class, 'index']);
+// contacto
+Route::get('portal/getContacto', [ContactoController::class, 'index']);
+// redes sociales
+Route::get('portal/getRedSocial', [RedSocialController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/configuracion/update', [ConfiguracionController::class, 'update']);
@@ -36,6 +44,23 @@ Route::middleware(['auth'])->group(function () {
         Route::post('usuarios/actualizaContrasenia/{usuario}', [UserController::class, 'actualizaContrasenia']);
         Route::post('usuarios/actualizaFoto/{usuario}', [UserController::class, 'actualizaFoto']);
         Route::resource('usuarios', UserController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+
+        // BANNERS
+        Route::get('banners/get_banner/ultimo', [BannerController::class, 'bannerPrincipal']);
+        Route::resource('banners', BannerController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // CONTACTOS
+        Route::resource('contactos', ContactoController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // REDES SOCIALES
+        Route::resource('red_socials', RedSocialController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
     });

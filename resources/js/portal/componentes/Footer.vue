@@ -10,23 +10,31 @@
                 >
                     <a href=""
                         ><span class="lnr lnr-phone-handset"></span>
-                        <span class="text">+591 63326803</span></a
+                        <span class="text">{{ contacto.fono1 }}</span></a
                     >
-                    <a href="" class="ml-3"
+                    <a href="" class="ml-3" v-if="contacto.fono2 != ''"
                         ><span class="lnr lnr-phone-handset"></span>
-                        <span class="text">+591 64312163</span></a
+                        <span class="text">{{ contacto.fono2 }}</span></a
                     >
-                    <a href="mailto:info@tomorrowstoday.com" class="ml-3"
+                    <a :href="contacto.correo" class="ml-3"
                         ><span class="lnr lnr-envelope"></span>
-                        <span class="text">info@tomorrowstoday.com</span></a
+                        <span class="text">{{ contacto.correo }}</span></a
                     >
                 </div>
 
                 <div class="col-lg-12 col-sm-12 footer-social text-center mb-5">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-dribbble"></i></a>
-                    <a href="#"><i class="fab fa-behance"></i></a>
+                    <a :href="red_social.facebook" target="_blank"
+                        ><i class="fab fa-facebook"></i
+                    ></a>
+                    <a :href="red_social.tiktok" target="_blank"
+                        ><i class="fab fa-tiktok"></i
+                    ></a>
+                    <a :href="red_social.instagram" target="_blank"
+                        ><i class="fab fa-instagram"></i
+                    ></a>
+                    <a :href="red_social.youtube" target="_blank"
+                        ><i class="fab fa-youtube"></i
+                    ></a>
                 </div>
                 <p class="footer-text m-0 col-lg-12 col-md-12 text-center">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -54,7 +62,7 @@
 </template>
 <script>
 export default {
-    props: ["logo", "empresa"],
+    props: ["logo", "empresa", "contacto", "red_social"],
     data() {
         return {
             oRedSocial: null,

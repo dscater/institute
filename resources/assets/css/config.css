@@ -1,9 +1,9 @@
 :root {
     --principal: #13161c;
     --principal_hover: #000000;
-    --principal2: #f7631b;
-    --principal2_hover: #e04f06;
-    --principal2_disabled: #f79564;
+    --principal2: #03a898;
+    --principal2_hover: #018f81;
+    --principal2_disabled: #64aaa3;
     --principal_transparent: #13161ce1;
     --principal_transparent2: #13161c88;
     --secundario: #ffffff;
@@ -48,36 +48,6 @@
 
 .border-orange {
     border-color: var(--principal) !important;
-}
-
-.bg-warning {
-    background-color: var(--principal2) !important;
-    border-color: var(--principal2) !important;
-    color: var(--secundario) !important;
-}
-
-.btn-warning {
-    color: var(--principal);
-    background-color: var(--principal2);
-    border-color: var(--principal2);
-    font-weight: bold;
-}
-
-a.bg-warning:hover,
-a.bg-warning:focus,
-button.bg-warning:hover,
-button.bg-warning:focus,
-.btn-warning:hover,
-.bg-warning:hover {
-    background-color: var(--principal2_hover) !important;
-    color: var(--secundario) !important;
-    border-color: var(--principal2_hover) !important;
-    color: var(--secundario)!important;
-}
-
-.btn-warning.disabled,
-.btn-warning:disabled {
-    background-color: var(--principal2_disabled) !important;
 }
 
 .el-button.bg-orange {

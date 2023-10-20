@@ -22,15 +22,15 @@
                                         alt=""
                                     />
                                 </div>
-                                <div
+                                <!-- <div
                                     class="meta d-flex justify-content-between"
                                 >
                                     <p>
                                         <span class="lnr lnr-users"></span> 355
-                                        <!-- <span class="lnr lnr-bubble"></span>35 -->
+                                        <span class="lnr lnr-bubble"></span>35
                                     </p>
                                     <h4>$150</h4>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="details">
                                 <router-link
@@ -342,8 +342,9 @@
                     class="row justify-content-between align-items-center pt-3"
                 >
                     <div
-                        class="col-lg-6 col-md-6 search-course-right p-0"
+                        class="col-lg-6 col-md-6 search-course-right p-0 contenedor_mapa"
                         id="google_map_inicio"
+                        v-html="oContacto.mapa"
                     ></div>
                     <div class="col-lg-6 d-flex flex-column address-wrap">
                         <div
@@ -355,8 +356,7 @@
                             <div class="contact-details">
                                 <h5>Dirección:</h5>
                                 <p>
-                                    SHOPPING VIZUR Calle Mariscal Santa Cruz y
-                                    Calle Arenales Castea N° 20
+                                    {{ oContacto.direccion }}
                                 </p>
                             </div>
                         </div>
@@ -368,8 +368,10 @@
                             </div>
                             <div class="contact-details">
                                 <h5>Celular/Whatsapp:</h5>
-                                <p>+591 63326803</p>
-                                <p>+591 64312163</p>
+                                <p>{{ oContacto.fono1 }}</p>
+                                <p v-if="oContacto.fono2 != ''">
+                                    {{ oContacto.fono2 }}
+                                </p>
                             </div>
                         </div>
                         <div
@@ -380,7 +382,7 @@
                             </div>
                             <div class="contact-details">
                                 <h5>Email:</h5>
-                                <p>info@tomorrowstoday.com</p>
+                                <p>{{ oContacto.correo }}</p>
                             </div>
                         </div>
                     </div>
@@ -422,19 +424,24 @@ export default {
                 direccion: "",
                 fonos: "",
                 correo: "",
-                lat: "-16.50405",
-                lng: "-68.13081",
+                mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d15302.44340797871!2d-68.13196529479978!3d-16.495230895308648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.497514656468287!2d-68.12797416816427!5e0!3m2!1ses-419!2sbo!4v1697748242821!5m2!1ses-419!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
             },
         };
     },
     mounted() {
         this.loadingWindow.close();
         let self = this;
+        this.getInfoContacto();
         setTimeout(function () {
             self.initCarousel();
         }, 300);
     },
     methods: {
+        getInfoContacto() {
+            axios.get(main_url + "/portal/getContacto").then((response) => {
+                this.oContacto = response.data.contacto;
+            });
+        },
         initCarousel() {
             $(".popular-cursos-carusel").owlCarousel({
                 items: 4,

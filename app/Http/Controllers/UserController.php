@@ -46,6 +46,13 @@ class UserController extends Controller
             'usuarios.edit',
             'usuarios.destroy',
 
+            'portals.index',
+
+            'banners.index',
+            'banners.create',
+            'banners.edit',
+            'banners.destroy',
+
             'configuracion.index',
             'configuracion.edit',
 

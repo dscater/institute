@@ -9,7 +9,7 @@ class RedSocial extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "twitter",
+        "tiktok",
         "facebook",
         "instagram",
         "youtube",

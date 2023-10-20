@@ -2,7 +2,7 @@
     <div class="login-page">
         <div class="login-box">
             <!-- /.login-logo -->
-            <div class="card border border-orange">
+            <div class="card border border-success">
                 <div class="card-header text-center">
                     <img :src="logo" alt="Logo" />
                     <router-link :to="{ name: 'login' }" class="h1 text-white"
@@ -25,7 +25,7 @@
                                 autofocus
                             />
                             <div class="input-group-append">
-                                <div class="input-group-text bg-orange">
+                                <div class="input-group-text bg-success">
                                     <span class="fas fa-envelope"></span>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                                 @keypress.enter="login()"
                             />
                             <div class="input-group-append">
-                                <div class="input-group-text bg-orange">
+                                <div class="input-group-text bg-success">
                                     <span class="fas fa-lock"></span>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                             <div class="col-12">
                                 <button
                                     type="button"
-                                    class="btn btn-warning bg-orange btn-block btn-flat font-weight-bold"
+                                    class="btn btn-success btn-block btn-flat font-weight-bold"
                                     @click.prevent="login()"
                                     v-loading.fullscreen.lock="
                                         fullscreenLoading
@@ -167,10 +167,10 @@ export default {
 
 .login-page .card {
     border-radius: 0px;
-    box-shadow: 0px 0px 1px 1px var(--orange);
+    box-shadow: 0px 0px 1px 1px var(--success);
     background: var(--transparente);
 }
 .login-page .card-header {
-    border-bottom: solid 1px var(--orange);
+    border-bottom: solid 1px var(--success);
 }
 </style>

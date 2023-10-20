@@ -55,7 +55,6 @@ mix.setPublicPath("./")
             "resources/assets/js/portal/jquery.tabs.min.js",
             "resources/assets/js/portal/jquery.nice-select.min.js",
             "resources/assets/js/portal/owl.carousel.min.js",
-            "resources/assets/js/portal/main.js",
         ],
         "./js/portal.js"
     )

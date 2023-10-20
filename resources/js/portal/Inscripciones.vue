@@ -135,7 +135,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <button
-                                            class="btn btn-warning btn-block btn-flat"
+                                            class="btn btn-success btn-block btn-flat"
                                         >
                                             <span
                                                 class="lnr lnr-arrow-left text-white"
@@ -145,7 +145,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <button
-                                            class="btn btn-warning btn-block btn-flat"
+                                            class="btn btn-success btn-block btn-flat"
                                         >
                                             Siguiente
                                             <span

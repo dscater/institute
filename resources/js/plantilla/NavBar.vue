@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-orange">
+        <nav class="main-header navbar navbar-expand navbar-success">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -18,20 +18,6 @@
                         :to="{ name: 'inicio' }"
                         class="nav-link text-white"
                         >Inicio</router-link
-                    >
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <router-link
-                        :to="{ name: 'inicio' }"
-                        class="nav-link text-white"
-                        >Pedidos</router-link
-                    >
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <router-link
-                        :to="{ name: 'inicio' }"
-                        class="nav-link text-white"
-                        >Actividades</router-link
                     >
                 </li>
             </ul>

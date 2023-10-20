@@ -28,7 +28,7 @@ export default new Router({
             path: "/cursos/:id",
             name: "portal.curso",
             component: require("./portal/Curso.vue").default,
-            props:true
+            props: true,
         },
 
         // INSCRIPCIONES
@@ -83,6 +83,41 @@ export default new Router({
             name: "usuarios.index",
             component: require("./components/modulos/usuarios/index.vue")
                 .default,
+        },
+
+        // Portal
+        {
+            path: "/administracion/portal",
+            name: "admin_portal.index",
+            component: require("./components/modulos/portal/index.vue").default,
+            props: true,
+        },
+
+        // Portal - banners
+        {
+            path: "/administracion/portal/banners",
+            name: "admin_portal.banners",
+            component: require("./components/modulos/portal/Banners.vue")
+                .default,
+            props: true,
+        },
+
+        // Portal - contactos
+        {
+            path: "/administracion/portal/contactos",
+            name: "admin_portal.contactos",
+            component: require("./components/modulos/portal/Contactos.vue")
+                .default,
+            props: true,
+        },
+
+        // Portal - redes_sociales
+        {
+            path: "/administracion/portal/redes_sociales",
+            name: "admin_portal.redes_sociales",
+            component: require("./components/modulos/portal/RedesSociales.vue")
+                .default,
+            props: true,
         },
 
         // Configuración

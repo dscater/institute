@@ -5,7 +5,7 @@
         <router-link
             exact
             :to="{ name: 'inicio' }"
-            class="brand-link bg-orange"
+            class="brand-link bg-success"
         >
             <img
                 :src="configuracion.path_image"
@@ -186,13 +186,14 @@
                         class="nav-item"
                         v-if="permisos.includes('portals.index')"
                     >
-                        <a
+                        <router-link
+                            :to="{name:'admin_portal.index'}"
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >
                             <i class="nav-icon fa fa-table"></i>
                             <p>Configurar Portal</p>
-                        </a>
+                        </router-link>
                     </li>
                     <li
                         class="nav-item"
@@ -264,7 +265,7 @@ export default {
         };
     },
     mounted() {
-        // Configurar el temporizador para llamar a logout después de 5 minutos de inactividad
+        // Configurar el temporizador para llamar a logout después de 10 minutos de inactividad
         this.resetLogoutTimer();
         // window.addEventListener("mousemove", this.resetLogoutTimer);
     },

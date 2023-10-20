@@ -24,7 +24,7 @@ export default {
                 {
                     id: 0,
                     img: "",
-                    url_img: this.ruta_asset + "imgs/sliders/1.jpg",
+                    url_img: this.ruta_asset + "imgs/banners/1.jpg",
                     posicion: 0,
                     desc1: "Gestoría",
                     desc2: "Descripcion gestoría",
@@ -33,7 +33,7 @@ export default {
                 {
                     id: 0,
                     img: "",
-                    url_img: this.ruta_asset + "imgs/sliders/2.jpg",
+                    url_img: this.ruta_asset + "imgs/banners/2.jpg",
                     posicion: 0,
                     desc1: "Gestoría",
                     desc2: "Descripcion gestoría",

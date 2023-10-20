@@ -6367,8 +6367,8 @@ iframe {border: none;}
 :root {
     --principal: #13161c;
     --principal_hover: #000000;
-    --principal2: #f7631b;
-    --principal2_hover: #e04f06;
+    --principal2: #009688;
+    --principal2_hover: #03a898;
     --principal_transparent: #13161ce1;
     --principal_transparent2: #13161c88;
     --secundario: #ffffff;
@@ -6384,7 +6384,14 @@ iframe {border: none;}
 }
 
 body {
+    height: auto;
     color: #ffffff;
+}
+
+.contenedor_mapa iframe {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 0;
 }
 
 section {
@@ -6399,6 +6406,7 @@ section {
 }
 
 .bg-principal2 {
+    color: white;
     background-color: var(--principal2);
 }
 
@@ -6422,6 +6430,18 @@ section {
     background-color: var(--secundario2);
 }
 
+.btn-success:hover,
+.btn-success:focus,
+.primary-btn.wh:hover {
+    color: white !important;
+    background-color: var(--principal2_hover);
+}
+
+.btn-success {
+    color: white !important;
+    background-color: var(--principal2);
+}
+
 h1,
 h2,
 h3,
@@ -6437,6 +6457,11 @@ h6 {
 
 .owl-item .details {
     padding: 15px;
+}
+
+.single-feature .desc-wrap {
+    color: white;
+    background-color: var(--principal2) !important;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -6468,7 +6493,7 @@ h6 {
 
 .btn-back-to-top:hover {
     opacity: 1;
-    background-color: var(--principal_transparent);
+    background-color: var(--principal2_hover);
 }
 
 @media (max-width: 575px) {
@@ -6484,6 +6509,10 @@ h6 {
     font-weight: bold;
 }
 .nav-menu a.active:hover {
+    color: var(--principal2);
+}
+
+.nav-menu li:hover > a {
     color: var(--principal2);
 }
 
@@ -6504,7 +6533,7 @@ h6 {
     background-color: var(--principal_transparent);
 }
 
-.about-content{
+.about-content {
     margin-top: 0px;
 }
 
@@ -6558,6 +6587,18 @@ h6 {
     .about-banner {
         background-position: center !important;
         background-size: 100% 100% !important;
+    }
+
+    .wrap-slick1,
+    .wrap-slick1-gestoria {
+        height: 45vh;
+    }
+
+    .slick1,
+    .slick-list,
+    .slick-track,
+    .item-slick1 {
+        height: 100% !important;
     }
 }
 
@@ -6715,6 +6756,38 @@ h6 {
     .wrap-slick1-dots {
         bottom: 25px;
     }
+}
+
+/* CARRUSEL */
+/* ----------------------------------- */
+.owl-dot.active {
+    background-color: var(--principal2) !important;
+}
+
+/* COLORES MODIFICADOS */
+.contact-page-area .address-wrap .single-contact-address .lnr {
+    color: var(--principal2);
+}
+
+.cta-two-area {
+    background-color: var(--principal2);
+}
+
+.footer-bottom .lnr,
+.footer-bottom a {
+    color: var(--principal2);
+}
+
+.footer-bottom .footer-social a:hover {
+    background-color: var(--principal2);
+}
+.primary-btn {
+    background-color: var(--principal2);
+}
+
+.primary-btn:hover {
+    border-color: var(--principal2) !important;
+    color: var(--principal2) !important;
 }
 
 /* ADICIONALES */
