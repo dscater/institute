@@ -2,6 +2,12 @@ import axios from "axios";
 
 export default {
     methods: {
+        reemplazaBr(texto) {
+            const textoConLineas = texto.replace(/<br\s*\/?>/g, "\n");
+            // Eliminar saltos de línea adicionales
+            const textoLimpio = textoConLineas.replace(/\n\s*\n/g, "\n");
+            return textoLimpio;
+        },
         getFormatoFecha(date) {
             if (date) {
                 return this.$moment(String(date)).format("DD/MM/YYYY");

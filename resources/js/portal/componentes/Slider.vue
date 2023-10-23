@@ -22,16 +22,7 @@
                                 <h4>Learn Online Courses</h4>
                             </div> -->
                             <div class="desc-wrap">
-                                <p>
-                                    Programa de inglés intensivo<br />
-                                    Aprende el idioma inglés de forma
-                                    estructurada y efectiva.<br />
-                                    En BEI, trabajamos contigo para desarrollar
-                                    tus habilidades y mejorar tu dominio del
-                                    idioma inglés para que puedas tener más
-                                    éxito en la vida.<br />
-                                    ¡Estudiante F-1 bienvenidos!
-                                </p>
+                                <p v-html="oPortalComunicado.descripcion"></p>
                                 <!-- <a href="#">Join Now</a> -->
                             </div>
                         </div>
@@ -78,10 +69,22 @@ export default {
                 },
             ],
             url_principal: main_url,
+            oPortalComunicado: {
+                descripcion: `
+                            Programa de inglés intensivo<br />
+                            Aprende el idioma inglés de forma
+                            estructurada y efectiva.<br />
+                            En BEI, trabajamos contigo para desarrollar
+                            tus habilidades y mejorar tu dominio del
+                            idioma inglés para que puedas tener más
+                            éxito en la vida.<br />
+                            ¡Estudiante F-1 bienvenidos!`,
+            },
         };
     },
     mounted() {
         this.getSliders();
+        this.getPortalComunciado();
     },
     methods: {
         getSliders() {
@@ -95,6 +98,13 @@ export default {
                     $(".slick1").slick("slickGoTo", 0);
                 }, 300);
             });
+        },
+        getPortalComunciado() {
+            axios
+                .get(main_url + "/portal/getPortalComunciado")
+                .then((response) => {
+                    this.oPortalComunicado = response.data.portal_comunicado;
+                });
         },
         initSlick1() {
             $(".wrap-slick1").each(function () {

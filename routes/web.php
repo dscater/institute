@@ -2,10 +2,17 @@
 
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ConfiguracionController;
+use App\Http\Controllers\ConfiguracionGestoriaController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\GestoriaBannerController;
+use App\Http\Controllers\GestoriaNosotrosController;
+use App\Http\Controllers\GestoriaServicioController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PortalComunicadoController;
+use App\Http\Controllers\PortalGestoriaController;
 use App\Http\Controllers\RedSocialController;
 use App\Http\Controllers\UserController;
+use App\Models\ConfiguracionGestoria;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,6 +34,18 @@ Route::get('portal/getSliders', [BannerController::class, 'index']);
 Route::get('portal/getContacto', [ContactoController::class, 'index']);
 // redes sociales
 Route::get('portal/getRedSocial', [RedSocialController::class, 'index']);
+// comunicado
+Route::get('portal/getPortalComunciado', [PortalComunicadoController::class, 'index']);
+// portal-gestoria
+Route::get('portal/getPortalGestoria', [PortalGestoriaController::class, 'index']);
+// configuracion-gestoria
+Route::get('portal/getConfiguracionGestoria', [ConfiguracionGestoriaController::class, 'index']);
+// nosotros-gestoria
+Route::get('portal/getNosotrosGestoria', [GestoriaNosotrosController::class, 'index']);
+// servicios-gestoria
+Route::get('portal/getServiciosGestoria', [GestoriaServicioController::class, 'index']);
+// sliders-gestoria
+Route::get('portal/getSlidersGestoria', [GestoriaBannerController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/configuracion/update', [ConfiguracionController::class, 'update']);
@@ -47,7 +66,6 @@ Route::middleware(['auth'])->group(function () {
             'index', 'store', 'update', 'destroy', 'show'
         ]);
 
-
         // BANNERS
         Route::get('banners/get_banner/ultimo', [BannerController::class, 'bannerPrincipal']);
         Route::resource('banners', BannerController::class)->only([
@@ -61,6 +79,37 @@ Route::middleware(['auth'])->group(function () {
 
         // REDES SOCIALES
         Route::resource('red_socials', RedSocialController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // PORTAL-GESTORIAS
+        Route::resource('portal_gestorias', PortalGestoriaController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // PORTAL-COMUNICADO
+        Route::resource('portal_comunicados', PortalComunicadoController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // BANNERS-GESTORIA
+        Route::get('gestoria_banners/get_banner/ultimo', [GestoriaBannerController::class, 'bannerPrincipal']);
+        Route::resource('gestoria_banners', GestoriaBannerController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // SERVICIOS-GESTORIA
+        Route::resource('gestoria_servicios', GestoriaServicioController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // NOSOTROS-GESTORIA
+        Route::resource('gestoria_nosotros', GestoriaNosotrosController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // CONFIGURACION-GESTORIA
+        Route::resource('configuracion_gestorias', ConfiguracionGestoria::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
     });

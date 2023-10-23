@@ -289,25 +289,21 @@
         <!-- End popular-course Area -->
 
         <!-- Start search-course Area -->
-        <section class="search-course-area relative bg-secundario2">
+        <section
+            class="search-course-area relative bg-secundario2"
+            v-if="oPortalGestoria"
+        >
             <div class="container">
                 <div class="row justify-content-between align-items-center">
                     <div class="col-lg-6 col-md-6 search-course-right p-0">
-                        <img
-                            :src="url_principal + '/imgs/gestoriaImg.jpg'"
-                            width="100%"
-                        />
+                        <img :src="oPortalGestoria.url_imagen" width="100%" />
                     </div>
                     <div class="col-lg-6 col-md-6 search-course-left">
-                        <h1 class="text-white">
-                            Gestoría de visas para Estados Unidos sin
-                            complicaciones
-                        </h1>
-                        <p>
-                            ¡Prepara tu viaje o cambia tu vida! Encuentra todo
-                            lo que necesitas saber sobre las visas de turismo y
-                            de trabajo para Estados Unidaos
-                        </p>
+                        <h1
+                            class="text-white"
+                            v-html="oPortalGestoria.titulo_inicio"
+                        ></h1>
+                        <p v-html="oPortalGestoria.descripcion_inicio"></p>
                         <div class="row mt-3">
                             <div class="col-md-4">
                                 <router-link
@@ -426,12 +422,15 @@ export default {
                 correo: "",
                 mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d15302.44340797871!2d-68.13196529479978!3d-16.495230895308648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.497514656468287!2d-68.12797416816427!5e0!3m2!1ses-419!2sbo!4v1697748242821!5m2!1ses-419!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
             },
+            oPortalGestoria: null,
         };
     },
     mounted() {
         this.loadingWindow.close();
         let self = this;
         this.getInfoContacto();
+
+        this.getPortalGestoria();
         setTimeout(function () {
             self.initCarousel();
         }, 300);
@@ -440,6 +439,17 @@ export default {
         getInfoContacto() {
             axios.get(main_url + "/portal/getContacto").then((response) => {
                 this.oContacto = response.data.contacto;
+            });
+        },
+        getPortalGestoria() {
+            let url = main_url + "/admin/portal_gestorias";
+            if (this.pagina != 0) {
+                url += "?page=" + this.pagina;
+            }
+            axios.get(url).then((res) => {
+                if (res.data.portal_gestoria) {
+                    this.oPortalGestoria = res.data.portal_gestoria;
+                }
             });
         },
         initCarousel() {

@@ -91,6 +91,9 @@ class BannerController extends Controller
 
     public function update(Request $request, Banner $banner)
     {
+        if ($request->hasFile("img")) {
+            $this->validacion['img'] = 'required|mimes:jpeg,jpg,png,webp|max:4096';
+        }
         $request->validate($this->validacion, $this->mensajes);
         DB::beginTransaction();
         try {

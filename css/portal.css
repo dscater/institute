@@ -6379,6 +6379,11 @@ iframe {border: none;}
     --transparente: #000000bd;
 }
 
+::selection {
+    background-color: var(--principal2_hover);
+    color: #fff;
+}
+
 .oculto {
     display: none;
 }

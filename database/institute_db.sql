@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 20-10-2023 a las 16:40:15
+-- Tiempo de generación: 23-10-2023 a las 17:09:06
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -41,7 +41,7 @@ CREATE TABLE `banners` (
 
 INSERT INTO `banners` (`id`, `img`, `posicion`, `created_at`, `updated_at`) VALUES
 (1, '1697817407_1.jpg', 1, '2023-10-20 15:56:47', '2023-10-20 15:56:47'),
-(2, '1697817772_2.webp', 2, '2023-10-20 16:02:52', '2023-10-20 16:02:57');
+(2, '1698080276_2.webp', 2, '2023-10-20 16:02:52', '2023-10-23 16:57:56');
 
 -- --------------------------------------------------------
 
@@ -70,6 +70,23 @@ INSERT INTO `configuracions` (`id`, `nombre_sistema`, `alias`, `dir`, `actividad
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `configuracion_gestorias`
+--
+
+CREATE TABLE `configuracion_gestorias` (
+  `id` bigint UNSIGNED NOT NULL,
+  `direccion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fono1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fono2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mapa` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `contactos`
 --
 
@@ -89,7 +106,51 @@ CREATE TABLE `contactos` (
 --
 
 INSERT INTO `contactos` (`id`, `direccion`, `fono1`, `fono2`, `correo`, `mapa`, `created_at`, `updated_at`) VALUES
-(1, 'SHOPPING VIZUR CALLE MARISCAL SANTA CRUZ Y CALLE ARENALES CASTEA N° 20', '+591 63326803', '+591 64312163', 'info@tomorrowstoday.com', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d15302.44340797871!2d-68.13196529479978!3d-16.495230895308648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.497514656468287!2d-68.12797416816427!5e0!3m2!1ses-419!2sbo!4v1697748242821!5m2!1ses-419!2sbo\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '2023-10-20 15:40:45', '2023-10-20 15:48:53');
+(1, 'SHOPPING VIZUR CALLE MARISCAL SANTA CRUZ Y CALLE ARENALES CASTEA N° 20', '+591 63326803', '+591 64312163', 'info@tomorrowstoday.com', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d15302.44340797871!2d-68.13196529479978!3d-16.495230895308648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.497514656468287!2d-68.12797416816427!5e0!3m2!1ses-419!2sbo!4v1697748242821!5m2!1ses-419!2sbo\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '2023-10-20 15:40:45', '2023-10-23 16:58:10');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `gestoria_banners`
+--
+
+CREATE TABLE `gestoria_banners` (
+  `id` bigint UNSIGNED NOT NULL,
+  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `posicion` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `gestoria_nosotros`
+--
+
+CREATE TABLE `gestoria_nosotros` (
+  `id` bigint UNSIGNED NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `imagen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `gestoria_servicios`
+--
+
+CREATE TABLE `gestoria_servicios` (
+  `id` bigint UNSIGNED NOT NULL,
+  `turismo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trabajo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `estudiantes` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `renovacion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -142,7 +203,29 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (24, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN BANNER', 'id: 2<br/>img: 1697817772_2.webp<br/>posicion: 1<br/>created_at: 2023-10-20 12:02:52<br/>updated_at: 2023-10-20 12:02:52<br/>', NULL, 'BANNERS', '2023-10-20', '12:02:52', '2023-10-20 16:02:52', '2023-10-20 16:02:52'),
 (25, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN BANNER', 'id: 2<br/>img: 1697817772_2.webp<br/>posicion: 1<br/>created_at: 2023-10-20 12:02:52<br/>updated_at: 2023-10-20 12:02:52<br/>', 'id: 2<br/>img: 1697817772_2.webp<br/>posicion: 2<br/>created_at: 2023-10-20 12:02:52<br/>updated_at: 2023-10-20 12:02:57<br/>', 'BANNERS', '2023-10-20', '12:02:57', '2023-10-20 16:02:57', '2023-10-20 16:02:57'),
 (26, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LA SECCIÓN REDES SOCIALES', 'id: 1<br/>tiktok: https://www.tiktok.com/es/<br/>facebook: https://www.facebook.com/<br/>instagram: https://www.instagram.com/<br/>youtube: https://www.youtube.com<br/>created_at: 2023-10-20 12:05:51<br/>updated_at: 2023-10-20 12:05:51<br/>', NULL, 'REDES SOCIALES', '2023-10-20', '12:05:51', '2023-10-20 16:05:51', '2023-10-20 16:05:51'),
-(27, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LA SECCIÓN REDES SOCIALES', 'id: 1<br/>tiktok: https://www.tiktok.com/es/<br/>facebook: https://www.facebook.com/<br/>instagram: https://www.instagram.com/<br/>youtube: https://www.youtube.com/<br/>created_at: 2023-10-20 12:05:51<br/>updated_at: 2023-10-20 12:06:07<br/>', NULL, 'REDES SOCIALES', '2023-10-20', '12:06:07', '2023-10-20 16:06:07', '2023-10-20 16:06:07');
+(27, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LA SECCIÓN REDES SOCIALES', 'id: 1<br/>tiktok: https://www.tiktok.com/es/<br/>facebook: https://www.facebook.com/<br/>instagram: https://www.instagram.com/<br/>youtube: https://www.youtube.com/<br/>created_at: 2023-10-20 12:05:51<br/>updated_at: 2023-10-20 12:06:07<br/>', NULL, 'REDES SOCIALES', '2023-10-20', '12:06:07', '2023-10-20 16:06:07', '2023-10-20 16:06:07'),
+(28, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ EL COMUNICADO DE LA PÁGINA DE INICIO DEL PORTAL', 'created_at: 2023-10-23 12:30:30<br/>descripcion: PROGRAMA DE INGLÉS INTENSIVO\nAPRENDE EL IDIOMA INGLÉS DE FORMA ESTRUCTURADA Y EFECTIVA.\nEN BEI, TRABAJAMOS CONTIGO PARA DESARROLLAR TUS HABILIDADES Y MEJORAR TU DOMINIO DEL IDIOMA INGLÉS PARA QUE PUEDAS TENER MÁS ÉXITO EN LA VIDA.\n¡ESTUDIANTE F-1 BIENVENIDOS!\nPRUEBA TEXTO<br/>id: 1<br/>updated_at: 2023-10-23 12:30:30<br/>', NULL, 'COMUNICADO PORTAL', '2023-10-23', '12:30:30', '2023-10-23 16:30:30', '2023-10-23 16:30:30'),
+(29, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ EL COMUNICADO DE LA PÁGINA DE INICIO DEL PORTAL', 'created_at: 2023-10-23 12:30:51<br/>descripcion: Programa de inglés intensivo\nAprende el idioma inglés de forma estructurada y efectiva.\nEn BEI, trabajamos contigo para desarrollar tus habilidades y mejorar tu dominio del idioma inglés para que puedas tener más éxito en la vida.\n¡Estudiante F-1 bienvenidos!\nTexto de prueba<br/>id: 1<br/>updated_at: 2023-10-23 12:30:51<br/>', NULL, 'COMUNICADO PORTAL', '2023-10-23', '12:30:51', '2023-10-23 16:30:51', '2023-10-23 16:30:51'),
+(30, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ EL COMUNICADO DE LA PÁGINA DE INICIO DEL PORTAL', 'created_at: 2023-10-23 12:30:51<br/>descripcion: Programa de inglés intensivo<br />\nAprende el idioma inglés de forma estructurada y efectiva.<br />\nEn BEI, trabajamos contigo para desarrollar tus habilidades y mejorar tu dominio del idioma inglés para que puedas tener más éxito en la vida.<br />\n¡Estudiante F-1 bienvenidos!<br />\nTexto de prueba<br/>id: 1<br/>updated_at: 2023-10-23 12:34:07<br/>', NULL, 'COMUNICADO PORTAL', '2023-10-23', '12:34:07', '2023-10-23 16:34:07', '2023-10-23 16:34:07'),
+(31, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ EL COMUNICADO DE LA PÁGINA DE INICIO DEL PORTAL', 'created_at: 2023-10-23 12:30:51<br/>descripcion: Programa de inglés intensivo<br />\nAprende el idioma inglés de forma estructurada y efectiva.<br />\nEn BEI, trabajamos contigo para desarrollar tus habilidades y mejorar tu dominio del idioma inglés para que puedas tener más éxito en la vida.<br />\n¡Estudiante F-1 bienvenidos!<br />\nTexto de prueba<br/>id: 1<br/>updated_at: 2023-10-23 12:34:07<br/>', NULL, 'COMUNICADO PORTAL', '2023-10-23', '12:40:36', '2023-10-23 16:40:36', '2023-10-23 16:40:36'),
+(32, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ EL COMUNICADO DE LA PÁGINA DE INICIO DEL PORTAL', 'created_at: 2023-10-23 12:30:51<br/>descripcion: Programa de inglés intensivo<br />\nAprende el idioma inglés de forma estructurada y efectiva.<br />\nEn BEI, trabajamos contigo para desarrollar tus habilidades y mejorar tu dominio del idioma inglés para que puedas tener más éxito en la vida.<br />\n¡Estudiante F-1 bienvenidos!<br />\nTexto de prueba<br />\notro texto de prueba<br/>id: 1<br/>updated_at: 2023-10-23 12:41:36<br/>', NULL, 'COMUNICADO PORTAL', '2023-10-23', '12:41:36', '2023-10-23 16:41:36', '2023-10-23 16:41:36'),
+(33, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ EL COMUNICADO DE LA PÁGINA DE INICIO DEL PORTAL', 'created_at: 2023-10-23 12:30:51<br/>descripcion: Programa de inglés intensivo<br />\nAprende el idioma inglés de forma estructurada y efectiva.<br />\nEn BEI, trabajamos contigo para desarrollar tus habilidades y mejorar tu dominio del idioma inglés para que puedas tener más éxito en la vida.<br />\n¡Estudiante F-1 bienvenidos!<br />\nTexto de prueba<br />\notro texto de prueba<br/>id: 1<br/>updated_at: 2023-10-23 12:41:36<br/>', NULL, 'COMUNICADO PORTAL', '2023-10-23', '12:42:07', '2023-10-23 16:42:07', '2023-10-23 16:42:07'),
+(34, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ EL COMUNICADO DE LA PÁGINA DE INICIO DEL PORTAL', 'created_at: 2023-10-23 12:30:51<br/>descripcion: Programa de inglés intensivo<br />\nAprende el idioma inglés de forma estructurada y efectiva.<br />\nEn BEI, trabajamos contigo para desarrollar tus habilidades y mejorar tu dominio del idioma inglés para que puedas tener más éxito en la vida.<br />\n¡Estudiante F-1 bienvenidos!<br/>id: 1<br/>updated_at: 2023-10-23 12:42:21<br/>', NULL, 'COMUNICADO PORTAL', '2023-10-23', '12:42:21', '2023-10-23 16:42:21', '2023-10-23 16:42:21'),
+(35, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ EL COMUNICADO DE LA PÁGINA DE INICIO DEL PORTAL', 'created_at: 2023-10-23 12:30:51<br/>descripcion: Programa de inglés intensivo<br />\nAprende el idioma inglés de forma estructurada y efectiva.<br />\nEn BEI, trabajamos contigo para desarrollar tus habilidades y mejorar tu dominio del idioma inglés para que puedas tener más éxito en la vida.<br />\n¡Estudiante F-1 bienvenidos!<br/>id: 1<br/>updated_at: 2023-10-23 12:42:21<br/>', NULL, 'COMUNICADO PORTAL', '2023-10-23', '12:42:33', '2023-10-23 16:42:33', '2023-10-23 16:42:33'),
+(36, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN BANNER', 'created_at: 2023-10-20 12:02:52<br/>id: 2<br/>img: 1697817772_2.webp<br/>posicion: 2<br/>updated_at: 2023-10-20 12:02:57<br/>', 'created_at: 2023-10-20 12:02:52<br/>id: 2<br/>img: 1698080276_2.webp<br/>posicion: 2<br/>updated_at: 2023-10-23 12:57:56<br/>', 'BANNERS', '2023-10-23', '12:57:56', '2023-10-23 16:57:56', '2023-10-23 16:57:56'),
+(37, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ EL COMUNICADO DE LA PÁGINA DE INICIO DEL PORTAL', 'created_at: 2023-10-23 12:30:51<br/>descripcion: Programa de inglés intensivo<br />\nAprende el idioma inglés de forma estructurada y efectiva.<br />\nEn BEI, trabajamos contigo para desarrollar tus habilidades y mejorar tu dominio del idioma inglés para que puedas tener más éxito en la vida.<br />\n¡Estudiante F-1 bienvenidos!<br/>id: 1<br/>updated_at: 2023-10-23 12:42:21<br/>', NULL, 'COMUNICADO PORTAL', '2023-10-23', '12:58:06', '2023-10-23 16:58:06', '2023-10-23 16:58:06'),
+(38, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LA SECCIÓN CONTACTOS', 'correo: info@tomorrowstoday.com<br/>created_at: 2023-10-20 11:40:45<br/>direccion: SHOPPING VIZUR CALLE MARISCAL SANTA CRUZ Y CALLE ARENALES CASTEA N° 20<br/>fono1: +591 63326803<br/>fono2: +591 64312163<br/>id: 1<br/>mapa: <iframe src=\"https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d15302.44340797871!2d-68.13196529479978!3d-16.495230895308648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.497514656468287!2d-68.12797416816427!5e0!3m2!1ses-419!2sbo!4v1697748242821!5m2!1ses-419!2sbo\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe><br/>updated_at: 2023-10-23 12:58:10<br/>', NULL, 'CONTACTOS', '2023-10-23', '12:58:10', '2023-10-23 16:58:10', '2023-10-23 16:58:10'),
+(39, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LA SECCIÓN REDES SOCIALES', 'created_at: 2023-10-20 12:05:51<br/>facebook: https://www.facebook.com/<br/>id: 1<br/>instagram: https://www.instagram.com/<br/>tiktok: https://www.tiktok.com/es/<br/>updated_at: 2023-10-20 12:06:07<br/>youtube: https://www.youtube.com/<br/>', NULL, 'REDES SOCIALES', '2023-10-23', '12:58:18', '2023-10-23 16:58:18', '2023-10-23 16:58:18'),
+(40, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidaos<br/>id: 1<br/>imagen_inicio: <br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:01:37<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:01:37', '2023-10-23 17:01:37', '2023-10-23 17:01:37'),
+(41, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidaos<br/>id: 1<br/>imagen_inicio: <br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:01:37<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:01:54', '2023-10-23 17:01:54', '2023-10-23 17:01:54'),
+(42, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidaos<br/>id: 1<br/>imagen_inicio: 1698080618_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:01:37<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:03:38', '2023-10-23 17:03:38', '2023-10-23 17:03:38'),
+(43, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidaos<br/>id: 1<br/>imagen_inicio: 1698080755_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:05:55<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:05:55', '2023-10-23 17:05:55', '2023-10-23 17:05:55'),
+(44, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698080755_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:07:50<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:07:50', '2023-10-23 17:07:50', '2023-10-23 17:07:50'),
+(45, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698080755_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones modificado<br/>updated_at: 2023-10-23 13:07:59<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:07:59', '2023-10-23 17:07:59', '2023-10-23 17:07:59'),
+(46, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698080755_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:08:07<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:08:07', '2023-10-23 17:08:07', '2023-10-23 17:08:07'),
+(47, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698080895_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:08:15<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:08:15', '2023-10-23 17:08:15', '2023-10-23 17:08:15'),
+(48, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698080906_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:08:26<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:08:26', '2023-10-23 17:08:26', '2023-10-23 17:08:26'),
+(49, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698080917_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:08:37<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:08:37', '2023-10-23 17:08:37', '2023-10-23 17:08:37');
 
 -- --------------------------------------------------------
 
@@ -167,7 +250,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2023_08_26_190801_create_historial_accions_table', 1),
 (5, '2023_09_28_182536_create_banners_table', 1),
 (6, '2023_09_28_182841_create_red_socials_table', 1),
-(7, '2023_10_20_110138_create_contactos_table', 2);
+(7, '2023_10_20_110138_create_contactos_table', 2),
+(10, '2023_10_23_113916_create_portal_comunicados_table', 3),
+(11, '2023_10_23_113928_create_portal_gestorias_table', 3),
+(12, '2023_10_23_115443_create_configuracion_gestorias_table', 3),
+(13, '2023_10_23_120403_create_gestoria_nosotros_table', 3),
+(14, '2023_10_23_120425_create_gestoria_servicios_table', 3),
+(15, '2023_10_23_121730_create_gestoria_banners_table', 4);
 
 -- --------------------------------------------------------
 
@@ -186,6 +275,48 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `portal_comunicados`
+--
+
+CREATE TABLE `portal_comunicados` (
+  `id` bigint UNSIGNED NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `portal_comunicados`
+--
+
+INSERT INTO `portal_comunicados` (`id`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, 'Programa de inglés intensivo<br />\nAprende el idioma inglés de forma estructurada y efectiva.<br />\nEn BEI, trabajamos contigo para desarrollar tus habilidades y mejorar tu dominio del idioma inglés para que puedas tener más éxito en la vida.<br />\n¡Estudiante F-1 bienvenidos!', '2023-10-23 16:30:51', '2023-10-23 16:42:21');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `portal_gestorias`
+--
+
+CREATE TABLE `portal_gestorias` (
+  `id` bigint UNSIGNED NOT NULL,
+  `imagen_inicio` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `titulo_inicio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion_inicio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `portal_gestorias`
+--
+
+INSERT INTO `portal_gestorias` (`id`, `imagen_inicio`, `titulo_inicio`, `descripcion_inicio`, `created_at`, `updated_at`) VALUES
+(1, '1698080917_1.jpg', 'Gestoría de visas para Estados Unidos sin complicaciones', '¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos', '2023-10-23 17:01:37', '2023-10-23 17:08:37');
 
 -- --------------------------------------------------------
 
@@ -260,9 +391,33 @@ ALTER TABLE `configuracions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `configuracion_gestorias`
+--
+ALTER TABLE `configuracion_gestorias`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `contactos`
 --
 ALTER TABLE `contactos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `gestoria_banners`
+--
+ALTER TABLE `gestoria_banners`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `gestoria_nosotros`
+--
+ALTER TABLE `gestoria_nosotros`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `gestoria_servicios`
+--
+ALTER TABLE `gestoria_servicios`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -284,6 +439,18 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indices de la tabla `portal_comunicados`
+--
+ALTER TABLE `portal_comunicados`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `portal_gestorias`
+--
+ALTER TABLE `portal_gestorias`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `red_socials`
@@ -316,28 +483,64 @@ ALTER TABLE `configuracions`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `configuracion_gestorias`
+--
+ALTER TABLE `configuracion_gestorias`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `contactos`
 --
 ALTER TABLE `contactos`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `gestoria_banners`
+--
+ALTER TABLE `gestoria_banners`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `gestoria_nosotros`
+--
+ALTER TABLE `gestoria_nosotros`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `gestoria_servicios`
+--
+ALTER TABLE `gestoria_servicios`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `portal_comunicados`
+--
+ALTER TABLE `portal_comunicados`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `portal_gestorias`
+--
+ALTER TABLE `portal_gestorias`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `red_socials`

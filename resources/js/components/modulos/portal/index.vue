@@ -74,7 +74,7 @@
                                         <div class="card-header bg-dark">
                                             <router-link
                                                 :to="{
-                                                    name: 'admin_portal.banners',
+                                                    name: 'admin_portal.portal_comunicado',
                                                 }"
                                                 class="text-left card-title btn btn-flat btn-success"
                                                 ><strong>Inicio: </strong>
@@ -92,23 +92,23 @@
                                         </div>
                                         <router-link
                                             :to="{
-                                                name: 'admin_portal.banners',
+                                                name: 'admin_portal.portal_comunicado',
                                             }"
                                             class="card-body link_body"
                                         >
-                                            <img
-                                                v-if="oBanner"
-                                                :src="oBanner.url_img"
-                                                alt=""
-                                            />
-                                            <img
-                                                v-else
-                                                :src="
-                                                    url_principal +
-                                                    '/imgs/fondo_banner.jpg'
+                                            <p
+                                                v-if="oPortalComunciado"
+                                                class="text-center"
+                                                v-html="
+                                                    oPortalComunciado.descripcion
                                                 "
-                                                alt=""
-                                            />
+                                            ></p>
+                                            <p
+                                                v-else
+                                                class="font-weight-bold text-center text-gray"
+                                            >
+                                                AÚN NO SE CARGO UN COMUNICADO
+                                            </p>
                                         </router-link>
                                     </div>
                                 </div>
@@ -119,7 +119,7 @@
                                         <div class="card-header bg-dark">
                                             <router-link
                                                 :to="{
-                                                    name: 'admin_portal.banners',
+                                                    name: 'admin_portal.portal_gestoria',
                                                 }"
                                                 class="text-left card-title btn btn-flat btn-success"
                                                 ><strong>Inicio: </strong>
@@ -138,23 +138,20 @@
                                         </div>
                                         <router-link
                                             :to="{
-                                                name: 'admin_portal.banners',
+                                                name: 'admin_portal.portal_gestoria',
                                             }"
                                             class="card-body link_body"
                                         >
-                                            <img
-                                                v-if="oBanner"
-                                                :src="oBanner.url_img"
-                                                alt=""
-                                            />
-                                            <img
+                                            <template
+                                                v-if="oPortalGestoria"
+                                            ></template>
+                                            <p
                                                 v-else
-                                                :src="
-                                                    url_principal +
-                                                    '/imgs/fondo_banner.jpg'
-                                                "
-                                                alt=""
-                                            />
+                                                class="font-weight-bold text-center text-gray"
+                                            >
+                                                AÚN NO SE CONFIGURÓ LA
+                                                INFORMACIÓN DE GESTORÍA
+                                            </p>
                                         </router-link>
                                     </div>
                                 </div>
@@ -315,7 +312,9 @@ export default {
             url_principal: main_url,
             oContacto: null,
             oBanner: null,
+            oPortalComunciado: null,
             oRedSocial: null,
+            oPortalGestoria: null,
         };
     },
     mounted() {
@@ -323,6 +322,7 @@ export default {
         this.getUltimoBanner();
         this.getInfoContacto();
         this.getInfoRedSocial();
+        this.getPortalComunicado();
     },
     methods: {
         getUltimoBanner() {
@@ -340,6 +340,18 @@ export default {
         getInfoRedSocial() {
             axios.get(main_url + "/admin/red_socials").then((response) => {
                 this.oRedSocial = response.data.red_social;
+            });
+        },
+
+        getPortalComunicado() {
+            let url = main_url + "/admin/portal_comunicados";
+            if (this.pagina != 0) {
+                url += "?page=" + this.pagina;
+            }
+            axios.get(url).then((res) => {
+                if (res.data.portal_comunicado) {
+                    this.oPortalComunciado = res.data.portal_comunicado;
+                }
             });
         },
     },

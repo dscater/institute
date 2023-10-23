@@ -102,6 +102,26 @@ export default new Router({
             props: true,
         },
 
+        // Portal - PortalComunicado
+        {
+            path: "/administracion/portal/portal_comunicado",
+            name: "admin_portal.portal_comunicado",
+            component:
+                require("./components/modulos/portal/PortalComunicado.vue")
+                    .default,
+            props: true,
+        },
+
+        // Portal - PortalGestoria
+        {
+            path: "/administracion/portal/portal_gestoria",
+            name: "admin_portal.portal_gestoria",
+            component:
+                require("./components/modulos/portal/PortalGestoria.vue")
+                    .default,
+            props: true,
+        },
+
         // Portal - contactos
         {
             path: "/administracion/portal/contactos",
