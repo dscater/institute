@@ -142,9 +142,28 @@
                                             }"
                                             class="card-body link_body"
                                         >
-                                            <template
-                                                v-if="oPortalGestoria"
-                                            ></template>
+                                            <template v-if="oPortalGestoria">
+                                                <img
+                                                    :src="
+                                                        oPortalGestoria.url_imagen
+                                                    "
+                                                    alt=""
+                                                />
+                                                <div class="row">
+                                                    <div class="col-md-12 p-4">
+                                                        <h4
+                                                            v-html="
+                                                                oPortalGestoria.titulo_inicio
+                                                            "
+                                                        ></h4>
+                                                        <p
+                                                            v-html="
+                                                                oPortalGestoria.descripcion_inicio
+                                                            "
+                                                        ></p>
+                                                    </div>
+                                                </div>
+                                            </template>
                                             <p
                                                 v-else
                                                 class="font-weight-bold text-center text-gray"
@@ -323,6 +342,7 @@ export default {
         this.getInfoContacto();
         this.getInfoRedSocial();
         this.getPortalComunicado();
+        this.getPortalGestoria();
     },
     methods: {
         getUltimoBanner() {
@@ -351,6 +371,17 @@ export default {
             axios.get(url).then((res) => {
                 if (res.data.portal_comunicado) {
                     this.oPortalComunciado = res.data.portal_comunicado;
+                }
+            });
+        },
+        getPortalGestoria() {
+            let url = main_url + "/admin/portal_gestorias";
+            if (this.pagina != 0) {
+                url += "?page=" + this.pagina;
+            }
+            axios.get(url).then((res) => {
+                if (res.data.portal_gestoria) {
+                    this.oPortalGestoria = res.data.portal_gestoria;
                 }
             });
         },
