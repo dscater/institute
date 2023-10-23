@@ -442,7 +442,7 @@ export default {
             });
         },
         getPortalGestoria() {
-            let url = main_url + "/admin/portal_gestorias";
+            let url = main_url + "/portal/getPortalGestoria";
             if (this.pagina != 0) {
                 url += "?page=" + this.pagina;
             }

@@ -23,7 +23,7 @@ class PortalGestoriaController extends Controller
     public function index(Request $request)
     {
         $portal_gestoria = PortalGestoria::get()->first();
-        return response()->JSON(['portal_gestoria' => $portal_gestoria, 200]);
+        return response()->JSON(['portal_gestoria' => $portal_gestoria], 200);
     }
 
     public function store(Request $request)

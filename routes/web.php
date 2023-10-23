@@ -12,7 +12,6 @@ use App\Http\Controllers\PortalComunicadoController;
 use App\Http\Controllers\PortalGestoriaController;
 use App\Http\Controllers\RedSocialController;
 use App\Http\Controllers\UserController;
-use App\Models\ConfiguracionGestoria;
 use Illuminate\Support\Facades\Route;
 
 
@@ -45,7 +44,9 @@ Route::get('portal/getNosotrosGestoria', [GestoriaNosotrosController::class, 'in
 // servicios-gestoria
 Route::get('portal/getServiciosGestoria', [GestoriaServicioController::class, 'index']);
 // sliders-gestoria
-Route::get('portal/getSlidersGestoria', [GestoriaBannerController::class, 'index']);
+Route::get('portal/getGestoriaSliders', [GestoriaBannerController::class, 'index']);
+// configuracion-gestoria
+Route::get('portal/getConfiguracionGestoria', [ConfiguracionGestoriaController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/configuracion/update', [ConfiguracionController::class, 'update']);
@@ -92,24 +93,24 @@ Route::middleware(['auth'])->group(function () {
             'index', 'store', 'update', 'destroy', 'show'
         ]);
 
-        // BANNERS-GESTORIA
+        // GESTORIA-BANNERS
         Route::get('gestoria_banners/get_banner/ultimo', [GestoriaBannerController::class, 'bannerPrincipal']);
         Route::resource('gestoria_banners', GestoriaBannerController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
 
-        // SERVICIOS-GESTORIA
-        Route::resource('gestoria_servicios', GestoriaServicioController::class)->only([
-            'index', 'store', 'update', 'destroy', 'show'
-        ]);
-
-        // NOSOTROS-GESTORIA
+        // GESTORIA-NOSOTROS
         Route::resource('gestoria_nosotros', GestoriaNosotrosController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
 
-        // CONFIGURACION-GESTORIA
-        Route::resource('configuracion_gestorias', ConfiguracionGestoria::class)->only([
+        // GESTORIA-SERVICIOS
+        Route::resource('gestoria_servicios', GestoriaServicioController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // GESTORIA-CONFIGURACION
+        Route::resource('configuracion_gestorias', ConfiguracionGestoriaController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
     });

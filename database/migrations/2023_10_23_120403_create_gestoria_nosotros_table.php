@@ -16,7 +16,7 @@ class CreateGestoriaNosotrosTable extends Migration
         Schema::create('gestoria_nosotros', function (Blueprint $table) {
             $table->id();
             $table->text("descripcion");
-            $table->string("imagen", 255);
+            $table->string("imagen", 255)->nullable();
             $table->timestamps();
         });
     }

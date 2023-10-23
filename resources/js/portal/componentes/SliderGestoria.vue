@@ -44,13 +44,23 @@ export default {
         };
     },
     mounted() {
-        let self = this;
-        setTimeout(function () {
-            self.initSlick1();
-            $(".slick1").slick("slickGoTo", 0);
-        }, 300);
+        this.getGestoriaSliders();
     },
     methods: {
+        getGestoriaSliders() {
+            axios
+                .get(main_url + "/portal/getGestoriaSliders")
+                .then((response) => {
+                    if (response.data.total > 0) {
+                        this.listSliders = response.data.gestoria_banners;
+                    }
+                    let self = this;
+                    setTimeout(function () {
+                        self.initSlick1();
+                        $(".slick1").slick("slickGoTo", 0);
+                    }, 300);
+                });
+        },
         initSlick1() {
             $(".wrap-slick1-gestoria").each(function () {
                 var wrapSlick1 = $(this);

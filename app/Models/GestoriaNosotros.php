@@ -13,4 +13,10 @@ class GestoriaNosotros extends Model
         "descripcion",
         "imagen",
     ];
+
+    protected $appends = ["url_imagen"];
+    public function getUrlImagenAttribute()
+    {
+        return asset("imgs/" . $this->imagen);
+    }
 }

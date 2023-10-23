@@ -27,7 +27,7 @@ class ContactoController extends Controller
     public function index(Request $request)
     {
         $contacto = Contacto::get()->first();
-        return response()->JSON(['contacto' => $contacto, 200]);
+        return response()->JSON(['contacto' => $contacto], 200);
     }
 
     public function store(Request $request)

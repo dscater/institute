@@ -19,7 +19,7 @@ class CreateConfiguracionGestoriasTable extends Migration
             $table->string("fono1", 255);
             $table->string("fono2", 255)->nullable();
             $table->string("correo", 255);
-            $table->text("mapa");
+            $table->text("mapa")->nullable();
             $table->timestamps();
         });
     }

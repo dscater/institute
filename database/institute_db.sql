@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 23-10-2023 a las 17:09:06
+-- Tiempo de generación: 23-10-2023 a las 18:22:54
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -79,10 +79,17 @@ CREATE TABLE `configuracion_gestorias` (
   `fono1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fono2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mapa` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mapa` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `configuracion_gestorias`
+--
+
+INSERT INTO `configuracion_gestorias` (`id`, `direccion`, `fono1`, `fono2`, `correo`, `mapa`, `created_at`, `updated_at`) VALUES
+(1, 'SHOPPING VIZUR CALLE MARISCAL SANTA CRUZ Y CALLE ARENALES CASTEA N° 22', '+591 66666666', '', 'infogestoria@tomorrowstoday.com', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d5409.403545726189!2d-68.11048986981962!3d-16.524788557606783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.52559586873182!2d-68.1078194457513!5e0!3m2!1ses-419!2sbo!4v1698085176811!5m2!1ses-419!2sbo\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '2023-10-23 18:13:52', '2023-10-23 18:21:17');
 
 -- --------------------------------------------------------
 
@@ -122,6 +129,14 @@ CREATE TABLE `gestoria_banners` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `gestoria_banners`
+--
+
+INSERT INTO `gestoria_banners` (`id`, `img`, `posicion`, `created_at`, `updated_at`) VALUES
+(1, '1698082378_1.jpg', 1, '2023-10-23 17:32:58', '2023-10-23 17:32:58'),
+(2, '1698082443_2.jpg', 2, '2023-10-23 17:34:03', '2023-10-23 17:34:03');
+
 -- --------------------------------------------------------
 
 --
@@ -131,10 +146,17 @@ CREATE TABLE `gestoria_banners` (
 CREATE TABLE `gestoria_nosotros` (
   `id` bigint UNSIGNED NOT NULL,
   `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `imagen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `imagen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `gestoria_nosotros`
+--
+
+INSERT INTO `gestoria_nosotros` (`id`, `descripcion`, `imagen`, `created_at`, `updated_at`) VALUES
+(1, 'Somos Gestores<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '1698083385_1.jpg', '2023-10-23 17:45:35', '2023-10-23 17:53:44');
 
 -- --------------------------------------------------------
 
@@ -151,6 +173,13 @@ CREATE TABLE `gestoria_servicios` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `gestoria_servicios`
+--
+
+INSERT INTO `gestoria_servicios` (`id`, `turismo`, `trabajo`, `estudiantes`, `renovacion`, `created_at`, `updated_at`) VALUES
+(2, 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Turismo', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Trabajo', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Estudiantes', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Renovación', '2023-10-23 18:02:40', '2023-10-23 18:04:49');
 
 -- --------------------------------------------------------
 
@@ -225,7 +254,25 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (46, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698080755_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:08:07<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:08:07', '2023-10-23 17:08:07', '2023-10-23 17:08:07'),
 (47, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698080895_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:08:15<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:08:15', '2023-10-23 17:08:15', '2023-10-23 17:08:15'),
 (48, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698080906_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:08:26<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:08:26', '2023-10-23 17:08:26', '2023-10-23 17:08:26'),
-(49, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698080917_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:08:37<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:08:37', '2023-10-23 17:08:37', '2023-10-23 17:08:37');
+(49, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698080917_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:08:37<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:08:37', '2023-10-23 17:08:37', '2023-10-23 17:08:37'),
+(50, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698081146_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:12:26<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:12:26', '2023-10-23 17:12:26', '2023-10-23 17:12:26'),
+(51, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'created_at: 2023-10-23 13:01:37<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>id: 1<br/>imagen_inicio: 1698081153_1.jpg<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>updated_at: 2023-10-23 13:12:33<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-23', '13:12:33', '2023-10-23 17:12:33', '2023-10-23 17:12:33'),
+(52, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN BANNER DE GESTORÍA', 'created_at: 2023-10-23 13:32:58<br/>id: 1<br/>img: 1698082378_1.jpg<br/>posicion: 1<br/>updated_at: 2023-10-23 13:32:58<br/>', NULL, 'GESTORÍA BANNERS', '2023-10-23', '13:32:58', '2023-10-23 17:32:58', '2023-10-23 17:32:58'),
+(53, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN BANNER DE GESTORÍA', 'created_at: 2023-10-23 13:34:03<br/>id: 2<br/>img: 1698082443_2.jpg<br/>posicion: 2<br/>updated_at: 2023-10-23 13:34:03<br/>', NULL, 'GESTORÍA BANNERS', '2023-10-23', '13:34:03', '2023-10-23 17:34:03', '2023-10-23 17:34:03'),
+(54, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN ¿QUIENES SOMOS? DE GESTORÍA', 'created_at: 2023-10-23 13:45:35<br/>descripcion: Somos Gestores\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br/>id: 1<br/>imagen: 1698083135_1.jpg<br/>updated_at: 2023-10-23 13:45:35<br/>', NULL, 'GESTORÍA NOSOTROS', '2023-10-23', '13:45:35', '2023-10-23 17:45:35', '2023-10-23 17:45:35'),
+(55, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN ¿QUIENES SOMOS? DE GESTORÍA', 'created_at: 2023-10-23 13:45:35<br/>descripcion: Somos Gestores\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.<br/>id: 1<br/>imagen: 1698083135_1.jpg<br/>updated_at: 2023-10-23 13:46:00<br/>', NULL, 'GESTORÍA NOSOTROS', '2023-10-23', '13:46:00', '2023-10-23 17:46:00', '2023-10-23 17:46:00'),
+(56, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN ¿QUIENES SOMOS? DE GESTORÍA', 'created_at: 2023-10-23 13:45:35<br/>descripcion: Somos Gestores<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.<br/>id: 1<br/>imagen: 1698083135_1.jpg<br/>updated_at: 2023-10-23 13:48:20<br/>', NULL, 'GESTORÍA NOSOTROS', '2023-10-23', '13:48:20', '2023-10-23 17:48:20', '2023-10-23 17:48:20'),
+(57, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN ¿QUIENES SOMOS? DE GESTORÍA', 'created_at: 2023-10-23 13:45:35<br/>descripcion: Somos Gestores modificado<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.<br/>id: 1<br/>imagen: 1698083135_1.jpg<br/>updated_at: 2023-10-23 13:49:06<br/>', NULL, 'GESTORÍA NOSOTROS', '2023-10-23', '13:49:06', '2023-10-23 17:49:06', '2023-10-23 17:49:06'),
+(58, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN ¿QUIENES SOMOS? DE GESTORÍA', 'created_at: 2023-10-23 13:45:35<br/>descripcion: Somos Gestores<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.<br/>id: 1<br/>imagen: 1698083135_1.jpg<br/>updated_at: 2023-10-23 13:49:13<br/>', NULL, 'GESTORÍA NOSOTROS', '2023-10-23', '13:49:13', '2023-10-23 17:49:13', '2023-10-23 17:49:13'),
+(59, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN ¿QUIENES SOMOS? DE GESTORÍA', 'created_at: 2023-10-23 13:45:35<br/>descripcion: Somos Gestores<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.<br/>id: 1<br/>imagen: 1698083385_1.jpg<br/>updated_at: 2023-10-23 13:49:45<br/>', NULL, 'GESTORÍA NOSOTROS', '2023-10-23', '13:49:45', '2023-10-23 17:49:45', '2023-10-23 17:49:45'),
+(60, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN ¿QUIENES SOMOS? DE GESTORÍA', 'created_at: 2023-10-23 13:45:35<br/>descripcion: Somos Gestores<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br/>id: 1<br/>imagen: 1698083385_1.jpg<br/>updated_at: 2023-10-23 13:53:44<br/>', NULL, 'GESTORÍA NOSOTROS', '2023-10-23', '13:53:44', '2023-10-23 17:53:44', '2023-10-23 17:53:44'),
+(61, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LA INFORMACIÓN DE GESTORÍA SERVICIOS', 'created_at: 2023-10-23 14:02:40<br/>estudiantes: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Estudiantes<br/>id: 2<br/>renovacion: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Renovación<br/>trabajo: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Trabajo<br/>turismo: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país<br/>updated_at: 2023-10-23 14:02:40<br/>', NULL, 'GESTORÍA SERVICIOS', '2023-10-23', '14:02:40', '2023-10-23 18:02:40', '2023-10-23 18:02:40'),
+(62, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LA INFORMACIÓN DE GESTORÍA SERVICIOS', 'created_at: 2023-10-23 14:02:40<br/>estudiantes: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Estudiantes<br/>id: 2<br/>renovacion: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Renovación<br/>trabajo: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Trabajo<br/>turismo: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Turismo<br/>updated_at: 2023-10-23 14:04:49<br/>', NULL, 'GESTORÍA SERVICIOS', '2023-10-23', '14:04:49', '2023-10-23 18:04:49', '2023-10-23 18:04:49'),
+(63, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LA INFORMACIÓN DE GESTORÍA SERVICIOS', 'created_at: 2023-10-23 14:02:40<br/>estudiantes: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Estudiantes<br/>id: 2<br/>renovacion: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Renovación<br/>trabajo: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Trabajo<br/>turismo: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Turismo<br/>updated_at: 2023-10-23 14:04:49<br/>', NULL, 'GESTORÍA SERVICIOS', '2023-10-23', '14:05:11', '2023-10-23 18:05:11', '2023-10-23 18:05:11'),
+(64, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA INFORMACIÓN DE GESTORÍA', 'correo: info@tomorrowstoday.com<br/>created_at: 2023-10-23 14:13:52<br/>direccion: SHOPPING VIZUR CALLE MARISCAL SANTA CRUZ Y CALLE ARENALES CASTEA N° 20<br/>fono1: +591 66666666<br/>fono2: <br/>id: 1<br/>mapa: <iframe src=\"https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d15302.44340797871!2d-68.13196529479978!3d-16.495230895308648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.497514656468287!2d-68.12797416816427!5e0!3m2!1ses-419!2sbo!4v1697748242821!5m2!1ses-419!2sbo\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe><br/>updated_at: 2023-10-23 14:13:52<br/>', NULL, 'CONFIGURACIÓN GESTORÍA', '2023-10-23', '14:13:52', '2023-10-23 18:13:52', '2023-10-23 18:13:52'),
+(65, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA INFORMACIÓN DE GESTORÍA', 'correo: info@tomorrowstoday.com<br/>created_at: 2023-10-23 14:13:52<br/>direccion: SHOPPING VIZUR CALLE MARISCAL SANTA CRUZ Y CALLE ARENALES CASTEA N° 20<br/>fono1: +591 66666666<br/>fono2: <br/>id: 1<br/>mapa: <iframe src=\"https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d5409.403545726189!2d-68.11048986981962!3d-16.524788557606783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.52559586873182!2d-68.1078194457513!5e0!3m2!1ses-419!2sbo!4v1698085176811!5m2!1ses-419!2sbo\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe><br/>updated_at: 2023-10-23 14:19:43<br/>', NULL, 'CONFIGURACIÓN GESTORÍA', '2023-10-23', '14:19:43', '2023-10-23 18:19:43', '2023-10-23 18:19:43'),
+(66, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA INFORMACIÓN DE GESTORÍA', 'correo: info@tomorrowstoday.com<br/>created_at: 2023-10-23 14:13:52<br/>direccion: SHOPPING VIZUR CALLE MARISCAL SANTA CRUZ Y CALLE ARENALES CASTEA N° 20<br/>fono1: +591 66666666<br/>fono2: <br/>id: 1<br/>mapa: <iframe src=\"https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d5409.403545726189!2d-68.11048986981962!3d-16.524788557606783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.52559586873182!2d-68.1078194457513!5e0!3m2!1ses-419!2sbo!4v1698085176811!5m2!1ses-419!2sbo\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe><br/>updated_at: 2023-10-23 14:19:57<br/>', NULL, 'CONFIGURACIÓN GESTORÍA', '2023-10-23', '14:19:57', '2023-10-23 18:19:57', '2023-10-23 18:19:57'),
+(67, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA INFORMACIÓN DE GESTORÍA', 'correo: infogestoria@tomorrowstoday.com<br/>created_at: 2023-10-23 14:13:52<br/>direccion: SHOPPING VIZUR CALLE MARISCAL SANTA CRUZ Y CALLE ARENALES CASTEA N° 22<br/>fono1: +591 66666666<br/>fono2: <br/>id: 1<br/>mapa: <iframe src=\"https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d5409.403545726189!2d-68.11048986981962!3d-16.524788557606783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.52559586873182!2d-68.1078194457513!5e0!3m2!1ses-419!2sbo!4v1698085176811!5m2!1ses-419!2sbo\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe><br/>updated_at: 2023-10-23 14:21:17<br/>', NULL, 'CONFIGURACIÓN GESTORÍA', '2023-10-23', '14:21:17', '2023-10-23 18:21:17', '2023-10-23 18:21:17');
 
 -- --------------------------------------------------------
 
@@ -316,7 +363,7 @@ CREATE TABLE `portal_gestorias` (
 --
 
 INSERT INTO `portal_gestorias` (`id`, `imagen_inicio`, `titulo_inicio`, `descripcion_inicio`, `created_at`, `updated_at`) VALUES
-(1, '1698080917_1.jpg', 'Gestoría de visas para Estados Unidos sin complicaciones', '¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos', '2023-10-23 17:01:37', '2023-10-23 17:08:37');
+(1, '1698081153_1.jpg', 'Gestoría de visas para Estados Unidos sin complicaciones', '¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos', '2023-10-23 17:01:37', '2023-10-23 17:12:33');
 
 -- --------------------------------------------------------
 
@@ -486,7 +533,7 @@ ALTER TABLE `configuracions`
 -- AUTO_INCREMENT de la tabla `configuracion_gestorias`
 --
 ALTER TABLE `configuracion_gestorias`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `contactos`
@@ -498,25 +545,25 @@ ALTER TABLE `contactos`
 -- AUTO_INCREMENT de la tabla `gestoria_banners`
 --
 ALTER TABLE `gestoria_banners`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `gestoria_nosotros`
 --
 ALTER TABLE `gestoria_nosotros`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `gestoria_servicios`
 --
 ALTER TABLE `gestoria_servicios`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`

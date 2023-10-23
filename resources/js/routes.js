@@ -116,9 +116,8 @@ export default new Router({
         {
             path: "/administracion/portal/portal_gestoria",
             name: "admin_portal.portal_gestoria",
-            component:
-                require("./components/modulos/portal/PortalGestoria.vue")
-                    .default,
+            component: require("./components/modulos/portal/PortalGestoria.vue")
+                .default,
             props: true,
         },
 
@@ -137,6 +136,46 @@ export default new Router({
             name: "admin_portal.redes_sociales",
             component: require("./components/modulos/portal/RedesSociales.vue")
                 .default,
+            props: true,
+        },
+
+        // Portal - gestoria_banners
+        {
+            path: "/administracion/portal/gestoria_banners",
+            name: "admin_portal.gestoria_banners",
+            component:
+                require("./components/modulos/portal/GestoriaBanners.vue")
+                    .default,
+            props: true,
+        },
+
+        // Portal - gestoria_nosotros
+        {
+            path: "/administracion/portal/gestoria_nosotros",
+            name: "admin_portal.gestoria_nosotros",
+            component:
+                require("./components/modulos/portal/GestoriaNosotros.vue")
+                    .default,
+            props: true,
+        },
+
+        // Portal - gestoria_servicios
+        {
+            path: "/administracion/portal/gestoria_servicios",
+            name: "admin_portal.gestoria_servicios",
+            component:
+                require("./components/modulos/portal/GestoriaServicios.vue")
+                    .default,
+            props: true,
+        },
+
+        // Portal - configuracion_gestoria
+        {
+            path: "/administracion/portal/configuracion_gestoria",
+            name: "admin_portal.configuracion_gestoria",
+            component:
+                require("./components/modulos/portal/ConfiguracionGestoria.vue")
+                    .default,
             props: true,
         },
 

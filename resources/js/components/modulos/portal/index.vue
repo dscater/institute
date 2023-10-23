@@ -218,7 +218,7 @@
                                                 </p>
                                                 <p>
                                                     <strong>Teléfono 2:</strong>
-                                                    {{ oContacto.fono1 }}
+                                                    {{ oContacto.fono2 }}
                                                 </p>
                                                 <p>
                                                     <strong>Correo:</strong>
@@ -305,9 +305,229 @@
                     <div class="col-md-12 card">
                         <div class="card-body">
                             <div class="row">
-                                <h4 class="w-100 font-weight-bold text-center">
-                                    PORTAL GESTORÍA
-                                </h4>
+                                <div class="col-md-12">
+                                    <h4
+                                        class="w-100 font-weight-bold text-center"
+                                    >
+                                        PORTAL GESTORÍA
+                                    </h4>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div
+                                        class="card card_portal collapsed-card"
+                                    >
+                                        <div class="card-header bg-dark">
+                                            <router-link
+                                                :to="{
+                                                    name: 'admin_portal.gestoria_banners',
+                                                }"
+                                                class="text-left card-title btn btn-flat btn-success"
+                                                ><strong>Gestoría: </strong>
+                                                Banners</router-link
+                                            >
+                                            <div class="card-tools">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-tool"
+                                                    data-card-widget="collapse"
+                                                >
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <router-link
+                                            :to="{
+                                                name: 'admin_portal.gestoria_banners',
+                                            }"
+                                            class="card-body link_body"
+                                        >
+                                            <img
+                                                v-if="oGestoriaBanner"
+                                                :src="oGestoriaBanner.url_img"
+                                                alt=""
+                                            />
+                                            <img
+                                                v-else
+                                                :src="
+                                                    url_principal +
+                                                    '/imgs/fondo_banner.jpg'
+                                                "
+                                                alt=""
+                                            />
+                                        </router-link>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div
+                                        class="card card_portal collapsed-card"
+                                    >
+                                        <div class="card-header bg-dark">
+                                            <router-link
+                                                :to="{
+                                                    name: 'admin_portal.gestoria_nosotros',
+                                                }"
+                                                class="text-left card-title btn btn-flat btn-success"
+                                                ><strong>Gestoría: </strong>
+                                                ¿Quiénes somos?</router-link
+                                            >
+                                            <div class="card-tools">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-tool"
+                                                    data-card-widget="collapse"
+                                                >
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <router-link
+                                            :to="{
+                                                name: 'admin_portal.gestoria_nosotros',
+                                            }"
+                                            class="card-body link_body"
+                                        >
+                                            <template v-if="oGestoriaNosotros">
+                                                <img
+                                                    :src="
+                                                        oGestoriaNosotros.url_imagen
+                                                    "
+                                                    alt=""
+                                                />
+                                                <div class="row">
+                                                    <div class="col-md-12 p-4">
+                                                        <p
+                                                            v-html="
+                                                                oGestoriaNosotros.descripcion
+                                                            "
+                                                        ></p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                            <p
+                                                v-else
+                                                class="font-weight-bold text-center text-gray"
+                                            >
+                                                AÚN NO SE CONFIGURÓ LA
+                                                INFORMACIÓN
+                                            </p>
+                                        </router-link>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div
+                                        class="card card_portal collapsed-card"
+                                    >
+                                        <div class="card-header bg-dark">
+                                            <router-link
+                                                :to="{
+                                                    name: 'admin_portal.gestoria_servicios',
+                                                }"
+                                                class="text-left card-title btn btn-flat btn-success"
+                                                ><strong>Gestoría: </strong>
+                                                Servicios</router-link
+                                            >
+                                            <div class="card-tools">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-tool"
+                                                    data-card-widget="collapse"
+                                                >
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <router-link
+                                            :to="{
+                                                name: 'admin_portal.gestoria_servicios',
+                                            }"
+                                            class="card-body link_body"
+                                        >
+                                            <img
+                                                v-if="oBanner"
+                                                :src="oBanner.url_img"
+                                                alt=""
+                                            />
+                                            <img
+                                                v-else
+                                                :src="
+                                                    url_principal +
+                                                    '/imgs/fondo_banner.jpg'
+                                                "
+                                                alt=""
+                                            />
+                                        </router-link>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div
+                                        class="card card_portal collapsed-card"
+                                    >
+                                        <div class="card-header bg-dark">
+                                            <router-link
+                                                :to="{
+                                                    name: 'admin_portal.configuracion_gestoria',
+                                                }"
+                                                class="text-left card-title btn btn-flat btn-success"
+                                                ><strong>Gestoría: </strong>
+                                                Configuración</router-link
+                                            >
+                                            <div class="card-tools">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-tool"
+                                                    data-card-widget="collapse"
+                                                >
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <router-link
+                                            :to="{
+                                                name: 'admin_portal.configuracion_gestoria',
+                                            }"
+                                            class="card-body link_body"
+                                        >
+                                            <div
+                                                class="col-md-12 p-3"
+                                                v-if="oConfiguracionGestoria"
+                                            >
+                                                <p>
+                                                    <strong>Dirección:</strong>
+                                                    {{
+                                                        oConfiguracionGestoria.direccion
+                                                    }}
+                                                </p>
+                                                <p>
+                                                    <strong>Teléfono 1:</strong>
+                                                    {{
+                                                        oConfiguracionGestoria.fono1
+                                                    }}
+                                                </p>
+                                                <p>
+                                                    <strong>Teléfono 2:</strong>
+                                                    {{
+                                                        oConfiguracionGestoria.fono2
+                                                    }}
+                                                </p>
+                                                <p>
+                                                    <strong>Correo:</strong>
+                                                    {{
+                                                        oConfiguracionGestoria.correo
+                                                    }}
+                                                </p>
+                                            </div>
+                                            <img
+                                                v-else
+                                                :src="
+                                                    url_principal +
+                                                    '/imgs/fondo_direccion.jpg'
+                                                "
+                                                alt=""
+                                            />
+                                        </router-link>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -334,6 +554,9 @@ export default {
             oPortalComunciado: null,
             oRedSocial: null,
             oPortalGestoria: null,
+            oGestoriaBanner: null,
+            oGestoriaNosotros: null,
+            oConfiguracionGestoria: null,
         };
     },
     mounted() {
@@ -343,6 +566,10 @@ export default {
         this.getInfoRedSocial();
         this.getPortalComunicado();
         this.getPortalGestoria();
+        // gestoria
+        this.getUltimoGestoriaBanner();
+        this.getGestoriaNosotros();
+        this.getInfoConfiguracionGestoria();
     },
     methods: {
         getUltimoBanner() {
@@ -384,6 +611,33 @@ export default {
                     this.oPortalGestoria = res.data.portal_gestoria;
                 }
             });
+        },
+        // GESTORÍA
+        getUltimoGestoriaBanner() {
+            axios
+                .get(main_url + "/admin/gestoria_banners/get_banner/ultimo")
+                .then((response) => {
+                    this.oGestoriaBanner = response.data.gestoria_banner;
+                });
+        },
+        getGestoriaNosotros() {
+            let url = main_url + "/admin/gestoria_nosotros";
+            if (this.pagina != 0) {
+                url += "?page=" + this.pagina;
+            }
+            axios.get(url).then((res) => {
+                if (res.data.gestoria_nosotros) {
+                    this.oGestoriaNosotros = res.data.gestoria_nosotros;
+                }
+            });
+        },
+        getInfoConfiguracionGestoria() {
+            axios
+                .get(main_url + "/admin/configuracion_gestorias")
+                .then((response) => {
+                    this.oConfiguracionGestoria =
+                        response.data.configuracion_gestoria;
+                });
         },
     },
 };

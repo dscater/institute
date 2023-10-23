@@ -14,18 +14,7 @@
                     class="row justify-content-between align-items-center pt-3"
                 >
                     <div class="col-lg-6 d-flex flex-column address-wrap">
-                        <p>Somos Gestores</p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore
-                            eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum.
-                        </p>
+                        <p v-html="oGestoriaNosotros.descripcion"></p>
                         <div class="row mt-3">
                             <div
                                 class="col-6 col-md-3 info_gestoria text-white"
@@ -94,10 +83,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 search-course-right p-0">
-                        <img
-                            :src="url_principal + '/imgs/gestoriaImg.jpg'"
-                            width="100%"
-                        />
+                        <img :src="oGestoriaNosotros.url_imagen" width="100%" />
                     </div>
                 </div>
             </div>
@@ -125,13 +111,7 @@
                             Visa de Turismo
                         </div>
                         <div class="descripcion">
-                            <p>
-                                Tipo de visa aplicable para pasajeros que por
-                                conexiones, escalas o itinerarios que llegan a
-                                un país, en el que toma el mismo medio de
-                                transporte o esperan el nuevo que los lleva al
-                                país
-                            </p>
+                            <p v-html="oGestoriaServicio.turismo"></p>
                         </div>
                     </div>
                     <div class="col-md-3 contenedor_servicio">
@@ -143,13 +123,7 @@
                             Visa de Trabajo
                         </div>
                         <div class="descripcion">
-                            <p>
-                                Tipo de visa aplicable para pasajeros que por
-                                conexiones, escalas o itinerarios que llegan a
-                                un país, en el que toma el mismo medio de
-                                transporte o esperan el nuevo que los lleva al
-                                país
-                            </p>
+                            <p v-html="oGestoriaServicio.trabajo"></p>
                         </div>
                     </div>
                     <div class="col-md-3 contenedor_servicio">
@@ -161,13 +135,7 @@
                             Visa de Estudiantes
                         </div>
                         <div class="descripcion">
-                            <p>
-                                Tipo de visa aplicable para pasajeros que por
-                                conexiones, escalas o itinerarios que llegan a
-                                un país, en el que toma el mismo medio de
-                                transporte o esperan el nuevo que los lleva al
-                                país
-                            </p>
+                            <p v-html="oGestoriaServicio.estudiantes"></p>
                         </div>
                     </div>
                     <div class="col-md-3 contenedor_servicio">
@@ -179,13 +147,7 @@
                             Visa de Renovación
                         </div>
                         <div class="descripcion">
-                            <p>
-                                Tipo de visa aplicable para pasajeros que por
-                                conexiones, escalas o itinerarios que llegan a
-                                un país, en el que toma el mismo medio de
-                                transporte o esperan el nuevo que los lleva al
-                                país
-                            </p>
+                            <p v-html="oGestoriaServicio.renovacion"></p>
                         </div>
                     </div>
                 </div>
@@ -412,8 +374,9 @@
                     class="row justify-content-between align-items-center pt-3"
                 >
                     <div
-                        class="col-lg-6 col-md-6 search-course-right p-0"
+                        class="col-lg-6 col-md-6 search-course-right p-0 contenedor_mapa"
                         id="google_map_gestoria"
+                        v-html="oConfiguracionGestoria.mapa"
                     ></div>
                     <div class="col-lg-6 d-flex flex-column address-wrap">
                         <div
@@ -424,10 +387,9 @@
                             </div>
                             <div class="contact-details">
                                 <h5>Dirección:</h5>
-                                <p>
-                                    SHOPPING VIZUR Calle Mariscal Santa Cruz y
-                                    Calle Arenales Castea N° 20
-                                </p>
+                                <p
+                                    v-html="oConfiguracionGestoria.direccion"
+                                ></p>
                             </div>
                         </div>
                         <div
@@ -438,8 +400,11 @@
                             </div>
                             <div class="contact-details">
                                 <h5>Celular/Whatsapp:</h5>
-                                <p>+591 63326803</p>
-                                <p>+591 64312163</p>
+                                <p v-text="oConfiguracionGestoria.fono1"></p>
+                                <p
+                                    v-if="oConfiguracionGestoria.fono2 != ''"
+                                    v-text="oConfiguracionGestoria.fono2"
+                                ></p>
                             </div>
                         </div>
                         <div
@@ -450,7 +415,7 @@
                             </div>
                             <div class="contact-details">
                                 <h5>Email:</h5>
-                                <p>info@tomorrowstoday.com</p>
+                                <p v-text="oConfiguracionGestoria.correo"></p>
                             </div>
                         </div>
                     </div>
@@ -476,16 +441,61 @@ export default {
                 lat: "-16.50405",
                 lng: "-68.13081",
             },
+            oGestoriaNosotros: {
+                descripcion: `Somos Gestores<br />Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+                url_imagen: main_url + "/imgs/gestoriaImg.jpg",
+            },
+            oGestoriaServicio: {
+                trabajo: `Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país`,
+                turismo: `Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país`,
+                estudiantes: `Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país`,
+                renovacion: `Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país`,
+            },
+            oConfiguracionGestoria: {
+                direccion: "",
+                fonos: "",
+                correo: "",
+                mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d15302.44340797871!2d-68.13196529479978!3d-16.495230895308648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.497514656468287!2d-68.12797416816427!5e0!3m2!1ses-419!2sbo!4v1697748242821!5m2!1ses-419!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+            },
         };
     },
     mounted() {
         this.loadingWindow.close();
+        this.getGestoriaNosotros();
+        this.getGestoriaServicio();
+        this.getConfiguracionGestoria();
         let self = this;
         setTimeout(() => {
             self.initCaruselTips();
         }, 300);
     },
     methods: {
+        getGestoriaNosotros() {
+            let url = main_url + "/portal/getNosotrosGestoria";
+            axios.get(url).then((res) => {
+                if (res.data.gestoria_nosotros) {
+                    this.oGestoriaNosotros = res.data.gestoria_nosotros;
+                }
+            });
+        },
+        getGestoriaServicio() {
+            let url = main_url + "/portal/getServiciosGestoria";
+            axios.get(url).then((res) => {
+                if (res.data.gestoria_servicio) {
+                    this.oGestoriaServicio = res.data.gestoria_servicio;
+                }
+            });
+        },
+        getConfiguracionGestoria() {
+            let url = main_url + "/portal/getConfiguracionGestoria";
+            axios.get(url).then((res) => {
+                if (res.data.configuracion_gestoria) {
+                    this.oConfiguracionGestoria =
+                        res.data.configuracion_gestoria;
+                }
+            });
+        },
+
         initCaruselTips() {
             $(".active-review-carusel-gestoria").owlCarousel({
                 items: 3,
@@ -510,53 +520,6 @@ export default {
                     },
                 },
             });
-        },
-
-        cargaMapaGoogle(lat, lng, drag = false, dir = "") {
-            lat = parseFloat(lat);
-            lng = parseFloat(lng);
-
-            // Inicializa el mapa
-            this.map = new google.maps.Map(
-                document.getElementById("google_map_gestoria"),
-                {
-                    center: { lat: lat, lng: lng },
-                    zoom: 18,
-                }
-            );
-
-            // Configura el icono personalizado
-            const customIcon = {
-                url: main_url + "/imgs/pinmap.gif", // Ruta a tu icono personalizado
-                scaledSize: new google.maps.Size(50, 50), // Tamaño del icono
-            };
-
-            // Crea un marcador en el centro del mapa
-            this.marker = new google.maps.Marker({
-                position: { lat: lat, lng: lng },
-                map: this.map,
-                icon: customIcon,
-                draggable: drag,
-            });
-
-            // Escucha el evento de arrastrar del marcador
-            google.maps.event.addListener(this.marker, "dragend", () => {
-                const newPosition = this.marker.getPosition();
-                this.oContacto.lat = newPosition.lat();
-                this.oContacto.lng = newPosition.lng();
-            });
-
-            if (dir != "") {
-                // Crea una ventana de información (infowindow) con el contenido deseado
-                let self = this;
-                this.infowindow = new google.maps.InfoWindow({
-                    content: `<strong>DIRECCIÓN:</strong><br>${self.oContacto.direccion}`,
-                });
-                // Escucha el evento 'click' en el marcador para abrir la ventana de información
-                this.marker.addListener("click", () => {
-                    this.infowindow.open(this.map, this.marker);
-                });
-            }
         },
     },
 };
