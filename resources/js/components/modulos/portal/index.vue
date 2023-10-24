@@ -443,19 +443,67 @@
                                             }"
                                             class="card-body link_body"
                                         >
-                                            <img
-                                                v-if="oBanner"
-                                                :src="oBanner.url_img"
-                                                alt=""
-                                            />
-                                            <img
+                                            <template v-if="oGestoriaServicio">
+                                                <div class="row">
+                                                    <div class="col-md-12 p-3">
+                                                        <p>
+                                                            <strong
+                                                                >Visa de
+                                                                Turismo:</strong
+                                                            >
+                                                            {{
+                                                                oGestoriaServicio.turismo
+                                                            }}
+                                                        </p>
+                                                        <p>
+                                                            <strong
+                                                                >Visa de
+                                                                Trabajo:</strong
+                                                            >
+                                                            {{
+                                                                oGestoriaServicio.trabajo
+                                                            }}
+                                                        </p>
+                                                        <p>
+                                                            <strong
+                                                                >Visa de
+                                                                Estudiantes:</strong
+                                                            >
+                                                            {{
+                                                                oGestoriaServicio.estudiantes
+                                                            }}
+                                                        </p>
+                                                        <p>
+                                                            <strong
+                                                                >Visa de
+                                                                Renovación:</strong
+                                                            >
+                                                            {{
+                                                                oGestoriaServicio.renovacion
+                                                            }}
+                                                        </p>
+                                                        <hr />
+                                                        <p>
+                                                            <strong
+                                                                >Mensaje al
+                                                                final del
+                                                                formulario de
+                                                                registro:</strong
+                                                            >
+                                                            {{
+                                                                oGestoriaServicio.mensaje_servicio
+                                                            }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                            <p
                                                 v-else
-                                                :src="
-                                                    url_principal +
-                                                    '/imgs/fondo_banner.jpg'
-                                                "
-                                                alt=""
-                                            />
+                                                class="font-weight-bold text-center text-gray"
+                                            >
+                                                AÚN NO SE CONFIGURÓ LA
+                                                INFORMACIÓN
+                                            </p>
                                         </router-link>
                                     </div>
                                 </div>
@@ -556,6 +604,7 @@ export default {
             oPortalGestoria: null,
             oGestoriaBanner: null,
             oGestoriaNosotros: null,
+            oGestoriaServicio: null,
             oConfiguracionGestoria: null,
         };
     },
@@ -569,6 +618,7 @@ export default {
         // gestoria
         this.getUltimoGestoriaBanner();
         this.getGestoriaNosotros();
+        this.getGestoriaServicios();
         this.getInfoConfiguracionGestoria();
     },
     methods: {
@@ -628,6 +678,14 @@ export default {
             axios.get(url).then((res) => {
                 if (res.data.gestoria_nosotros) {
                     this.oGestoriaNosotros = res.data.gestoria_nosotros;
+                }
+            });
+        },
+        getGestoriaServicios() {
+            let url = main_url + "/admin/gestoria_servicios";
+            axios.get(url).then((res) => {
+                if (res.data.gestoria_servicio) {
+                    this.oGestoriaServicio = res.data.gestoria_servicio;
                 }
             });
         },

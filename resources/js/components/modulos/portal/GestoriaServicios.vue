@@ -35,11 +35,11 @@
                                             :class="{
                                                 'text-danger': errors.turismo,
                                             }"
-                                            >Visa de Trismo*</label
+                                            >Visa de Turismo*</label
                                         >
                                         <el-input
                                             type="textarea"
-                                            placeholder="Visa de Trismo"
+                                            placeholder="Visa de Turismo"
                                             :class="{
                                                 'is-invalid': errors.turismo,
                                             }"
@@ -133,6 +133,34 @@
                                             v-text="errors.renovacion[0]"
                                         ></span>
                                     </div>
+                                    <div class="col-md-12 form-group">
+                                        <hr />
+                                        <label
+                                            :class="{
+                                                'text-danger':
+                                                    errors.mensaje_servicio,
+                                            }"
+                                            >Mensaje al final del formulario de registro*</label
+                                        >
+                                        <el-input
+                                            type="textarea"
+                                            placeholder="Mensaje al final del formulario de registro"
+                                            :class="{
+                                                'is-invalid': errors.mensaje_servicio,
+                                            }"
+                                            v-model="
+                                                oGestoriaServicio.mensaje_servicio
+                                            "
+                                            autosize
+                                        >
+                                            >
+                                        </el-input>
+                                        <span
+                                            class="error invalid-feedback"
+                                            v-if="errors.mensaje_servicio"
+                                            v-text="errors.mensaje_servicio[0]"
+                                        ></span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -171,6 +199,7 @@ export default {
                 trabajo: "",
                 estudiantes: "",
                 renovacion: "",
+                mensaje_servicio: "",
             },
             errors: [],
         };

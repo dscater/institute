@@ -22,6 +22,10 @@
     display: none;
 }
 
+#logo{
+    height: 40px;
+    overflow: hidden;
+}
 body {
     height: auto;
     color: #ffffff;

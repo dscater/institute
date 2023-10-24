@@ -68,10 +68,32 @@
                                     <i class="fa fa-sign-in-alt"></i> Acceder
                                 </button>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 mt-3">
                                 <a
                                     :href="url_portal"
-                                    class="mt-2 btn btn-default btn-block btn-flat font-weight-bold"
+                                    class="mt-2 font-weight-bold"
+                                    v-loading.fullscreen.lock="
+                                        fullscreenLoading
+                                    "
+                                >
+                                    Recuperar mi contraseña
+                                </a>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <a
+                                    :href="url_principal + '/inscripciones'"
+                                    class="mt-2 font-weight-bold"
+                                    v-loading.fullscreen.lock="
+                                        fullscreenLoading
+                                    "
+                                >
+                                    No tengo una cuenta (Registrarse)
+                                </a>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <a
+                                    :href="url_portal"
+                                    class="mt-2 font-weight-bold text-white"
                                     v-loading.fullscreen.lock="
                                         fullscreenLoading
                                     "
@@ -112,6 +134,7 @@ export default {
             password: "",
             error: false,
             fullscreenLoading: false,
+            url_principal: main_url,
         };
     },
     methods: {

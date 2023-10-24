@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 23-10-2023 a las 18:22:54
+-- Tiempo de generación: 24-10-2023 a las 16:39:21
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -24,12 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `asignacion_grupos`
+--
+
+CREATE TABLE `asignacion_grupos` (
+  `id` bigint UNSIGNED NOT NULL,
+  `grupo_id` bigint UNSIGNED NOT NULL,
+  `inscripcion_id` bigint UNSIGNED NOT NULL,
+  `inscripcion_solicitud_id` bigint UNSIGNED NOT NULL,
+  `curso_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `banners`
 --
 
 CREATE TABLE `banners` (
   `id` bigint UNSIGNED NOT NULL,
-  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `posicion` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -46,16 +62,33 @@ INSERT INTO `banners` (`id`, `img`, `posicion`, `created_at`, `updated_at`) VALU
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `comunicados`
+--
+
+CREATE TABLE `comunicados` (
+  `id` bigint UNSIGNED NOT NULL,
+  `grupo_id` bigint UNSIGNED NOT NULL,
+  `titulo` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `configuracions`
 --
 
 CREATE TABLE `configuracions` (
   `id` bigint UNSIGNED NOT NULL,
-  `nombre_sistema` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alias` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nombre_sistema` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `dir` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `actividad` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `actividad` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -75,10 +108,10 @@ INSERT INTO `configuracions` (`id`, `nombre_sistema`, `alias`, `dir`, `actividad
 
 CREATE TABLE `configuracion_gestorias` (
   `id` bigint UNSIGNED NOT NULL,
-  `direccion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fono1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fono2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `direccion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fono1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fono2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `correo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `mapa` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -99,10 +132,10 @@ INSERT INTO `configuracion_gestorias` (`id`, `direccion`, `fono1`, `fono2`, `cor
 
 CREATE TABLE `contactos` (
   `id` bigint UNSIGNED NOT NULL,
-  `direccion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fono1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fono2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `direccion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fono1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fono2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `correo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `mapa` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -118,12 +151,69 @@ INSERT INTO `contactos` (`id`, `direccion`, `fono1`, `fono2`, `correo`, `mapa`, 
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `cursos`
+--
+
+CREATE TABLE `cursos` (
+  `id` bigint UNSIGNED NOT NULL,
+  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `enunciado_preguntas`
+--
+
+CREATE TABLE `enunciado_preguntas` (
+  `id` bigint UNSIGNED NOT NULL,
+  `examen_enunciado_id` bigint UNSIGNED NOT NULL,
+  `pregunta` varchar(700) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `opciones` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `examen_enunciados`
+--
+
+CREATE TABLE `examen_enunciados` (
+  `id` bigint UNSIGNED NOT NULL,
+  `examen_nivelacion_id` bigint UNSIGNED NOT NULL,
+  `enunciado` varchar(700) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `examen_nivelacions`
+--
+
+CREATE TABLE `examen_nivelacions` (
+  `id` bigint UNSIGNED NOT NULL,
+  `curso_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `gestoria_banners`
 --
 
 CREATE TABLE `gestoria_banners` (
   `id` bigint UNSIGNED NOT NULL,
-  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `posicion` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -145,7 +235,7 @@ INSERT INTO `gestoria_banners` (`id`, `img`, `posicion`, `created_at`, `updated_
 
 CREATE TABLE `gestoria_nosotros` (
   `id` bigint UNSIGNED NOT NULL,
-  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `imagen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -166,10 +256,11 @@ INSERT INTO `gestoria_nosotros` (`id`, `descripcion`, `imagen`, `created_at`, `u
 
 CREATE TABLE `gestoria_servicios` (
   `id` bigint UNSIGNED NOT NULL,
-  `turismo` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `trabajo` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estudiantes` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `renovacion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `turismo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trabajo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `estudiantes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `renovacion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mensaje_servicio` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -178,8 +269,93 @@ CREATE TABLE `gestoria_servicios` (
 -- Volcado de datos para la tabla `gestoria_servicios`
 --
 
-INSERT INTO `gestoria_servicios` (`id`, `turismo`, `trabajo`, `estudiantes`, `renovacion`, `created_at`, `updated_at`) VALUES
-(2, 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Turismo', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Trabajo', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Estudiantes', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Renovación', '2023-10-23 18:02:40', '2023-10-23 18:04:49');
+INSERT INTO `gestoria_servicios` (`id`, `turismo`, `trabajo`, `estudiantes`, `renovacion`, `mensaje_servicio`, `created_at`, `updated_at`) VALUES
+(2, 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Turismo', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Trabajo', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Estudiantes', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Renovación', NULL, '2023-10-23 18:02:40', '2023-10-23 18:04:49');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `gestoria_solicituds`
+--
+
+CREATE TABLE `gestoria_solicituds` (
+  `id` bigint UNSIGNED NOT NULL,
+  `nombres` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `apellidos` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fecha_nac` date NOT NULL,
+  `edad` int NOT NULL,
+  `nacionalidad` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sexo` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fono` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `familiares_eeuu` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `parentesco` text COLLATE utf8mb4_unicode_ci,
+  `familiar_deportado` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `motivo` text COLLATE utf8mb4_unicode_ci,
+  `deportado_otro_pais` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `motivo_otro_pais` text COLLATE utf8mb4_unicode_ci,
+  `antecedentes_penales` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc_antecedentes` text COLLATE utf8mb4_unicode_ci,
+  `estudios` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trabajo_actual` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `solicito_visa` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `motivo_rechazo` text COLLATE utf8mb4_unicode_ci,
+  `cuenta_bancaria` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gana_aproximadamente` decimal(24,2) NOT NULL,
+  `redes_sociales` text COLLATE utf8mb4_unicode_ci,
+  `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `recomendado_por` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `estado_solicitud` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `grupos`
+--
+
+CREATE TABLE `grupos` (
+  `id` bigint UNSIGNED NOT NULL,
+  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci,
+  `link_reunion` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `estado` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `grupo_profesors`
+--
+
+CREATE TABLE `grupo_profesors` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `grupo_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `grupo_recursos`
+--
+
+CREATE TABLE `grupo_recursos` (
+  `id` bigint UNSIGNED NOT NULL,
+  `grupo_id` bigint UNSIGNED NOT NULL,
+  `titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -190,11 +366,11 @@ INSERT INTO `gestoria_servicios` (`id`, `turismo`, `trabajo`, `estudiantes`, `re
 CREATE TABLE `historial_accions` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
-  `accion` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `datos_original` text COLLATE utf8mb4_unicode_ci,
-  `datos_nuevo` text COLLATE utf8mb4_unicode_ci,
-  `modulo` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `accion` varchar(155) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `datos_original` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `datos_nuevo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `modulo` varchar(155) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -277,12 +453,112 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `horarios`
+--
+
+CREATE TABLE `horarios` (
+  `id` bigint UNSIGNED NOT NULL,
+  `grupo_id` bigint UNSIGNED NOT NULL,
+  `modalidad` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL,
+  `hora_inicio` time NOT NULL,
+  `hora_fin` time NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inscripcions`
+--
+
+CREATE TABLE `inscripcions` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `nombres` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `apellidos` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nro_iden` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fecha_nac` date NOT NULL,
+  `edad` int NOT NULL,
+  `pais_residencia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nacionalidad` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `prov_dpto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sexo` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fono` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inscripcion_examens`
+--
+
+CREATE TABLE `inscripcion_examens` (
+  `id` bigint UNSIGNED NOT NULL,
+  `inscripcion_id` bigint UNSIGNED NOT NULL,
+  `inscripcion_solicitud_id` bigint UNSIGNED NOT NULL,
+  `examen_nivelacion_id` bigint UNSIGNED NOT NULL,
+  `puntaje` double(8,2) NOT NULL,
+  `estado` varchar(155) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inscripcion_respuestas`
+--
+
+CREATE TABLE `inscripcion_respuestas` (
+  `id` bigint UNSIGNED NOT NULL,
+  `inscripcion_examen_id` bigint UNSIGNED NOT NULL,
+  `examen_enunciado_id` bigint UNSIGNED NOT NULL,
+  `enunciado_pregunta_id` bigint UNSIGNED NOT NULL,
+  `respuesta` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `calificacion` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inscripcion_solicituds`
+--
+
+CREATE TABLE `inscripcion_solicituds` (
+  `id` bigint UNSIGNED NOT NULL,
+  `inscripcion_id` bigint UNSIGNED NOT NULL,
+  `curso_id` bigint UNSIGNED NOT NULL,
+  `nivel` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `se_entero` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `plan_pago` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `forma_pago` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `archivo_pago` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desc_pago` text COLLATE utf8mb4_unicode_ci,
+  `desc_otro_pago` text COLLATE utf8mb4_unicode_ci,
+  `estado_asignado` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `estado` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `migrations`
 --
 
 CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -303,7 +579,23 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2023_10_23_115443_create_configuracion_gestorias_table', 3),
 (13, '2023_10_23_120403_create_gestoria_nosotros_table', 3),
 (14, '2023_10_23_120425_create_gestoria_servicios_table', 3),
-(15, '2023_10_23_121730_create_gestoria_banners_table', 4);
+(15, '2023_10_23_121730_create_gestoria_banners_table', 4),
+(16, '2023_10_24_105103_create_cursos_table', 5),
+(17, '2023_10_24_111747_create_inscripcions_table', 5),
+(18, '2023_10_24_111949_create_inscripcion_solicituds_table', 5),
+(19, '2023_10_24_112811_create_gestoria_solicituds_table', 5),
+(20, '2023_10_24_114525_create_grupos_table', 5),
+(21, '2023_10_24_114642_create_asignacion_grupos_table', 5),
+(22, '2023_10_24_115100_create_horarios_table', 5),
+(23, '2023_10_24_115500_create_grupo_profesors_table', 5),
+(24, '2023_10_24_115641_create_grupo_recursos_table', 5),
+(25, '2023_10_24_120147_create_examen_nivelacions_table', 5),
+(26, '2023_10_24_120450_create_examen_enunciados_table', 5),
+(27, '2023_10_24_120606_create_enunciado_preguntas_table', 5),
+(28, '2023_10_24_121720_create_inscripcion_examens_table', 5),
+(29, '2023_10_24_121801_create_inscripcion_respuestas_table', 5),
+(30, '2023_10_24_122358_create_comunicados_table', 5),
+(31, '2023_10_24_122629_create_profesors_table', 5);
 
 -- --------------------------------------------------------
 
@@ -313,11 +605,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -331,7 +623,7 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `portal_comunicados` (
   `id` bigint UNSIGNED NOT NULL,
-  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -352,8 +644,8 @@ INSERT INTO `portal_comunicados` (`id`, `descripcion`, `created_at`, `updated_at
 CREATE TABLE `portal_gestorias` (
   `id` bigint UNSIGNED NOT NULL,
   `imagen_inicio` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `titulo_inicio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion_inicio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `titulo_inicio` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion_inicio` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -368,15 +660,36 @@ INSERT INTO `portal_gestorias` (`id`, `imagen_inicio`, `titulo_inicio`, `descrip
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `profesors`
+--
+
+CREATE TABLE `profesors` (
+  `id` bigint UNSIGNED NOT NULL,
+  `nombres` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `apellidos` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ci` varchar(155) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nacionalidad` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pais_residencia` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dir` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fono` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `especialidad` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `red_socials`
 --
 
 CREATE TABLE `red_socials` (
   `id` bigint UNSIGNED NOT NULL,
   `tiktok` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `youtube` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instagram` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `youtube` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -396,16 +709,16 @@ INSERT INTO `red_socials` (`id`, `tiktok`, `facebook`, `instagram`, `youtube`, `
 
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
-  `usuario` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `paterno` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `materno` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fono` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo` enum('ADMINISTRADOR','AUXILIAR','PROFESOR','ESTUDIANTE') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `usuario` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `paterno` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `materno` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dir` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `correo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fono` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo` enum('ADMINISTRADOR','AUXILIAR','PROFESOR','ESTUDIANTE') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `acceso` int NOT NULL,
   `fecha_registro` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -426,9 +739,25 @@ INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `dir`, `co
 --
 
 --
+-- Indices de la tabla `asignacion_grupos`
+--
+ALTER TABLE `asignacion_grupos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `asignacion_grupos_grupo_id_foreign` (`grupo_id`),
+  ADD KEY `asignacion_grupos_inscripcion_id_foreign` (`inscripcion_id`),
+  ADD KEY `asignacion_grupos_inscripcion_solicitud_id_foreign` (`inscripcion_solicitud_id`),
+  ADD KEY `asignacion_grupos_curso_id_foreign` (`curso_id`);
+
+--
 -- Indices de la tabla `banners`
 --
 ALTER TABLE `banners`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `comunicados`
+--
+ALTER TABLE `comunicados`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -450,6 +779,33 @@ ALTER TABLE `contactos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `enunciado_preguntas`
+--
+ALTER TABLE `enunciado_preguntas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `enunciado_preguntas_examen_enunciado_id_foreign` (`examen_enunciado_id`);
+
+--
+-- Indices de la tabla `examen_enunciados`
+--
+ALTER TABLE `examen_enunciados`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `examen_enunciados_examen_nivelacion_id_foreign` (`examen_nivelacion_id`);
+
+--
+-- Indices de la tabla `examen_nivelacions`
+--
+ALTER TABLE `examen_nivelacions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `examen_nivelacions_curso_id_foreign` (`curso_id`);
+
+--
 -- Indices de la tabla `gestoria_banners`
 --
 ALTER TABLE `gestoria_banners`
@@ -468,9 +824,74 @@ ALTER TABLE `gestoria_servicios`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `gestoria_solicituds`
+--
+ALTER TABLE `gestoria_solicituds`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `grupos`
+--
+ALTER TABLE `grupos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `grupo_profesors`
+--
+ALTER TABLE `grupo_profesors`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `grupo_profesors_user_id_foreign` (`user_id`),
+  ADD KEY `grupo_profesors_grupo_id_foreign` (`grupo_id`);
+
+--
+-- Indices de la tabla `grupo_recursos`
+--
+ALTER TABLE `grupo_recursos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `grupo_recursos_grupo_id_foreign` (`grupo_id`);
+
+--
 -- Indices de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `horarios`
+--
+ALTER TABLE `horarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `inscripcions`
+--
+ALTER TABLE `inscripcions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `inscripcions_correo_unique` (`correo`),
+  ADD KEY `inscripcions_user_id_foreign` (`user_id`);
+
+--
+-- Indices de la tabla `inscripcion_examens`
+--
+ALTER TABLE `inscripcion_examens`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `inscripcion_examens_inscripcion_id_foreign` (`inscripcion_id`),
+  ADD KEY `inscripcion_examens_inscripcion_solicitud_id_foreign` (`inscripcion_solicitud_id`),
+  ADD KEY `inscripcion_examens_examen_nivelacion_id_foreign` (`examen_nivelacion_id`);
+
+--
+-- Indices de la tabla `inscripcion_respuestas`
+--
+ALTER TABLE `inscripcion_respuestas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `inscripcion_respuestas_inscripcion_examen_id_foreign` (`inscripcion_examen_id`),
+  ADD KEY `inscripcion_respuestas_examen_enunciado_id_foreign` (`examen_enunciado_id`),
+  ADD KEY `inscripcion_respuestas_enunciado_pregunta_id_foreign` (`enunciado_pregunta_id`);
+
+--
+-- Indices de la tabla `inscripcion_solicituds`
+--
+ALTER TABLE `inscripcion_solicituds`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -500,6 +921,13 @@ ALTER TABLE `portal_gestorias`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `profesors`
+--
+ALTER TABLE `profesors`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `profesors_correo_unique` (`correo`);
+
+--
 -- Indices de la tabla `red_socials`
 --
 ALTER TABLE `red_socials`
@@ -518,10 +946,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `asignacion_grupos`
+--
+ALTER TABLE `asignacion_grupos`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `banners`
 --
 ALTER TABLE `banners`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `comunicados`
+--
+ALTER TABLE `comunicados`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `configuracions`
@@ -542,6 +982,30 @@ ALTER TABLE `contactos`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `enunciado_preguntas`
+--
+ALTER TABLE `enunciado_preguntas`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `examen_enunciados`
+--
+ALTER TABLE `examen_enunciados`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `examen_nivelacions`
+--
+ALTER TABLE `examen_nivelacions`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `gestoria_banners`
 --
 ALTER TABLE `gestoria_banners`
@@ -560,16 +1024,70 @@ ALTER TABLE `gestoria_servicios`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `gestoria_solicituds`
+--
+ALTER TABLE `gestoria_solicituds`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `grupos`
+--
+ALTER TABLE `grupos`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `grupo_profesors`
+--
+ALTER TABLE `grupo_profesors`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `grupo_recursos`
+--
+ALTER TABLE `grupo_recursos`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
+-- AUTO_INCREMENT de la tabla `horarios`
+--
+ALTER TABLE `horarios`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `inscripcions`
+--
+ALTER TABLE `inscripcions`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `inscripcion_examens`
+--
+ALTER TABLE `inscripcion_examens`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `inscripcion_respuestas`
+--
+ALTER TABLE `inscripcion_respuestas`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `inscripcion_solicituds`
+--
+ALTER TABLE `inscripcion_solicituds`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -590,6 +1108,12 @@ ALTER TABLE `portal_gestorias`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `profesors`
+--
+ALTER TABLE `profesors`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `red_socials`
 --
 ALTER TABLE `red_socials`
@@ -600,6 +1124,72 @@ ALTER TABLE `red_socials`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `asignacion_grupos`
+--
+ALTER TABLE `asignacion_grupos`
+  ADD CONSTRAINT `asignacion_grupos_curso_id_foreign` FOREIGN KEY (`curso_id`) REFERENCES `cursos` (`id`),
+  ADD CONSTRAINT `asignacion_grupos_grupo_id_foreign` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`id`),
+  ADD CONSTRAINT `asignacion_grupos_inscripcion_id_foreign` FOREIGN KEY (`inscripcion_id`) REFERENCES `inscripcions` (`id`),
+  ADD CONSTRAINT `asignacion_grupos_inscripcion_solicitud_id_foreign` FOREIGN KEY (`inscripcion_solicitud_id`) REFERENCES `inscripcion_solicituds` (`id`);
+
+--
+-- Filtros para la tabla `enunciado_preguntas`
+--
+ALTER TABLE `enunciado_preguntas`
+  ADD CONSTRAINT `enunciado_preguntas_examen_enunciado_id_foreign` FOREIGN KEY (`examen_enunciado_id`) REFERENCES `examen_enunciados` (`id`);
+
+--
+-- Filtros para la tabla `examen_enunciados`
+--
+ALTER TABLE `examen_enunciados`
+  ADD CONSTRAINT `examen_enunciados_examen_nivelacion_id_foreign` FOREIGN KEY (`examen_nivelacion_id`) REFERENCES `examen_nivelacions` (`id`);
+
+--
+-- Filtros para la tabla `examen_nivelacions`
+--
+ALTER TABLE `examen_nivelacions`
+  ADD CONSTRAINT `examen_nivelacions_curso_id_foreign` FOREIGN KEY (`curso_id`) REFERENCES `cursos` (`id`);
+
+--
+-- Filtros para la tabla `grupo_profesors`
+--
+ALTER TABLE `grupo_profesors`
+  ADD CONSTRAINT `grupo_profesors_grupo_id_foreign` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`id`),
+  ADD CONSTRAINT `grupo_profesors_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Filtros para la tabla `grupo_recursos`
+--
+ALTER TABLE `grupo_recursos`
+  ADD CONSTRAINT `grupo_recursos_grupo_id_foreign` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`id`);
+
+--
+-- Filtros para la tabla `inscripcions`
+--
+ALTER TABLE `inscripcions`
+  ADD CONSTRAINT `inscripcions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Filtros para la tabla `inscripcion_examens`
+--
+ALTER TABLE `inscripcion_examens`
+  ADD CONSTRAINT `inscripcion_examens_examen_nivelacion_id_foreign` FOREIGN KEY (`examen_nivelacion_id`) REFERENCES `examen_nivelacions` (`id`),
+  ADD CONSTRAINT `inscripcion_examens_inscripcion_id_foreign` FOREIGN KEY (`inscripcion_id`) REFERENCES `inscripcions` (`id`),
+  ADD CONSTRAINT `inscripcion_examens_inscripcion_solicitud_id_foreign` FOREIGN KEY (`inscripcion_solicitud_id`) REFERENCES `inscripcion_solicituds` (`id`);
+
+--
+-- Filtros para la tabla `inscripcion_respuestas`
+--
+ALTER TABLE `inscripcion_respuestas`
+  ADD CONSTRAINT `inscripcion_respuestas_enunciado_pregunta_id_foreign` FOREIGN KEY (`enunciado_pregunta_id`) REFERENCES `enunciado_preguntas` (`id`),
+  ADD CONSTRAINT `inscripcion_respuestas_examen_enunciado_id_foreign` FOREIGN KEY (`examen_enunciado_id`) REFERENCES `examen_enunciados` (`id`),
+  ADD CONSTRAINT `inscripcion_respuestas_inscripcion_examen_id_foreign` FOREIGN KEY (`inscripcion_examen_id`) REFERENCES `inscripcion_examens` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

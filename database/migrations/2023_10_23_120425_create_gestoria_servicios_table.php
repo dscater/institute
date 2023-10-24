@@ -19,6 +19,7 @@ class CreateGestoriaServiciosTable extends Migration
             $table->text("trabajo");
             $table->text("estudiantes");
             $table->text("renovacion");
+            $table->string("mensaje_servicio", 255)->nullable();
             $table->timestamps();
         });
     }

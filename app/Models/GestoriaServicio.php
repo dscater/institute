@@ -14,5 +14,6 @@ class GestoriaServicio extends Model
         "trabajo",
         "estudiantes",
         "renovacion",
+        "mensaje_servicio"
     ];
 }
