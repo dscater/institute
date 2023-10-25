@@ -4,9 +4,11 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ConfiguracionGestoriaController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\CursoController;
 use App\Http\Controllers\GestoriaBannerController;
 use App\Http\Controllers\GestoriaNosotrosController;
 use App\Http\Controllers\GestoriaServicioController;
+use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortalComunicadoController;
 use App\Http\Controllers\PortalGestoriaController;
@@ -47,6 +49,11 @@ Route::get('portal/getServiciosGestoria', [GestoriaServicioController::class, 'i
 Route::get('portal/getGestoriaSliders', [GestoriaBannerController::class, 'index']);
 // configuracion-gestoria
 Route::get('portal/getConfiguracionGestoria', [ConfiguracionGestoriaController::class, 'index']);
+// cursos
+Route::get('portal/getCursosDestacados', [CursoController::class, 'getCursosDestacados']);
+Route::get('portal/getCursos', [CursoController::class, 'listaCursos']);
+// inscripcion
+Route::post('/portal/registrar_inscripcion', [InscripcionController::class, 'registrar_inscripcion']);
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/configuracion/update', [ConfiguracionController::class, 'update']);
@@ -111,6 +118,11 @@ Route::middleware(['auth'])->group(function () {
 
         // GESTORIA-CONFIGURACION
         Route::resource('configuracion_gestorias', ConfiguracionGestoriaController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // CURSOS
+        Route::resource('cursos', CursoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
     });

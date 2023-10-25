@@ -460,6 +460,7 @@ export default {
         };
     },
     mounted() {
+        this.scrollArriba(0);
         this.loadingWindow.close();
         this.getGestoriaNosotros();
         this.getGestoriaServicio();

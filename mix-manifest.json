@@ -34,6 +34,8 @@
     "/imgs/login.jpg": "/imgs/login.jpg",
     "/imgs/login_2.jpg": "/imgs/login_2.jpg",
     "/imgs/logo.png": "/imgs/logo.png",
+    "/imgs/logo_n.png": "/imgs/logo_n.png",
+    "/imgs/logo_transparent.png": "/imgs/logo_transparent.png",
     "/imgs/pinmap.gif": "/imgs/pinmap.gif",
     "/imgs/renewal.png": "/imgs/renewal.png",
     "/imgs/traveller.png": "/imgs/traveller.png",
@@ -114,5 +116,16 @@
     "/fonts/Poppins/Poppins-Thin.ttf": "/fonts/Poppins/Poppins-Thin.ttf",
     "/fonts/Poppins/Poppins-ThinItalic.ttf": "/fonts/Poppins/Poppins-ThinItalic.ttf",
     "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.ttf": "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.ttf",
-    "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff": "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff"
+    "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff": "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff",
+    "/imgs/cursos/1698250829_2.jpg": "/imgs/cursos/1698250829_2.jpg",
+    "/imgs/cursos/default.jpg": "/imgs/cursos/default.jpg",
+    "/imgs/cursos/1698251059_2.jpg": "/imgs/cursos/1698251059_2.jpg",
+    "/imgs/cursos/1698251110_3.jpg": "/imgs/cursos/1698251110_3.jpg",
+    "/imgs/banners/1698252099_1.png": "/imgs/banners/1698252099_1.png",
+    "/imgs/banners/1698252105_2.png": "/imgs/banners/1698252105_2.png",
+    "/imgs/gestoria_banners/1698252229_1.webp": "/imgs/gestoria_banners/1698252229_1.webp",
+    "/imgs/gestoria_banners/1698252254_2.jpg": "/imgs/gestoria_banners/1698252254_2.jpg",
+    "/imgs/ImagenDeNavegaciónPortal.png": "/imgs/ImagenDeNavegaciónPortal.png",
+    "/imgs/1698252586_1.png": "/imgs/1698252586_1.png",
+    "/imgs/1698252640_1.png": "/imgs/1698252640_1.png"
 }

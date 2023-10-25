@@ -21,24 +21,24 @@ export default {
     data() {
         return {
             listSliders: [
-                {
-                    id: 0,
-                    img: "",
-                    url_img: this.ruta_asset + "imgs/banners/1.jpg",
-                    posicion: 0,
-                    desc1: "Gestoría",
-                    desc2: "Descripcion gestoría",
-                    muestra_boton: 0,
-                },
-                {
-                    id: 0,
-                    img: "",
-                    url_img: this.ruta_asset + "imgs/banners/2.jpg",
-                    posicion: 0,
-                    desc1: "Gestoría",
-                    desc2: "Descripcion gestoría",
-                    muestra_boton: 0,
-                },
+                // {
+                //     id: 0,
+                //     img: "",
+                //     url_img: this.ruta_asset + "imgs/banners/1.jpg",
+                //     posicion: 0,
+                //     desc1: "Gestoría",
+                //     desc2: "Descripcion gestoría",
+                //     muestra_boton: 0,
+                // },
+                // {
+                //     id: 0,
+                //     img: "",
+                //     url_img: this.ruta_asset + "imgs/banners/2.jpg",
+                //     posicion: 0,
+                //     desc1: "Gestoría",
+                //     desc2: "Descripcion gestoría",
+                //     muestra_boton: 0,
+                // },
             ],
             url_principal: main_url,
         };

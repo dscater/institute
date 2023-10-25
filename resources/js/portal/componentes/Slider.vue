@@ -9,6 +9,11 @@
                     :style="'background-image: url(' + item.url_img + ')'"
                 >
                     <!-- <div class="overlay overlay-bg"></div> -->
+
+                    <div
+                        class="container-fluid h-full info_slider"
+                        v-html="texto_portal_inicio"
+                    ></div>
                 </div>
             </div>
         </div>
@@ -40,33 +45,33 @@ export default {
     data() {
         return {
             listSliders: [
-                {
-                    id: 0,
-                    img: "",
-                    url_img: this.ruta_asset + "imgs/banners/1.jpg",
-                    posicion: 0,
-                    desc1: "TÍTULO 1",
-                    desc2: "Portal institute",
-                    muestra_boton: 0,
-                },
-                {
-                    id: 0,
-                    img: "",
-                    url_img: this.ruta_asset + "imgs/banners/2.jpg",
-                    posicion: 0,
-                    desc1: "TÍTULO 1",
-                    desc2: "Portal institute",
-                    muestra_boton: 0,
-                },
-                {
-                    id: 0,
-                    img: "",
-                    url_img: this.ruta_asset + "imgs/banners/3.jpg",
-                    posicion: 0,
-                    desc1: "TÍTULO 1",
-                    desc2: "Portal institute",
-                    muestra_boton: 0,
-                },
+                // {
+                //     id: 0,
+                //     img: "",
+                //     url_img: this.ruta_asset + "imgs/banners/1.jpg",
+                //     posicion: 0,
+                //     desc1: "TÍTULO 1",
+                //     desc2: "Portal institute",
+                //     muestra_boton: 0,
+                // },
+                // {
+                //     id: 0,
+                //     img: "",
+                //     url_img: this.ruta_asset + "imgs/banners/2.jpg",
+                //     posicion: 0,
+                //     desc1: "TÍTULO 1",
+                //     desc2: "Portal institute",
+                //     muestra_boton: 0,
+                // },
+                // {
+                //     id: 0,
+                //     img: "",
+                //     url_img: this.ruta_asset + "imgs/banners/3.jpg",
+                //     posicion: 0,
+                //     desc1: "TÍTULO 1",
+                //     desc2: "Portal institute",
+                //     muestra_boton: 0,
+                // },
             ],
             url_principal: main_url,
             oPortalComunicado: {
@@ -80,6 +85,17 @@ export default {
                             éxito en la vida.<br />
                             ¡Estudiante F-1 bienvenidos!`,
             },
+            texto_portal_inicio: `<div class="flex-col-l-m h-full p-t-100 p-b-30">
+                                        <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
+                                            <span class="ltext-202 respon2">${texto_slider_inicio1}</span>
+                                        </div>
+
+                                        <div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
+                                            <h2 class="ltext-104 p-t-19 p-b-43 respon1">
+                                                ${texto_slider_inicio2}
+                                            </h2>
+                                        </div>
+                                    </div>`,
         };
     },
     mounted() {

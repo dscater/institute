@@ -5,7 +5,7 @@
             class="navegacion banner-area relative about-banner"
             id="home"
             :style="
-                'background:url(' + url_principal + '/imgs/banner_seccion.jpg)'
+                'background:url(' + url_principal + '/imgs/ImagenDeNavegaciónPortal.png)'
             "
         >
             <div class="overlay overlay-bg"></div>

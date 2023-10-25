@@ -2,6 +2,14 @@ import axios from "axios";
 
 export default {
     methods: {
+        scrollArriba(top = 0) {
+            $("html, body").animate(
+                {
+                    scrollTop: top,
+                },
+                300
+            );
+        },
         reemplazaBr(texto) {
             const textoConLineas = texto.replace(/<br\s*\/?>/g, "\n");
             // Eliminar saltos de línea adicionales

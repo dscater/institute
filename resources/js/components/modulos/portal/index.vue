@@ -123,7 +123,7 @@
                                                 }"
                                                 class="text-left card-title btn btn-flat btn-success"
                                                 ><strong>Inicio: </strong>
-                                                Descripción
+                                                Información
                                                 Gestoría</router-link
                                             >
                                             <div class="card-tools">

@@ -336,7 +336,6 @@ export default {
                 { value: "PD", label: "Pando" },
                 { value: "BN", label: "Beni" },
             ],
-            listTiposPersonal: ["SOCIO", "TRABAJADOR"],
             listTipos: ["ADMINISTRADOR", "AUXILIAR"],
             errors: [],
         };

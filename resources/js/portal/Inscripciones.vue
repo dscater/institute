@@ -5,7 +5,7 @@
             class="navegacion banner-area relative about-banner"
             id="home"
             :style="
-                'background:url(' + url_principal + '/imgs/banner_seccion.jpg)'
+                'background:url(' + url_principal + '/imgs/ImagenDeNavegaciónPortal.png)'
             "
         >
             <div class="overlay overlay-bg"></div>
@@ -171,6 +171,27 @@ export default {
                 fullscreen: this.fullscreenLoading,
             }),
             url_principal: main_url,
+            oInscripcion: {
+                nombres: "",
+                apellidos: "",
+                nro_iden: "",
+                fecha_nac: "",
+                edad: "",
+                pais_residencia: "",
+                nacionalidad: "",
+                prov_dpto: "",
+                sexo: "",
+                fono: "",
+                correo: "",
+                curso_id: "",
+                nivel: "",
+                se_entero: "",
+                plan_pago: "",
+                forma_pago: "",
+                archivo_pago: "",
+                desc_pago: "",
+                desc_otro_pago: "",
+            },
         };
     },
     mounted() {

@@ -11,26 +11,23 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="popular-cursos-carusel">
-                        <div class="single-popular-carusel">
+                    <div
+                        class="popular-cursos-carusel"
+                        v-if="listCursos.length > 0"
+                    >
+                        <div
+                            class="single-popular-carusel"
+                            v-for="item in listCursos"
+                        >
                             <div class="thumb-wrap relative">
                                 <div class="thumb relative">
                                     <div class="overlay overlay-bg"></div>
                                     <img
                                         class="img-fluid"
-                                        :src="url_principal + '/images/p1.jpg'"
+                                        :src="item.url_imagen"
                                         alt=""
                                     />
                                 </div>
-                                <!-- <div
-                                    class="meta d-flex justify-content-between"
-                                >
-                                    <p>
-                                        <span class="lnr lnr-users"></span> 355
-                                        <span class="lnr lnr-bubble"></span>35
-                                    </p>
-                                    <h4>$150</h4>
-                                </div> -->
                             </div>
                             <div class="details">
                                 <router-link
@@ -39,14 +36,14 @@
                                         params: { id: 1 },
                                     }"
                                 >
-                                    <h4 class="text-principal mt-2 mb-2">
-                                        Inglés
+                                    <h4
+                                        class="text-principal mt-2 mb-2 titulo_curso"
+                                    >
+                                        {{ item.nombre }}
                                     </h4>
                                 </router-link>
                                 <p class="text-principal">
-                                    When television was young, there was a
-                                    hugely popular show based on the still
-                                    popular fictional characte
+                                    {{ item.texto_corto }}
                                 </p>
                                 <div class="row mt-2">
                                     <div class="col-md-12">
@@ -55,7 +52,7 @@
                                                 name: 'portal.curso',
                                                 params: { id: 1 },
                                             }"
-                                            class="btn btn-warning btn-block btn-flat"
+                                            class="btn btn-success btn-block btn-flat"
                                         >
                                             Ver más
                                             <span
@@ -66,222 +63,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single-popular-carusel">
-                            <div class="thumb-wrap relative">
-                                <div class="thumb relative">
-                                    <div class="overlay overlay-bg"></div>
-                                    <img
-                                        class="img-fluid"
-                                        :src="url_principal + '/images/p2.jpg'"
-                                        alt=""
-                                    />
-                                </div>
-                                <div
-                                    class="meta d-flex justify-content-between"
-                                >
-                                    <p>
-                                        <span class="lnr lnr-users"></span> 355
-                                        <!-- <span class="lnr lnr-bubble"></span>35 -->
-                                    </p>
-                                    <h4>$150</h4>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <router-link
-                                    :to="{
-                                        name: 'portal.curso',
-                                        params: { id: 1 },
-                                    }"
-                                >
-                                    <h4 class="text-principal mt-2 mb-2">
-                                        Programación
-                                    </h4>
-                                </router-link>
-                                <p class="text-principal">
-                                    When television was young, there was a
-                                    hugely popular show based on the still
-                                    popular fictional characte
-                                </p>
-                                <div class="row mt-2">
-                                    <div class="col-md-12">
-                                        <router-link
-                                            :to="{
-                                                name: 'portal.curso',
-                                                params: { id: 1 },
-                                            }"
-                                            class="btn btn-warning btn-block btn-flat"
-                                        >
-                                            Ver más
-                                            <span
-                                                class="lnr lnr-arrow-right text-white"
-                                            ></span>
-                                        </router-link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-popular-carusel">
-                            <div class="thumb-wrap relative">
-                                <div class="thumb relative">
-                                    <div class="overlay overlay-bg"></div>
-                                    <img
-                                        class="img-fluid"
-                                        :src="url_principal + '/images/p3.jpg'"
-                                        alt=""
-                                    />
-                                </div>
-                                <div
-                                    class="meta d-flex justify-content-between"
-                                >
-                                    <p>
-                                        <span class="lnr lnr-users"></span> 355
-                                        <!-- <span class="lnr lnr-bubble"></span>35 -->
-                                    </p>
-                                    <h4>$150</h4>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <router-link
-                                    :to="{
-                                        name: 'portal.curso',
-                                        params: { id: 1 },
-                                    }"
-                                >
-                                    <h4 class="text-principal mt-2 mb-2">
-                                        Fotografía
-                                    </h4>
-                                </router-link>
-                                <p class="text-principal">
-                                    When television was young, there was a
-                                    hugely popular show based on the still
-                                    popular fictional characte
-                                </p>
-                                <div class="row mt-2">
-                                    <div class="col-md-12">
-                                        <router-link
-                                            :to="{
-                                                name: 'portal.curso',
-                                                params: { id: 1 },
-                                            }"
-                                            class="btn btn-warning btn-block btn-flat"
-                                        >
-                                            Ver más
-                                            <span
-                                                class="lnr lnr-arrow-right text-white"
-                                            ></span>
-                                        </router-link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-popular-carusel">
-                            <div class="thumb-wrap relative">
-                                <div class="thumb relative">
-                                    <div class="overlay overlay-bg"></div>
-                                    <img
-                                        class="img-fluid"
-                                        :src="url_principal + '/images/p4.jpg'"
-                                        alt=""
-                                    />
-                                </div>
-                                <div
-                                    class="meta d-flex justify-content-between"
-                                >
-                                    <p>
-                                        <span class="lnr lnr-users"></span> 355
-                                        <!-- <span class="lnr lnr-bubble"></span>35 -->
-                                    </p>
-                                    <h4>$150</h4>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <router-link
-                                    :to="{
-                                        name: 'portal.curso',
-                                        params: { id: 1 },
-                                    }"
-                                >
-                                    <h4 class="text-principal mt-2 mb-2">
-                                        Diseño
-                                    </h4>
-                                </router-link>
-                                <p class="text-principal">
-                                    When television was young, there was a
-                                    hugely popular show based on the still
-                                    popular fictional characte
-                                </p>
-                                <div class="row mt-2">
-                                    <div class="col-md-12">
-                                        <router-link
-                                            :to="{
-                                                name: 'portal.curso',
-                                                params: { id: 1 },
-                                            }"
-                                            class="btn btn-warning btn-block btn-flat"
-                                        >
-                                            Ver más
-                                            <span
-                                                class="lnr lnr-arrow-right text-white"
-                                            ></span>
-                                        </router-link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-popular-carusel">
-                            <div class="thumb-wrap relative">
-                                <div class="thumb relative">
-                                    <div class="overlay overlay-bg"></div>
-                                    <img
-                                        class="img-fluid"
-                                        :src="url_principal + '/images/p1.jpg'"
-                                        alt=""
-                                    />
-                                </div>
-                                <div
-                                    class="meta d-flex justify-content-between"
-                                >
-                                    <p>
-                                        <span class="lnr lnr-users"></span> 355
-                                        <!-- <span class="lnr lnr-bubble"></span>35 -->
-                                    </p>
-                                    <h4>$150</h4>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <router-link
-                                    :to="{
-                                        name: 'portal.curso',
-                                        params: { id: 1 },
-                                    }"
-                                >
-                                    <h4 class="text-principal mt-2 mb-2">
-                                        Computación
-                                    </h4>
-                                </router-link>
-                                <p class="text-principal">
-                                    When television was young, there was a
-                                    hugely popular show based on the still
-                                    popular fictional characte
-                                </p>
-                                <div class="row mt-2">
-                                    <div class="col-md-12">
-                                        <router-link
-                                            :to="{
-                                                name: 'portal.curso',
-                                                params: { id: 1 },
-                                            }"
-                                            class="btn btn-warning btn-block btn-flat"
-                                        >
-                                            Ver más
-                                            <span
-                                                class="lnr lnr-arrow-right text-white"
-                                            ></span>
-                                        </router-link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="col-md-12" v-else>
+                        <h4
+                            class="w-100 font-weight-bold text-gray text-center"
+                        >
+                            NO SE ENCONTRARÓN REGISTROS
+                        </h4>
                     </div>
                 </div>
             </div>
@@ -423,17 +211,17 @@ export default {
                 mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d15302.44340797871!2d-68.13196529479978!3d-16.495230895308648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.497514656468287!2d-68.12797416816427!5e0!3m2!1ses-419!2sbo!4v1697748242821!5m2!1ses-419!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
             },
             oPortalGestoria: null,
+            listCursos: [],
         };
     },
     mounted() {
-        this.loadingWindow.close();
-        let self = this;
         this.getInfoContacto();
-
         this.getPortalGestoria();
-        setTimeout(function () {
-            self.initCarousel();
-        }, 300);
+        this.getCursosDestacados();
+
+        setTimeout(() => {
+            this.loadingWindow.close();
+        }, 500);
     },
     methods: {
         getInfoContacto() {
@@ -451,6 +239,19 @@ export default {
                     this.oPortalGestoria = res.data.portal_gestoria;
                 }
             });
+        },
+        getCursosDestacados() {
+            axios
+                .get(main_url + "/portal/getCursosDestacados")
+                .then((response) => {
+                    this.listCursos = response.data.cursos;
+                    let self = this;
+                    if (this.listCursos.length > 0) {
+                        setTimeout(function () {
+                            self.initCarousel();
+                        }, 300);
+                    }
+                });
         },
         initCarousel() {
             $(".popular-cursos-carusel").owlCarousel({

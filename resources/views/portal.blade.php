@@ -24,6 +24,9 @@
         var main_url = "{{ url('') }}";
         var app_base = "";
         // var app_base = "institute"; //habilitar esta linea si existe la carpeta public en el proyecto con el nombre del sistema
+
+        var texto_slider_inicio1 = "Tomorrow's Today";
+        var texto_slider_inicio2 = "Descripción del texto";
     </script>
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key={{ config('app.google_map_api') }}"></script> --}}
     <script src="{{ asset('js/jquery.js') }}"></script>
@@ -31,7 +34,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
         /*[ Back to top ]
-                ===========================================================*/
+                                                ===========================================================*/
         var windowH = $(window).height() / 2;
 
         $(window).on('scroll', function() {

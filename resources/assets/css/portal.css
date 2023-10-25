@@ -22,13 +22,30 @@
     display: none;
 }
 
-#logo{
+#logo {
     height: 40px;
     overflow: hidden;
 }
 body {
     height: auto;
     color: #ffffff;
+}
+
+.btn-warning:not(:disabled):not(.disabled):active,
+.btn-warning:not(:disabled):not(.disabled).active,
+.show > .btn-warning.dropdown-toggle {
+    color: white;
+    background-color: var(--principal2_hover);
+    border-color: var(--principal2_hover);
+}
+.btn-success:not(:disabled):not(.disabled):active,
+.btn-success:not(:disabled):not(.disabled):active,
+.btn-success:not(:disabled):not(.disabled).focus,
+.btn-success:not(:disabled):not(.disabled).focus,
+.show > .btn-success.dropdown-toggle {
+    color: white;
+    background-color: var(--principal2_hover);
+    border-color: var(--principal2_hover);
 }
 
 .contenedor_mapa iframe {
@@ -83,6 +100,10 @@ section {
 .btn-success {
     color: white !important;
     background-color: var(--principal2);
+}
+.single-popular-carusel .details h4:hover,
+.contenedor_cursos .contenedor_curso .details h4:hover {
+    color: var(--principal2_hover) !important;
 }
 
 h1,
@@ -178,11 +199,13 @@ h6 {
 
 .about-content {
     margin-top: 0px;
-}
-
-.about-content {
     padding: 50px 0px;
 }
+
+.about-banner{
+    background-size: cover!important;
+}
+
 /* SLIDER */
 .banner-area .overlay-bg {
     background-color: var(--principal_transparent2);
@@ -431,6 +454,10 @@ h6 {
 .primary-btn:hover {
     border-color: var(--principal2) !important;
     color: var(--principal2) !important;
+}
+.single-popular-carusel .thumb {
+    height: 200px;
+    overflow: hidden;
 }
 
 /* ADICIONALES */
@@ -765,4 +792,10 @@ h6 {
 
 .btn {
     border-radius: 0;
+}
+
+.titulo_curso {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

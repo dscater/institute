@@ -5,7 +5,7 @@
             class="navegacion banner-area relative about-banner"
             id="home"
             :style="
-                'background:url(' + url_principal + '/imgs/banner_seccion.jpg)'
+                'background:url(' + url_principal + '/imgs/ImagenDeNavegaciónPortal.png)'
             "
         >
             <div class="overlay overlay-bg"></div>
@@ -50,11 +50,23 @@
                             nostrud exercitation ullamco laboris nisi ut aliquip
                             ex ea commodo consequat.
                         </p>
-                        <hr class="border border-top border-white">
-                        <p><span class="font-weight-bold">Profesor: </span>Juan Álvarez Loza</p>
-                        <p><span class="font-weight-bold">Horario: </span>18:30 a 20:30</p>
-                        <p><span class="font-weight-bold">Días: </span>Lunes, Miércoles y Viernes</p>
-                        <p><span class="font-weight-bold">Modalidad: </span>Virtual</p>
+                        <hr class="border border-top border-white" />
+                        <p>
+                            <span class="font-weight-bold">Profesor: </span>Juan
+                            Álvarez Loza
+                        </p>
+                        <p>
+                            <span class="font-weight-bold">Horario: </span>18:30
+                            a 20:30
+                        </p>
+                        <p>
+                            <span class="font-weight-bold">Días: </span>Lunes,
+                            Miércoles y Viernes
+                        </p>
+                        <p>
+                            <span class="font-weight-bold">Modalidad: </span
+                            >Virtual
+                        </p>
                     </div>
                 </div>
             </div>
@@ -124,7 +136,7 @@ export default {
     margin: 20px 0px;
 }
 .contenedor_cursos .contenedor_curso .details h4:hover {
-    color: #f7631b !important;
+    color: var(--principal2_hover) !important;
 }
 @media (max-width: 576px) {
     .contenedor_cursos .contenedor_curso {

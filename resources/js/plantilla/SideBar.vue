@@ -79,7 +79,19 @@
                             <p>Pandel de Administración</p>
                         </router-link>
                     </li>
-                    <li class="nav-item">
+                    <li
+                        class="nav-item"
+                        v-if="
+                            permisos.includes('cursos.index') ||
+                            permisos.includes('inscripcions.index')
+                        "
+                        :class="[
+                            $route.name == 'cursos.index' ||
+                            $route.name == 'inscripcions.index'
+                                ? 'menu-is-opening menu-open'
+                                : '',
+                        ]"
+                    >
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>
@@ -88,47 +100,38 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a
-                                    href=""
+                            <li
+                                class="nav-item"
+                                v-if="permisos.includes('cursos.index')"
+                            >
+                                <router-link
+                                    :to="{ name: 'cursos.index' }"
                                     class="nav-link"
                                 >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Cursos</p>
-                                </a>
+                                </router-link>
                             </li>
                             <li class="nav-item">
-                                <a
-                                    href=""
-                                    class="nav-link"
-                                >
+                                <a href="" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Incripciones</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a
-                                    href=""
-                                    class="nav-link"
-                                >
+                                <a href="" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Horarios</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a
-                                    href=""
-                                    class="nav-link"
-                                >
+                                <a href="" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Recursos</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a
-                                    href=""
-                                    class="nav-link"
-                                >
+                                <a href="" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Comunicados</p>
                                 </a>
@@ -145,37 +148,25 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a
-                                    href=""
-                                    class="nav-link"
-                                >
+                                <a href="" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Servicios</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a
-                                    href=""
-                                    class="nav-link"
-                                >
+                                <a href="" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Solicitudes de Servicios</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a
-                                    href=""
-                                    class="nav-link"
-                                >
+                                <a href="" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Tips Para Lograr Tú Visa</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a
-                                    href=""
-                                    class="nav-link"
-                                >
+                                <a href="" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Configurar Gestoría de Visa</p>
                                 </a>
@@ -187,7 +178,7 @@
                         v-if="permisos.includes('portals.index')"
                     >
                         <router-link
-                            :to="{name:'admin_portal.index'}"
+                            :to="{ name: 'admin_portal.index' }"
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >

@@ -179,6 +179,14 @@ export default new Router({
             props: true,
         },
 
+        // Cursos
+        {
+            path: "/administracion/cursos",
+            name: "cursos.index",
+            component: require("./components/modulos/cursos/index.vue").default,
+            props: true,
+        },
+
         // Configuración
         {
             path: "/administracion/configuracion",
