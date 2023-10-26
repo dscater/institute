@@ -6392,9 +6392,32 @@ iframe {border: none;}
     height: 40px;
     overflow: hidden;
 }
+
+#logo img {
+    height: 100%;
+}
 body {
     height: auto;
     color: #ffffff;
+}
+
+.page-link {
+    background-color: white;
+    color: var(--principal);
+}
+
+.page-item.active .page-link:active,
+.page-item.active .page-link:hover,
+.page-item.active .page-link {
+    background-color: var(--principal2);
+}
+
+.page-item.active .page-link:active {
+    box-shadow: 0px 0px 0px;
+}
+
+.page-item.disabled .page-link {
+    cursor: not-allowed!important;
 }
 
 .btn-warning:not(:disabled):not(.disabled):active,
@@ -6568,8 +6591,8 @@ h6 {
     padding: 50px 0px;
 }
 
-.about-banner{
-    background-size: cover!important;
+.about-banner {
+    background-size: cover !important;
 }
 
 /* SLIDER */

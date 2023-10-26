@@ -50,7 +50,7 @@
                                         <router-link
                                             :to="{
                                                 name: 'portal.curso',
-                                                params: { id: 1 },
+                                                params: { id: item.id },
                                             }"
                                             class="btn btn-success btn-block btn-flat"
                                         >

@@ -5,7 +5,9 @@
             class="navegacion banner-area relative about-banner"
             id="home"
             :style="
-                'background:url(' + url_principal + '/imgs/ImagenDeNavegaciónPortal.png)'
+                'background:url(' +
+                url_principal +
+                '/imgs/ImagenDeNavegaciónPortal.png)'
             "
         >
             <div class="overlay overlay-bg"></div>
@@ -34,41 +36,46 @@
 
         <section class="search-course-area relative section-gap bg-principal">
             <div class="container bg-secundario2">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-lg-6 col-md-6 search-course-right p-0">
-                        <img
-                            :src="url_principal + '/images/p1.jpg'"
-                            width="100%"
-                        />
+                <b-skeleton-wrapper :loading="!oCurso">
+                    <template #loading>
+                        <b-row>
+                            <b-col cols="6">
+                                <b-skeleton-img></b-skeleton-img>
+                            </b-col>
+                            <b-col cols="6">
+                                <b-skeleton-img></b-skeleton-img>
+                            </b-col>
+                        </b-row>
+                    </template>
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-6 col-md-6 search-course-right p-0">
+                            <img :src="oCurso.url_imagen" width="100%" />
+                        </div>
+                        <div
+                            class="col-lg-6 col-md-6 search-course-left text-md"
+                        >
+                            <h1 class="text-white">{{ oCurso.nombre }}</h1>
+                            <p>{{ oCurso.descripcion }}</p>
+                            <!-- <hr class="border border-top border-white" />
+                            <p>
+                                <span class="font-weight-bold">Profesor: </span
+                                >Juan Álvarez Loza
+                            </p>
+                            <p>
+                                <span class="font-weight-bold">Horario: </span
+                                >18:30 a 20:30
+                            </p>
+                            <p>
+                                <span class="font-weight-bold">Días: </span
+                                >Lunes, Miércoles y Viernes
+                            </p>
+                            <p>
+                                <span class="font-weight-bold">Modalidad: </span
+                                >Virtual
+                            </p> -->
+                        </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 search-course-left text-md">
-                        <h1 class="text-white">Inglés Básico</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat.
-                        </p>
-                        <hr class="border border-top border-white" />
-                        <p>
-                            <span class="font-weight-bold">Profesor: </span>Juan
-                            Álvarez Loza
-                        </p>
-                        <p>
-                            <span class="font-weight-bold">Horario: </span>18:30
-                            a 20:30
-                        </p>
-                        <p>
-                            <span class="font-weight-bold">Días: </span>Lunes,
-                            Miércoles y Viernes
-                        </p>
-                        <p>
-                            <span class="font-weight-bold">Modalidad: </span
-                            >Virtual
-                        </p>
-                    </div>
-                </div>
+                </b-skeleton-wrapper>
             </div>
         </section>
     </div>
@@ -83,12 +90,24 @@ export default {
                 fullscreen: this.fullscreenLoading,
             }),
             url_principal: main_url,
+            oCurso: null,
         };
     },
     mounted() {
         this.loadingWindow.close();
+        this.getCurso();
     },
-    methods: {},
+    methods: {
+        getCurso() {
+            axios
+                .get(main_url + "/portal/getCurso/" + this.id)
+                .then((response) => {
+                    setTimeout(() => {
+                        this.oCurso = response.data.curso;
+                    }, 500);
+                });
+        },
+    },
 };
 </script>
 <style>

@@ -2,7 +2,7 @@
     <div class="login-page">
         <div class="login-box">
             <!-- /.login-logo -->
-            <div class="card border border-success">
+            <div class="card">
                 <div class="card-header text-center">
                     <img :src="logo" alt="Logo" />
                     <router-link :to="{ name: 'login' }" class="h1 text-white"
@@ -68,40 +68,38 @@
                                     <i class="fa fa-sign-in-alt"></i> Acceder
                                 </button>
                             </div>
-                            <div class="col-12 mt-3">
-                                <a
-                                    :href="url_portal"
-                                    class="mt-2 font-weight-bold"
-                                    v-loading.fullscreen.lock="
-                                        fullscreenLoading
-                                    "
-                                >
-                                    Recuperar mi contraseña
-                                </a>
-                            </div>
-                            <div class="col-12 mt-3">
-                                <a
-                                    :href="url_principal + '/inscripciones'"
-                                    class="mt-2 font-weight-bold"
-                                    v-loading.fullscreen.lock="
-                                        fullscreenLoading
-                                    "
-                                >
-                                    No tengo una cuenta (Registrarse)
-                                </a>
-                            </div>
-                            <div class="col-12 mt-4">
-                                <a
-                                    :href="url_portal"
-                                    class="mt-2 font-weight-bold text-white"
-                                    v-loading.fullscreen.lock="
-                                        fullscreenLoading
-                                    "
-                                >
-                                    <i class="fa fa-arrow-left"></i> Volver al
-                                    portal
-                                </a>
-                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-12">
+                            <a
+                                :href="url_portal"
+                                class="mt-2 font-weight-bold"
+                                v-loading.fullscreen.lock="fullscreenLoading"
+                            >
+                                Recuperar mi contraseña
+                            </a>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <a
+                                :href="url_principal + '/inscripciones'"
+                                class="mt-2 font-weight-bold"
+                                v-loading.fullscreen.lock="fullscreenLoading"
+                            >
+                                No tengo una cuenta (Registrarse)
+                            </a>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <a
+                                :href="url_portal"
+                                class="mt-2 font-weight-bold text-white"
+                                v-loading.fullscreen.lock="fullscreenLoading"
+                            >
+                                <i class="fa fa-arrow-left"></i> Volver al
+                                portal
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -190,10 +188,14 @@ export default {
 
 .login-page .card {
     border-radius: 0px;
-    box-shadow: 0px 0px 1px 1px var(--success);
+    /* box-shadow: 0px 0px 1px 1px var(--success); */
     background: var(--transparente);
 }
 .login-page .card-header {
-    border-bottom: solid 1px var(--success);
+    border-bottom: solid 1px white;
+}
+
+.login-page .card-footer {
+    border-top: solid 1px white;
 }
 </style>

@@ -30,8 +30,8 @@ class CursoController extends Controller
     public function listaCursos(Request $request)
     {
         $texto = $request->texto;
-        $per_page = 4;
-        $cursos = Curso::orderBy("id", "desc")->paginate($per_page);
+        $per_page = 12;
+        $cursos = Curso::where("nombre", "LIKE", "%$texto%")->orderBy("id", "desc")->paginate($per_page);
         return response()->JSON(['cursos' => $cursos, 'per_page' => $per_page, 'total' => count($cursos)], 200);
     }
 
@@ -85,6 +85,13 @@ class CursoController extends Controller
                 'message' => $e->getMessage(),
             ], 500);
         }
+    }
+
+    public function show(Curso $curso)
+    {
+        return response()->JSON([
+            "curso" => $curso
+        ], 200);
     }
 
     public function update(Request $request, Curso $curso)

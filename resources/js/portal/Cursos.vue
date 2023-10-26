@@ -40,77 +40,127 @@
                                 type="text"
                                 class="form-control"
                                 placeholder="Buscar..."
+                                v-model="search"
+                                @keyup="searchCursos"
                             />
                             <div class="input-group-append">
-                                <button class="btn btn-warning">
+                                <button
+                                    class="btn btn-success"
+                                    @click="searchCursos"
+                                >
                                     <i class="fa fa-search"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-12" v-if="search != ''">
+                        Resultados para: {{ search }}
+                    </div>
                 </div>
-                <div class="row courses-page" v-if="listCursos.length > 0">
-                    <div
-                        class="col-md-3 contenedor_curso"
-                        v-for="item in listCursos"
-                    >
-                        <div class="thumb-wrap relative">
-                            <div class="thumb relative">
-                                <div class="overlay overlay-bg"></div>
-                                <img
-                                    class="img-fluid"
-                                    :src="item.url_imagen"
-                                    alt=""
-                                />
+                <b-skeleton-wrapper :loading="loading">
+                    <template #loading>
+                        <b-row>
+                            <b-col cols="3">
+                                <b-skeleton-img></b-skeleton-img>
+                            </b-col>
+                            <b-col cols="3">
+                                <b-skeleton-img></b-skeleton-img>
+                            </b-col>
+                            <b-col cols="3">
+                                <b-skeleton-img></b-skeleton-img>
+                            </b-col>
+                            <b-col cols="3">
+                                <b-skeleton-img></b-skeleton-img>
+                            </b-col>
+                        </b-row>
+                        <b-row class="mt-4 pb-5">
+                            <b-col cols="3">
+                                <b-skeleton-img></b-skeleton-img>
+                            </b-col>
+                            <b-col cols="3">
+                                <b-skeleton-img></b-skeleton-img>
+                            </b-col>
+                            <b-col cols="3">
+                                <b-skeleton-img></b-skeleton-img>
+                            </b-col>
+                            <b-col cols="3">
+                                <b-skeleton-img></b-skeleton-img>
+                            </b-col>
+                        </b-row>
+                    </template>
+                    <div class="row courses-page" v-if="listCursos.length > 0">
+                        <div
+                            class="col-md-3 contenedor_curso"
+                            v-for="item in listCursos"
+                        >
+                            <div class="thumb-wrap relative">
+                                <div class="thumb relative">
+                                    <div class="overlay overlay-bg"></div>
+                                    <img
+                                        class="img-fluid"
+                                        :src="item.url_imagen"
+                                        alt=""
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div class="details p-3">
-                            <router-link
-                                :to="{
-                                    name: 'portal.curso',
-                                    params: { id: 1 },
-                                }"
-                            >
-                                <h4
-                                    class="text-principal mt-2 mb-2 titulo_curso"
+                            <div class="details p-3">
+                                <router-link
+                                    :to="{
+                                        name: 'portal.curso',
+                                        params: { id: 1 },
+                                    }"
                                 >
-                                    {{ item.nombre }}
-                                </h4>
-                            </router-link>
-                            <p class="text-principal">
-                                {{ item.texto_corto }}
-                            </p>
-                            <div class="row mt-2">
-                                <div class="col-md-12">
-                                    <router-link
-                                        :to="{
-                                            name: 'portal.curso',
-                                            params: { id: 1 },
-                                        }"
-                                        class="btn btn-warning btn-block btn-flat"
+                                    <h4
+                                        class="text-principal mt-2 mb-2 titulo_curso"
                                     >
-                                        Ver más
-                                        <span
-                                            class="lnr lnr-arrow-right text-white"
-                                        ></span>
-                                    </router-link>
+                                        {{ item.nombre }}
+                                    </h4>
+                                </router-link>
+                                <p class="text-principal">
+                                    {{ item.texto_corto }}
+                                </p>
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <router-link
+                                            :to="{
+                                                name: 'portal.curso',
+                                                params: { id: item.id },
+                                            }"
+                                            class="btn btn-warning btn-block btn-flat"
+                                        >
+                                            Ver más
+                                            <span
+                                                class="lnr lnr-arrow-right text-white"
+                                            ></span>
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 text-center">
-                        <a href="#" class="primary-btn text-uppercase"
-                            >Cargar más cursos</a
+                    <div class="row" v-else>
+                        <div
+                            class="col-md-12 p-5 mb-5 mt-5"
+                            style="height: 25vh"
                         >
+                            <h4
+                                class="font-weight-bold text-gray w-100 text-center"
+                            >
+                                NO SE ENCONTRARÓN REGISTROS
+                            </h4>
+                        </div>
                     </div>
-                </div>
-                <div class="row" v-else>
-                    <div class="col-md-12 p-5 mb-5 mt-5" style="height: 25vh;">
-                        <h4
-                            class="font-weight-bold text-gray w-100 text-center"
-                        >
-                            NO SE ENCONTRARÓN REGISTROS
-                        </h4>
+                </b-skeleton-wrapper>
+                <div class="row" v-if="!loading && listCursos.length > 0">
+                    <div class="col-md-12 pb-3 paginacion_portal">
+                        <b-pagination
+                            class="rounded-0"
+                            align="center"
+                            v-model="currentPage"
+                            :total-rows="rows"
+                            :per-page="perPage"
+                            aria-controls="my-table"
+                        ></b-pagination>
                     </div>
                 </div>
             </div>
@@ -128,17 +178,58 @@ export default {
             }),
             url_principal: main_url,
             listCursos: [],
+            currentPage: 1,
+            rows: 12,
+            perPage: 5,
+            filtro: {
+                orden: "defecto",
+                precio: "todos",
+                catalogo: "todos",
+            },
+            search: "",
+            setTimeOutSearch: null,
+            loading: false,
         };
+    },
+    watch: {
+        currentPage(newVal) {
+            this.getCursos(newVal);
+        },
     },
     mounted() {
         this.getCursos();
         this.loadingWindow.close();
     },
     methods: {
-        getCursos() {
-            axios.get(main_url + "/portal/getCursos").then((response) => {
-                this.listCursos = response.data.cursos.data;
-            });
+        getCursos(page = 1) {
+            this.loading = true;
+            axios
+                .get(main_url + "/portal/getCursos", {
+                    params: {
+                        page: page,
+                        orden: this.filtro.orden,
+                        precio: this.filtro.precio,
+                        catalogo: this.filtro.catalogo,
+                        texto: this.search,
+                    },
+                })
+                .then((response) => {
+                    this.listCursos = response.data.cursos.data;
+                    this.rows = response.data.cursos.total;
+                    this.perPage = response.data.per_page;
+                    let self = this;
+                    setTimeout(function () {
+                        self.loading = false;
+                    }, 300);
+                });
+        },
+        searchCursos() {
+            this.loading = true;
+            clearInterval(this.setTimeOutSearch);
+            let self = this;
+            this.setTimeOutSearch = setTimeout(function () {
+                self.getCursos();
+            }, 600);
         },
     },
 };
