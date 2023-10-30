@@ -19,6 +19,7 @@ class CreateInscripcionSolicitudsTable extends Migration
             $table->unsignedBigInteger("curso_id");
             $table->string("nivel", 155);
             $table->string("se_entero", 155);
+            $table->string("desc_se_entero", 300);
             $table->string("plan_pago", 155);
             $table->string("forma_pago", 155);
             $table->string("archivo_pago", 255)->nullable();

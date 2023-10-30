@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 25-10-2023 a las 17:18:14
+-- Tiempo de generación: 30-10-2023 a las 18:54:15
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -587,6 +587,7 @@ CREATE TABLE `inscripcion_solicituds` (
   `curso_id` bigint UNSIGNED NOT NULL,
   `nivel` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
   `se_entero` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc_se_entero` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `plan_pago` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
   `forma_pago` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
   `archivo_pago` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,

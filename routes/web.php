@@ -53,6 +53,7 @@ Route::get('portal/getConfiguracionGestoria', [ConfiguracionGestoriaController::
 Route::get('portal/getCursosDestacados', [CursoController::class, 'getCursosDestacados']);
 Route::get('portal/getCurso/{curso}', [CursoController::class, 'show']);
 Route::get('portal/getCursos', [CursoController::class, 'listaCursos']);
+Route::get('portal/getIndexCursos', [CursoController::class, 'index']);
 // inscripcion
 Route::post('/portal/registrar_inscripcion', [InscripcionController::class, 'registrar_inscripcion']);
 

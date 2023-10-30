@@ -13,6 +13,7 @@ class InscripcionSolicitud extends Model
         "curso_id",
         "nivel",
         "se_entero",
+        "desc_se_entero",
         "plan_pago",
         "forma_pago",
         "archivo_pago",

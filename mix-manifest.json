@@ -38,6 +38,7 @@
     "/imgs/login.jpg": "/imgs/login.jpg",
     "/imgs/login_2.jpg": "/imgs/login_2.jpg",
     "/imgs/logo.png": "/imgs/logo.png",
+    "/imgs/logo_a.png": "/imgs/logo_a.png",
     "/imgs/logo_n.png": "/imgs/logo_n.png",
     "/imgs/logo_transparent.png": "/imgs/logo_transparent.png",
     "/imgs/pinmap.gif": "/imgs/pinmap.gif",
@@ -120,6 +121,5 @@
     "/fonts/Poppins/Poppins-Thin.ttf": "/fonts/Poppins/Poppins-Thin.ttf",
     "/fonts/Poppins/Poppins-ThinItalic.ttf": "/fonts/Poppins/Poppins-ThinItalic.ttf",
     "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.ttf": "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.ttf",
-    "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff": "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff",
-    "/imgs/logo_a.png": "/imgs/logo_a.png"
+    "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff": "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff"
 }
