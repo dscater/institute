@@ -30,7 +30,7 @@
         </section>
         <!-- End banner Area -->
 
-        <section class="popular-course-area section-gap pt-3">
+        <section class="popular-course-area section-gap pt-4">
             <div class="container">
                 <div class="row">
                     <!-- PASOS -->
@@ -72,7 +72,7 @@
                     </div>
                     <!-- FORMULARIO -->
                     <div class="col-md-12 p-0 contenedor_forms">
-                        <div class="card bg-secundario2">
+                        <div class="card bg-secundario2 mb-5">
                             <div class="card-header bg-principal2">
                                 <h4 class="title">{{ txtPaso }}</h4>
                             </div>
