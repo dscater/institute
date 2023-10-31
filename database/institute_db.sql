@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 30-10-2023 a las 18:54:15
+-- Tiempo de generación: 31-10-2023 a las 18:18:06
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -261,7 +261,7 @@ CREATE TABLE `gestoria_nosotros` (
 --
 
 INSERT INTO `gestoria_nosotros` (`id`, `descripcion`, `imagen`, `created_at`, `updated_at`) VALUES
-(1, 'Somos Gestores<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '1698252640_1.png', '2023-10-23 17:45:35', '2023-10-25 16:50:40');
+(1, 'Somos Gestores<br />\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '1698252640_1.png', '2023-10-23 17:45:35', '2023-10-25 16:50:40');
 
 -- --------------------------------------------------------
 
@@ -496,7 +496,25 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (96, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN BANNER DE GESTORÍA', 'id: 1<br/>img: 1698082378_1.jpg<br/>posicion: 1<br/>created_at: 2023-10-23 13:32:58<br/>updated_at: 2023-10-23 13:32:58<br/>', 'id: 1<br/>img: 1698252229_1.webp<br/>posicion: 1<br/>created_at: 2023-10-23 13:32:58<br/>updated_at: 2023-10-25 12:43:49<br/>', 'GESTORÍA BANNERS', '2023-10-25', '12:43:49', '2023-10-25 16:43:49', '2023-10-25 16:43:49'),
 (97, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN BANNER DE GESTORÍA', 'id: 2<br/>img: 1698082443_2.jpg<br/>posicion: 2<br/>created_at: 2023-10-23 13:34:03<br/>updated_at: 2023-10-23 13:34:03<br/>', 'id: 2<br/>img: 1698252254_2.jpg<br/>posicion: 2<br/>created_at: 2023-10-23 13:34:03<br/>updated_at: 2023-10-25 12:44:14<br/>', 'GESTORÍA BANNERS', '2023-10-25', '12:44:14', '2023-10-25 16:44:14', '2023-10-25 16:44:14'),
 (98, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN DE GESTORÍA DE LA PÁGINA INICIAL', 'id: 1<br/>imagen_inicio: 1698252586_1.png<br/>titulo_inicio: Gestoría de visas para Estados Unidos sin complicaciones<br/>descripcion_inicio: ¡Prepara tu viaje o cambia tu vida! Encuentra todo lo que necesitas saber sobre las visas de turismo y de trabajo para Estados Unidos<br/>created_at: 2023-10-23 13:01:37<br/>updated_at: 2023-10-25 12:49:46<br/>', NULL, 'PORTAL GESTORÍA', '2023-10-25', '12:49:46', '2023-10-25 16:49:46', '2023-10-25 16:49:46'),
-(99, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN ¿QUIENES SOMOS? DE GESTORÍA', 'id: 1<br/>descripcion: Somos Gestores<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br/>imagen: 1698252640_1.png<br/>created_at: 2023-10-23 13:45:35<br/>updated_at: 2023-10-25 12:50:40<br/>', NULL, 'GESTORÍA NOSOTROS', '2023-10-25', '12:50:40', '2023-10-25 16:50:40', '2023-10-25 16:50:40');
+(99, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ LA DESCRIPCIÓN ¿QUIENES SOMOS? DE GESTORÍA', 'id: 1<br/>descripcion: Somos Gestores<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br/>imagen: 1698252640_1.png<br/>created_at: 2023-10-23 13:45:35<br/>updated_at: 2023-10-25 12:50:40<br/>', NULL, 'GESTORÍA NOSOTROS', '2023-10-25', '12:50:40', '2023-10-25 16:50:40', '2023-10-25 16:50:40'),
+(100, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS MENSUAL', 'id: 1<br/>titulo: PLAN MENSUAL<br/>costo: 49.99<br/>detalles: Descripción<br />\r\nLorem ipsum dolor sit amet<br />\r\nLorem ipsum dolor sit amet<br />\r\nLorem ipsum dolor sit amet<br />\r\nLorem ipsum dolor sit amet<br />\r\nLorem ipsum dolor sit amet<br />\r\n<br/>created_at: <br/>updated_at: <br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:35:32', '2023-10-31 15:35:32', '2023-10-31 15:35:32'),
+(101, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS TRIMESTRAL', 'id: 2<br/>titulo: PLAN TRIMESTRAL<br/>costo: 130.00<br/>detalles: Descripción<br />\r\nLorem ipsum dolor sit amet<br />\r\nLorem ipsum dolor sit amet<br />\r\nLorem ipsum dolor sit amet<br />\r\nLorem ipsum dolor sit amet<br />\r\nLorem ipsum dolor sit amet<br />\r\n<br/>created_at: <br/>updated_at: <br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:35:32', '2023-10-31 15:35:32', '2023-10-31 15:35:32'),
+(102, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS ANUAL', 'id: 3<br/>titulo: PLAN ANUAL<br/>costo: 400.00<br/>detalles: Descripción<br />\r\nLorem ipsum dolor sit amet<br />\r\nLorem ipsum dolor sit amet<br />\r\nLorem ipsum dolor sit amet<br />\r\nLorem ipsum dolor sit amet<br />\r\nLorem ipsum dolor sit amet<br />\r\n<br/>created_at: <br/>updated_at: <br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:35:32', '2023-10-31 15:35:32', '2023-10-31 15:35:32'),
+(103, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS MENSUAL', 'id: 1<br/>titulo: PLAN MENSUAL<br/>costo: 49.99<br/>detalles: Descripción<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br/>created_at: <br/>updated_at: <br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:43:51', '2023-10-31 15:43:51', '2023-10-31 15:43:51'),
+(104, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS TRIMESTRAL', 'id: 2<br/>titulo: PLAN TRIMESTRAL<br/>costo: 130.00<br/>detalles: Descripción<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit ame\n<br/>created_at: <br/>updated_at: <br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:43:51', '2023-10-31 15:43:51', '2023-10-31 15:43:51'),
+(105, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS ANUAL', 'id: 3<br/>titulo: PLAN ANUAL<br/>costo: 400.00<br/>detalles: Descripción<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br/>created_at: <br/>updated_at: <br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:43:51', '2023-10-31 15:43:51', '2023-10-31 15:43:51'),
+(106, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS MENSUAL', 'id: 1<br/>titulo: PLAN MENSUAL<br/>costo: 49.99<br/>detalles: Descripción<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br/>created_at: <br/>updated_at: <br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:45:33', '2023-10-31 15:45:33', '2023-10-31 15:45:33'),
+(107, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS TRIMESTRAL', 'id: 2<br/>titulo: PLAN TRIMESTRAL<br/>costo: 130.00<br/>detalles: Descripción<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit ame\n<br/>created_at: <br/>updated_at: <br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:45:33', '2023-10-31 15:45:33', '2023-10-31 15:45:33'),
+(108, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS ANUAL', 'id: 3<br/>titulo: PLAN ANUAL<br/>costo: 400.00<br/>detalles: Descripción<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br/>created_at: <br/>updated_at: <br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:45:33', '2023-10-31 15:45:33', '2023-10-31 15:45:33'),
+(109, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS MENSUAL', 'id: 1<br/>titulo: PLAN MENSUAL<br/>costo: 49.99<br/>detalles: Descripción<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br/>created_at: <br/>updated_at: <br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:47:43', '2023-10-31 15:47:43', '2023-10-31 15:47:43'),
+(110, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS TRIMESTRAL', 'id: 2<br/>titulo: PLAN TRIMESTRAL<br/>costo: 130.00<br/>detalles: Descripción<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit ame\n<br/>created_at: <br/>updated_at: <br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:47:43', '2023-10-31 15:47:43', '2023-10-31 15:47:43'),
+(111, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS ANUAL', 'id: 3<br/>titulo: PLAN ANUAL<br/>costo: 400.00<br/>detalles: Descripción<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br />\nLorem ipsum dolor sit amet<br/>created_at: <br/>updated_at: <br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:47:43', '2023-10-31 15:47:43', '2023-10-31 15:47:43'),
+(112, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS MENSUAL', 'id: 1<br/>titulo: PLAN MENSUAL<br/>costo: 49.99<br/>detalles: Plataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas<br/>created_at: <br/>updated_at: 2023-10-31 11:49:01<br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:49:01', '2023-10-31 15:49:01', '2023-10-31 15:49:01'),
+(113, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS TRIMESTRAL', 'id: 2<br/>titulo: PLAN TRIMESTRAL<br/>costo: 130.00<br/>detalles: Ahora USD 123<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas<br/>created_at: <br/>updated_at: 2023-10-31 11:49:01<br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:49:01', '2023-10-31 15:49:01', '2023-10-31 15:49:01'),
+(114, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS ANUAL', 'id: 3<br/>titulo: PLAN ANUAL<br/>costo: 400.00<br/>detalles: Ahora USD 214<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas<br/>created_at: <br/>updated_at: 2023-10-31 11:49:01<br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:49:01', '2023-10-31 15:49:01', '2023-10-31 15:49:01'),
+(115, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS MENSUAL', 'id: 1<br/>titulo: Plan Mensual<br/>costo: 49.99<br/>detalles: Plataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas<br/>created_at: <br/>updated_at: 2023-10-31 11:54:31<br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:54:31', '2023-10-31 15:54:31', '2023-10-31 15:54:31'),
+(116, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS TRIMESTRAL', 'id: 2<br/>titulo: Plan Trimestral<br/>costo: 130.00<br/>detalles: Ahora USD 123<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas<br/>created_at: <br/>updated_at: 2023-10-31 11:54:31<br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:54:31', '2023-10-31 15:54:31', '2023-10-31 15:54:31'),
+(117, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS ANUAL', 'id: 3<br/>titulo: Plan Anual<br/>costo: 400.00<br/>detalles: Ahora USD 214<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas<br/>created_at: <br/>updated_at: 2023-10-31 11:54:31<br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:54:31', '2023-10-31 15:54:31', '2023-10-31 15:54:31');
 
 -- --------------------------------------------------------
 
@@ -540,6 +558,13 @@ CREATE TABLE `inscripcions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `inscripcions`
+--
+
+INSERT INTO `inscripcions` (`id`, `user_id`, `nombres`, `apellidos`, `nro_iden`, `fecha_nac`, `edad`, `pais_residencia`, `nacionalidad`, `prov_dpto`, `sexo`, `fono`, `correo`, `created_at`, `updated_at`) VALUES
+(2, 5, 'MARCOS', 'MAMANI MAMANI', '12345', '2000-01-01', 23, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '7777777', 'marcos@gmail.com', '2023-10-31 17:52:08', '2023-10-31 17:52:08');
 
 -- --------------------------------------------------------
 
@@ -588,7 +613,8 @@ CREATE TABLE `inscripcion_solicituds` (
   `nivel` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
   `se_entero` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc_se_entero` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `plan_pago` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `plan_pago_id` bigint UNSIGNED NOT NULL,
+  `plan_costo` decimal(24,2) NOT NULL,
   `forma_pago` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
   `archivo_pago` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `desc_pago` text COLLATE utf8mb4_unicode_ci,
@@ -598,6 +624,13 @@ CREATE TABLE `inscripcion_solicituds` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `inscripcion_solicituds`
+--
+
+INSERT INTO `inscripcion_solicituds` (`id`, `inscripcion_id`, `curso_id`, `nivel`, `se_entero`, `desc_se_entero`, `plan_pago_id`, `plan_costo`, `forma_pago`, `archivo_pago`, `desc_pago`, `desc_otro_pago`, `estado_asignado`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 2, 7, 'NIVEL CERO', 'OTRO', 'UN CONOCIDO', 3, 400.00, 'DEPÓSITO BANCARIO', NULL, NULL, NULL, 'NO', 'PENDIENTE', '2023-10-31 17:52:08', '2023-10-31 17:52:08');
 
 -- --------------------------------------------------------
 
@@ -644,7 +677,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (28, '2023_10_24_121720_create_inscripcion_examens_table', 5),
 (29, '2023_10_24_121801_create_inscripcion_respuestas_table', 5),
 (30, '2023_10_24_122358_create_comunicados_table', 5),
-(31, '2023_10_24_122629_create_profesors_table', 5);
+(31, '2023_10_24_122629_create_profesors_table', 5),
+(32, '2023_10_31_104720_create_plan_pagos_table', 6);
 
 -- --------------------------------------------------------
 
@@ -663,6 +697,30 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `plan_pagos`
+--
+
+CREATE TABLE `plan_pagos` (
+  `id` bigint UNSIGNED NOT NULL,
+  `titulo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `costo` decimal(24,2) NOT NULL,
+  `detalles` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `plan_pagos`
+--
+
+INSERT INTO `plan_pagos` (`id`, `titulo`, `costo`, `detalles`, `created_at`, `updated_at`) VALUES
+(1, 'Plan Mensual', 49.99, 'Plataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas', NULL, '2023-10-31 15:54:31'),
+(2, 'Plan Trimestral', 130.00, 'Ahora USD 123<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas', NULL, '2023-10-31 15:54:31'),
+(3, 'Plan Anual', 400.00, 'Ahora USD 214<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas', NULL, '2023-10-31 15:54:31');
 
 -- --------------------------------------------------------
 
@@ -781,7 +839,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `dir`, `correo`, `fono`, `password`, `tipo`, `foto`, `acceso`, `fecha_registro`, `created_at`, `updated_at`) VALUES
 (1, 'admin@gmail.com', 'admin', 'admin', NULL, '', 'admin@gmail.com', NULL, '$2y$10$RrCZZySOwPej2gMFWsrjMe6dLzfaL5Q88h4J75I1FesEBRNPwq1x.', 'ADMINISTRADOR', NULL, 1, '2023-10-05', NULL, NULL),
 (2, 'juan@gmail.com', 'JUAN', 'PERES', 'MAMANI', 'LOS OLIVOS', 'JUAN@GMAIL.COM', '7777777', '$2y$10$PyYyeiVACluSevqQ9FEOm.jLPw744pSMyVy3Ek7DwvDo/bveMFj4q', 'ADMINISTRADOR', 'default.png', 1, '2023-10-07', '2023-10-07 23:33:20', '2023-10-07 23:39:10'),
-(3, 'maria@gmail.com', 'MARIA', 'MAMANI', 'MAMANI', 'LOS OLIVOS', 'MARIA@GMAIL.COM', '', '$2y$10$bd0rITfeftm3JW7h.vktRO7406W9Mykg1X2dukizhYvjqZfrzQsTi', 'AUXILIAR', 'default.png', 1, '2023-10-07', '2023-10-07 23:47:44', '2023-10-20 15:19:04');
+(3, 'maria@gmail.com', 'MARIA', 'MAMANI', 'MAMANI', 'LOS OLIVOS', 'MARIA@GMAIL.COM', '', '$2y$10$bd0rITfeftm3JW7h.vktRO7406W9Mykg1X2dukizhYvjqZfrzQsTi', 'AUXILIAR', 'default.png', 1, '2023-10-07', '2023-10-07 23:47:44', '2023-10-20 15:19:04'),
+(5, 'marcos@gmail.com', 'MARCOS', 'MAMANI MAMANI', NULL, 'LA PAZ - BOLIVIA', 'marcos@gmail.com', '7777777', '$2y$10$w.iN4dL8Pj/dTt/0kWD1oeQvb26B4mi2s/imbyJotYGTRui42RGKy', 'ESTUDIANTE', NULL, 1, '2023-10-31', '2023-10-31 17:52:08', '2023-10-31 17:52:08');
 
 --
 -- Índices para tablas volcadas
@@ -958,6 +1017,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indices de la tabla `plan_pagos`
+--
+ALTER TABLE `plan_pagos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `portal_comunicados`
 --
 ALTER TABLE `portal_comunicados`
@@ -1100,7 +1165,7 @@ ALTER TABLE `grupo_recursos`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
@@ -1112,7 +1177,7 @@ ALTER TABLE `horarios`
 -- AUTO_INCREMENT de la tabla `inscripcions`
 --
 ALTER TABLE `inscripcions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion_examens`
@@ -1130,19 +1195,25 @@ ALTER TABLE `inscripcion_respuestas`
 -- AUTO_INCREMENT de la tabla `inscripcion_solicituds`
 --
 ALTER TABLE `inscripcion_solicituds`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `plan_pagos`
+--
+ALTER TABLE `plan_pagos`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `portal_comunicados`
@@ -1172,7 +1243,7 @@ ALTER TABLE `red_socials`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
