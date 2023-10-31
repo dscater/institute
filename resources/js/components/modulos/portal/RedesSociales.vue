@@ -46,7 +46,6 @@
                                             v-model="oRedSocial.tiktok"
                                             autosize
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -68,7 +67,6 @@
                                             }"
                                             v-model="oRedSocial.facebook"
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -90,7 +88,6 @@
                                             }"
                                             v-model="oRedSocial.instagram"
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -112,7 +109,6 @@
                                             }"
                                             v-model="oRedSocial.youtube"
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"

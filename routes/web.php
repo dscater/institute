@@ -10,6 +10,7 @@ use App\Http\Controllers\GestoriaNosotrosController;
 use App\Http\Controllers\GestoriaServicioController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PlanPagoController;
 use App\Http\Controllers\PortalComunicadoController;
 use App\Http\Controllers\PortalGestoriaController;
 use App\Http\Controllers\RedSocialController;
@@ -56,6 +57,8 @@ Route::get('portal/getCursos', [CursoController::class, 'listaCursos']);
 Route::get('portal/getIndexCursos', [CursoController::class, 'index']);
 // inscripcion
 Route::post('/portal/registrar_inscripcion', [InscripcionController::class, 'registrar_inscripcion']);
+// plan_pagos
+Route::get('/portal/get_plan_pagos', [PlanPagoController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/configuracion/update', [ConfiguracionController::class, 'update']);
@@ -89,6 +92,11 @@ Route::middleware(['auth'])->group(function () {
 
         // REDES SOCIALES
         Route::resource('red_socials', RedSocialController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // PLAN PAGOS
+        Route::resource('plan_pagos', PlanPagoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
 

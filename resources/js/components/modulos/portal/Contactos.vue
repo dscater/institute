@@ -46,7 +46,6 @@
                                             v-model="oContacto.direccion"
                                             autosize
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -68,7 +67,6 @@
                                             }"
                                             v-model="oContacto.fono1"
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -90,7 +88,6 @@
                                             }"
                                             v-model="oContacto.fono2"
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -112,7 +109,6 @@
                                             }"
                                             v-model="oContacto.correo"
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -139,7 +135,6 @@
                                             }"
                                             v-model="oContacto.mapa"
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"

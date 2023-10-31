@@ -48,7 +48,6 @@
                                             "
                                             autosize
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -72,7 +71,6 @@
                                                 oConfiguracionGestoria.fono1
                                             "
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -96,7 +94,6 @@
                                                 oConfiguracionGestoria.fono2
                                             "
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -120,7 +117,6 @@
                                                 oConfiguracionGestoria.correo
                                             "
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -149,7 +145,6 @@
                                                 oConfiguracionGestoria.mapa
                                             "
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"

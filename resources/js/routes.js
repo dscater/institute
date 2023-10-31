@@ -139,6 +139,15 @@ export default new Router({
             props: true,
         },
 
+        // Portal - plan_pagos
+        {
+            path: "/administracion/portal/plan_pagos",
+            name: "admin_portal.plan_pagos",
+            component: require("./components/modulos/portal/PlanPagos.vue")
+                .default,
+            props: true,
+        },
+
         // Portal - gestoria_banners
         {
             path: "/administracion/portal/gestoria_banners",

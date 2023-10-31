@@ -297,6 +297,68 @@
                                         </router-link>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div
+                                        class="card card_portal collapsed-card"
+                                    >
+                                        <div class="card-header bg-dark">
+                                            <router-link
+                                                :to="{
+                                                    name: 'admin_portal.plan_pagos',
+                                                }"
+                                                class="text-left card-title btn btn-flat btn-success"
+                                                ><strong>Inicio: </strong
+                                                >Inscripciones - Plan de
+                                                Pagos</router-link
+                                            >
+                                            <div class="card-tools">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-tool"
+                                                    data-card-widget="collapse"
+                                                >
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <router-link
+                                            :to="{
+                                                name: 'admin_portal.plan_pagos',
+                                            }"
+                                            class="card-body link_body"
+                                        >
+                                            <div
+                                                class="col-md-12 p-3"
+                                                v-if="oRedSocial"
+                                            >
+                                                <p>
+                                                    <strong>Tiktok:</strong>
+                                                    {{ oRedSocial.tiktok }}
+                                                </p>
+                                                <p>
+                                                    <strong>Facebook:</strong>
+                                                    {{ oRedSocial.facebook }}
+                                                </p>
+                                                <p>
+                                                    <strong>Instagram:</strong>
+                                                    {{ oRedSocial.instagram }}
+                                                </p>
+                                                <p>
+                                                    <strong>Youtube:</strong>
+                                                    {{ oRedSocial.youtube }}
+                                                </p>
+                                            </div>
+                                            <img
+                                                v-else
+                                                :src="
+                                                    url_principal +
+                                                    '/imgs/fondo_social.jpg'
+                                                "
+                                                alt=""
+                                            />
+                                        </router-link>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

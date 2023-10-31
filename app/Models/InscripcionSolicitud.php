@@ -14,7 +14,8 @@ class InscripcionSolicitud extends Model
         "nivel",
         "se_entero",
         "desc_se_entero",
-        "plan_pago",
+        "plan_pago_id",
+        "plan_costo",
         "forma_pago",
         "archivo_pago",
         "desc_pago",
@@ -26,6 +27,10 @@ class InscripcionSolicitud extends Model
     public function inscripcion()
     {
         return $this->belongsTo(Inscripcion::class, 'inscripcion_id');
+    }
+    public function plan_pago()
+    {
+        return $this->belongsTo(PlanPago::class, 'plan_pago_id');
     }
     public function curso()
     {

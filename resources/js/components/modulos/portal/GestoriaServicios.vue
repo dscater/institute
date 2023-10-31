@@ -46,7 +46,6 @@
                                             v-model="oGestoriaServicio.turismo"
                                             autosize
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -70,7 +69,6 @@
                                             v-model="oGestoriaServicio.trabajo"
                                             autosize
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -98,7 +96,6 @@
                                             "
                                             autosize
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -125,7 +122,6 @@
                                             "
                                             autosize
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"
@@ -140,20 +136,21 @@
                                                 'text-danger':
                                                     errors.mensaje_servicio,
                                             }"
-                                            >Mensaje al final del formulario de registro*</label
+                                            >Mensaje al final del formulario de
+                                            registro*</label
                                         >
                                         <el-input
                                             type="textarea"
                                             placeholder="Mensaje al final del formulario de registro"
                                             :class="{
-                                                'is-invalid': errors.mensaje_servicio,
+                                                'is-invalid':
+                                                    errors.mensaje_servicio,
                                             }"
                                             v-model="
                                                 oGestoriaServicio.mensaje_servicio
                                             "
                                             autosize
                                         >
-                                            >
                                         </el-input>
                                         <span
                                             class="error invalid-feedback"

@@ -237,6 +237,7 @@ export default {
 <style>
 .contenedor_cursos .contenedor_curso {
     margin-bottom: 15px;
+    overflow: hidden;
 }
 .contenedor_cursos .contenedor_curso .thumb {
     height: 194px;
