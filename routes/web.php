@@ -9,6 +9,7 @@ use App\Http\Controllers\GestoriaBannerController;
 use App\Http\Controllers\GestoriaNosotrosController;
 use App\Http\Controllers\GestoriaServicioController;
 use App\Http\Controllers\GestoriaSolicitudController;
+use App\Http\Controllers\GestoriaTipController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlanPagoController;
@@ -62,6 +63,8 @@ Route::post('/portal/registrar_inscripcion', [InscripcionController::class, 'reg
 Route::get('/portal/get_plan_pagos', [PlanPagoController::class, 'index']);
 // gestoria_solicituds
 Route::post('/portal/registrar_solicitud', [GestoriaSolicitudController::class, 'registrar_solicitud']);
+// gestoria_tips
+Route::get('portal/getGestoriaTips', [GestoriaTipController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/configuracion/update', [ConfiguracionController::class, 'update']);
@@ -116,6 +119,12 @@ Route::middleware(['auth'])->group(function () {
         // GESTORIA-BANNERS
         Route::get('gestoria_banners/get_banner/ultimo', [GestoriaBannerController::class, 'bannerPrincipal']);
         Route::resource('gestoria_banners', GestoriaBannerController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // GESTORIA-TIPOS
+        Route::get('gestoria_tips/get_tip/ultimo', [GestoriaTipController::class, 'tipPrincipal']);
+        Route::resource('gestoria_tips', GestoriaTipController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
 

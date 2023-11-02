@@ -148,13 +148,12 @@ export default new Router({
             props: true,
         },
 
-        // Portal - gestoria_banners
+        // Portal - gestoria_tips
         {
-            path: "/administracion/portal/gestoria_banners",
-            name: "admin_portal.gestoria_banners",
-            component:
-                require("./components/modulos/portal/GestoriaBanners.vue")
-                    .default,
+            path: "/administracion/portal/gestoria_tips",
+            name: "admin_portal.gestoria_tips",
+            component: require("./components/modulos/portal/GestoriaTips.vue")
+                .default,
             props: true,
         },
 
@@ -174,6 +173,16 @@ export default new Router({
             name: "admin_portal.gestoria_servicios",
             component:
                 require("./components/modulos/portal/GestoriaServicios.vue")
+                    .default,
+            props: true,
+        },
+
+        // Portal - gestoria_banners
+        {
+            path: "/administracion/portal/gestoria_banners",
+            name: "admin_portal.gestoria_banners",
+            component:
+                require("./components/modulos/portal/GestoriaBanners.vue")
                     .default,
             props: true,
         },

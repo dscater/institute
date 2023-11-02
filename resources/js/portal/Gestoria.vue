@@ -185,97 +185,18 @@
                 </div>
                 <div class="row">
                     <div class="active-review-carusel-gestoria">
-                        <div class="single-review item bg-principal p-3">
+                        <div
+                            class="single-review item bg-principal p-3"
+                            v-for="item in listTips"
+                        >
                             <div
                                 class="title justify-content-start d-flex mt-1 mb-1"
                             >
                                 <h4 class="text-white">
-                                    ¿Cómo responder en la entrevista?
+                                    {{ item.titulo }}
                                 </h4>
                             </div>
-                            <p>
-                                Accessories Here you can find the best computer
-                                accessory for your laptop, monitor, printer,
-                                scanner, speaker. Here you can find the best
-                                computer accessory for your laptop, monitor,
-                                printer, scanner, speaker.
-                            </p>
-                        </div>
-                        <div class="single-review item bg-principal p-3">
-                            <div
-                                class="title justify-content-start d-flex mt-1 mb-1"
-                            >
-                                <h4 class="text-white">
-                                    ¿Qué hacer en una entrevista?
-                                </h4>
-                            </div>
-                            <p>
-                                Accessories Here you can find the best computer
-                                accessory for your laptop, monitor, printer,
-                                scanner, speaker. Here you can find the best
-                                computer accessory for your laptop, monitor,
-                                printer, scanner, speaker.
-                            </p>
-                        </div>
-                        <div class="single-review item bg-principal p-3">
-                            <div
-                                class="title justify-content-start d-flex mt-1 mb-1"
-                            >
-                                <h4 class="text-white">¿Cómo prepararte?</h4>
-                            </div>
-                            <p>
-                                Accessories Here you can find the best computer
-                                accessory for your laptop, monitor, printer,
-                                scanner, speaker. Here you can find the best
-                                computer accessory for your laptop, monitor,
-                                printer, scanner, speaker.
-                            </p>
-                        </div>
-                        <div class="single-review item bg-principal p-3">
-                            <div
-                                class="title justify-content-start d-flex mt-1 mb-1"
-                            >
-                                <h4 class="text-white">
-                                    ¿Cómo responder en la entrevista?
-                                </h4>
-                            </div>
-                            <p>
-                                Accessories Here you can find the best computer
-                                accessory for your laptop, monitor, printer,
-                                scanner, speaker. Here you can find the best
-                                computer accessory for your laptop, monitor,
-                                printer, scanner, speaker.
-                            </p>
-                        </div>
-                        <div class="single-review item bg-principal p-3">
-                            <div
-                                class="title justify-content-start d-flex mt-1 mb-1"
-                            >
-                                <h4 class="text-white">
-                                    ¿Qué hacer en una entrevista?
-                                </h4>
-                            </div>
-                            <p>
-                                Accessories Here you can find the best computer
-                                accessory for your laptop, monitor, printer,
-                                scanner, speaker. Here you can find the best
-                                computer accessory for your laptop, monitor,
-                                printer, scanner, speaker.
-                            </p>
-                        </div>
-                        <div class="single-review item bg-principal p-3">
-                            <div
-                                class="title justify-content-start d-flex mt-1 mb-1"
-                            >
-                                <h4 class="text-white">¿Cómo prepararte?</h4>
-                            </div>
-                            <p>
-                                Accessories Here you can find the best computer
-                                accessory for your laptop, monitor, printer,
-                                scanner, speaker. Here you can find the best
-                                computer accessory for your laptop, monitor,
-                                printer, scanner, speaker.
-                            </p>
+                            <p v-html="item.descripcion"></p>
                         </div>
                     </div>
                 </div>
@@ -386,18 +307,16 @@ export default {
                 correo: "",
                 mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d15302.44340797871!2d-68.13196529479978!3d-16.495230895308648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d-16.497514656468287!2d-68.12797416816427!5e0!3m2!1ses-419!2sbo!4v1697748242821!5m2!1ses-419!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
             },
+            listTips: [],
         };
     },
     mounted() {
         this.scrollArriba(0);
-        this.loadingWindow.close();
         this.getGestoriaNosotros();
         this.getGestoriaServicio();
         this.getConfiguracionGestoria();
-        let self = this;
-        setTimeout(() => {
-            self.initCaruselTips();
-        }, 300);
+        this.getGestoriaTips();
+        this.loadingWindow.close();
     },
     methods: {
         getGestoriaNosotros() {
@@ -413,6 +332,17 @@ export default {
             axios.get(url).then((res) => {
                 if (res.data.gestoria_servicio) {
                     this.oGestoriaServicio = res.data.gestoria_servicio;
+                }
+            });
+        },
+        getGestoriaTips() {
+            axios.get(main_url + "/portal/getGestoriaTips").then((response) => {
+                this.listTips = response.data.gestoria_tips;
+                let self = this;
+                if (this.listTips.length > 0) {
+                    setTimeout(function () {
+                        self.initCaruselTips();
+                    }, 300);
                 }
             });
         },

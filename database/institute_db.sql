@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 31-10-2023 a las 18:18:06
+-- Tiempo de generación: 02-11-2023 a las 23:26:10
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -285,7 +285,7 @@ CREATE TABLE `gestoria_servicios` (
 --
 
 INSERT INTO `gestoria_servicios` (`id`, `turismo`, `trabajo`, `estudiantes`, `renovacion`, `mensaje_servicio`, `created_at`, `updated_at`) VALUES
-(2, 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Turismo', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Trabajo', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Estudiantes', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Renovación', NULL, '2023-10-23 18:02:40', '2023-10-23 18:04:49');
+(2, 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Turismo', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Trabajo', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Estudiantes', 'Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Renovación', '“VERIFICA SI ES VIABLE TU CASO PARA OBTENER TU VISA DE ESTADOS UNIDOS POR TAN SÓLO 100BS”', '2023-10-23 18:02:40', '2023-11-02 22:03:04');
 
 -- --------------------------------------------------------
 
@@ -324,6 +324,37 @@ CREATE TABLE `gestoria_solicituds` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `gestoria_solicituds`
+--
+
+INSERT INTO `gestoria_solicituds` (`id`, `nombres`, `apellidos`, `fecha_nac`, `edad`, `nacionalidad`, `estado`, `sexo`, `fono`, `familiares_eeuu`, `parentesco`, `familiar_deportado`, `motivo`, `deportado_otro_pais`, `motivo_otro_pais`, `antecedentes_penales`, `desc_antecedentes`, `estudios`, `trabajo_actual`, `solicito_visa`, `motivo_rechazo`, `cuenta_bancaria`, `gana_aproximadamente`, `redes_sociales`, `correo`, `recomendado_por`, `estado_solicitud`, `created_at`, `updated_at`) VALUES
+(1, 'CARLOS', 'MARTINEZ MARTINEZ', '2000-01-01', 23, 'BOLIVIANO', '', 'HOMBRE', '7777777', 'SI', 'HERMANOS', 'SI', 'MOTIVO DEPORTACIÓN', 'SI', 'MOTIVO DEPORTACIÓN OTRO PAÍS', 'OTRO', 'DESCRIPCIÓN DE ANTECEDENTES OTRO', 'LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS', 'TRABAJO ACTUAL', 'SI', 'MOTIVO RECHAZO SOLICITUD', 'SI', 10000.00, 'HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM', 'carlosm@gmail.com', 'LO VI EN FACEBOOK', 'PENDIENTE', '2023-11-02 22:45:56', '2023-11-02 22:45:56');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `gestoria_tips`
+--
+
+CREATE TABLE `gestoria_tips` (
+  `id` bigint UNSIGNED NOT NULL,
+  `titulo` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `gestoria_tips`
+--
+
+INSERT INTO `gestoria_tips` (`id`, `titulo`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, '¿QUÉ HACER EN UNA ENTREVISTA?', 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.\r\nNUEVA LINEA', '2023-11-02 23:08:39', '2023-11-02 23:18:51'),
+(2, '¿CÓMO RESPONDER EN LA ENTREVISTA?', 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT', '2023-11-02 23:09:54', '2023-11-02 23:25:38'),
+(3, '¿CÓMO PREPARARTE?', 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT', '2023-11-02 23:10:07', '2023-11-02 23:25:35'),
+(4, '¿QUÉ HACER EN UNA ENTREVISTA?', 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT', '2023-11-02 23:10:30', '2023-11-02 23:25:32');
 
 -- --------------------------------------------------------
 
@@ -514,7 +545,21 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (114, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS ANUAL', 'id: 3<br/>titulo: PLAN ANUAL<br/>costo: 400.00<br/>detalles: Ahora USD 214<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas<br/>created_at: <br/>updated_at: 2023-10-31 11:49:01<br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:49:01', '2023-10-31 15:49:01', '2023-10-31 15:49:01'),
 (115, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS MENSUAL', 'id: 1<br/>titulo: Plan Mensual<br/>costo: 49.99<br/>detalles: Plataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas<br/>created_at: <br/>updated_at: 2023-10-31 11:54:31<br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:54:31', '2023-10-31 15:54:31', '2023-10-31 15:54:31'),
 (116, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS TRIMESTRAL', 'id: 2<br/>titulo: Plan Trimestral<br/>costo: 130.00<br/>detalles: Ahora USD 123<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas<br/>created_at: <br/>updated_at: 2023-10-31 11:54:31<br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:54:31', '2023-10-31 15:54:31', '2023-10-31 15:54:31'),
-(117, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS ANUAL', 'id: 3<br/>titulo: Plan Anual<br/>costo: 400.00<br/>detalles: Ahora USD 214<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas<br/>created_at: <br/>updated_at: 2023-10-31 11:54:31<br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:54:31', '2023-10-31 15:54:31', '2023-10-31 15:54:31');
+(117, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS ANUAL', 'id: 3<br/>titulo: Plan Anual<br/>costo: 400.00<br/>detalles: Ahora USD 214<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas<br/>created_at: <br/>updated_at: 2023-10-31 11:54:31<br/>', NULL, 'PLAN DE PAGOS', '2023-10-31', '11:54:31', '2023-10-31 15:54:31', '2023-10-31 15:54:31'),
+(118, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LA INFORMACIÓN DE GESTORÍA SERVICIOS', 'created_at: 2023-10-23 14:02:40<br/>estudiantes: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Estudiantes<br/>id: 2<br/>mensaje_servicio: “VERIFICA SI ES VIABLE TU CASO PARA OBTENER TU VISA DE ESTADOS UNIDOS POR TAN SÓLO 100BS”<br/>renovacion: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Renovación<br/>trabajo: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Trabajo<br/>turismo: Tipo de visa aplicable para pasajeros que por conexiones, escalas o itinerarios que llegan a un país, en el que toma el mismo medio de transporte o esperan el nuevo que los lleva al país. Turismo<br/>updated_at: 2023-11-02 18:03:04<br/>', NULL, 'GESTORÍA SERVICIOS', '2023-11-02', '18:03:04', '2023-11-02 22:03:04', '2023-11-02 22:03:04'),
+(119, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT. DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:08:39<br/>', NULL, 'GESTORÍA TIPS', '2023-11-02', '19:08:39', '2023-11-02 23:08:39', '2023-11-02 23:08:39'),
+(120, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:09:54<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT. DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.<br/>id: 2<br/>titulo: ¿CÓMO RESPONDER EN LA ENTREVISTA?<br/>updated_at: 2023-11-02 19:09:54<br/>', NULL, 'GESTORÍA TIPS', '2023-11-02', '19:09:54', '2023-11-02 23:09:54', '2023-11-02 23:09:54'),
+(121, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:10:07<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT. DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.<br/>id: 3<br/>titulo: ¿CÓMO PREPARARTE?<br/>updated_at: 2023-11-02 19:10:07<br/>', NULL, 'GESTORÍA TIPS', '2023-11-02', '19:10:07', '2023-11-02 23:10:07', '2023-11-02 23:10:07'),
+(122, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:10:30<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT. DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.<br/>id: 4<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:10:30<br/>', NULL, 'GESTORÍA TIPS', '2023-11-02', '19:10:30', '2023-11-02 23:10:30', '2023-11-02 23:10:30'),
+(123, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT. DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:08:39<br/>', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.<BR />\r\nNUEVA FILA<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:11:46<br/>', 'GESTORÍA TIPS', '2023-11-02', '19:11:46', '2023-11-02 23:11:46', '2023-11-02 23:11:46'),
+(124, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.<BR />\r\nNUEVA FILA<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:11:46<br/>', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.<BR />\r\nASDASD<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:13:59<br/>', 'GESTORÍA TIPS', '2023-11-02', '19:13:59', '2023-11-02 23:13:59', '2023-11-02 23:13:59'),
+(125, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.<BR />\r\nASDASD<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:13:59<br/>', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.<BR/><BR />\r\nASDASD<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:16:45<br/>', 'GESTORÍA TIPS', '2023-11-02', '19:16:45', '2023-11-02 23:16:45', '2023-11-02 23:16:45'),
+(126, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.<BR/><BR />\r\nASDASD<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:16:45<br/>', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.<BR />\r\nASDASD<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:16:51<br/>', 'GESTORÍA TIPS', '2023-11-02', '19:16:51', '2023-11-02 23:16:51', '2023-11-02 23:16:51'),
+(127, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.<BR />\r\nASDASD<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:16:51<br/>', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.\r\nASDASD<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:17:31<br/>', 'GESTORÍA TIPS', '2023-11-02', '19:17:31', '2023-11-02 23:17:31', '2023-11-02 23:17:31'),
+(128, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.<BR />\nNUEVA FILA<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:17:31<br/>', 'created_at: 2023-11-02 19:08:39<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.\r\nNUEVA LINEA<br/>id: 1<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:18:51<br/>', 'GESTORÍA TIPS', '2023-11-02', '19:18:51', '2023-11-02 23:18:51', '2023-11-02 23:18:51'),
+(129, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:10:30<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT. DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.<br/>id: 4<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:10:30<br/>', 'created_at: 2023-11-02 19:10:30<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT<br/>id: 4<br/>titulo: ¿QUÉ HACER EN UNA ENTREVISTA?<br/>updated_at: 2023-11-02 19:25:32<br/>', 'GESTORÍA TIPS', '2023-11-02', '19:25:32', '2023-11-02 23:25:32', '2023-11-02 23:25:32'),
+(130, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:10:07<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT. DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.<br/>id: 3<br/>titulo: ¿CÓMO PREPARARTE?<br/>updated_at: 2023-11-02 19:10:07<br/>', 'created_at: 2023-11-02 19:10:07<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT<br/>id: 3<br/>titulo: ¿CÓMO PREPARARTE?<br/>updated_at: 2023-11-02 19:25:35<br/>', 'GESTORÍA TIPS', '2023-11-02', '19:25:35', '2023-11-02 23:25:35', '2023-11-02 23:25:35'),
+(131, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN TIP DE GESTORÍA', 'created_at: 2023-11-02 19:09:54<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT. DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.<br/>id: 2<br/>titulo: ¿CÓMO RESPONDER EN LA ENTREVISTA?<br/>updated_at: 2023-11-02 19:09:54<br/>', 'created_at: 2023-11-02 19:09:54<br/>descripcion: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT<br/>id: 2<br/>titulo: ¿CÓMO RESPONDER EN LA ENTREVISTA?<br/>updated_at: 2023-11-02 19:25:38<br/>', 'GESTORÍA TIPS', '2023-11-02', '19:25:38', '2023-11-02 23:25:38', '2023-11-02 23:25:38');
 
 -- --------------------------------------------------------
 
@@ -678,7 +723,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (29, '2023_10_24_121801_create_inscripcion_respuestas_table', 5),
 (30, '2023_10_24_122358_create_comunicados_table', 5),
 (31, '2023_10_24_122629_create_profesors_table', 5),
-(32, '2023_10_31_104720_create_plan_pagos_table', 6);
+(32, '2023_10_31_104720_create_plan_pagos_table', 6),
+(33, '2023_11_02_184740_create_gestoria_tips_table', 7);
 
 -- --------------------------------------------------------
 
@@ -938,6 +984,12 @@ ALTER TABLE `gestoria_solicituds`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `gestoria_tips`
+--
+ALTER TABLE `gestoria_tips`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `grupos`
 --
 ALTER TABLE `grupos`
@@ -1141,7 +1193,13 @@ ALTER TABLE `gestoria_servicios`
 -- AUTO_INCREMENT de la tabla `gestoria_solicituds`
 --
 ALTER TABLE `gestoria_solicituds`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `gestoria_tips`
+--
+ALTER TABLE `gestoria_tips`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `grupos`
@@ -1165,7 +1223,7 @@ ALTER TABLE `grupo_recursos`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
@@ -1201,7 +1259,7 @@ ALTER TABLE `inscripcion_solicituds`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`

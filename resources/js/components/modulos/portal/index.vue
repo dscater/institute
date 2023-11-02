@@ -576,6 +576,60 @@
                                         <div class="card-header bg-dark">
                                             <router-link
                                                 :to="{
+                                                    name: 'admin_portal.gestoria_tips',
+                                                }"
+                                                class="text-left card-title btn btn-flat btn-success"
+                                                ><strong>Gestoría: </strong>
+                                                Tips</router-link
+                                            >
+                                            <div class="card-tools">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-tool"
+                                                    data-card-widget="collapse"
+                                                >
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <router-link
+                                            :to="{
+                                                name: 'admin_portal.gestoria_tips',
+                                            }"
+                                            class="card-body link_body"
+                                        >
+                                            <template v-if="oGestoriaTip">
+                                                <div class="row">
+                                                    <div class="col-md-12 p-4">
+                                                        <h4>
+                                                            {{
+                                                                oGestoriaTip.titulo
+                                                            }}
+                                                        </h4>
+                                                        <p>
+                                                            {{
+                                                                oGestoriaTip.descripcion
+                                                            }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                            <p
+                                                v-else
+                                                class="font-weight-bold text-center text-gray"
+                                            >
+                                                NO SE ENCONTRARÓN REGISTROS AÚN
+                                            </p>
+                                        </router-link>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div
+                                        class="card card_portal collapsed-card"
+                                    >
+                                        <div class="card-header bg-dark">
+                                            <router-link
+                                                :to="{
                                                     name: 'admin_portal.configuracion_gestoria',
                                                 }"
                                                 class="text-left card-title btn btn-flat btn-success"
@@ -667,6 +721,7 @@ export default {
             oGestoriaBanner: null,
             oGestoriaNosotros: null,
             oGestoriaServicio: null,
+            oGestoriaTip: null,
             oConfiguracionGestoria: null,
         };
     },
@@ -681,6 +736,7 @@ export default {
         this.getUltimoGestoriaBanner();
         this.getGestoriaNosotros();
         this.getGestoriaServicios();
+        this.getUltimoGestoriaTip();
         this.getInfoConfiguracionGestoria();
     },
     methods: {
@@ -750,6 +806,13 @@ export default {
                     this.oGestoriaServicio = res.data.gestoria_servicio;
                 }
             });
+        },
+        getUltimoGestoriaTip() {
+            axios
+                .get(main_url + "/admin/gestoria_tips/get_tip/ultimo")
+                .then((response) => {
+                    this.oGestoriaTip = response.data.gestoria_tip;
+                });
         },
         getInfoConfiguracionGestoria() {
             axios
