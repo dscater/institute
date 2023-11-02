@@ -987,6 +987,7 @@ export default {
                             confirmButtonText: "Aceptar",
                         });
                         this.errors = [];
+                        this.limpiarInscripcion();
                         this.enviando = false;
                     })
                     .catch((error) => {
@@ -1038,6 +1039,33 @@ export default {
                 this.enviando = false;
                 console.log(e);
             }
+        },
+        limpiarInscripcion() {
+            this.oInscripcion = {
+                nombres: "",
+                apellidos: "",
+                nro_iden: "",
+                fecha_nac: "",
+                edad: "",
+                pais_residencia: "",
+                nacionalidad: "",
+                prov_dpto: "",
+                sexo: "",
+                fono: "",
+                correo: "",
+                curso_id: "",
+                nivel: "",
+                se_entero: "",
+                desc_se_entero: "",
+                plan_pago_id: 3,
+                forma_pago: "",
+                archivo_pago: null,
+                desc_pago: "",
+                desc_otro_pago: "",
+                password: "",
+                password_confirmation: "",
+            };
+            this.$refs.archivo_pago.value = "";
         },
         calculaEdad() {
             if (this.oInscripcion.fecha_nac) {

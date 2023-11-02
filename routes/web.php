@@ -8,6 +8,7 @@ use App\Http\Controllers\CursoController;
 use App\Http\Controllers\GestoriaBannerController;
 use App\Http\Controllers\GestoriaNosotrosController;
 use App\Http\Controllers\GestoriaServicioController;
+use App\Http\Controllers\GestoriaSolicitudController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlanPagoController;
@@ -59,6 +60,8 @@ Route::get('portal/getIndexCursos', [CursoController::class, 'index']);
 Route::post('/portal/registrar_inscripcion', [InscripcionController::class, 'registrar_inscripcion']);
 // plan_pagos
 Route::get('/portal/get_plan_pagos', [PlanPagoController::class, 'index']);
+// gestoria_solicituds
+Route::post('/portal/registrar_solicitud', [GestoriaSolicitudController::class, 'registrar_solicitud']);
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/configuracion/update', [ConfiguracionController::class, 'update']);

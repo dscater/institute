@@ -165,84 +165,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 p-0 contenedor_forms">
-                        <div class="card bg-secundario2">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="form-group col-md-4">
-                                        <label>Nombres:</label>
-                                        <input
-                                            type="text"
-                                            class="form-control w-full"
-                                        />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label>Apellidos:</label>
-                                        <input
-                                            type="text"
-                                            class="form-control w-full"
-                                        />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label>Edad:</label>
-                                        <input
-                                            type="text"
-                                            class="form-control w-full"
-                                        />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label>Nacionalidad:</label>
-                                        <input
-                                            type="text"
-                                            class="form-control w-full"
-                                        />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label>Residencia Actual:</label>
-                                        <input
-                                            type="text"
-                                            class="form-control w-full"
-                                        />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label>Ocupación/Profesión:</label>
-                                        <input
-                                            type="text"
-                                            class="form-control w-full"
-                                        />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label>Email:</label>
-                                        <input
-                                            type="text"
-                                            class="form-control w-full"
-                                        />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label>Teléfono/Celular:</label>
-                                        <input
-                                            type="text"
-                                            class="form-control w-full"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button
-                                            class="btn btn-warning btn-block btn-flat"
-                                        >
-                                            Enviar solicitud
-                                            <span
-                                                class="fa fa-paper-plane"
-                                            ></span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <SolicitudGestoria
+                        :mensaje_servicio="oGestoriaServicio.mensaje_servicio"
+                    ></SolicitudGestoria>
                 </div>
             </div>
         </section>
@@ -426,7 +351,11 @@
     </div>
 </template>
 <script>
+import SolicitudGestoria from "./componentes/SolicitudGestoria.vue";
 export default {
+    components: {
+        SolicitudGestoria,
+    },
     data() {
         return {
             fullscreenLoading: true,
