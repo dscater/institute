@@ -83,9 +83,11 @@
                         class="nav-item"
                         v-if="
                             permisos.includes('cursos.index') ||
-                            permisos.includes('inscripcions.index')
+                            permisos.includes('inscripcions.index') ||
+                            permisos.includes('grupos.index')
                         "
                         :class="[
+                            $route.name == 'grupos.index' ||
                             $route.name == 'cursos.index' ||
                             $route.name == 'inscripcions.index'
                                 ? 'menu-is-opening menu-open'
@@ -100,6 +102,18 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
+                            <li
+                                class="nav-item"
+                                v-if="permisos.includes('grupos.index')"
+                            >
+                                <router-link
+                                    :to="{ name: 'grupos.index' }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Grupos</p>
+                                </router-link>
+                            </li>
                             <li
                                 class="nav-item"
                                 v-if="permisos.includes('cursos.index')"

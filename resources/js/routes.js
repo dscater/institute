@@ -222,6 +222,14 @@ export default new Router({
             props: true,
         },
 
+        // Grupos
+        {
+            path: "/administracion/grupos",
+            name: "grupos.index",
+            component: require("./components/modulos/grupos/index.vue").default,
+            props: true,
+        },
+
         // Configuración
         {
             path: "/administracion/configuracion",

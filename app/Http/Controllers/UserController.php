@@ -81,6 +81,11 @@ class UserController extends Controller
             'cursos.edit',
             'cursos.destroy',
 
+            'grupos.index',
+            'grupos.create',
+            'grupos.edit',
+            'grupos.destroy',
+
             'configuracion.index',
             'configuracion.edit',
 

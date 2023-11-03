@@ -10,6 +10,7 @@ use App\Http\Controllers\GestoriaNosotrosController;
 use App\Http\Controllers\GestoriaServicioController;
 use App\Http\Controllers\GestoriaSolicitudController;
 use App\Http\Controllers\GestoriaTipController;
+use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlanPagoController;
@@ -145,6 +146,11 @@ Route::middleware(['auth'])->group(function () {
 
         // CURSOS
         Route::resource('cursos', CursoController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // GRUPOS
+        Route::resource('grupos', GrupoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
     });
