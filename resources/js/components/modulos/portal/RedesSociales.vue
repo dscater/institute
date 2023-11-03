@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Administrar portal - Redes Sociales</h1>
+                        <h1>Configurar portal > Redes Sociales</h1>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Gestión de Cursos</h1>
+                        <h1>Administración de Cursos > Cursos</h1>
                     </div>
                 </div>
             </div>

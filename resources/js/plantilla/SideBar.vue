@@ -138,7 +138,28 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <li
+                        class="nav-item"
+                        v-if="
+                            permisos.includes('gestoria_servicios.index') ||
+                            permisos.includes('gestoria_tips.index') ||
+                            permisos.includes('portal_gestoria.index')
+                        "
+                        :class="[
+                            $route.name == 'gestoria_servicios.index' ||
+                            $route.name == 'gestoria_servicios.edit' ||
+                            $route.name == 'gestoria_tips.index' ||
+                            $route.name == 'admin_portal_gestoria.index' ||
+                            $route.name ==
+                                'admin_portal_gestoria.gestoria_banners' ||
+                            $route.name ==
+                                'admin_portal_gestoria.gestoria_nosotros' ||
+                            $route.name ==
+                                'admin_portal_gestoria.configuracion_gestoria'
+                                ? 'menu-is-opening menu-open'
+                                : '',
+                        ]"
+                    >
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p class="text-xs">
@@ -147,11 +168,23 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes(
+                                        'gestoria_servicios.index'
+                                    )
+                                "
+                            >
+                                <router-link
+                                    :to="{
+                                        name: 'gestoria_servicios.index',
+                                    }"
+                                    class="nav-link"
+                                >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Servicios</p>
-                                </a>
+                                </router-link>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link">
@@ -159,17 +192,33 @@
                                     <p>Solicitudes de Servicios</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
+                            <li
+                                class="nav-item"
+                                v-if="permisos.includes('gestoria_tips.index')"
+                            >
+                                <router-link
+                                    :to="{ name: 'gestoria_tips.index' }"
+                                    class="nav-link"
+                                >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Tips Para Lograr Tú Visa</p>
-                                </a>
+                                </router-link>
                             </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes('portal_gestoria.index')
+                                "
+                            >
+                                <router-link
+                                    :to="{
+                                        name: 'admin_portal_gestoria.index',
+                                    }"
+                                    class="nav-link"
+                                >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Configurar Gestoría de Visa</p>
-                                </a>
+                                </router-link>
                             </li>
                         </ul>
                     </li>

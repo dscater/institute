@@ -53,6 +53,19 @@ class UserController extends Controller
             'banners.edit',
             'banners.destroy',
 
+            'portal_gestoria.index',
+            'portal_gestoria_banners.create',
+
+            'gestoria_servicios.index',
+            'gestoria_servicios.create',
+            'gestoria_servicios.edit',
+            'gestoria_servicios.destroy',
+
+            'gestoria_tips.index',
+            'gestoria_tips.create',
+            'gestoria_tips.edit',
+            'gestoria_tips.destroy',
+
             'gestoria_banners.index',
             'gestoria_banners.create',
             'gestoria_banners.edit',

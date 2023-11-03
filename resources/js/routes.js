@@ -148,51 +148,68 @@ export default new Router({
             props: true,
         },
 
-        // Portal - gestoria_tips
+        // Portal - Gestoria
         {
-            path: "/administracion/portal/gestoria_tips",
-            name: "admin_portal.gestoria_tips",
-            component: require("./components/modulos/portal/GestoriaTips.vue")
+            path: "/administracion/portal_gestoria",
+            name: "admin_portal_gestoria.index",
+            component: require("./components/modulos/portal_gestoria/index.vue")
                 .default,
             props: true,
         },
 
-        // Portal - gestoria_nosotros
+        // gestoria_tips
         {
-            path: "/administracion/portal/gestoria_nosotros",
-            name: "admin_portal.gestoria_nosotros",
+            path: "/administracion/gestoria_tips",
+            name: "gestoria_tips.index",
+            component: require("./components/modulos/gestoria_tips/index.vue")
+                .default,
+            props: true,
+        },
+
+        // gestoria_nosotros
+        {
+            path: "/administracion/portal_gestoria/gestoria_nosotros",
+            name: "admin_portal_gestoria.gestoria_nosotros",
             component:
-                require("./components/modulos/portal/GestoriaNosotros.vue")
+                require("./components/modulos/portal_gestoria/GestoriaNosotros.vue")
                     .default,
             props: true,
         },
 
-        // Portal - gestoria_servicios
+        // gestoria_servicios
         {
-            path: "/administracion/portal/gestoria_servicios",
-            name: "admin_portal.gestoria_servicios",
+            path: "/administracion/gestoria_servicios",
+            name: "gestoria_servicios.index",
             component:
-                require("./components/modulos/portal/GestoriaServicios.vue")
+                require("./components/modulos/gestoria_servicios/index.vue")
+                    .default,
+            props: true,
+        },
+        {
+            path: "/administracion/gestoria_servicios/edit",
+            name: "gestoria_servicios.edit",
+            component:
+                require("./components/modulos/gestoria_servicios/GestoriaServicios.vue")
                     .default,
             props: true,
         },
 
         // Portal - gestoria_banners
         {
-            path: "/administracion/portal/gestoria_banners",
-            name: "admin_portal.gestoria_banners",
+            path: "/administracion/portal_gestoria/gestoria_banners",
+            name: "admin_portal_gestoria.gestoria_banners",
             component:
-                require("./components/modulos/portal/GestoriaBanners.vue")
+                require("./components/modulos/portal_gestoria/GestoriaBanners.vue")
                     .default,
             props: true,
         },
 
         // Portal - configuracion_gestoria
         {
-            path: "/administracion/portal/configuracion_gestoria",
-            name: "admin_portal.configuracion_gestoria",
+            path: "/administracion/portal_gestoria/configuracion_gestoria",
+            name: "admin_portal_gestoria.configuracion_gestoria",
             component:
-                require("./components/modulos/portal/ConfiguracionGestoria.vue")
+                require("./components/modulos/portal_gestoria/ConfiguracionGestoria.vue")
                     .default,
             props: true,
         },
