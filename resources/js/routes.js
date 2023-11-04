@@ -247,6 +247,15 @@ export default new Router({
             props: true,
         },
 
+        // Asignación Grupos
+        {
+            path: "/administracion/asignacion_grupos",
+            name: "asignacion_grupos.index",
+            component: require("./components/modulos/asignacion_grupos/index.vue").default,
+            props: true,
+        },
+
+
         // Configuración
         {
             path: "/administracion/configuracion",

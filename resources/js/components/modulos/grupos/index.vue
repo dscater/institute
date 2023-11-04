@@ -125,7 +125,9 @@
                                                             v-if="
                                                                 permisos.includes(
                                                                     'grupos.destroy'
-                                                                )
+                                                                ) &&
+                                                                !row.item
+                                                                    .existe_asignaciones
                                                             "
                                                             size="sm"
                                                             pill
@@ -260,6 +262,7 @@ export default {
             this.oGrupo.nombre = item.nombre ? item.nombre : "";
             this.oGrupo.descripcion = item.descripcion ? item.descripcion : "";
             this.oGrupo.estado = item.estado ? "" + item.estado : "ACTIVO";
+            this.oGrupo.existe_asignaciones = item.existe_asignaciones;
             this.modal_accion = "edit";
             this.muestra_modal = true;
         },

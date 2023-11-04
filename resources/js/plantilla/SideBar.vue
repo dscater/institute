@@ -85,13 +85,15 @@
                             permisos.includes('cursos.index') ||
                             permisos.includes('inscripcions.index') ||
                             permisos.includes('grupos.index') ||
-                            permisos.includes('inscripcions.index')
+                            permisos.includes('inscripcions.index') ||
+                            permisos.includes('asignacion_grupos.index')
                         "
                         :class="[
                             $route.name == 'grupos.index' ||
                             $route.name == 'cursos.index' ||
                             $route.name == 'inscripcions.index' ||
-                            $route.name == 'inscripcions.solicitudes'
+                            $route.name == 'inscripcions.solicitudes' ||
+                            $route.name == 'asignacion_grupos.index'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"
@@ -114,6 +116,20 @@
                                 >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Grupos</p>
+                                </router-link>
+                            </li>
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes('asignacion_grupos.index')
+                                "
+                            >
+                                <router-link
+                                    :to="{ name: 'asignacion_grupos.index' }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Asignación de Grupos</p>
                                 </router-link>
                             </li>
                             <li

@@ -35,6 +35,7 @@
                                     :class="{ 'is-invalid': errors.nombre }"
                                     v-model="grupo.nombre"
                                     clearable
+                                    :disabled="grupo.existe_asignaciones"
                                 >
                                 </el-input>
                                 <span
@@ -60,6 +61,7 @@
                                     v-model="grupo.descripcion"
                                     autosize
                                     clearable
+                                    :disabled="grupo.existe_asignaciones"
                                 >
                                 </el-input>
                                 <span
@@ -140,6 +142,7 @@ export default {
                 nombre: "",
                 descripcion: "",
                 estado: "ACTIVO",
+                existe_asignaciones: false,
             },
         },
     },

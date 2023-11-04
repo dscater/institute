@@ -26,6 +26,12 @@ class GrupoController extends Controller
         return response()->JSON(['grupos' => $grupos, 'total' => count($grupos)], 200);
     }
 
+    public function activos()
+    {
+        $grupos = Grupo::where("estado", "ACTIVO")->orderBy("id", "desc")->get();
+        return response()->JSON(['grupos' => $grupos, 'total' => count($grupos)], 200);
+    }
+
     public function store(Request $request)
     {
         $request->validate($this->validacion, $this->mensajes);

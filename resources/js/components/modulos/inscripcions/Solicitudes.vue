@@ -206,7 +206,7 @@
                                                 ><span
                                                     class="badge"
                                                     :class="{
-                                                        'badge-sucess':
+                                                        'badge-success':
                                                             item.estado ==
                                                             'ACEPTADO',
                                                         'badge-info':
@@ -341,7 +341,7 @@ export default {
                     ? "badge-info"
                     : "badge-warning";
             Swal.fire({
-                icon: "info",
+                icon: "question",
                 title: `¿Cambiar el estado de la solicitud con código <b class="badge badge-dark">${item.id}</b>?`,
                 html: `<strong>Se cambiara el estado a <span class="badge ${badge_class}">${estado}</span></strong>`,
                 showCancelButton: true,

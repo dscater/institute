@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AsignacionGrupoController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ConfiguracionGestoriaController;
@@ -151,14 +152,21 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // GRUPOS
+        Route::get("grupos/activos", [GrupoController::class, 'activos']);
         Route::resource('grupos', GrupoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
 
         // INSCRIPCIONES
+        Route::get("inscripcion_solicituds/aceptados_sin_asignar", [InscripcionSolicitudController::class, 'aceptados_sin_asignar']);
         Route::get("inscripcion_solicituds/{inscripcion_solicitud}", [InscripcionSolicitudController::class, 'show']);
         Route::put("inscripcion_solicituds/{inscripcion_solicitud}", [InscripcionSolicitudController::class, 'update']);
         Route::resource('inscripcions', InscripcionController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // ASIGNACION GRUPOS
+        Route::resource('asignacion_grupos', AsignacionGrupoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
     });

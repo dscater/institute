@@ -11,7 +11,16 @@ class Grupo extends Model
 
     protected $fillable = ["nombre", "descripcion", "link_reunion", "estado"];
 
-    protected $appends = ['fecha_registro_t'];
+    protected $appends = ['fecha_registro_t', 'existe_asignaciones'];
+
+    public function getExisteAsignacionesAttribute()
+    {
+        $asignacion_grupos = AsignacionGrupo::where("grupo_id", $this->id)->get();
+        if (count($asignacion_grupos) > 0) {
+            return true;
+        }
+        return false;
+    }
 
     public function getFechaRegistroTAttribute()
     {

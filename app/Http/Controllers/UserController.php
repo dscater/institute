@@ -91,6 +91,11 @@ class UserController extends Controller
             'inscripcions.edit',
             'inscripcions.destroy',
 
+            'asignacion_grupos.index',
+            'asignacion_grupos.create',
+            'asignacion_grupos.edit',
+            'asignacion_grupos.destroy',
+
             'configuracion.index',
             'configuracion.edit',
 
