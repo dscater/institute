@@ -46,7 +46,9 @@
     <script>
         $(document).ready(function() {
             $(document).on("click", "aside nav ul li a", function() {
-                if ($("body").hasClass("sidebar-open") && !$(this).parent().hasClass("menu")) {
+                let existe_submenu = $(this).siblings("ul.nav-treeview");
+                if ($("body").hasClass("sidebar-open") && !$(this).parent().hasClass("menu") &&
+                    existe_submenu.length == 0) {
                     $("body").addClass("sidebar-collapse");
                     $("body").addClass("sidebar-close");
                     $("body").removeClass("sidebar-open");

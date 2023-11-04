@@ -74,7 +74,7 @@
                             </div>
 
                             <div class="card-body">
-                                <strong
+                                <!-- <strong
                                     ><i class="fas fa-id-card mr-1"></i>
                                     C.I:</strong
                                 >
@@ -82,7 +82,7 @@
                                     class="text-success"
                                     v-text="oUsuario?.full_ci"
                                 ></p>
-                                <hr />
+                                <hr /> -->
                                 <strong
                                     ><i class="fas fa-phone mr-1"></i
                                     >Teléfono/Celular:</strong

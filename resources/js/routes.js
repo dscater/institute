@@ -221,6 +221,13 @@ export default new Router({
             component: require("./components/modulos/cursos/index.vue").default,
             props: true,
         },
+        {
+            path: "/administracion/mis_cursos",
+            name: "estudiante_cursos.index",
+            component:
+                require("./components/modulos/cursos/EstudianteCursos.vue")
+                    .default,
+        },
 
         // Grupos
         {
@@ -251,10 +258,11 @@ export default new Router({
         {
             path: "/administracion/asignacion_grupos",
             name: "asignacion_grupos.index",
-            component: require("./components/modulos/asignacion_grupos/index.vue").default,
+            component:
+                require("./components/modulos/asignacion_grupos/index.vue")
+                    .default,
             props: true,
         },
-
 
         // Configuración
         {

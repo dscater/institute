@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comunicado;
+use App\Models\Curso;
 use App\Models\Empresa;
+use App\Models\GestoriaSolicitud;
+use App\Models\GestoriaTip;
+use App\Models\GrupoRecurso;
 use App\Models\HistorialAccion;
+use App\Models\Horario;
+use App\Models\Inscripcion;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -103,6 +110,11 @@ class UserController extends Controller
         ],
         "AUXILIAR" => [],
         "PROFESOR" => [],
+        "ESTUDIANTE" => [
+            "estudiante_cursos.index",
+
+            "recursos.index"
+        ],
     ];
 
 
@@ -388,55 +400,86 @@ class UserController extends Controller
     {
         $tipo = Auth::user()->tipo;
         $array_infos = [];
-        $array_infos[] = [
-            'label' => 'Inscripciones',
-            'cantidad' => count(User::where('id', '!=', 1)->get()),
-            'color' => 'bg-dark',
-            'icon' => asset("imgs/icon_inscripcion.png"),
-            "url" => ""
-        ];
-
-        $array_infos[] = [
-            'label' => 'Horarios',
-            'cantidad' => count(User::where('id', '!=', 1)->get()),
-            'color' => 'bg-dark',
-            'icon' => asset("imgs/icon_horarios.png"),
-            "url" => ""
-        ];
-
-        $array_infos[] = [
-            'label' => 'Gestoría Solicitudes',
-            'cantidad' => count(User::where('id', '!=', 1)->get()),
-            'color' => 'bg-dark',
-            'icon' => asset("imgs/icon_solicitud.png"),
-            "url" => ""
-        ];
-
-        $array_infos[] = [
-            'label' => 'Tips de Visa',
-            'cantidad' => count(User::where('id', '!=', 1)->get()),
-            'color' => 'bg-dark',
-            'icon' => asset("imgs/icon_tips.png"),
-            "url" => ""
-        ];
-
-        if (in_array('usuarios.index', $this->permisos[$tipo])) {
+        if (in_array('inscripcions.index', $this->permisos[$tipo])) {
             $array_infos[] = [
-                'label' => 'Usuarios',
-                'cantidad' => count(User::where('id', '!=', 1)->get()),
+                'label' => 'Inscripciones',
+                'cantidad' => count(Inscripcion::all()),
                 'color' => 'bg-dark',
-                'icon' => asset("imgs/icon_users.png"),
-                "url" => "usuarios.index"
+                'icon' => asset("imgs/icon_inscripcion.png"),
+                "url" => ""
             ];
         }
 
-        $array_infos[] = [
-            'label' => 'Recursos',
-            'cantidad' => count(User::where('id', '!=', 1)->get()),
-            'color' => 'bg-dark',
-            'icon' => asset("imgs/icon_recursos.png"),
-            "url" => ""
-        ];
+        if (in_array('horarios.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+                'label' => 'Horarios',
+                'cantidad' => count(Horario::all()),
+                'color' => 'bg-dark',
+                'icon' => asset("imgs/icon_horarios.png"),
+                "url" => ""
+            ];
+        }
+
+        if (in_array('gestoria_solicituds.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+                'label' => 'Gestoría Solicitudes',
+                'cantidad' => count(GestoriaSolicitud::all()),
+                'color' => 'bg-dark',
+                'icon' => asset("imgs/icon_solicitud.png"),
+                "url" => ""
+            ];
+        }
+        if (in_array('gestoria_tips.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+                'label' => 'Tips de Visa',
+                'cantidad' => count(GestoriaTip::all()),
+                'color' => 'bg-dark',
+                'icon' => asset("imgs/icon_tips.png"),
+                "url" => ""
+            ];
+        }
+
+        if (in_array('users.index', $this->permisos[$tipo])) {
+            if (in_array('usuarios.index', $this->permisos[$tipo])) {
+                $array_infos[] = [
+                    'label' => 'Usuarios',
+                    'cantidad' => count(User::where('id', '!=', 1)->get()),
+                    'color' => 'bg-dark',
+                    'icon' => asset("imgs/icon_users.png"),
+                    "url" => "usuarios.index"
+                ];
+            }
+        }
+
+        if (in_array('cursos.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+                'label' => 'Cursos',
+                'cantidad' => count(Curso::all()),
+                'color' => 'bg-dark',
+                'icon' => asset("imgs/icon_recursos.png"),
+                "url" => ""
+            ];
+        }
+
+        if (in_array('grupo_recursos.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+                'label' => 'Recursos',
+                'cantidad' => count(GrupoRecurso::all()),
+                'color' => 'bg-dark',
+                'icon' => asset("imgs/icon_recursos.png"),
+                "url" => ""
+            ];
+        }
+
+        if (in_array('comunicados.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+                'label' => 'Comunicados',
+                'cantidad' => count(Comunicado1::all()),
+                'color' => 'bg-dark',
+                'icon' => asset("imgs/icon_recursos.png"),
+                "url" => ""
+            ];
+        }
 
         return response()->JSON($array_infos);
     }

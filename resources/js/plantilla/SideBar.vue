@@ -81,12 +81,78 @@
                     </li>
                     <li
                         class="nav-item"
+                        v-if="permisos.includes('estudiante_cursos.index')"
+                        :class="[
+                            $route.name == 'estudiante_cursos.index'
+                                ? 'menu-is-opening menu-open'
+                                : '',
+                        ]"
+                    >
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-list-alt"></i>
+                            <p>
+                                Cursos
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes('estudiante_cursos.index')
+                                "
+                            >
+                                <router-link
+                                    :to="{ name: 'estudiante_cursos.index' }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Mis Cursos</p>
+                                </router-link>
+                            </li>
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes('estudiante_cursos.index')
+                                "
+                            >
+                                <router-link
+                                    :to="{ name: 'estudiante_cursos.index' }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Recursos</p>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" v-if="user.tipo == 'ESTUDIANTE'">
+                        <router-link
+                            :to="{ name: 'grupos.index' }"
+                            class="nav-link"
+                        >
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>Examen de Nivelación</p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item" v-if="user.tipo == 'ESTUDIANTE'">
+                        <router-link
+                            :to="{ name: 'grupos.index' }"
+                            class="nav-link"
+                        >
+                            <i class="nav-icon fas fa-list-alt"></i>
+                            <p>Comunicados</p>
+                        </router-link>
+                    </li>
+                    <li
+                        class="nav-item"
                         v-if="
-                            permisos.includes('cursos.index') ||
-                            permisos.includes('inscripcions.index') ||
-                            permisos.includes('grupos.index') ||
-                            permisos.includes('inscripcions.index') ||
-                            permisos.includes('asignacion_grupos.index')
+                            user.tipo != 'ESTUDIANTE' &&
+                            (permisos.includes('cursos.index') ||
+                                permisos.includes('inscripcions.index') ||
+                                permisos.includes('grupos.index') ||
+                                permisos.includes('inscripcions.index') ||
+                                permisos.includes('asignacion_grupos.index'))
                         "
                         :class="[
                             $route.name == 'grupos.index' ||
