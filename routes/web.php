@@ -12,6 +12,7 @@ use App\Http\Controllers\GestoriaSolicitudController;
 use App\Http\Controllers\GestoriaTipController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\InscripcionController;
+use App\Http\Controllers\InscripcionSolicitudController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlanPagoController;
 use App\Http\Controllers\PortalComunicadoController;
@@ -151,6 +152,13 @@ Route::middleware(['auth'])->group(function () {
 
         // GRUPOS
         Route::resource('grupos', GrupoController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // INSCRIPCIONES
+        Route::get("inscripcion_solicituds/{inscripcion_solicitud}", [InscripcionSolicitudController::class, 'show']);
+        Route::put("inscripcion_solicituds/{inscripcion_solicitud}", [InscripcionSolicitudController::class, 'update']);
+        Route::resource('inscripcions', InscripcionController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
     });

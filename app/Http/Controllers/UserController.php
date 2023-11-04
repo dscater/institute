@@ -86,6 +86,11 @@ class UserController extends Controller
             'grupos.edit',
             'grupos.destroy',
 
+            'inscripcions.index',
+            'inscripcions.create',
+            'inscripcions.edit',
+            'inscripcions.destroy',
+
             'configuracion.index',
             'configuracion.edit',
 
@@ -98,7 +103,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $usuarios = User::where('id', '!=', 1)->get();
+        $usuarios = User::whereNotIn("tipo", ["ESTUDIANTE", "PROFESOR"])->where('id', '!=', 1)->get();
         return response()->JSON(['usuarios' => $usuarios, 'total' => count($usuarios)], 200);
     }
 

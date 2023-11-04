@@ -230,6 +230,23 @@ export default new Router({
             props: true,
         },
 
+        // Inscripciones
+        {
+            path: "/administracion/inscripcions",
+            name: "inscripcions.index",
+            component: require("./components/modulos/inscripcions/index.vue")
+                .default,
+            props: true,
+        },
+        {
+            path: "/administracion/inscripcions/solicitudes/:id",
+            name: "inscripcions.solicitudes",
+            component:
+                require("./components/modulos/inscripcions/Solicitudes.vue")
+                    .default,
+            props: true,
+        },
+
         // Configuración
         {
             path: "/administracion/configuracion",

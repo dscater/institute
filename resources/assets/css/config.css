@@ -13,6 +13,10 @@
     --secondary: #da1900;
     --transparente: #000000bd;
 }
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .secondary {
     background: var(--secondary);
     color: white;

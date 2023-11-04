@@ -84,12 +84,14 @@
                         v-if="
                             permisos.includes('cursos.index') ||
                             permisos.includes('inscripcions.index') ||
-                            permisos.includes('grupos.index')
+                            permisos.includes('grupos.index') ||
+                            permisos.includes('inscripcions.index')
                         "
                         :class="[
                             $route.name == 'grupos.index' ||
                             $route.name == 'cursos.index' ||
-                            $route.name == 'inscripcions.index'
+                            $route.name == 'inscripcions.index' ||
+                            $route.name == 'inscripcions.solicitudes'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"
@@ -126,11 +128,17 @@
                                     <p>Cursos</p>
                                 </router-link>
                             </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
+                            <li
+                                class="nav-item"
+                                v-if="permisos.includes('inscripcions.index')"
+                            >
+                                <router-link
+                                    :to="{ name: 'inscripcions.index' }"
+                                    class="nav-link"
+                                >
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Incripciones</p>
-                                </a>
+                                    <p>Inscripciones</p>
+                                </router-link>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link">

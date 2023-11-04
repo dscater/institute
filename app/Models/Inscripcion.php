@@ -24,8 +24,36 @@ class Inscripcion extends Model
         "correo",
     ];
 
+    protected $appends = ['full_name', 'fecha_registro_t', 'cantidad_solicitudes', 'cantidad_solicitudes_pendientes'];
+
+    public function getCantidadSolicitudesPendientesAttribute()
+    {
+        $pendientes = InscripcionSolicitud::where("inscripcion_id", $this->id)->where("estado", "PENDIENTE")->get();
+        return count($pendientes);
+    }
+
+    public function getCantidadSolicitudesAttribute()
+    {
+        return count($this->inscripcion_solicituds);
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->nombres . ' ' . $this->apellidos;
+    }
+
+    public function getFechaRegistroTAttribute()
+    {
+        return date("d/m/Y", strtotime($this->created_at));
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function inscripcion_solicituds()
+    {
+        return $this->hasMany(InscripcionSolicitud::class, 'inscripcion_id')->orderBy('id', 'desc');
     }
 }

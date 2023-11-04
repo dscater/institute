@@ -24,6 +24,16 @@ class InscripcionSolicitud extends Model
         "estado",
     ];
 
+    protected $appends = ["url_archivo"];
+
+    public function getUrlArchivoAttribute()
+    {
+        if ($this->archivo_pago) {
+            return asset("files/" . $this->archivo_pago);
+        }
+        return false;
+    }
+
     public function inscripcion()
     {
         return $this->belongsTo(Inscripcion::class, 'inscripcion_id');
