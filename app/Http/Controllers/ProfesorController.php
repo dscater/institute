@@ -128,6 +128,7 @@ class ProfesorController extends Controller
             $usuario = User::findOrFail($profesor->user_id);
             $usuario->usuario = $request->correo;
             $usuario->correo = $request->correo;
+            $usuario->acceso = $request->acceso;
             if (trim($request->password) != '') {
                 $usuario->password = Hash::make($usuario->password);
             }
