@@ -12,6 +12,7 @@ use App\Http\Controllers\GestoriaServicioController;
 use App\Http\Controllers\GestoriaSolicitudController;
 use App\Http\Controllers\GestoriaTipController;
 use App\Http\Controllers\GrupoController;
+use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\InscripcionSolicitudController;
 use App\Http\Controllers\LoginController;
@@ -173,6 +174,11 @@ Route::middleware(['auth'])->group(function () {
 
         // PROFESORES
         Route::resource('profesors', ProfesorController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // HORARIOS
+        Route::resource('horarios', HorarioController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
     });

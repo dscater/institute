@@ -152,14 +152,16 @@
                                 permisos.includes('inscripcions.index') ||
                                 permisos.includes('grupos.index') ||
                                 permisos.includes('inscripcions.index') ||
-                                permisos.includes('asignacion_grupos.index'))
+                                permisos.includes('asignacion_grupos.index') ||
+                                permisos.includes('horarios.index'))
                         "
                         :class="[
                             $route.name == 'grupos.index' ||
                             $route.name == 'cursos.index' ||
                             $route.name == 'inscripcions.index' ||
                             $route.name == 'inscripcions.solicitudes' ||
-                            $route.name == 'asignacion_grupos.index'
+                            $route.name == 'asignacion_grupos.index' ||
+                            $route.name == 'horarios.index'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"
@@ -222,11 +224,17 @@
                                     <p>Inscripciones</p>
                                 </router-link>
                             </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
+                            <li
+                                class="nav-item"
+                                v-if="permisos.includes('horarios.index')"
+                            >
+                                <router-link
+                                    :to="{ name: 'horarios.index' }"
+                                    class="nav-link"
+                                >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Horarios</p>
-                                </a>
+                                </router-link>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link">

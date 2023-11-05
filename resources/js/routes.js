@@ -273,6 +273,15 @@ export default new Router({
             props: true,
         },
 
+        // Horarios
+        {
+            path: "/administracion/horarios",
+            name: "horarios.index",
+            component: require("./components/modulos/horarios/index.vue")
+                .default,
+            props: true,
+        },
+
         // Configuración
         {
             path: "/administracion/configuracion",

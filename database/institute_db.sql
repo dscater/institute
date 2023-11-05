@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 05-11-2023 a las 01:33:16
+-- Tiempo de generación: 05-11-2023 a las 18:10:47
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -384,7 +384,8 @@ CREATE TABLE `grupos` (
 --
 
 INSERT INTO `grupos` (`id`, `nombre`, `descripcion`, `link_reunion`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'GRUPO #1', 'DESCRIPCION GRUPO #1', NULL, 'ACTIVO', '2023-11-03 16:06:11', '2023-11-03 16:06:11');
+(1, 'GRUPO #1', 'DESCRIPCION GRUPO #1', NULL, 'ACTIVO', '2023-11-03 16:06:11', '2023-11-03 16:06:11'),
+(2, 'GRUPO #2', 'GRUPO DE PRUEBA', NULL, 'ACTIVO', '2023-11-05 18:10:19', '2023-11-05 18:10:19');
 
 -- --------------------------------------------------------
 
@@ -600,7 +601,24 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (154, 1, 'ELIMINACIÓN', 'EL USUARIO admin@gmail.com ELIMINÓ UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-04 17:17:11<br/>curso_id: 7<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:17:11<br/>', NULL, 'ASIGNACIÓN DE GRUPOS', '2023-11-04', '17:17:40', '2023-11-04 21:17:40', '2023-11-04 21:17:40'),
 (155, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-04 17:17:52<br/>curso_id: 7<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:17:52<br/>', NULL, 'ASIGNACIÓN DE GRUPOS', '2023-11-04', '17:17:52', '2023-11-04 21:17:52', '2023-11-04 21:17:52'),
 (156, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-04 17:17:52<br/>curso_id: 7<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:17:52<br/>', 'created_at: 2023-11-04 17:17:52<br/>curso_id: 5<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:21:11<br/>', 'ASIGNACIÓN DE GRUPOS', '2023-11-04', '17:21:11', '2023-11-04 21:21:11', '2023-11-04 21:21:11'),
-(157, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-04 17:17:52<br/>curso_id: 5<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:21:11<br/>', 'created_at: 2023-11-04 17:17:52<br/>curso_id: 7<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:21:15<br/>', 'ASIGNACIÓN DE GRUPOS', '2023-11-04', '17:21:15', '2023-11-04 21:21:15', '2023-11-04 21:21:15');
+(157, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-04 17:17:52<br/>curso_id: 5<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:21:11<br/>', 'created_at: 2023-11-04 17:17:52<br/>curso_id: 7<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:21:15<br/>', 'ASIGNACIÓN DE GRUPOS', '2023-11-04', '17:21:15', '2023-11-04 21:21:15', '2023-11-04 21:21:15'),
+(158, 1, 'CREACIÓN', 'EL USUARIO  REGISTRO UN PROFESOR', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: <br/>nacionalidad: <br/>pais_residencia: <br/>dir: <br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: FELIPE@GMAIL.COM<br/>user_id: 6<br/>created_at: 2023-11-04 21:35:46<br/>updated_at: 2023-11-04 21:35:46<br/>', NULL, 'PROFESORES', '2023-11-04', '21:35:46', '2023-11-05 01:35:46', '2023-11-05 01:35:46'),
+(159, 1, 'MODIFICACIÓN', 'EL USUARIO  MODIFICÓ UN PROFESOR', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: <br/>nacionalidad: <br/>pais_residencia: <br/>dir: <br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: FELIPE@GMAIL.COM<br/>user_id: 6<br/>created_at: 2023-11-04 21:35:46<br/>updated_at: 2023-11-04 21:35:46<br/>', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: <br/>nacionalidad: <br/>pais_residencia: <br/>dir: <br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:35:46<br/>updated_at: 2023-11-04 21:40:40<br/>', 'PROFESORES', '2023-11-04', '21:40:40', '2023-11-05 01:40:40', '2023-11-05 01:40:40'),
+(160, 1, 'MODIFICACIÓN', 'EL USUARIO  MODIFICÓ UN PROFESOR', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: <br/>nacionalidad: <br/>pais_residencia: <br/>dir: <br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:35:46<br/>updated_at: 2023-11-04 21:40:40<br/>', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: <br/>nacionalidad: <br/>pais_residencia: <br/>dir: <br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe23@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:35:46<br/>updated_at: 2023-11-04 21:40:54<br/>', 'PROFESORES', '2023-11-04', '21:40:54', '2023-11-05 01:40:54', '2023-11-05 01:40:54'),
+(161, 1, 'MODIFICACIÓN', 'EL USUARIO  MODIFICÓ UN PROFESOR', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: <br/>nacionalidad: <br/>pais_residencia: <br/>dir: <br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe23@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:35:46<br/>updated_at: 2023-11-04 21:40:54<br/>', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: 1111<br/>nacionalidad: BOLIVIANO<br/>pais_residencia: BOLIVIA<br/>dir: LOS OLIVOS<br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe23@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:35:46<br/>updated_at: 2023-11-04 21:41:11<br/>', 'PROFESORES', '2023-11-04', '21:41:11', '2023-11-05 01:41:11', '2023-11-05 01:41:11'),
+(162, 1, 'ELIMINACIÓN', 'EL USUARIO  ELIMINÓ UN PROFESOR', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: 1111<br/>nacionalidad: BOLIVIANO<br/>pais_residencia: BOLIVIA<br/>dir: LOS OLIVOS<br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe23@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:35:46<br/>updated_at: 2023-11-04 21:41:11<br/>', NULL, 'PROFESORES', '2023-11-04', '21:41:20', '2023-11-05 01:41:20', '2023-11-05 01:41:20'),
+(163, 1, 'CREACIÓN', 'EL USUARIO  REGISTRO UN PROFESOR', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: 11111<br/>nacionalidad: BOLIVIANO<br/>pais_residencia: BOLIVIA<br/>dir: LOS OLIVOS #32<br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:43:07<br/>updated_at: 2023-11-04 21:43:07<br/>', NULL, 'PROFESORES', '2023-11-04', '21:43:07', '2023-11-05 01:43:07', '2023-11-05 01:43:07'),
+(164, 1, 'MODIFICACIÓN', 'EL USUARIO  MODIFICÓ UN PROFESOR', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: 11111<br/>nacionalidad: BOLIVIANO<br/>pais_residencia: BOLIVIA<br/>dir: LOS OLIVOS #32<br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:43:07<br/>updated_at: 2023-11-04 21:43:07<br/>', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: 11111<br/>nacionalidad: BOLIVIANO<br/>pais_residencia: BOLIVIA<br/>dir: LOS OLIVOS #32<br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:43:07<br/>updated_at: 2023-11-05 13:01:53<br/>', 'PROFESORES', '2023-11-05', '13:01:53', '2023-11-05 17:01:53', '2023-11-05 17:01:53'),
+(165, 1, 'MODIFICACIÓN', 'EL USUARIO  MODIFICÓ UN PROFESOR', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: 11111<br/>nacionalidad: BOLIVIANO<br/>pais_residencia: BOLIVIA<br/>dir: LOS OLIVOS #32<br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:43:07<br/>updated_at: 2023-11-05 13:01:53<br/>', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: 11111<br/>nacionalidad: BOLIVIANO<br/>pais_residencia: BOLIVIA<br/>dir: LOS OLIVOS #32<br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:43:07<br/>updated_at: 2023-11-05 13:02:39<br/>', 'PROFESORES', '2023-11-05', '13:02:39', '2023-11-05 17:02:39', '2023-11-05 17:02:39'),
+(166, 1, 'MODIFICACIÓN', 'EL USUARIO  MODIFICÓ UN PROFESOR', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: 11111<br/>nacionalidad: BOLIVIANO<br/>pais_residencia: BOLIVIA<br/>dir: LOS OLIVOS #32<br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:43:07<br/>updated_at: 2023-11-05 13:02:39<br/>', 'id: 1<br/>nombres: FELIPE<br/>apellidos: GUTIERREZ MARTINES<br/>ci: 11111<br/>nacionalidad: BOLIVIANO<br/>pais_residencia: BOLIVIA<br/>dir: LOS OLIVOS #32<br/>fono: 777777<br/>especialidad: INGLES AVANZADO<br/>correo: felipe@gmail.com<br/>user_id: 6<br/>created_at: 2023-11-04 21:43:07<br/>updated_at: 2023-11-05 13:03:02<br/>', 'PROFESORES', '2023-11-05', '13:03:02', '2023-11-05 17:03:02', '2023-11-05 17:03:02'),
+(167, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN HORARIO', 'id: 1<br/>grupo_id: 1<br/>modalidad: VIRTUAL<br/>dias: 1,1,1,1,1,1,1<br/>fecha_inicio: 2023-11-05<br/>fecha_fin: 2023-11-10<br/>hora_inicio: 16:00<br/>hora_fin: 18:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 13:55:54<br/>', NULL, 'HORARIOS', '2023-11-05', '13:55:54', '2023-11-05 17:55:54', '2023-11-05 17:55:54'),
+(168, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN HORARIO', 'id: 1<br/>grupo_id: 1<br/>modalidad: VIRTUAL<br/>dias: 1,1,1,1,1,1,1<br/>fecha_inicio: 2023-11-05<br/>fecha_fin: 2023-11-10<br/>hora_inicio: 16:00:00<br/>hora_fin: 18:00:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 13:55:54<br/>', 'id: 1<br/>grupo_id: 1<br/>modalidad: VIRTUAL<br/>dias: 1,1,1,1,1,1,1<br/>fecha_inicio: 2023-11-05<br/>fecha_fin: 2023-11-10<br/>hora_inicio: 17:00<br/>hora_fin: 18:30<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:06<br/>', 'HORARIOS', '2023-11-05', '14:06:06', '2023-11-05 18:06:06', '2023-11-05 18:06:06'),
+(169, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN HORARIO', 'id: 1<br/>grupo_id: 1<br/>modalidad: VIRTUAL<br/>dias: 1,1,1,1,1,1,1<br/>fecha_inicio: 2023-11-05<br/>fecha_fin: 2023-11-10<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:06<br/>', 'id: 1<br/>grupo_id: 1<br/>modalidad: VIRTUAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-05<br/>fecha_fin: 2023-11-10<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:24<br/>', 'HORARIOS', '2023-11-05', '14:06:24', '2023-11-05 18:06:24', '2023-11-05 18:06:24'),
+(170, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN HORARIO', 'id: 1<br/>grupo_id: 1<br/>modalidad: VIRTUAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-05<br/>fecha_fin: 2023-11-10<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:24<br/>', 'id: 1<br/>grupo_id: 1<br/>modalidad: VIRTUAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:33<br/>', 'HORARIOS', '2023-11-05', '14:06:33', '2023-11-05 18:06:33', '2023-11-05 18:06:33'),
+(171, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN HORARIO', 'id: 1<br/>grupo_id: 1<br/>modalidad: VIRTUAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:33<br/>', 'id: 1<br/>grupo_id: 1<br/>modalidad: PRESENCIAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:37<br/>', 'HORARIOS', '2023-11-05', '14:06:37', '2023-11-05 18:06:37', '2023-11-05 18:06:37'),
+(172, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN HORARIO', 'id: 1<br/>grupo_id: 1<br/>modalidad: PRESENCIAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:37<br/>', 'id: 1<br/>grupo_id: 1<br/>modalidad: PRESENCIAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:37<br/>', 'HORARIOS', '2023-11-05', '14:08:44', '2023-11-05 18:08:44', '2023-11-05 18:08:44'),
+(173, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN HORARIO', 'id: 1<br/>grupo_id: 1<br/>modalidad: PRESENCIAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:37<br/>', 'id: 1<br/>grupo_id: 1<br/>modalidad: PRESENCIAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:37<br/>', 'HORARIOS', '2023-11-05', '14:09:12', '2023-11-05 18:09:12', '2023-11-05 18:09:12'),
+(174, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN GRUPO', 'id: 2<br/>nombre: GRUPO #2<br/>descripcion: GRUPO DE PRUEBA<br/>link_reunion: <br/>estado: ACTIVO<br/>created_at: 2023-11-05 14:10:19<br/>updated_at: 2023-11-05 14:10:19<br/>', NULL, 'GRUPOS', '2023-11-05', '14:10:19', '2023-11-05 18:10:19', '2023-11-05 18:10:19');
 
 -- --------------------------------------------------------
 
@@ -620,6 +638,13 @@ CREATE TABLE `horarios` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `horarios`
+--
+
+INSERT INTO `horarios` (`id`, `grupo_id`, `modalidad`, `dias`, `fecha_inicio`, `fecha_fin`, `hora_inicio`, `hora_fin`, `created_at`, `updated_at`) VALUES
+(1, 1, 'PRESENCIAL', '0,1,1,1,1,1,0', '2023-11-06', '2023-11-12', '17:00:00', '18:30:00', '2023-11-05 17:55:54', '2023-11-05 18:06:37');
 
 -- --------------------------------------------------------
 
@@ -873,6 +898,13 @@ CREATE TABLE `profesors` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `profesors`
+--
+
+INSERT INTO `profesors` (`id`, `nombres`, `apellidos`, `ci`, `nacionalidad`, `pais_residencia`, `dir`, `fono`, `especialidad`, `correo`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'FELIPE', 'GUTIERREZ MARTINES', '11111', 'BOLIVIANO', 'BOLIVIA', 'LOS OLIVOS #32', '777777', 'INGLES AVANZADO', 'felipe@gmail.com', 6, '2023-11-05 01:43:07', '2023-11-05 17:03:02');
+
 -- --------------------------------------------------------
 
 --
@@ -928,7 +960,8 @@ INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `dir`, `co
 (1, 'admin@gmail.com', 'admin', 'admin', NULL, '', 'admin@gmail.com', NULL, '$2y$10$RrCZZySOwPej2gMFWsrjMe6dLzfaL5Q88h4J75I1FesEBRNPwq1x.', 'ADMINISTRADOR', NULL, 1, '2023-10-05', NULL, NULL),
 (2, 'juan@gmail.com', 'JUAN', 'PERES', 'MAMANI', 'LOS OLIVOS', 'JUAN@GMAIL.COM', '7777777', '$2y$10$PyYyeiVACluSevqQ9FEOm.jLPw744pSMyVy3Ek7DwvDo/bveMFj4q', 'ADMINISTRADOR', 'default.png', 1, '2023-10-07', '2023-10-07 23:33:20', '2023-10-07 23:39:10'),
 (3, 'maria@gmail.com', 'MARIA', 'MAMANI', 'MAMANI', 'LOS OLIVOS', 'MARIA@GMAIL.COM', '', '$2y$10$bd0rITfeftm3JW7h.vktRO7406W9Mykg1X2dukizhYvjqZfrzQsTi', 'AUXILIAR', 'default.png', 1, '2023-10-07', '2023-10-07 23:47:44', '2023-10-20 15:19:04'),
-(5, 'marcos@gmail.com', 'MARCOS', 'MAMANI MAMANI', NULL, 'LA PAZ - BOLIVIA', 'marcos@gmail.com', '7777777', '$2y$10$w.iN4dL8Pj/dTt/0kWD1oeQvb26B4mi2s/imbyJotYGTRui42RGKy', 'ESTUDIANTE', NULL, 1, '2023-10-31', '2023-10-31 17:52:08', '2023-10-31 17:52:08');
+(5, 'marcos@gmail.com', 'MARCOS', 'MAMANI MAMANI', NULL, 'LA PAZ - BOLIVIA', 'marcos@gmail.com', '7777777', '$2y$10$w.iN4dL8Pj/dTt/0kWD1oeQvb26B4mi2s/imbyJotYGTRui42RGKy', 'ESTUDIANTE', NULL, 1, '2023-10-31', '2023-10-31 17:52:08', '2023-10-31 17:52:08'),
+(6, 'felipe@gmail.com', 'Felipe', 'gutierrez martines', NULL, 'los olivos #32', 'felipe@gmail.com', '777777', '$2y$10$8gDTDoXbvcslnnkzc/qSY.qPv65eIxrpgVKCTtX7vnuYR6/UGP2Me', 'PROFESOR', '1699148587_6.jpg', 1, '2023-11-04', '2023-11-05 01:43:07', '2023-11-05 17:03:02');
 
 --
 -- Índices para tablas volcadas
@@ -1247,7 +1280,7 @@ ALTER TABLE `gestoria_tips`
 -- AUTO_INCREMENT de la tabla `grupos`
 --
 ALTER TABLE `grupos`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo_profesors`
@@ -1265,13 +1298,13 @@ ALTER TABLE `grupo_recursos`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
 --
 ALTER TABLE `horarios`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcions`
@@ -1331,7 +1364,7 @@ ALTER TABLE `portal_gestorias`
 -- AUTO_INCREMENT de la tabla `profesors`
 --
 ALTER TABLE `profesors`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `red_socials`
@@ -1343,7 +1376,7 @@ ALTER TABLE `red_socials`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
