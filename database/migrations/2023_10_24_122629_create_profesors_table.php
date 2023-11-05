@@ -24,7 +24,10 @@ class CreateProfesorsTable extends Migration
             $table->string("fono", 255);
             $table->string("especialidad", 255);
             $table->string("correo", 255)->unique();
+            $table->unsignedBigInteger("user_id");
             $table->timestamps();
+
+            $table->foreign("user_id")->on("users")->references("id");
         });
     }
 

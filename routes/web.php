@@ -18,6 +18,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlanPagoController;
 use App\Http\Controllers\PortalComunicadoController;
 use App\Http\Controllers\PortalGestoriaController;
+use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\RedSocialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -167,6 +168,11 @@ Route::middleware(['auth'])->group(function () {
 
         // ASIGNACION GRUPOS
         Route::resource('asignacion_grupos', AsignacionGrupoController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // PROFESORES
+        Route::resource('profesors', ProfesorController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
     });

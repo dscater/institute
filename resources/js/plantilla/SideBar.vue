@@ -355,6 +355,20 @@
                     </li>
                     <li
                         class="nav-item"
+                        v-if="permisos.includes('profesors.index')"
+                    >
+                        <router-link
+                            exact
+                            :to="{ name: 'profesors.index' }"
+                            class="nav-link"
+                            v-loading.fullscreen.lock="fullscreenLoading"
+                        >
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Profesores</p>
+                        </router-link>
+                    </li>
+                    <li
+                        class="nav-item"
                         v-if="permisos.includes('configuracion.index')"
                     >
                         <router-link

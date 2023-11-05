@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 04-11-2023 a las 17:13:40
+-- Tiempo de generación: 05-11-2023 a las 01:33:16
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -36,6 +36,13 @@ CREATE TABLE `asignacion_grupos` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `asignacion_grupos`
+--
+
+INSERT INTO `asignacion_grupos` (`id`, `grupo_id`, `inscripcion_id`, `inscripcion_solicitud_id`, `curso_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, 1, 7, '2023-11-04 21:17:52', '2023-11-04 21:21:15');
 
 -- --------------------------------------------------------
 
@@ -578,7 +585,22 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (140, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN GRUPO', 'created_at: 2023-11-03 12:05:41<br/>descripcion: DESC<br/>estado: INACTIVO<br/>id: 2<br/>link_reunion: <br/>nombre: GRUPO #2<br/>updated_at: 2023-11-03 12:05:41<br/>', NULL, 'GRUPOS', '2023-11-03', '12:05:41', '2023-11-03 16:05:41', '2023-11-03 16:05:41'),
 (141, 1, 'ELIMINACIÓN', 'EL USUARIO admin@gmail.com ELIMINÓ UN GRUPO', 'created_at: 2023-11-03 12:05:13<br/>descripcion: DESCRIPCION GRUPO #1 MODIFICADO<br/>estado: INACTIVO<br/>id: 1<br/>link_reunion: <br/>nombre: GRUPO #1 MODIFICADO<br/>updated_at: 2023-11-03 12:05:32<br/>', NULL, 'GRUPOS', '2023-11-03', '12:05:47', '2023-11-03 16:05:47', '2023-11-03 16:05:47'),
 (142, 1, 'ELIMINACIÓN', 'EL USUARIO admin@gmail.com ELIMINÓ UN GRUPO', 'created_at: 2023-11-03 12:05:41<br/>descripcion: DESC<br/>estado: INACTIVO<br/>id: 2<br/>link_reunion: <br/>nombre: GRUPO #2<br/>updated_at: 2023-11-03 12:05:41<br/>', NULL, 'GRUPOS', '2023-11-03', '12:05:52', '2023-11-03 16:05:52', '2023-11-03 16:05:52'),
-(143, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN GRUPO', 'created_at: 2023-11-03 12:06:11<br/>descripcion: DESCRIPCION GRUPO #1<br/>estado: ACTIVO<br/>id: 1<br/>link_reunion: <br/>nombre: GRUPO #1<br/>updated_at: 2023-11-03 12:06:11<br/>', NULL, 'GRUPOS', '2023-11-03', '12:06:11', '2023-11-03 16:06:11', '2023-11-03 16:06:11');
+(143, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN GRUPO', 'created_at: 2023-11-03 12:06:11<br/>descripcion: DESCRIPCION GRUPO #1<br/>estado: ACTIVO<br/>id: 1<br/>link_reunion: <br/>nombre: GRUPO #1<br/>updated_at: 2023-11-03 12:06:11<br/>', NULL, 'GRUPOS', '2023-11-03', '12:06:11', '2023-11-03 16:06:11', '2023-11-03 16:06:11'),
+(144, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: PENDIENTE<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-10-31 13:52:08<br/>', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: ACEPTADO<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 16:37:15<br/>', 'INSCRIPCION SOLICITUD', '2023-11-04', '16:37:15', '2023-11-04 20:37:15', '2023-11-04 20:37:15'),
+(145, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: ACEPTADO<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 16:37:15<br/>', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: NO RESPONDE<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 16:37:34<br/>', 'INSCRIPCION SOLICITUD', '2023-11-04', '16:37:34', '2023-11-04 20:37:34', '2023-11-04 20:37:34'),
+(146, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: NO RESPONDE<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 16:37:34<br/>', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: DESCARTADO<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 16:37:36<br/>', 'INSCRIPCION SOLICITUD', '2023-11-04', '16:37:36', '2023-11-04 20:37:36', '2023-11-04 20:37:36');
+INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `datos_original`, `datos_nuevo`, `modulo`, `fecha`, `hora`, `created_at`, `updated_at`) VALUES
+(147, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: DESCARTADO<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 16:37:36<br/>', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: ACEPTADO<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 16:37:38<br/>', 'INSCRIPCION SOLICITUD', '2023-11-04', '16:37:38', '2023-11-04 20:37:38', '2023-11-04 20:37:38'),
+(148, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: ACEPTADO<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 16:37:38<br/>', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: ACEPTADO<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 16:37:38<br/>', 'INSCRIPCION SOLICITUD', '2023-11-04', '16:38:37', '2023-11-04 20:38:37', '2023-11-04 20:38:37'),
+(149, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-04 17:15:59<br/>curso_id: 7<br/>grupo_id: 1<br/>id: 2<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:15:59<br/>', NULL, 'ASIGNACIÓN DE GRUPOS', '2023-11-04', '17:15:59', '2023-11-04 21:15:59', '2023-11-04 21:15:59'),
+(150, 1, 'ELIMINACIÓN', 'EL USUARIO admin@gmail.com ELIMINÓ UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-04 17:15:59<br/>curso_id: 7<br/>grupo_id: 1<br/>id: 2<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:15:59<br/>', NULL, 'ASIGNACIÓN DE GRUPOS', '2023-11-04', '17:16:38', '2023-11-04 21:16:38', '2023-11-04 21:16:38'),
+(151, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: ACEPTADO<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 17:16:38<br/>', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: DESCARTADO<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 17:16:52<br/>', 'INSCRIPCION SOLICITUD', '2023-11-04', '17:16:52', '2023-11-04 21:16:52', '2023-11-04 21:16:52'),
+(152, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: DESCARTADO<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 17:16:52<br/>', 'archivo_pago: <br/>created_at: 2023-10-31 13:52:08<br/>curso_id: 7<br/>desc_otro_pago: <br/>desc_pago: <br/>desc_se_entero: UN CONOCIDO<br/>estado: ACEPTADO<br/>estado_asignado: NO<br/>forma_pago: DEPÓSITO BANCARIO<br/>id: 1<br/>inscripcion_id: 2<br/>nivel: NIVEL CERO<br/>plan_costo: 400.00<br/>plan_pago_id: 3<br/>se_entero: OTRO<br/>updated_at: 2023-11-04 17:16:59<br/>', 'INSCRIPCION SOLICITUD', '2023-11-04', '17:16:59', '2023-11-04 21:16:59', '2023-11-04 21:16:59'),
+(153, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-04 17:17:11<br/>curso_id: 7<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:17:11<br/>', NULL, 'ASIGNACIÓN DE GRUPOS', '2023-11-04', '17:17:11', '2023-11-04 21:17:11', '2023-11-04 21:17:11'),
+(154, 1, 'ELIMINACIÓN', 'EL USUARIO admin@gmail.com ELIMINÓ UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-04 17:17:11<br/>curso_id: 7<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:17:11<br/>', NULL, 'ASIGNACIÓN DE GRUPOS', '2023-11-04', '17:17:40', '2023-11-04 21:17:40', '2023-11-04 21:17:40'),
+(155, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-04 17:17:52<br/>curso_id: 7<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:17:52<br/>', NULL, 'ASIGNACIÓN DE GRUPOS', '2023-11-04', '17:17:52', '2023-11-04 21:17:52', '2023-11-04 21:17:52'),
+(156, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-04 17:17:52<br/>curso_id: 7<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:17:52<br/>', 'created_at: 2023-11-04 17:17:52<br/>curso_id: 5<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:21:11<br/>', 'ASIGNACIÓN DE GRUPOS', '2023-11-04', '17:21:11', '2023-11-04 21:21:11', '2023-11-04 21:21:11'),
+(157, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-04 17:17:52<br/>curso_id: 5<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:21:11<br/>', 'created_at: 2023-11-04 17:17:52<br/>curso_id: 7<br/>grupo_id: 1<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>updated_at: 2023-11-04 17:21:15<br/>', 'ASIGNACIÓN DE GRUPOS', '2023-11-04', '17:21:15', '2023-11-04 21:21:15', '2023-11-04 21:21:15');
 
 -- --------------------------------------------------------
 
@@ -694,7 +716,7 @@ CREATE TABLE `inscripcion_solicituds` (
 --
 
 INSERT INTO `inscripcion_solicituds` (`id`, `inscripcion_id`, `curso_id`, `nivel`, `se_entero`, `desc_se_entero`, `plan_pago_id`, `plan_costo`, `forma_pago`, `archivo_pago`, `desc_pago`, `desc_otro_pago`, `estado_asignado`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 2, 7, 'NIVEL CERO', 'OTRO', 'UN CONOCIDO', 3, 400.00, 'DEPÓSITO BANCARIO', NULL, NULL, NULL, 'NO', 'PENDIENTE', '2023-10-31 17:52:08', '2023-10-31 17:52:08');
+(1, 2, 7, 'NIVEL CERO', 'OTRO', 'UN CONOCIDO', 3, 400.00, 'DEPÓSITO BANCARIO', NULL, NULL, NULL, 'SI', 'ACEPTADO', '2023-10-31 17:52:08', '2023-11-04 21:17:52');
 
 -- --------------------------------------------------------
 
@@ -846,6 +868,7 @@ CREATE TABLE `profesors` (
   `fono` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `especialidad` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1134,7 +1157,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `asignacion_grupos`
 --
 ALTER TABLE `asignacion_grupos`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `banners`
@@ -1242,7 +1265,7 @@ ALTER TABLE `grupo_recursos`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`

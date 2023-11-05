@@ -264,6 +264,15 @@ export default new Router({
             props: true,
         },
 
+        // Profesors
+        {
+            path: "/administracion/profesors",
+            name: "profesors.index",
+            component: require("./components/modulos/profesors/index.vue")
+                .default,
+            props: true,
+        },
+
         // Configuración
         {
             path: "/administracion/configuracion",
