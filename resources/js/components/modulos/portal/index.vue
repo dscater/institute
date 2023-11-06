@@ -290,23 +290,66 @@
                                 }"
                                 class="card-body link_body"
                             >
-                                <div class="col-md-12 p-3" v-if="oRedSocial">
-                                    <p>
-                                        <strong>Tiktok:</strong>
-                                        {{ oRedSocial.tiktok }}
-                                    </p>
-                                    <p>
-                                        <strong>Facebook:</strong>
-                                        {{ oRedSocial.facebook }}
-                                    </p>
-                                    <p>
-                                        <strong>Instagram:</strong>
-                                        {{ oRedSocial.instagram }}
-                                    </p>
-                                    <p>
-                                        <strong>Youtube:</strong>
-                                        {{ oRedSocial.youtube }}
-                                    </p>
+                                <div class="col-md-12 p-3" v-if="oPlanPago">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="w-100 text-center font-weight-bold">{{
+                                                oPlanPago.plan_mensual.titulo
+                                            }}</p>
+                                            <p class="w-100 text-center">
+                                                <strong>Costo: </strong
+                                                >{{
+                                                    oPlanPago.plan_mensual.costo
+                                                }}
+                                            </p>
+                                            <p
+                                                class="w-100 text-center"
+                                                v-html="
+                                                    oPlanPago.plan_mensual
+                                                        .detalles
+                                                "
+                                            ></p>
+                                            <hr/>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p class="w-100 text-center font-weight-bold">{{
+                                                oPlanPago.plan_trimestral.titulo
+                                            }}</p>
+                                            <p class="w-100 text-center">
+                                                <strong>Costo: </strong
+                                                >{{
+                                                    oPlanPago.plan_trimestral
+                                                        .costo
+                                                }}
+                                            </p>
+                                            <p
+                                                class="w-100 text-center"
+                                                v-html="
+                                                    oPlanPago.plan_trimestral
+                                                        .detalles
+                                                "
+                                            ></p>
+                                            <hr/>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p class="w-100 text-center font-weight-bold">{{
+                                                oPlanPago.plan_anual.titulo
+                                            }}</p>
+                                            <p class="w-100 text-center">
+                                                <strong>Costo: </strong
+                                                >{{
+                                                    oPlanPago.plan_anual.costo
+                                                }}
+                                            </p>
+                                            <p
+                                                class="w-100 text-center"
+                                                v-html="
+                                                    oPlanPago.plan_anual
+                                                        .detalles
+                                                "
+                                            ></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <img
                                     v-else
@@ -341,6 +384,7 @@ export default {
             oPortalComunciado: null,
             oRedSocial: null,
             oPortalGestoria: null,
+            oPlanPago: null,
         };
     },
     mounted() {
@@ -350,6 +394,7 @@ export default {
         this.getInfoRedSocial();
         this.getPortalComunicado();
         this.getPortalGestoria();
+        this.getInfoPlanPago();
     },
     methods: {
         getUltimoBanner() {
@@ -367,6 +412,23 @@ export default {
         getInfoRedSocial() {
             axios.get(main_url + "/admin/red_socials").then((response) => {
                 this.oRedSocial = response.data.red_social;
+            });
+        },
+        getInfoPlanPago() {
+            axios.get(main_url + "/admin/plan_pagos").then((response) => {
+                this.oPlanPago = {
+                    plan_mensual: { titulo: "", costo: "0.00", detalles: "" },
+                    plan_trimestral: {
+                        titulo: "",
+                        costo: "0.00",
+                        detalles: "",
+                    },
+                    plan_anual: { titulo: "", costo: "0.00", detalles: "" },
+                };
+                this.oPlanPago["plan_mensual"] = response.data.plan_mensual;
+                this.oPlanPago["plan_trimestral"] =
+                    response.data.plan_trimestral;
+                this.oPlanPago["plan_anual"] = response.data.plan_anual;
             });
         },
 
