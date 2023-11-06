@@ -6,6 +6,7 @@ use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ConfiguracionGestoriaController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\ExamenNivelacionController;
 use App\Http\Controllers\GestoriaBannerController;
 use App\Http\Controllers\GestoriaNosotrosController;
 use App\Http\Controllers\GestoriaServicioController;
@@ -192,6 +193,11 @@ Route::middleware(['auth'])->group(function () {
 
         // HORARIOS
         Route::resource('horarios', HorarioController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // EXAMEN NIVELACION
+        Route::resource('examen_nivelacions', ExamenNivelacionController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
     });

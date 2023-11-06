@@ -306,6 +306,32 @@ export default new Router({
             props: true,
         },
 
+        // Examen de nivelacion
+        {
+            path: "/administracion/examen_nivelacions",
+            name: "examen_nivelacions.index",
+            component:
+                require("./components/modulos/examen_nivelacions/index.vue")
+                    .default,
+            props: true,
+        },
+        {
+            path: "/administracion/examen_nivelacions/create",
+            name: "examen_nivelacions.create",
+            component:
+                require("./components/modulos/examen_nivelacions/create.vue")
+                    .default,
+            props: true,
+        },
+        {
+            path: "/administracion/examen_nivelacions/edit/:id",
+            name: "examen_nivelacions.edit",
+            component:
+                require("./components/modulos/examen_nivelacions/edit.vue")
+                    .default,
+            props: true,
+        },
+
         // Configuración
         {
             path: "/administracion/configuracion",

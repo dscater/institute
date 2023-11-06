@@ -155,7 +155,8 @@
                                 permisos.includes('asignacion_grupos.index') ||
                                 permisos.includes('grupo_profesors') ||
                                 permisos.includes('horarios.index') ||
-                                permisos.includes('grupo_recursos.index'))
+                                permisos.includes('grupo_recursos.index') ||
+                                permisos.includes('examen_nivelacions.index'))
                         "
                         :class="[
                             $route.name == 'grupos.index' ||
@@ -166,7 +167,10 @@
                             $route.name == 'horarios.index' ||
                             $route.name == 'asignacion_grupos.estudiantes' ||
                             $route.name == 'asignacion_grupos.profesores' ||
-                            $route.name == 'grupo_recursos.index'
+                            $route.name == 'grupo_recursos.index' ||
+                            $route.name == 'examen_nivelacions.index' ||
+                            $route.name == 'examen_nivelacions.create' ||
+                            $route.name == 'examen_nivelacions.edit'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"
@@ -258,6 +262,22 @@
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Comunicados</p>
                                 </a>
+                            </li>
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes(
+                                        'examen_nivelacions.index'
+                                    )
+                                "
+                            >
+                                <router-link
+                                    :to="{ name: 'examen_nivelacions.index' }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Exámen de nivelación</p>
+                                </router-link>
                             </li>
                         </ul>
                     </li>

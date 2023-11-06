@@ -134,6 +134,11 @@ class UserController extends Controller
             'grupo_recursos.edit',
             'grupo_recursos.destroy',
 
+            'examen_nivelacions.index',
+            'examen_nivelacions.create',
+            'examen_nivelacions.edit',
+            'examen_nivelacions.destroy',
+
         ],
         "ESTUDIANTE" => [
             "estudiante_cursos.index",

@@ -17,6 +17,7 @@ class CreateExamenEnunciadosTable extends Migration
             $table->id();
             $table->unsignedBigInteger("examen_nivelacion_id");
             $table->string("enunciado", 700);
+            $table->string("tipo", 255);
             $table->timestamps();
             $table->foreign("examen_nivelacion_id")->on("examen_nivelacions")->references("id");
         });

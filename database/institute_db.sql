@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 06-11-2023 a las 16:32:01
+-- Tiempo de generación: 06-11-2023 a las 22:02:32
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -195,10 +195,21 @@ CREATE TABLE `enunciado_preguntas` (
   `examen_enunciado_id` bigint UNSIGNED NOT NULL,
   `pregunta` varchar(700) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tipo` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `opciones` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `opciones` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `enunciado_preguntas`
+--
+
+INSERT INTO `enunciado_preguntas` (`id`, `examen_enunciado_id`, `pregunta`, `tipo`, `opciones`, `created_at`, `updated_at`) VALUES
+(2, 2, 'Tengo diecisiete años. modificado', 'LLENADO', NULL, '2023-11-06 21:31:29', '2023-11-06 22:02:03'),
+(4, 3, 'Martes _', 'SELECCIÓN', 'tuesday, thurdsay', '2023-11-06 21:31:29', '2023-11-06 21:31:29'),
+(7, 2, 'pregunta #2 nuevo', 'LLENADO', NULL, '2023-11-06 22:02:03', '2023-11-06 22:02:03'),
+(8, 3, 'miercoles _', 'SELECCIÓN', 'miercoles', '2023-11-06 22:02:03', '2023-11-06 22:02:03'),
+(9, 6, 'pregunta nuevo enunciado', 'LLENADO', NULL, '2023-11-06 22:02:03', '2023-11-06 22:02:03');
 
 -- --------------------------------------------------------
 
@@ -210,9 +221,19 @@ CREATE TABLE `examen_enunciados` (
   `id` bigint UNSIGNED NOT NULL,
   `examen_nivelacion_id` bigint UNSIGNED NOT NULL,
   `enunciado` varchar(700) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `examen_enunciados`
+--
+
+INSERT INTO `examen_enunciados` (`id`, `examen_nivelacion_id`, `enunciado`, `tipo`, `created_at`, `updated_at`) VALUES
+(2, 2, 'Traduce las siguiente soraciones al inglés modificado', 'LLENADO', '2023-11-06 21:31:29', '2023-11-06 22:02:03'),
+(3, 2, 'Elige el día de la semana correcto', 'SELECCIÓN', '2023-11-06 21:31:29', '2023-11-06 21:31:29'),
+(6, 2, 'nuevo enunciado', 'LLENADO', '2023-11-06 22:02:03', '2023-11-06 22:02:03');
 
 -- --------------------------------------------------------
 
@@ -226,6 +247,13 @@ CREATE TABLE `examen_nivelacions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `examen_nivelacions`
+--
+
+INSERT INTO `examen_nivelacions` (`id`, `curso_id`, `created_at`, `updated_at`) VALUES
+(2, 7, '2023-11-06 21:31:29', '2023-11-06 21:31:29');
 
 -- --------------------------------------------------------
 
@@ -654,7 +682,11 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (191, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO RECURSO', 'created_at: 2023-11-06 12:12:13<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:12<br/>id: 1<br/>link: https://www.youtube.com/<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:12:13<br/>', NULL, 'RECURSOS', '2023-11-06', '12:12:13', '2023-11-06 16:12:13', '2023-11-06 16:12:13'),
 (192, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO RECURSO', 'created_at: 2023-11-06 12:24:06<br/>fecha: 2023-11-06<br/>grupo_id: 2<br/>hora: 12:24<br/>id: 2<br/>link: https://www.facebook.com/<br/>titulo: TITULO 2<br/>updated_at: 2023-11-06 12:24:06<br/>', NULL, 'RECURSOS', '2023-11-06', '12:24:06', '2023-11-06 16:24:06', '2023-11-06 16:24:06'),
 (193, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com MODIFICÓ RECURSO', 'created_at: 2023-11-06 12:12:13<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:12:00<br/>id: 1<br/>link: https://www.youtube.com/<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:12:13<br/>', 'created_at: 2023-11-06 12:12:13<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:12:00<br/>id: 1<br/>link: https://www.youtube.com/mod<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:31:17<br/>', 'RECURSOS', '2023-11-06', '12:31:17', '2023-11-06 16:31:17', '2023-11-06 16:31:17'),
-(194, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com MODIFICÓ RECURSO', 'created_at: 2023-11-06 12:12:13<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:12:00<br/>id: 1<br/>link: https://www.youtube.com/mod<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:31:17<br/>', 'created_at: 2023-11-06 12:12:13<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:12:00<br/>id: 1<br/>link: https://www.youtube.com<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:31:22<br/>', 'RECURSOS', '2023-11-06', '12:31:22', '2023-11-06 16:31:22', '2023-11-06 16:31:22');
+(194, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com MODIFICÓ RECURSO', 'created_at: 2023-11-06 12:12:13<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:12:00<br/>id: 1<br/>link: https://www.youtube.com/mod<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:31:17<br/>', 'created_at: 2023-11-06 12:12:13<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:12:00<br/>id: 1<br/>link: https://www.youtube.com<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:31:22<br/>', 'RECURSOS', '2023-11-06', '12:31:22', '2023-11-06 16:31:22', '2023-11-06 16:31:22'),
+(195, 6, 'CREACIÓN', 'EL USUARIO felipe@gmail.com REGISTRO UN EXAMEN DE NIVELACION', 'created_at: 2023-11-06 17:31:29<br/>curso_id: 7<br/>id: 2<br/>updated_at: 2023-11-06 17:31:29<br/>', NULL, 'EXAMEN DE NIVELACION', '2023-11-06', '17:31:29', '2023-11-06 21:31:29', '2023-11-06 21:31:29'),
+(196, 6, 'CREACIÓN', 'EL USUARIO felipe@gmail.com REGISTRO UN EXAMEN DE NIVELACION', 'created_at: 2023-11-06 17:52:37<br/>curso_id: 7<br/>id: 3<br/>updated_at: 2023-11-06 17:52:37<br/>', NULL, 'EXAMEN DE NIVELACION', '2023-11-06', '17:52:37', '2023-11-06 21:52:37', '2023-11-06 21:52:37'),
+(197, 6, 'ELIMINACIÓN', 'EL USUARIO felipe@gmail.com ELIMINÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-06 17:52:37<br/>curso_id: 7<br/>id: 3<br/>updated_at: 2023-11-06 17:52:37<br/>', NULL, 'EXAMEN DE NIVELACION', '2023-11-06', '18:00:04', '2023-11-06 22:00:04', '2023-11-06 22:00:04'),
+(198, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com MODIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-06 17:31:29<br/>curso_id: 7<br/>id: 2<br/>updated_at: 2023-11-06 17:31:29<br/>', 'created_at: 2023-11-06 17:31:29<br/>curso_id: 7<br/>id: 2<br/>updated_at: 2023-11-06 17:31:29<br/>', 'EXAMEN DE NIVELACION', '2023-11-06', '18:02:03', '2023-11-06 22:02:03', '2023-11-06 22:02:03');
 
 -- --------------------------------------------------------
 
@@ -1268,19 +1300,19 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT de la tabla `enunciado_preguntas`
 --
 ALTER TABLE `enunciado_preguntas`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `examen_enunciados`
 --
 ALTER TABLE `examen_enunciados`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `examen_nivelacions`
 --
 ALTER TABLE `examen_nivelacions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `gestoria_banners`
@@ -1334,7 +1366,7 @@ ALTER TABLE `grupo_recursos`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
