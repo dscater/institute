@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grupo;
+use App\Models\GrupoProfesor;
 use App\Models\HistorialAccion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,24 @@ class GrupoController extends Controller
     public function activos()
     {
         $grupos = Grupo::where("estado", "ACTIVO")->orderBy("id", "desc")->get();
+        return response()->JSON(['grupos' => $grupos, 'total' => count($grupos)], 200);
+    }
+
+    public function grupo_users()
+    {
+        $grupos = [];
+        $user = Auth::user();
+        $tipo_user = $user->tipo;
+        if ($tipo_user == 'ADMINISTRADOR') {
+            $grupos = Grupo::where("estado", "ACTIVO")->orderBy("id", "desc")->get();
+        }
+        if ($tipo_user == 'PROFESOR') {
+            $id_grupos_user = GrupoProfesor::where("user_id", $user->id)->pluck("grupo_id");
+            $grupos = Grupo::whereIn("id", $id_grupos_user)->where("estado", "ACTIVO")->orderBy("id", "desc")->get();
+        }
+
+        if ($tipo_user == 'ESTUDIANTE') {
+        }
         return response()->JSON(['grupos' => $grupos, 'total' => count($grupos)], 200);
     }
 

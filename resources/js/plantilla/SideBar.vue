@@ -154,7 +154,8 @@
                                 permisos.includes('inscripcions.index') ||
                                 permisos.includes('asignacion_grupos.index') ||
                                 permisos.includes('grupo_profesors') ||
-                                permisos.includes('horarios.index'))
+                                permisos.includes('horarios.index') ||
+                                permisos.includes('grupo_recursos.index'))
                         "
                         :class="[
                             $route.name == 'grupos.index' ||
@@ -164,7 +165,8 @@
                             $route.name == 'asignacion_grupos.index' ||
                             $route.name == 'horarios.index' ||
                             $route.name == 'asignacion_grupos.estudiantes' ||
-                            $route.name == 'asignacion_grupos.profesores'
+                            $route.name == 'asignacion_grupos.profesores' ||
+                            $route.name == 'grupo_recursos.index'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"
@@ -205,7 +207,7 @@
                             </li>
                             <li
                                 class="nav-item"
-                                v-if="permisos.includes('cursos.index')"
+                                v-if="permisos.indexOf('cursos.index') > 0"
                             >
                                 <router-link
                                     :to="{ name: 'cursos.index' }"
@@ -239,11 +241,17 @@
                                     <p>Horarios</p>
                                 </router-link>
                             </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
+                            <li
+                                class="nav-item"
+                                v-if="permisos.includes('grupo_recursos.index')"
+                            >
+                                <router-link
+                                    :to="{ name: 'grupo_recursos.index' }"
+                                    class="nav-link"
+                                >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Recursos</p>
-                                </a>
+                                </router-link>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link">
@@ -429,14 +437,17 @@ export default {
         return {
             user: JSON.parse(localStorage.getItem("user")),
             fullscreenLoading: false,
-            permisos: localStorage.getItem("permisos"),
+            permisos:
+                typeof localStorage.getItem("permisos") == "string"
+                    ? JSON.parse(localStorage.getItem("permisos"))
+                    : localStorage.getItem("permisos"),
             timeoutId: null,
         };
     },
     mounted() {
         // Configurar el temporizador para llamar a logout después de 10 minutos de inactividad
         this.resetLogoutTimer();
-        // window.addEventListener("mousemove", this.resetLogoutTimer);
+        window.addEventListener("mousemove", this.resetLogoutTimer);
     },
     methods: {
         logout() {

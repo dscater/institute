@@ -13,6 +13,7 @@ use App\Http\Controllers\GestoriaSolicitudController;
 use App\Http\Controllers\GestoriaTipController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\GrupoProfesorController;
+use App\Http\Controllers\GrupoRecursoController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\InscripcionSolicitudController;
@@ -155,6 +156,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // GRUPOS
+        Route::get("grupos/grupo_users", [GrupoController::class, 'grupo_users']);
         Route::get("grupos/activos", [GrupoController::class, 'activos']);
         Route::resource('grupos', GrupoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
@@ -180,6 +182,11 @@ Route::middleware(['auth'])->group(function () {
 
         // GRUPO PROFESORES
         Route::resource('grupo_profesors', GrupoProfesorController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // GRUPO RECURSOS
+        Route::resource('grupo_recursos', GrupoRecursoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
 

@@ -289,6 +289,14 @@ export default new Router({
             props: true,
         },
 
+        // Grupo Recursos
+        {
+            path: "/administracion/grupo_recursos",
+            name: "grupo_recursos.index",
+            component: require("./components/modulos/grupo_recursos/index.vue")
+                .default,
+            props: true,
+        },
         // Horarios
         {
             path: "/administracion/horarios",

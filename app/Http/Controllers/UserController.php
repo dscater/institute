@@ -118,13 +118,23 @@ class UserController extends Controller
             'horarios.edit',
             'horarios.destroy',
 
+            'grupo_recursos.index',
+            'grupo_recursos.create',
+            'grupo_recursos.destroy',
+
             'configuracion.index',
             'configuracion.edit',
 
             // "reportes.usuarios"
         ],
         "AUXILIAR" => [],
-        "PROFESOR" => [],
+        "PROFESOR" => [
+            'grupo_recursos.index',
+            'grupo_recursos.create',
+            'grupo_recursos.edit',
+            'grupo_recursos.destroy',
+
+        ],
         "ESTUDIANTE" => [
             "estudiante_cursos.index",
 

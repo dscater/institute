@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 06-11-2023 a las 15:33:44
+-- Tiempo de generación: 06-11-2023 a las 16:32:01
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -426,6 +426,14 @@ CREATE TABLE `grupo_recursos` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `grupo_recursos`
+--
+
+INSERT INTO `grupo_recursos` (`id`, `grupo_id`, `titulo`, `link`, `fecha`, `hora`, `created_at`, `updated_at`) VALUES
+(1, 1, 'LECTURA #1', 'https://www.youtube.com', '2023-11-06', '12:12:00', '2023-11-06 16:12:13', '2023-11-06 16:31:22'),
+(2, 2, 'TITULO 2', 'https://www.facebook.com/', '2023-11-06', '12:24:00', '2023-11-06 16:24:06', '2023-11-06 16:24:06');
+
 -- --------------------------------------------------------
 
 --
@@ -638,7 +646,15 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (183, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:30:18<br/>user_id: 6<br/>', NULL, 'GRUPO PROFESOR', '2023-11-06', '11:30:18', '2023-11-06 15:30:18', '2023-11-06 15:30:18'),
 (184, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:30:18<br/>user_id: 6<br/>', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:30:18<br/>user_id: 6<br/>', 'GRUPO PROFESOR', '2023-11-06', '11:33:17', '2023-11-06 15:33:17', '2023-11-06 15:33:17'),
 (185, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:30:18<br/>user_id: 6<br/>', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 2<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:33:21<br/>user_id: 6<br/>', 'GRUPO PROFESOR', '2023-11-06', '11:33:21', '2023-11-06 15:33:21', '2023-11-06 15:33:21'),
-(186, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 2<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:33:21<br/>user_id: 6<br/>', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:33:33<br/>user_id: 6<br/>', 'GRUPO PROFESOR', '2023-11-06', '11:33:33', '2023-11-06 15:33:33', '2023-11-06 15:33:33');
+(186, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 2<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:33:21<br/>user_id: 6<br/>', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:33:33<br/>user_id: 6<br/>', 'GRUPO PROFESOR', '2023-11-06', '11:33:33', '2023-11-06 15:33:33', '2023-11-06 15:33:33'),
+(187, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO RECURSO', 'created_at: 2023-11-06 12:07:15<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:07<br/>id: 1<br/>link: HTTPS://WWW.YOUTUBE.COM/<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:07:15<br/>', NULL, 'RECURSOS', '2023-11-06', '12:07:15', '2023-11-06 16:07:15', '2023-11-06 16:07:15'),
+(188, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ RECURSO', 'created_at: 2023-11-06 12:07:15<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:07:00<br/>id: 1<br/>link: HTTPS://WWW.YOUTUBE.COM/<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:07:15<br/>', 'created_at: 2023-11-06 12:07:15<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:07:00<br/>id: 1<br/>link: HTTPS://WWW.YOUTUBE.COM/<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:07:15<br/>', 'RECURSOS', '2023-11-06', '12:10:40', '2023-11-06 16:10:40', '2023-11-06 16:10:40'),
+(189, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ RECURSO', 'created_at: 2023-11-06 12:07:15<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:07:00<br/>id: 1<br/>link: HTTPS://WWW.YOUTUBE.COM/<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:07:15<br/>', 'created_at: 2023-11-06 12:07:15<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:07:00<br/>id: 1<br/>link: https://www.youtube.com/<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:10:47<br/>', 'RECURSOS', '2023-11-06', '12:10:47', '2023-11-06 16:10:47', '2023-11-06 16:10:47'),
+(190, 1, 'ELIMINACIÓN', 'EL USUARIO admin@gmail.com ELIMINÓ RECURSO', 'created_at: 2023-11-06 12:07:15<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:07:00<br/>id: 1<br/>link: https://www.youtube.com/<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:10:47<br/>', NULL, 'RECURSOS', '2023-11-06', '12:11:22', '2023-11-06 16:11:22', '2023-11-06 16:11:22'),
+(191, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO RECURSO', 'created_at: 2023-11-06 12:12:13<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:12<br/>id: 1<br/>link: https://www.youtube.com/<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:12:13<br/>', NULL, 'RECURSOS', '2023-11-06', '12:12:13', '2023-11-06 16:12:13', '2023-11-06 16:12:13'),
+(192, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO RECURSO', 'created_at: 2023-11-06 12:24:06<br/>fecha: 2023-11-06<br/>grupo_id: 2<br/>hora: 12:24<br/>id: 2<br/>link: https://www.facebook.com/<br/>titulo: TITULO 2<br/>updated_at: 2023-11-06 12:24:06<br/>', NULL, 'RECURSOS', '2023-11-06', '12:24:06', '2023-11-06 16:24:06', '2023-11-06 16:24:06'),
+(193, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com MODIFICÓ RECURSO', 'created_at: 2023-11-06 12:12:13<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:12:00<br/>id: 1<br/>link: https://www.youtube.com/<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:12:13<br/>', 'created_at: 2023-11-06 12:12:13<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:12:00<br/>id: 1<br/>link: https://www.youtube.com/mod<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:31:17<br/>', 'RECURSOS', '2023-11-06', '12:31:17', '2023-11-06 16:31:17', '2023-11-06 16:31:17'),
+(194, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com MODIFICÓ RECURSO', 'created_at: 2023-11-06 12:12:13<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:12:00<br/>id: 1<br/>link: https://www.youtube.com/mod<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:31:17<br/>', 'created_at: 2023-11-06 12:12:13<br/>fecha: 2023-11-06<br/>grupo_id: 1<br/>hora: 12:12:00<br/>id: 1<br/>link: https://www.youtube.com<br/>titulo: LECTURA #1<br/>updated_at: 2023-11-06 12:31:22<br/>', 'RECURSOS', '2023-11-06', '12:31:22', '2023-11-06 16:31:22', '2023-11-06 16:31:22');
 
 -- --------------------------------------------------------
 
@@ -1312,13 +1328,13 @@ ALTER TABLE `grupo_profesors`
 -- AUTO_INCREMENT de la tabla `grupo_recursos`
 --
 ALTER TABLE `grupo_recursos`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
