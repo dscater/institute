@@ -16,6 +16,7 @@ class CreateGrupoProfesorsTable extends Migration
         Schema::create('grupo_profesors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("profesor_id");
             $table->unsignedBigInteger("grupo_id");
             $table->timestamps();
 

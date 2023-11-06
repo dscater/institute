@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 05-11-2023 a las 18:10:47
+-- Tiempo de generación: 06-11-2023 a las 15:33:44
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -385,7 +385,7 @@ CREATE TABLE `grupos` (
 
 INSERT INTO `grupos` (`id`, `nombre`, `descripcion`, `link_reunion`, `estado`, `created_at`, `updated_at`) VALUES
 (1, 'GRUPO #1', 'DESCRIPCION GRUPO #1', NULL, 'ACTIVO', '2023-11-03 16:06:11', '2023-11-03 16:06:11'),
-(2, 'GRUPO #2', 'GRUPO DE PRUEBA', NULL, 'ACTIVO', '2023-11-05 18:10:19', '2023-11-05 18:10:19');
+(2, 'GRUPO #2', 'GRUPO DE PRUEBA', NULL, 'ACTIVO', '2023-11-05 18:10:19', '2023-11-05 18:11:28');
 
 -- --------------------------------------------------------
 
@@ -396,10 +396,18 @@ INSERT INTO `grupos` (`id`, `nombre`, `descripcion`, `link_reunion`, `estado`, `
 CREATE TABLE `grupo_profesors` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
+  `profesor_id` bigint UNSIGNED NOT NULL,
   `grupo_id` bigint UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `grupo_profesors`
+--
+
+INSERT INTO `grupo_profesors` (`id`, `user_id`, `profesor_id`, `grupo_id`, `created_at`, `updated_at`) VALUES
+(1, 6, 1, 1, '2023-11-06 15:30:18', '2023-11-06 15:33:33');
 
 -- --------------------------------------------------------
 
@@ -618,7 +626,19 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (171, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN HORARIO', 'id: 1<br/>grupo_id: 1<br/>modalidad: VIRTUAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:33<br/>', 'id: 1<br/>grupo_id: 1<br/>modalidad: PRESENCIAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:37<br/>', 'HORARIOS', '2023-11-05', '14:06:37', '2023-11-05 18:06:37', '2023-11-05 18:06:37'),
 (172, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN HORARIO', 'id: 1<br/>grupo_id: 1<br/>modalidad: PRESENCIAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:37<br/>', 'id: 1<br/>grupo_id: 1<br/>modalidad: PRESENCIAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:37<br/>', 'HORARIOS', '2023-11-05', '14:08:44', '2023-11-05 18:08:44', '2023-11-05 18:08:44'),
 (173, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN HORARIO', 'id: 1<br/>grupo_id: 1<br/>modalidad: PRESENCIAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:37<br/>', 'id: 1<br/>grupo_id: 1<br/>modalidad: PRESENCIAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-06<br/>fecha_fin: 2023-11-12<br/>hora_inicio: 17:00:00<br/>hora_fin: 18:30:00<br/>created_at: 2023-11-05 13:55:54<br/>updated_at: 2023-11-05 14:06:37<br/>', 'HORARIOS', '2023-11-05', '14:09:12', '2023-11-05 18:09:12', '2023-11-05 18:09:12'),
-(174, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN GRUPO', 'id: 2<br/>nombre: GRUPO #2<br/>descripcion: GRUPO DE PRUEBA<br/>link_reunion: <br/>estado: ACTIVO<br/>created_at: 2023-11-05 14:10:19<br/>updated_at: 2023-11-05 14:10:19<br/>', NULL, 'GRUPOS', '2023-11-05', '14:10:19', '2023-11-05 18:10:19', '2023-11-05 18:10:19');
+(174, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN GRUPO', 'id: 2<br/>nombre: GRUPO #2<br/>descripcion: GRUPO DE PRUEBA<br/>link_reunion: <br/>estado: ACTIVO<br/>created_at: 2023-11-05 14:10:19<br/>updated_at: 2023-11-05 14:10:19<br/>', NULL, 'GRUPOS', '2023-11-05', '14:10:19', '2023-11-05 18:10:19', '2023-11-05 18:10:19'),
+(175, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN HORARIO', 'id: 2<br/>grupo_id: 2<br/>modalidad: VIRTUAL<br/>dias: 0,0,1,1,0,0,0<br/>fecha_inicio: 2023-11-12<br/>fecha_fin: 2023-11-21<br/>hora_inicio: 15:00<br/>hora_fin: 17:00<br/>created_at: 2023-11-05 14:11:03<br/>updated_at: 2023-11-05 14:11:03<br/>', NULL, 'HORARIOS', '2023-11-05', '14:11:03', '2023-11-05 18:11:03', '2023-11-05 18:11:03'),
+(176, 1, 'ELIMINACIÓN', 'EL USUARIO admin@gmail.com ELIMINÓ UN HORARIO', 'id: 2<br/>grupo_id: 2<br/>modalidad: VIRTUAL<br/>dias: 0,0,1,1,0,0,0<br/>fecha_inicio: 2023-11-12<br/>fecha_fin: 2023-11-21<br/>hora_inicio: 15:00:00<br/>hora_fin: 17:00:00<br/>created_at: 2023-11-05 14:11:03<br/>updated_at: 2023-11-05 14:11:03<br/>', NULL, 'HORARIOS', '2023-11-05', '14:11:10', '2023-11-05 18:11:10', '2023-11-05 18:11:10'),
+(177, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN GRUPO', 'id: 2<br/>nombre: GRUPO #2<br/>descripcion: GRUPO DE PRUEBA<br/>link_reunion: <br/>estado: ACTIVO<br/>created_at: 2023-11-05 14:10:19<br/>updated_at: 2023-11-05 14:10:19<br/>', 'id: 2<br/>nombre: GRUPO #2<br/>descripcion: GRUPO DE PRUEBA<br/>link_reunion: <br/>estado: INACTIVO<br/>created_at: 2023-11-05 14:10:19<br/>updated_at: 2023-11-05 14:11:16<br/>', 'GRUPOS', '2023-11-05', '14:11:16', '2023-11-05 18:11:16', '2023-11-05 18:11:16'),
+(178, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN GRUPO', 'id: 2<br/>nombre: GRUPO #2<br/>descripcion: GRUPO DE PRUEBA<br/>link_reunion: <br/>estado: INACTIVO<br/>created_at: 2023-11-05 14:10:19<br/>updated_at: 2023-11-05 14:11:16<br/>', 'id: 2<br/>nombre: GRUPO #2<br/>descripcion: GRUPO DE PRUEBA<br/>link_reunion: <br/>estado: ACTIVO<br/>created_at: 2023-11-05 14:10:19<br/>updated_at: 2023-11-05 14:11:28<br/>', 'GRUPOS', '2023-11-05', '14:11:28', '2023-11-05 18:11:28', '2023-11-05 18:11:28'),
+(179, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:29:39<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:29:39<br/>user_id: 6<br/>', NULL, 'GRUPO PROFESOR', '2023-11-06', '11:29:39', '2023-11-06 15:29:39', '2023-11-06 15:29:39'),
+(180, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:29:39<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:29:39<br/>user_id: 6<br/>', 'created_at: 2023-11-06 11:29:39<br/>grupo_id: 2<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:29:44<br/>user_id: 6<br/>', 'GRUPO PROFESOR', '2023-11-06', '11:29:44', '2023-11-06 15:29:44', '2023-11-06 15:29:44'),
+(181, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:29:39<br/>grupo_id: 2<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:29:44<br/>user_id: 6<br/>', 'created_at: 2023-11-06 11:29:39<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:29:59<br/>user_id: 6<br/>', 'GRUPO PROFESOR', '2023-11-06', '11:29:59', '2023-11-06 15:29:59', '2023-11-06 15:29:59'),
+(182, 1, 'ELIMINACIÓN', 'EL USUARIO admin@gmail.com ELIMINÓ UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:29:39<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:29:59<br/>user_id: 6<br/>', NULL, 'GRUPO PROFESOR', '2023-11-06', '11:30:07', '2023-11-06 15:30:07', '2023-11-06 15:30:07'),
+(183, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:30:18<br/>user_id: 6<br/>', NULL, 'GRUPO PROFESOR', '2023-11-06', '11:30:18', '2023-11-06 15:30:18', '2023-11-06 15:30:18'),
+(184, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:30:18<br/>user_id: 6<br/>', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:30:18<br/>user_id: 6<br/>', 'GRUPO PROFESOR', '2023-11-06', '11:33:17', '2023-11-06 15:33:17', '2023-11-06 15:33:17'),
+(185, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:30:18<br/>user_id: 6<br/>', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 2<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:33:21<br/>user_id: 6<br/>', 'GRUPO PROFESOR', '2023-11-06', '11:33:21', '2023-11-06 15:33:21', '2023-11-06 15:33:21'),
+(186, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE PROFESOR', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 2<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:33:21<br/>user_id: 6<br/>', 'created_at: 2023-11-06 11:30:18<br/>grupo_id: 1<br/>id: 1<br/>profesor_id: 1<br/>updated_at: 2023-11-06 11:33:33<br/>user_id: 6<br/>', 'GRUPO PROFESOR', '2023-11-06', '11:33:33', '2023-11-06 15:33:33', '2023-11-06 15:33:33');
 
 -- --------------------------------------------------------
 
@@ -1286,7 +1306,7 @@ ALTER TABLE `grupos`
 -- AUTO_INCREMENT de la tabla `grupo_profesors`
 --
 ALTER TABLE `grupo_profesors`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo_recursos`
@@ -1298,13 +1318,13 @@ ALTER TABLE `grupo_recursos`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
 --
 ALTER TABLE `horarios`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcions`

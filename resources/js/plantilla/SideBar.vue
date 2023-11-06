@@ -153,6 +153,7 @@
                                 permisos.includes('grupos.index') ||
                                 permisos.includes('inscripcions.index') ||
                                 permisos.includes('asignacion_grupos.index') ||
+                                permisos.includes('grupo_profesors') ||
                                 permisos.includes('horarios.index'))
                         "
                         :class="[
@@ -161,7 +162,9 @@
                             $route.name == 'inscripcions.index' ||
                             $route.name == 'inscripcions.solicitudes' ||
                             $route.name == 'asignacion_grupos.index' ||
-                            $route.name == 'horarios.index'
+                            $route.name == 'horarios.index' ||
+                            $route.name == 'asignacion_grupos.estudiantes' ||
+                            $route.name == 'asignacion_grupos.profesores'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"

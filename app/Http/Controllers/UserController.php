@@ -108,6 +108,11 @@ class UserController extends Controller
             'profesors.edit',
             'profesors.destroy',
 
+            'grupo_profesors.index',
+            'grupo_profesors.create',
+            'grupo_profesors.edit',
+            'grupo_profesors.destroy',
+
             'horarios.index',
             'horarios.create',
             'horarios.edit',

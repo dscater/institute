@@ -17,6 +17,15 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-md-3">
+                                        <router-link
+                                            :to="{ name: 'admin_portal.index' }"
+                                            class="btn btn-default btn-flat btn-block"
+                                        >
+                                            <i class="fa fa-arrow-left"></i>
+                                            Volver
+                                        </router-link>
+                                    </div>
+                                    <div class="col-md-3">
                                         <button
                                             v-if="
                                                 permisos.includes(
@@ -32,15 +41,6 @@
                                             <i class="fa fa-plus"></i>
                                             Nuevo
                                         </button>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <router-link
-                                            :to="{ name: 'admin_portal.index' }"
-                                            class="btn btn-default btn-flat btn-block"
-                                        >
-                                            <i class="fa fa-arrow-left"></i>
-                                            Volver
-                                        </router-link>
                                     </div>
                                 </div>
                             </div>

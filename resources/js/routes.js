@@ -263,6 +263,22 @@ export default new Router({
                     .default,
             props: true,
         },
+        {
+            path: "/administracion/asignacion_grupos/esudiantes",
+            name: "asignacion_grupos.estudiantes",
+            component:
+                require("./components/modulos/asignacion_grupos/Estudiantes.vue")
+                    .default,
+            props: true,
+        },
+        {
+            path: "/administracion/asignacion_grupos/profesores",
+            name: "asignacion_grupos.profesores",
+            component:
+                require("./components/modulos/asignacion_grupos/Profesores.vue")
+                    .default,
+            props: true,
+        },
 
         // Profesors
         {
