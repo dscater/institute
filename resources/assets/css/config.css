@@ -32,9 +32,14 @@
     display: none;
 }
 
-input:read-only {
-    background-color: var(--secundario_transparent)!important;
-    color:black!important;
+input.form-control:read-only {
+    background-color: var(--secundario_transparent) !important;
+    color: black !important;
+}
+
+input.form-control[type="file"] {
+    background-color: white !important;
+    color: black !important;
 }
 
 .bg-principal {

@@ -31,4 +31,9 @@ class Grupo extends Model
     {
         return $this->hasOne(Horario::class, 'grupo_id');
     }
+
+    public function grupo_recursos()
+    {
+        return $this->hasMany(GrupoRecurso::class, 'grupo_id')->orderBy("id", "desc");
+    }
 }

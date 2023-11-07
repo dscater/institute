@@ -40,7 +40,7 @@
                 <div class="row">
                     <div
                         class="col-md-12"
-                        v-for="item in listInscripcionSolicituds"
+                        v-for="item in listAsignacionGruposEstudiante"
                     >
                         <div class="card">
                             <div class="card-body p-0">
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" v-if="listInscripcionSolicituds.length > 0">
+                <div class="row" v-if="listAsignacionGruposEstudiante.length > 0">
                     <div class="col-md-12 pb-3 paginacion_portal">
                         <b-pagination
                             class="rounded-0"
@@ -157,7 +157,7 @@ export default {
             currentPage: 1,
             perPage: 10,
             rows: 10,
-            listInscripcionSolicituds: [],
+            listAsignacionGruposEstudiante: [],
             oInscripcion: null,
         };
     },
@@ -179,7 +179,7 @@ export default {
                     this.rows = response.data.asignacion_grupos.total;
                     this.perPage = response.data.per_page;
 
-                    this.listInscripcionSolicituds =
+                    this.listAsignacionGruposEstudiante =
                         response.data.asignacion_grupos.data;
                     this.oInscripcion = response.data.inscripcion;
                 });

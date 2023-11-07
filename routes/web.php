@@ -191,6 +191,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // GRUPO RECURSOS
+        Route::get("grupo_recursos/getRecursosGrupo/{grupo}", [GrupoRecursoController::class, 'getRecursosGrupo']);
         Route::resource('grupo_recursos', GrupoRecursoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);

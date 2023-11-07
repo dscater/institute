@@ -86,7 +86,9 @@
                             $route.name == 'estudiante_cursos.index' ||
                             $route.name ==
                                 'estudiante_cursos.mis_solicitudes' ||
-                            $route.name == 'estudiante_cursos.nueva_solicitud'
+                            $route.name ==
+                                'estudiante_cursos.nueva_solicitud' ||
+                            $route.name == 'grupo_recursos.estudiante_recursos'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"

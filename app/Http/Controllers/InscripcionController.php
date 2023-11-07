@@ -141,8 +141,8 @@ class InscripcionController extends Controller
     {
         $inscripcion_validate = [
             'password' => 'required|min:8|confirmed',
-            "nombres" => "required|min:4",
-            "apellidos" => "required|min:4",
+            "nombres" => "required|min:2",
+            "apellidos" => "required|min:2",
             "nro_iden" => "required|min:4",
             "fecha_nac" => "required|date",
             "edad" => "required|numeric",
@@ -151,7 +151,7 @@ class InscripcionController extends Controller
             "prov_dpto" => "required|min:4",
             "sexo" => "required",
             "fono" => "required",
-            "correo" => "required|email|unique:inscripcions,correo",
+            "correo" => "required|email|unique:inscripcions,correo|unique:users,correo",
             "curso_id" => "required",
             "nivel" => "required",
             "se_entero" => "required",

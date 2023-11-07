@@ -1,5 +1,5 @@
 <template>
-    <div class="content-wrapper contenedor_inscripciones">
+    <div class="content-wrapper contenedor_nueva_solicitud">
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -1112,10 +1112,10 @@ export default {
 </script>
 
 <style>
-.contenedor_inscripciones .contenedor_paso {
+.contenedor_nueva_solicitud .contenedor_paso {
     text-align: center;
 }
-.contenedor_inscripciones .contenedor_paso button {
+.contenedor_nueva_solicitud .contenedor_paso button {
     text-align: center;
     background-color: transparent;
     color: var(--principal);
@@ -1124,48 +1124,48 @@ export default {
     border: none;
 }
 
-.contenedor_inscripciones .contenedor_paso.activo .numero_paso {
+.contenedor_nueva_solicitud .contenedor_paso.activo .numero_paso {
     background-color: var(--principal2);
     color: white;
 }
 
-.contenedor_inscripciones .contenedor_paso .numero_paso {
+.contenedor_nueva_solicitud .contenedor_paso .numero_paso {
     border-radius: 50%;
     border: solid 1px;
     padding: 15px 19px;
 }
 
-.contenedor_inscripciones .contenedor_forms label {
+.contenedor_nueva_solicitud .contenedor_forms label {
     color: white;
 }
-.contenedor_inscripciones .contenedor_forms .card,
-.contenedor_inscripciones .contenedor_forms .card .card-body {
+.contenedor_nueva_solicitud .contenedor_forms .card,
+.contenedor_nueva_solicitud .contenedor_forms .card .card-body {
     border-radius: 0px;
 }
 @media (max-width: 800px) {
-    .contenedor_inscripciones .contenedor_paso .texto_paso {
+    .contenedor_nueva_solicitud .contenedor_paso .texto_paso {
         display: none;
     }
 }
 
-.contenedor_inscripciones .plan_pago {
+.contenedor_nueva_solicitud .plan_pago {
     border-radius: 25px !important;
     color: var(--principal);
     transition: 0.25s all;
 }
 
-.contenedor_inscripciones .plan_pago:hover {
+.contenedor_nueva_solicitud .plan_pago:hover {
     cursor: pointer;
     background-color: var(--principal2);
     color: white;
 }
 
-.contenedor_inscripciones .plan_pago.activo {
+.contenedor_nueva_solicitud .plan_pago.activo {
     background-color: var(--principal2);
     color: white;
 }
 
-.contenedor_inscripciones .plan_pago .titulo {
+.contenedor_nueva_solicitud .plan_pago .titulo {
     font-weight: bold;
     width: 100%;
     text-align: center;
@@ -1173,7 +1173,7 @@ export default {
     margin-bottom: 12px;
 }
 
-.contenedor_inscripciones .plan_pago .costo {
+.contenedor_nueva_solicitud .plan_pago .costo {
     font-weight: bold;
     width: 100%;
     text-align: center;
@@ -1184,7 +1184,7 @@ export default {
     margin-bottom: 12px;
 }
 
-.contenedor_inscripciones .plan_pago .detalle {
+.contenedor_nueva_solicitud .plan_pago .detalle {
     line-height: 28px;
     width: 100%;
     text-align: center;

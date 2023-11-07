@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grupo;
 use App\Models\GrupoProfesor;
 use App\Models\GrupoRecurso;
 use App\Models\HistorialAccion;
@@ -34,7 +35,7 @@ class GrupoRecursoController extends Controller
         }
         if ($tipo_user == 'PROFESOR') {
             $id_grupos_user = GrupoProfesor::where("user_id", $user->id)->pluck("grupo_id");
-            $grupo_recursos = GrupoRecurso::with(["grupo"])->whereIn("id", $id_grupos_user)->orderBy("id", "desc")->get();
+            $grupo_recursos = GrupoRecurso::with(["grupo"])->whereIn("grupo_id", $id_grupos_user)->orderBy("id", "desc")->get();
         }
 
         if ($tipo_user == 'ESTUDIANTE') {
@@ -83,6 +84,11 @@ class GrupoRecursoController extends Controller
         return response()->JSON([
             "grupo_recurso" => $grupo_recurso
         ], 200);
+    }
+
+    public function getRecursosGrupo(Grupo $grupo)
+    {
+        return response()->JSON($grupo->grupo_recursos);
     }
 
     public function update(Request $request, GrupoRecurso $grupo_recurso)
