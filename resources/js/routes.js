@@ -354,6 +354,25 @@ export default new Router({
             props: true,
         },
 
+        {
+            path: "/administracion/examen_nivelacions/estudiante",
+            name: "examen_nivelacions.estudiantes",
+            component:
+                require("./components/modulos/examen_nivelacions/Estudiantes.vue")
+                    .default,
+            props: true,
+        },
+
+        // realizar examen estudiante
+        {
+            path: "/administracion/examen_nivelacions/realizar_examen/:id",
+            name: "examen_nivelacions.realizar_examen",
+            component:
+                require("./components/modulos/realizar_examen/create.vue")
+                    .default,
+            props: true,
+        },
+
         // Configuración
         {
             path: "/administracion/configuracion",

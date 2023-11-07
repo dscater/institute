@@ -202,6 +202,8 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // EXAMEN NIVELACION
+        Route::get("examen_nivelacions/getExamenesCurso/{curso}", [ExamenNivelacionController::class, 'getExamenesCurso']);
+        Route::post("examen_nivelacions/registrar_examen_estudiante/{examen_nivelacion}", [ExamenNivelacionController::class, 'registrar_examen_estudiante']);
         Route::resource('examen_nivelacions', ExamenNivelacionController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);

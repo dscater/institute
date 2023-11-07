@@ -32,4 +32,9 @@ class Curso extends Model
             return substr($this->descripcion, 0, 99) . '...';
         }
     }
+
+    public function examen_nivelacions()
+    {
+        return $this->hasMany(ExamenNivelacion::class, 'curso_id')->orderBy("id", "desc");
+    }
 }

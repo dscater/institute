@@ -137,7 +137,7 @@
                     </li>
                     <li class="nav-item" v-if="user.tipo == 'ESTUDIANTE'">
                         <router-link
-                            :to="{ name: 'grupos.index' }"
+                            :to="{ name: 'examen_nivelacions.estudiantes' }"
                             class="nav-link"
                         >
                             <i class="nav-icon fas fa-clipboard-list"></i>

@@ -19,7 +19,7 @@
                                     index +
                                     '_enunciado_preguntas_' +
                                     index_pregunta +
-                                    '_opciones'
+                                    '_pregunta'
                             ],
                     }"
                     autosize
@@ -52,7 +52,7 @@
                                     index +
                                     '_enunciado_preguntas_' +
                                     index_pregunta +
-                                    '_pregunta'
+                                    '_opciones'
                             ],
                     }"
                     input-id="tags-basic"

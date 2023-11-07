@@ -208,6 +208,7 @@
                     class="btn btn-success btn-block btn-flat"
                     v-html="txtBtnRegistrar"
                     @click="enviarFormulario"
+                    :disabled="enviando"
                 ></button>
             </div>
         </div>

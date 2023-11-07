@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AsignacionGrupo;
+use App\Models\Curso;
 use App\Models\EnunciadoPregunta;
 use App\Models\ExamenEnunciado;
 use App\Models\ExamenNivelacion;
 use App\Models\HistorialAccion;
+use App\Models\Inscripcion;
+use App\Models\InscripcionExamen;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,12 +23,81 @@ class ExamenNivelacionController extends Controller
         $examen_nivelacions = ExamenNivelacion::with(["curso"])->orderBy("id", "desc")->get();
         return response()->JSON(['examen_nivelacions' => $examen_nivelacions, 'total' => count($examen_nivelacions)], 200);
     }
+
+    public function getExamenesCurso(Curso $curso)
+    {
+        return response()->JSON($curso->load(["examen_nivelacions"]));
+    }
+
+    public function registrar_examen_estudiante(ExamenNivelacion $examen_nivelacion, Request $request)
+    {
+        $errors = self::validacionRespuetasExamen($request->respuestas);
+
+        if (count($errors) > 0) {
+            return response()->JSON([
+                "errors" => $errors
+            ], 422);
+        }
+
+        DB::beginTransaction();
+        try {
+            $user = Auth::user();
+            $inscripcion = Inscripcion::where("user_id", $user->id)->get()->first();
+            $asignacion_grupo = AsignacionGrupo::where("curso_id", $examen_nivelacion->curso_id)
+                ->where("inscripcion_id", $inscripcion->id)
+                ->get()->last();
+            if (!$asignacion_grupo) {
+                throw new Exception("Ocurrió un error inesperado, el examen que seleccióno no coincide con ningun curso asignado");
+            }
+            $nuevo_inscripcion_examen = InscripcionExamen::create([
+                "inscripcion_id" => $inscripcion->id,
+                "inscripcion_solicitud_id" => $asignacion_grupo->inscripcion_solicitud_id,
+                "examen_nivelacion_id" => $examen_nivelacion->id,
+                "estado" => "PENDIENTE",
+            ]);
+
+            $respuestas = $request->respuestas;
+            foreach ($respuestas as $r) {
+                $nuevo_inscripcion_examen->inscripcion_respuestas()->create([
+                    "examen_enunciado_id" => $r["examen_enunciado_id"],
+                    "enunciado_pregunta_id" => $r["enunciado_pregunta_id"],
+                    "respuesta" => $r["respuesta"],
+                ]);
+            }
+
+            $datos_original = HistorialAccion::getDetalleRegistro($nuevo_inscripcion_examen, "inscripcion_examens");
+            HistorialAccion::create([
+                'user_id' => Auth::user()->id,
+                'accion' => 'CREACIÓN',
+                'descripcion' => 'EL USUARIO ' . Auth::user()->usuario . ' REALIZÓ UN EXAMEN DE NIVELACION',
+                'datos_original' => $datos_original,
+                'modulo' => 'INSCRIPCIÓN EXAMENES',
+                'fecha' => date('Y-m-d'),
+                'hora' => date('H:i:s')
+            ]);
+
+
+            DB::commit();
+            return response()->JSON([
+                'sw' => true,
+                'examen_nivelacion' => $examen_nivelacion,
+                'msj' => 'El examen se envío de forma correcta',
+            ], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->JSON([
+                'sw' => false,
+                'message' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
     public function store(Request $request)
     {
         // validar formulario
         $curso_id = $request->curso_id;
         $examen_enunciados = $request->examen_enunciados;
-        $errors = self::validacionFormulario($curso_id, $examen_enunciados);
+        $errors = self::validacionFormularioExamenNivelacion($curso_id, $examen_enunciados);
 
         if (count($errors) > 0) {
             return response()->JSON([
@@ -94,7 +168,7 @@ class ExamenNivelacionController extends Controller
     public function show(ExamenNivelacion $examen_nivelacion)
     {
         return response()->JSON([
-            "examen_nivelacion" => $examen_nivelacion->load(["examen_enunciados.enunciado_preguntas"])
+            "examen_nivelacion" => $examen_nivelacion->load(["curso", "examen_enunciados.enunciado_preguntas"])
         ], 200);
     }
 
@@ -102,7 +176,7 @@ class ExamenNivelacionController extends Controller
     {       // validar formulario
         $curso_id = $request->curso_id;
         $examen_enunciados = $request->examen_enunciados;
-        $errors = self::validacionFormulario($curso_id, $examen_enunciados);
+        $errors = self::validacionFormularioExamenNivelacion($curso_id, $examen_enunciados);
 
         if (count($errors) > 0) {
             return response()->JSON([
@@ -262,7 +336,7 @@ class ExamenNivelacionController extends Controller
         }
     }
 
-    public static function validacionFormulario($curso_id, $examen_enunciados = [])
+    public static function validacionFormularioExamenNivelacion($curso_id, $examen_enunciados = [])
     {
         $errors = [];
         if (empty($curso_id)) {
@@ -326,6 +400,19 @@ class ExamenNivelacionController extends Controller
         } else {
             // validar cantidad de enunciados
             $errors["examen_enunciados"] = ["Debes crear por lo menos 1 enunciado"];
+        }
+
+        return $errors;
+    }
+
+    public static function validacionRespuetasExamen($respuestas)
+    {
+        $errors = [];
+        foreach ($respuestas as $r) {
+            if (!$r["respuesta"] || trim($r["respuesta"]) == '') {
+                $errors["incompleto"] = ["Debes completar todas las preguntas"];
+                break;
+            }
         }
 
         return $errors;

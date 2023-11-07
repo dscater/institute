@@ -18,7 +18,7 @@ class CreateInscripcionExamensTable extends Migration
             $table->unsignedBigInteger("inscripcion_id");
             $table->unsignedBigInteger("inscripcion_solicitud_id");
             $table->unsignedBigInteger("examen_nivelacion_id");
-            $table->double("puntaje", 8, 2);
+            $table->double("puntaje", 8, 2)->nullable();
             $table->string("estado", 155)->nullable();
             $table->timestamps();
 
