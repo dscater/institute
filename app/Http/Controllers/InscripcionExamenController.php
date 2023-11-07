@@ -51,7 +51,8 @@ class InscripcionExamenController extends Controller
             }
 
             $inscripcion_examen->update([
-                "puntaje" => $request->puntaje
+                "puntaje" => $request->puntaje,
+                "estado" => "REVISADO",
             ]);
 
             $datos_original = HistorialAccion::getDetalleRegistro($inscripcion_examen, "inscripcion_examens");

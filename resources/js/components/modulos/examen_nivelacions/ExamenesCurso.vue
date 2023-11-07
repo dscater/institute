@@ -59,11 +59,6 @@
                                                 asignacion_grupo
                                                     .inscripcion_solicitud
                                                     .inscripcion_examen.puntaje
-                                                    ? asignacion_grupo
-                                                          .inscripcion_solicitud
-                                                          .inscripcion_examen
-                                                          .puntaje
-                                                    : "S/P"
                                             }}</span
                                         >
                                     </p>

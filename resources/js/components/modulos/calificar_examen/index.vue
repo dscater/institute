@@ -52,11 +52,7 @@
                                         </p>
                                         <p class="mb-1">
                                             <strong>Puntaje: </strong>
-                                            {{
-                                                item.puntaje
-                                                    ? item.puntaje
-                                                    : "S/P"
-                                            }}
+                                            {{ item.puntaje }}
                                         </p>
                                     </div>
                                 </div>
