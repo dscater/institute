@@ -139,6 +139,13 @@
                         <router-link
                             :to="{ name: 'examen_nivelacions.estudiantes' }"
                             class="nav-link"
+                            :class="[
+                                $route.name ==
+                                    'examen_nivelacions.realizar_examen' ||
+                                $route.name == 'examen_nivelacions.ver_examen'
+                                    ? 'active'
+                                    : '',
+                            ]"
                         >
                             <i class="nav-icon fas fa-clipboard-list"></i>
                             <p>Examen de Nivelación</p>
@@ -146,7 +153,7 @@
                     </li>
                     <li class="nav-item" v-if="user.tipo == 'ESTUDIANTE'">
                         <router-link
-                            :to="{ name: 'grupos.index' }"
+                            :to="{ name: 'comunicados.estudiantes' }"
                             class="nav-link"
                         >
                             <i class="nav-icon fas fa-list-alt"></i>
@@ -156,16 +163,21 @@
                     <li
                         class="nav-item"
                         v-if="
-                            user.tipo != 'ESTUDIANTE' &&
-                            (permisos.includes('cursos.index') ||
-                                permisos.includes('inscripcions.index') ||
-                                permisos.includes('grupos.index') ||
-                                permisos.includes('inscripcions.index') ||
-                                permisos.includes('asignacion_grupos.index') ||
-                                permisos.includes('grupo_profesors') ||
-                                permisos.includes('horarios.index') ||
-                                permisos.includes('grupo_recursos.index') ||
-                                permisos.includes('examen_nivelacions.index'))
+                            (user.tipo != 'ESTUDIANTE' &&
+                                (permisos.includes('cursos.index') ||
+                                    permisos.includes('inscripcions.index') ||
+                                    permisos.includes('grupos.index') ||
+                                    permisos.includes('inscripcions.index') ||
+                                    permisos.includes(
+                                        'asignacion_grupos.index'
+                                    ) ||
+                                    permisos.includes('grupo_profesors') ||
+                                    permisos.includes('horarios.index') ||
+                                    permisos.includes('grupo_recursos.index') ||
+                                    permisos.includes(
+                                        'examen_nivelacions.index'
+                                    ))) ||
+                            permisos.includes('comunicados.index')
                         "
                         :class="[
                             $route.name == 'grupos.index' ||
@@ -182,7 +194,9 @@
                             $route.name == 'examen_nivelacions.edit' ||
                             $route.name ==
                                 'examen_nivelacions.calificar_examen_index' ||
-                            $route.name == 'examen_nivelacions.calificar_examen'
+                            $route.name ==
+                                'examen_nivelacions.calificar_examen' ||
+                            $route.name == 'comunicados.index'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"
@@ -269,11 +283,17 @@
                                     <p>Recursos</p>
                                 </router-link>
                             </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
+                            <li
+                                class="nav-item"
+                                v-if="permisos.includes('comunicados.index')"
+                            >
+                                <router-link
+                                    :to="{ name: 'comunicados.index' }"
+                                    class="nav-link"
+                                >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Comunicados</p>
-                                </a>
+                                </router-link>
                             </li>
                             <li
                                 class="nav-item"

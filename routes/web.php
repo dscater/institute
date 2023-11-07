@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AsignacionGrupoController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\ComunicadoController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ConfiguracionGestoriaController;
 use App\Http\Controllers\ContactoController;
@@ -212,6 +213,12 @@ Route::middleware(['auth'])->group(function () {
         // INSCRIPCION EXAMENS
         Route::post("inscripcion_examens/registrar_calificacion/{inscripcion_examen}", [InscripcionExamenController::class, 'registrar_calificacion']);
         Route::resource('inscripcion_examens', InscripcionExamenController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // COMUNICADOS
+        Route::get("comunicados/getComunicadosGrupo/{grupo}", [ComunicadoController::class, 'getComunicadosGrupo']);
+        Route::resource('comunicados', ComunicadoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
     });

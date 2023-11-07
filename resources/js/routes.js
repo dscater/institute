@@ -399,6 +399,23 @@ export default new Router({
             props: true,
         },
 
+        // Comunicados
+        {
+            path: "/administracion/comunicados",
+            name: "comunicados.index",
+            component: require("./components/modulos/comunicados/index.vue")
+                .default,
+            props: true,
+        },
+        {
+            path: "/administracion/comunicados/estudiante",
+            name: "comunicados.estudiantes",
+            component:
+                require("./components/modulos/comunicados/ComunicadosEstudiantes.vue")
+                    .default,
+            props: true,
+        },
+
         // Configuración
         {
             path: "/administracion/configuracion",

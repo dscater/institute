@@ -36,4 +36,9 @@ class Grupo extends Model
     {
         return $this->hasMany(GrupoRecurso::class, 'grupo_id')->orderBy("id", "desc");
     }
+
+    public function comunicados()
+    {
+        return $this->hasMany(Comunicado::class, 'grupo_id')->orderBy("id", "desc");
+    }
 }

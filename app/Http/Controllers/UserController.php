@@ -122,6 +122,11 @@ class UserController extends Controller
             'grupo_recursos.create',
             'grupo_recursos.destroy',
 
+            'comunicados.index',
+            'comunicados.create',
+            'comunicados.edit',
+            'comunicados.destroy',
+
             'configuracion.index',
             'configuracion.edit',
 
@@ -138,6 +143,11 @@ class UserController extends Controller
             'examen_nivelacions.create',
             'examen_nivelacions.edit',
             'examen_nivelacions.destroy',
+
+            'comunicados.index',
+            'comunicados.create',
+            'comunicados.edit',
+            'comunicados.destroy',
 
         ],
         "ESTUDIANTE" => [

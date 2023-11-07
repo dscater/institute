@@ -6,7 +6,7 @@
                 v-if="listRecursos.length > 0"
                 v-for="item in listRecursos"
             >
-                <div class="card">
+                <div class="card mb-1">
                     <div class="card-body">
                         <div class="row fila_recurso">
                             <span class="fecha_hora">{{ item.fecha_txt }}</span>
