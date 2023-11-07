@@ -142,6 +142,7 @@ class UserController extends Controller
         ],
         "ESTUDIANTE" => [
             "estudiante_cursos.index",
+            "grupo_recursos.estudiante_recursos",
 
             "recursos.index"
         ],

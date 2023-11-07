@@ -30,6 +30,22 @@ class AsignacionGrupoController extends Controller
         return response()->JSON(['asignacion_grupos' => $asignacion_grupos, 'total' => count($asignacion_grupos)], 200);
     }
 
+    public function asignaciones_estudiante(Request $request)
+    {
+        $asignacion_grupos = [];
+        $user = Auth::user();
+        $inscripcion = Inscripcion::where("user_id", $user->id)->get()->first();
+        $per_page = 10;
+        $asignacion_grupos = AsignacionGrupo::with(["inscripcion", "curso", "grupo.horario"])
+            ->where("inscripcion_id", $inscripcion->id)
+            ->paginate($per_page);
+        return response()->JSON([
+            'asignacion_grupos' => $asignacion_grupos,
+            'inscripcion' => $inscripcion,
+            'total' => count($asignacion_grupos)
+        ], 200);
+    }
+
     public function store(Request $request)
     {
         $request->validate($this->validacion, $this->mensajes);

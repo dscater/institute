@@ -228,6 +228,20 @@ export default new Router({
                 require("./components/modulos/cursos/EstudianteCursos.vue")
                     .default,
         },
+        {
+            path: "/administracion/mis_cursos/mis_solicitudes/:id",
+            name: "estudiante_cursos.mis_solicitudes",
+            component: require("./components/modulos/cursos/MisSolicitudes.vue")
+                .default,
+            props: true,
+        },
+        {
+            path: "/administracion/mis_cursos/nueva_solicitud/:id",
+            name: "estudiante_cursos.nueva_solicitud",
+            component: require("./components/modulos/cursos/NuevaSolicitud.vue")
+                .default,
+            props: true,
+        },
 
         // Grupos
         {
@@ -295,6 +309,14 @@ export default new Router({
             name: "grupo_recursos.index",
             component: require("./components/modulos/grupo_recursos/index.vue")
                 .default,
+            props: true,
+        },
+        {
+            path: "/administracion/grupo_recursos/estudiante",
+            name: "grupo_recursos.estudiante_recursos",
+            component:
+                require("./components/modulos/grupo_recursos/EstudianteRecursos.vue")
+                    .default,
             props: true,
         },
         // Horarios

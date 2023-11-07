@@ -26,4 +26,9 @@ class Grupo extends Model
     {
         return date("d/m/Y", strtotime($this->created_at));
     }
+
+    public function horario()
+    {
+        return $this->hasOne(Horario::class, 'grupo_id');
+    }
 }

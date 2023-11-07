@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Curso;
 use App\Models\HistorialAccion;
+use App\Models\Inscripcion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -26,6 +27,26 @@ class CursoController extends Controller
         return response()->JSON(['cursos' => $cursos, 'total' => count($cursos)], 200);
     }
 
+    public function cursos_user()
+    {
+        $cursos = [];
+        $user = Auth::user();
+        $tipo_user = $user->tipo;
+        if ($tipo_user == 'ADMINISTRADOR') {
+            $cursos = Curso::orderBy("id", "desc")->get();
+        }
+        if ($tipo_user == 'PROFESOR') {
+            $id_cursos_user = GrupoProfesor::where("user_id", $user->id)->pluck("curso_id");
+            $cursos = Curso::whereIn("id", $id_cursos_user)->orderBy("id", "desc")->get();
+        }
+
+        if ($tipo_user == 'ESTUDIANTE') {
+            $id_cursos_user = Inscripcion::join("inscripcion_solicituds", "inscripcion_solicituds.inscripcion_id", "=", "inscripcions.id")
+                ->where("user_id", $user->id)->pluck("inscripcion_solicituds.curso_id");
+            $cursos = Curso::whereIn("id", $id_cursos_user)->orderBy("id", "desc")->get();
+        }
+        return response()->JSON(['cursos' => $cursos, 'total' => count($cursos)], 200);
+    }
 
     public function listaCursos(Request $request)
     {

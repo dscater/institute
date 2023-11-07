@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 06-11-2023 a las 22:02:32
+-- Tiempo de generación: 07-11-2023 a las 01:15:26
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -686,7 +686,10 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (195, 6, 'CREACIÓN', 'EL USUARIO felipe@gmail.com REGISTRO UN EXAMEN DE NIVELACION', 'created_at: 2023-11-06 17:31:29<br/>curso_id: 7<br/>id: 2<br/>updated_at: 2023-11-06 17:31:29<br/>', NULL, 'EXAMEN DE NIVELACION', '2023-11-06', '17:31:29', '2023-11-06 21:31:29', '2023-11-06 21:31:29'),
 (196, 6, 'CREACIÓN', 'EL USUARIO felipe@gmail.com REGISTRO UN EXAMEN DE NIVELACION', 'created_at: 2023-11-06 17:52:37<br/>curso_id: 7<br/>id: 3<br/>updated_at: 2023-11-06 17:52:37<br/>', NULL, 'EXAMEN DE NIVELACION', '2023-11-06', '17:52:37', '2023-11-06 21:52:37', '2023-11-06 21:52:37'),
 (197, 6, 'ELIMINACIÓN', 'EL USUARIO felipe@gmail.com ELIMINÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-06 17:52:37<br/>curso_id: 7<br/>id: 3<br/>updated_at: 2023-11-06 17:52:37<br/>', NULL, 'EXAMEN DE NIVELACION', '2023-11-06', '18:00:04', '2023-11-06 22:00:04', '2023-11-06 22:00:04'),
-(198, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com MODIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-06 17:31:29<br/>curso_id: 7<br/>id: 2<br/>updated_at: 2023-11-06 17:31:29<br/>', 'created_at: 2023-11-06 17:31:29<br/>curso_id: 7<br/>id: 2<br/>updated_at: 2023-11-06 17:31:29<br/>', 'EXAMEN DE NIVELACION', '2023-11-06', '18:02:03', '2023-11-06 22:02:03', '2023-11-06 22:02:03');
+(198, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com MODIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-06 17:31:29<br/>curso_id: 7<br/>id: 2<br/>updated_at: 2023-11-06 17:31:29<br/>', 'created_at: 2023-11-06 17:31:29<br/>curso_id: 7<br/>id: 2<br/>updated_at: 2023-11-06 17:31:29<br/>', 'EXAMEN DE NIVELACION', '2023-11-06', '18:02:03', '2023-11-06 22:02:03', '2023-11-06 22:02:03'),
+(199, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS MENSUAL', 'id: 1<br/>titulo: Plan Mensual<br/>costo: 49.99<br/>detalles: Plataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBecas academicas<br/>created_at: <br/>updated_at: 2023-11-06 20:02:33<br/>', NULL, 'PLAN DE PAGOS', '2023-11-06', '20:02:33', '2023-11-07 00:02:33', '2023-11-07 00:02:33'),
+(200, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS TRIMESTRAL', 'id: 2<br/>titulo: Plan Trimestral<br/>costo: 130.00<br/>detalles: Ahora USD 123<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBecas academicas<br/>created_at: <br/>updated_at: 2023-11-06 20:02:33<br/>', NULL, 'PLAN DE PAGOS', '2023-11-06', '20:02:33', '2023-11-07 00:02:33', '2023-11-07 00:02:33'),
+(201, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS ANUAL', 'id: 3<br/>titulo: Plan Anual<br/>costo: 400.00<br/>detalles: Ahora USD 214<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBecas academicas<br/>created_at: <br/>updated_at: 2023-11-06 20:02:33<br/>', NULL, 'PLAN DE PAGOS', '2023-11-06', '20:02:33', '2023-11-07 00:02:33', '2023-11-07 00:02:33');
 
 -- --------------------------------------------------------
 
@@ -898,9 +901,9 @@ CREATE TABLE `plan_pagos` (
 --
 
 INSERT INTO `plan_pagos` (`id`, `titulo`, `costo`, `detalles`, `created_at`, `updated_at`) VALUES
-(1, 'Plan Mensual', 49.99, 'Plataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas', NULL, '2023-10-31 15:54:31'),
-(2, 'Plan Trimestral', 130.00, 'Ahora USD 123<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas', NULL, '2023-10-31 15:54:31'),
-(3, 'Plan Anual', 400.00, 'Ahora USD 214<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBeacas academicas', NULL, '2023-10-31 15:54:31');
+(1, 'Plan Mensual', 49.99, 'Plataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBecas academicas', NULL, '2023-11-07 00:02:33'),
+(2, 'Plan Trimestral', 130.00, 'Ahora USD 123<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBecas academicas', NULL, '2023-11-07 00:02:33'),
+(3, 'Plan Anual', 400.00, 'Ahora USD 214<br />\nPlataforma interactiva<br />\nMateriales digitales<br />\nRecursos tecnologicos<br />\nClases en vivo<br />\nCursos de preparación<br />\nBecas academicas', NULL, '2023-11-07 00:02:33');
 
 -- --------------------------------------------------------
 
@@ -1366,7 +1369,7 @@ ALTER TABLE `grupo_recursos`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`

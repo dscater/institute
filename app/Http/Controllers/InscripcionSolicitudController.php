@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HistorialAccion;
+use App\Models\Inscripcion;
 use App\Models\InscripcionSolicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,18 @@ class InscripcionSolicitudController extends Controller
     public function aceptados_sin_asignar()
     {
         $inscripcion_solicituds = InscripcionSolicitud::with(["inscripcion", "curso"])->where("estado", "ACEPTADO")->where("estado_asignado", "NO")->get();
+        return response()->JSON(['inscripcion_solicituds' => $inscripcion_solicituds, 'total' => count($inscripcion_solicituds)], 200);
+    }
+
+    public function solicitudes_estudiante(Request $request)
+    {
+        $inscripcion_solicituds = [];
+        $user = Auth::user();
+        $inscripcion = Inscripcion::where("user_id", $user->id)->get()->first();
+        $per_page = 10;
+        $inscripcion_solicituds = InscripcionSolicitud::with(["inscripcion", "curso"])
+            ->where("inscripcion_id", $inscripcion->id)
+            ->paginate($per_page);
         return response()->JSON(['inscripcion_solicituds' => $inscripcion_solicituds, 'total' => count($inscripcion_solicituds)], 200);
     }
 

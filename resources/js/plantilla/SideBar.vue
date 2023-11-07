@@ -83,7 +83,10 @@
                         class="nav-item"
                         v-if="permisos.includes('estudiante_cursos.index')"
                         :class="[
-                            $route.name == 'estudiante_cursos.index'
+                            $route.name == 'estudiante_cursos.index' ||
+                            $route.name ==
+                                'estudiante_cursos.mis_solicitudes' ||
+                            $route.name == 'estudiante_cursos.nueva_solicitud'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"
@@ -113,11 +116,15 @@
                             <li
                                 class="nav-item"
                                 v-if="
-                                    permisos.includes('estudiante_cursos.index')
+                                    permisos.includes(
+                                        'grupo_recursos.estudiante_recursos'
+                                    )
                                 "
                             >
                                 <router-link
-                                    :to="{ name: 'estudiante_cursos.index' }"
+                                    :to="{
+                                        name: 'grupo_recursos.estudiante_recursos',
+                                    }"
                                     class="nav-link"
                                 >
                                     <i class="far fa-circle nav-icon"></i>

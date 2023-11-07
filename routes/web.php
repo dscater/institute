@@ -152,6 +152,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // CURSOS
+        Route::get("cursos/cursos_user", [CursoController::class, 'cursos_user']);
         Route::resource('cursos', CursoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
@@ -164,6 +165,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // INSCRIPCIONES
+        Route::get("inscripcion_solicituds/solicitudes_estudiante", [InscripcionSolicitudController::class, 'solicitudes_estudiante']);
         Route::get("inscripcion_solicituds/aceptados_sin_asignar", [InscripcionSolicitudController::class, 'aceptados_sin_asignar']);
         Route::get("inscripcion_solicituds/{inscripcion_solicitud}", [InscripcionSolicitudController::class, 'show']);
         Route::put("inscripcion_solicituds/{inscripcion_solicitud}", [InscripcionSolicitudController::class, 'update']);
@@ -172,6 +174,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // ASIGNACION GRUPOS
+        Route::get("asignacion_grupos/asignaciones_estudiante", [AsignacionGrupoController::class, 'asignaciones_estudiante']);
         Route::resource('asignacion_grupos', AsignacionGrupoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
