@@ -1,6 +1,39 @@
 <template>
-    <div class="col-md-12 mt-2">
+    <div class="col-md-12 mt-0">
         <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-1">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label
+                                    >Total preguntas:
+                                    {{
+                                        examen_nivelacion.total_preguntas
+                                    }}</label
+                                >
+                            </div>
+                            <div class="col-md-12">
+                                <label
+                                    >Correctos:
+                                    <span class="fotn-weight-normal">{{
+                                        c_correctos
+                                    }}</span></label
+                                >
+                                <label
+                                    >Incorrectos:
+                                    <span class="fotn-weight-normal">{{
+                                        c_incorrectos
+                                    }}</span></label
+                                >
+                            </div>
+                            <div class="col-md-12">
+                                <label>Puntaje final: {{ puntaje }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
@@ -11,14 +44,6 @@
                                     v-text="tituloExamen"
                                 ></h4>
                             </div>
-                            <!-- <div class="col-md-12">
-                                <span
-                                    class="cursor-pointer"
-                                    @click="muestra_modal = true"
-                                >
-                                    <i class="fa fa-info-circle"></i> Ayuda
-                                </span>
-                            </div> -->
                             <div class="col-md-12">
                                 <div class="row">
                                     <div
@@ -56,11 +81,14 @@
                                                                 :pregunta="
                                                                     pregunta
                                                                 "
+                                                                :respuestas="
+                                                                    respuestas
+                                                                "
                                                                 :errors_form="
                                                                     errors
                                                                 "
-                                                                @chageRespuesta="
-                                                                    registraRespuesta
+                                                                @actualiza_respuesta="
+                                                                    actualizaRespuesta
                                                                 "
                                                             ></Respuesta>
                                                         </div>
@@ -82,14 +110,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 mb-4">
-                <button
-                    class="btn btn-success btn-block btn-flat"
-                    v-html="txtBtnRegistrar"
-                    @click="enviarFormulario"
-                    :disabled="enviando"
-                ></button>
-            </div>
         </div>
         <ModalInfo
             :muestra_modal="muestra_modal"
@@ -107,11 +127,6 @@ export default {
         ModalInfo,
     },
     props: {
-        asignacion_id: {
-            type: Number,
-            default: 0,
-            required: true,
-        },
         accion: {
             type: String,
             default: "nuevo",
@@ -126,6 +141,24 @@ export default {
                 },
             },
         },
+        inscripcion_examen: {
+            type: Object,
+            default: {
+                id: 0,
+                inscripcion_id: "",
+                inscripcion_solicitud_id: "",
+                examen_nivelacion_id: "",
+                puntaje: "",
+                estado: "",
+                c_correctos: 0,
+                c_incorrectos: 0,
+            },
+        },
+        respuestas: {
+            type: Array,
+            default: [],
+            required: true,
+        },
     },
 
     computed: {
@@ -138,140 +171,43 @@ export default {
             }
             return "EXÁMEN DE NIVELACIÓN - ";
         },
-        txtBtnRegistrar() {
-            if (this.enviando) {
-                return `<i class="fa fa-spinner fa-spin"></i> ENVIANDO...`;
-            } else {
-                return `<i class="fa fa-paper-plane"></i> ENVIAR EXAMEN`;
-            }
-        },
     },
     data() {
         return {
             errors: [],
             muestra_modal: false,
             enviando: false,
-            respuestas: [],
+            puntaje: 0,
+            c_correctos: 0,
+            c_incorrectos: 0,
         };
     },
     mounted() {
+        this.c_correctos = this.inscripcion_examen?.c_correctos;
+        this.c_incorrectos = this.inscripcion_examen?.c_incorrectos;
+        this.puntaje = this.inscripcion_examen.puntaje;
         setTimeout(() => {
             this.inicializarRespuestas();
         }, 300);
     },
     methods: {
-        enviarFormulario() {
-            Swal.fire({
-                icon: "question",
-                title: "¿Estas seguro(a) de envíar el examen?",
-                showCancelButton: true,
-                confirmButtonColor: "#03a898",
-                confirmButtonText: "Si, enviar examen",
-                cancelButtonText: "No, cancelar",
-                denyButtonText: `No, cancelar`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    try {
-                        this.enviando = true;
-                        let url =
-                            main_url +
-                            "/admin/examen_nivelacions/registrar_examen_estudiante/" +
-                            this.examen_nivelacion.id;
-                        axios
-                            .post(url, {
-                                respuestas: this.respuestas,
-                                asignacion_id: asignacion_id,
-                            })
-                            .then((res) => {
-                                this.enviando = false;
-                                Swal.fire({
-                                    icon: "success",
-                                    title: res.data.msj,
-                                    showConfirmButton: false,
-                                    timer: 1500,
-                                });
-                                this.$router.push({
-                                    name: "examen_nivelacions.estudiantes",
-                                });
-                                this.errors = [];
-                            })
-                            .catch((error) => {
-                                this.enviando = false;
-                                if (this.accion == "edit") {
-                                    this.textoBtn = "Actualizar";
-                                } else {
-                                    this.textoBtn = "Registrar";
-                                }
-                                if (error.response) {
-                                    if (error.response.status === 422) {
-                                        this.errors =
-                                            error.response.data.errors;
-                                        let mensaje = `<ul class="text-left">`;
-                                        for (let key in this.errors) {
-                                            if (
-                                                this.errors.hasOwnProperty(key)
-                                            ) {
-                                                const value = this.errors[key];
-                                                if (Array.isArray(value)) {
-                                                    value.forEach((error) => {
-                                                        mensaje += `<li><span>${error.trim()}</span></li>`;
-                                                    });
-                                                }
-                                            }
-                                        }
-                                        mensaje += `<ul/>`;
-                                        Swal.fire({
-                                            icon: "error",
-                                            title: "Tienes los siguientes errores en el formulario",
-                                            html: mensaje,
-                                            showConfirmButton: true,
-                                            confirmButtonColor: "#009688",
-                                            confirmButtonText: "Aceptar",
-                                        });
-                                    }
-                                    if (
-                                        error.response.status === 420 ||
-                                        error.response.status === 419 ||
-                                        error.response.status === 401
-                                    ) {
-                                        window.location = "/";
-                                    }
-                                    if (error.response.status === 500) {
-                                        Swal.fire({
-                                            icon: "error",
-                                            title: "Error",
-                                            html: error.response.data.message,
-                                            showConfirmButton: false,
-                                            timer: 2000,
-                                        });
-                                    }
-                                }
-                            });
-                    } catch (e) {
-                        this.enviando = false;
-                        console.log(e);
-                    }
-                }
-            });
-        },
         inicializarRespuestas() {
-            this.examen_nivelacion.examen_enunciados.forEach((ee) => {
-                ee.enunciado_preguntas.forEach((ep) => {
-                    this.respuestas.push({
-                        examen_enunciado_id: ee.id,
-                        enunciado_pregunta_id: ep.id,
-                        respuesta: "",
-                    });
-                });
-            });
+            this.contabilizarCorrectosIncorrectos();
         },
-
-        registraRespuesta(enunciado_id, pregunta_id, valor) {
-            this.respuestas.filter(
-                (elem) =>
-                    elem.examen_enunciado_id == enunciado_id &&
-                    elem.enunciado_pregunta_id == pregunta_id
-            )[0].respuesta = valor;
+        contabilizarCorrectosIncorrectos() {
+            let correctos = this.respuestas.filter(
+                (elem) => elem.calificacion == "CORRECTO"
+            );
+            this.c_correctos = correctos.length;
+            let incorrectos = this.respuestas.filter(
+                (elem) => elem.calificacion != "CORRECTO"
+            );
+            this.c_incorrectos = incorrectos.length;
+        },
+        actualizaRespuesta(id, valor) {
+            this.respuestas.filter((elem) => elem.id == id)[0].calificacion =
+                valor;
+            this.contabilizarCorrectosIncorrectos();
         },
     },
 };

@@ -7,6 +7,7 @@
                     <input
                         class="input_respuesta input_llenado"
                         :class="['pregunta_' + pregunta.id]"
+                        readonly
                     />
                 </template>
                 <template v-if="pregunta.tipo == 'LLENADO INTERMEDIO'">
@@ -20,14 +21,15 @@
                         {{ index_pregunta + 1 }})
                         <span v-html="llenadoIntermedio"></span>
                         <span
-                            class="cursor-pointer"
+                            v-if="oRespuesta"
                             :class="{
-                                seleccionado: valor_respuesta == item_opcion,
+                                seleccionado:
+                                    oRespuesta.respuesta.trim() ==
+                                    item_opcion.trim(),
                             }"
                             v-for="(
                                 item_opcion, index_opcion
                             ) in pregunta.array_opciones"
-                            @click="registraSeleccion(item_opcion)"
                             >{{ item_opcion }}
 
                             <span
@@ -56,14 +58,14 @@
                             v-for="(
                                 item_opcion, index_opcion
                             ) in pregunta.array_opciones"
+                            v-if="oRespuesta"
                             :class="{
-                                seleccionado: valor_respuesta == item_opcion,
+                                seleccionado:
+                                    oRespuesta.respuesta.trim() ==
+                                    item_opcion.trim(),
                             }"
                         >
-                            <span
-                                class="cursor-pointer"
-                                @click="registraSeleccion(item_opcion)"
-                            >
+                            <span>
                                 {{ txt_opciones[index_opcion] }}
                                 {{ item_opcion }}
                             </span>
@@ -80,20 +82,40 @@
                             v-for="(
                                 item_opcion, index_opcion
                             ) in pregunta.array_opciones"
+                            v-if="oRespuesta"
                             :class="{
-                                seleccionado: valor_respuesta == item_opcion,
+                                seleccionado:
+                                    oRespuesta.respuesta.trim() ==
+                                    item_opcion.trim(),
                             }"
                         >
-                            <span
-                                class="cursor-pointer"
-                                @click="registraSeleccion(item_opcion)"
-                            >
+                            <span>
                                 {{ txt_opciones[index_opcion] }}
                                 {{ item_opcion }}
                             </span>
                         </li>
                     </ul>
                 </template>
+                <div class="row mt-1" v-if="oRespuesta">
+                    <div class="col-md-12">
+                        <label
+                            :class="[
+                                oRespuesta.calificacion == 'CORRECTO'
+                                    ? 'text-success'
+                                    : 'text-danger',
+                            ]"
+                            ><i
+                                class="fa"
+                                :class="[
+                                    oRespuesta.calificacion == 'CORRECTO'
+                                        ? 'fa-check'
+                                        : 'fa-times',
+                                ]"
+                            ></i>
+                            {{ oRespuesta.calificacion }}</label
+                        >
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -122,6 +144,11 @@ export default {
                 array_opciones: [],
             },
         },
+        respuestas: {
+            type: Array,
+            default: [],
+            required: true,
+        },
         errors_form: {
             type: [],
             default: [],
@@ -143,14 +170,7 @@ export default {
     },
     computed: {
         llenadoIntermedio() {
-            let readonly = "";
-            if (
-                this.pregunta.tipo == "SELECCIÓN" ||
-                this.pregunta.tipo == "LLENADO DOBLE INTERMEDIO CON OPCIONES" ||
-                this.pregunta.tipo == "LLENADO INTERMEDIO CON OPCIONES"
-            ) {
-                readonly = "readonly";
-            }
+            let readonly = "readonly";
             let input_respuesta = `<input class="input_respuesta input_llenado_intermedio pregunta_${this.pregunta.id}" ${readonly}/>`;
 
             return this.pregunta.pregunta.replace(/_+/g, input_respuesta);
@@ -161,29 +181,26 @@ export default {
             tipo_pregunta: this.pregunta.tipo,
             errors: this.errors_form,
             txt_opciones: ["A)", "B)", "C)", "D)", "E)", "F)", "G)"],
-            valor_respuesta: "",
+            oRespuesta: null,
         };
     },
     mounted() {
-        let self = this;
-        $(".pregunta_" + this.pregunta.id).on("change keyup", function () {
-            self.asignaRepuestaSeleccion($(this).val());
-        });
+        this.getRespuestaPregunta();
     },
     methods: {
-        registraSeleccion(valor) {
-            $(".pregunta_" + this.pregunta.id).val(valor);
-            this.valor_respuesta = valor;
-            this.asignaRepuestaSeleccion(this.valor_respuesta);
+        getRespuestaPregunta() {
+            let respuesta = this.respuestas.filter(
+                (elem) =>
+                    elem.examen_enunciado_id ==
+                        this.pregunta.examen_enunciado_id &&
+                    elem.enunciado_pregunta_id == this.pregunta.id
+            )[0];
+            this.oRespuesta = respuesta;
+            $(".pregunta_" + this.pregunta.id).val(this.oRespuesta.respuesta);
         },
-
-        asignaRepuestaSeleccion(valor) {
-            this.$emit(
-                "chageRespuesta",
-                this.pregunta.examen_enunciado_id,
-                this.pregunta.id,
-                valor
-            );
+        actualizaCalificacionRespuesta(valor) {
+            this.oRespuesta.calificacion = valor;
+            this.$emit("actualiza_respuesta", this.oRespuesta.id, valor);
         },
     },
 };

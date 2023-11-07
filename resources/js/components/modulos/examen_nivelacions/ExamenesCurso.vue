@@ -85,10 +85,11 @@
                                 <router-link
                                     v-else
                                     :to="{
-                                        name: 'examen_nivelacions.realizar_examen',
+                                        name: 'examen_nivelacions.ver_examen',
                                         params: {
-                                            id: item.id,
-                                            asignacion_id: asignacion_grupo_id,
+                                            id: asignacion_grupo
+                                                .inscripcion_solicitud
+                                                .inscripcion_examen.id,
                                         },
                                     }"
                                     class="btn btn-sm btn-primary btn-flat btn-block"
