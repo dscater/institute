@@ -125,7 +125,7 @@
                                             <b-col sm="5" class="text-sm-right"
                                                 ><b>Código solicitud:</b></b-col
                                             >
-                                            <b-col>{{ item.id }}</b-col>
+                                            <b-col>{{ item.codigo }}</b-col>
                                         </b-row>
                                         <b-row class="mb-2">
                                             <b-col sm="5" class="text-sm-right"
@@ -224,7 +224,10 @@
                                             >
                                         </b-row>
                                     </div>
-                                    <div class="card-footer">
+                                    <div
+                                        class="card-footer"
+                                        v-if="item.estado_asignado == 'NO'"
+                                    >
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <button

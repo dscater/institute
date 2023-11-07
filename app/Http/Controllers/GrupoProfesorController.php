@@ -29,6 +29,23 @@ class GrupoProfesorController extends Controller
         return response()->JSON(['grupo_profesors' => $grupo_profesors, 'total' => count($grupo_profesors)], 200);
     }
 
+    public function asignaciones_profesor(Request $request)
+    {
+        $grupo_profesors = [];
+        $user = Auth::user();
+        $profesor = Profesor::where("user_id", $user->id)->get()->first();
+        $per_page = 10;
+        $grupo_profesors = GrupoProfesor::with(["profesor", "grupo.horario"])
+            ->orderBy("id", "desc")
+            ->where("profesor_id", $profesor->id)
+            ->paginate($per_page);
+        return response()->JSON([
+            'grupo_profesors' => $grupo_profesors,
+            'profesor' => $profesor,
+            'total' => count($grupo_profesors)
+        ], 200);
+    }
+
     public function store(Request $request)
     {
         $request->validate($this->validacion, $this->mensajes);

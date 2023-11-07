@@ -37,6 +37,7 @@ class AsignacionGrupoController extends Controller
         $inscripcion = Inscripcion::where("user_id", $user->id)->get()->first();
         $per_page = 10;
         $asignacion_grupos = AsignacionGrupo::with(["inscripcion", "inscripcion_solicitud.inscripcion_examen", "curso", "grupo.horario"])
+            ->orderBy("id", "desc")
             ->where("inscripcion_id", $inscripcion->id)
             ->paginate($per_page);
         return response()->JSON([

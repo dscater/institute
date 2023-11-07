@@ -111,6 +111,15 @@ class InscripcionController extends Controller
     {
         DB::beginTransaction();
         try {
+            foreach ($inscripcion->inscripcion_solicituds as $is) {
+                $inscripcion_examen = $is->inscripcion_examen;
+                if ($inscripcion_examen) {
+                    $inscripcion_examen->inscripcion_respuestas()->delete();
+                }
+                $inscripcion_examen->delete();
+            }
+
+            $inscripcion->inscripcion_solicituds()->delete();
             $datos_original = HistorialAccion::getDetalleRegistro($inscripcion, "inscripcions");
             $inscripcion->delete();
             HistorialAccion::create([
@@ -269,7 +278,8 @@ class InscripcionController extends Controller
             }
 
             $nueva_solicitud = InscripcionSolicitud::create($datos);
-
+            $nueva_solicitud->codigo = "C." . $nueva_solicitud->id;
+            $nueva_solicitud->save();
             if ($request->hasFile("archivo_pago")) {
                 $file = $request->archivo_pago;
                 $nom_archivo_pago = time() . '_' . $nueva_solicitud->id . '.' . $file->getClientOriginalExtension();
@@ -369,7 +379,8 @@ class InscripcionController extends Controller
             }
 
             $nueva_solicitud = InscripcionSolicitud::create($datos);
-
+            $nueva_solicitud->codigo = "C." . $nueva_solicitud->id;
+            $nueva_solicitud->save();
             if ($request->hasFile("archivo_pago")) {
                 $file = $request->archivo_pago;
                 $nom_archivo_pago = time() . '_' . $nueva_solicitud->id . '.' . $file->getClientOriginalExtension();

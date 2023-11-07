@@ -127,6 +127,42 @@ class GrupoController extends Controller
             ], 500);
         }
     }
+
+    public function actualiza_link(Request $request, Grupo $grupo)
+    {
+        DB::beginTransaction();
+        try {
+            $datos_original = HistorialAccion::getDetalleRegistro($grupo, "grupos");
+            $grupo->update([
+                "link_reunion" => $request->link_reunion
+            ]);
+
+            $datos_nuevo = HistorialAccion::getDetalleRegistro($grupo, "grupos");
+            HistorialAccion::create([
+                'user_id' => Auth::user()->id,
+                'accion' => 'MODIFICACIÓN',
+                'descripcion' => 'EL USUARIO ' . Auth::user()->usuario . ' ACTUALIZÓ EL LINK DE UN GRUPO',
+                'datos_original' => $datos_original,
+                'datos_nuevo' => $datos_nuevo,
+                'modulo' => 'GRUPOS',
+                'fecha' => date('Y-m-d'),
+                'hora' => date('H:i:s')
+            ]);
+
+            DB::commit();
+            return response()->JSON([
+                'sw' => true,
+                'grupo' => $grupo,
+                'msj' => 'El registro se actualizó de forma correcta'
+            ], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->JSON([
+                'sw' => false,
+                'message' => $e->getMessage(),
+            ], 500);
+        }
+    }
     public function destroy(Grupo $grupo)
     {
         DB::beginTransaction();

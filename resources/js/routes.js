@@ -303,6 +303,14 @@ export default new Router({
             props: true,
         },
 
+        {
+            path: "/administracion/grupos_profesor",
+            name: "grupos_profesor.index",
+            component: require("./components/modulos/grupos_profesor/index.vue")
+                .default,
+            props: true,
+        },
+
         // Grupo Recursos
         {
             path: "/administracion/grupo_recursos",
@@ -416,11 +424,38 @@ export default new Router({
             props: true,
         },
 
+        // Gestoria Solicitudes
+        {
+            path: "/administracion/gestoria_solicituds",
+            name: "gestoria_solicituds.index",
+            component:
+                require("./components/modulos/gestoria_solicituds/index.vue")
+                    .default,
+            props: true,
+        },
+        {
+            path: "/administracion/gestoria_solicituds/:id",
+            name: "gestoria_solicituds.show",
+            component:
+                require("./components/modulos/gestoria_solicituds/show.vue")
+                    .default,
+            props: true,
+        },
+
         // Configuración
         {
             path: "/administracion/configuracion",
             name: "configuracion",
             component: require("./components/modulos/configuracion/index.vue")
+                .default,
+            props: true,
+        },
+
+        // Reportes
+        {
+            path: "/administracion/reportes/usuarios",
+            name: "reportes.usuarios",
+            component: require("./components/modulos/reportes/usuarios.vue")
                 .default,
             props: true,
         },

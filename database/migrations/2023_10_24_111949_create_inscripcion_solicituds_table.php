@@ -15,6 +15,7 @@ class CreateInscripcionSolicitudsTable extends Migration
     {
         Schema::create('inscripcion_solicituds', function (Blueprint $table) {
             $table->id();
+            $table->strgom("codigo", 255)->nullable();
             $table->unsignedBigInteger("inscripcion_id");
             $table->unsignedBigInteger("curso_id");
             $table->string("nivel", 155);

@@ -26,6 +26,7 @@ use App\Http\Controllers\PortalComunicadoController;
 use App\Http\Controllers\PortalGestoriaController;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\RedSocialController;
+use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -160,6 +161,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // GRUPOS
+        Route::put("grupos/actualiza_link/{grupo}", [GrupoController::class, 'actualiza_link']);
         Route::get("grupos/grupo_users", [GrupoController::class, 'grupo_users']);
         Route::get("grupos/activos", [GrupoController::class, 'activos']);
         Route::resource('grupos', GrupoController::class)->only([
@@ -188,6 +190,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // GRUPO PROFESORES
+        Route::get("grupo_profesors/asignaciones_profesor", [GrupoProfesorController::class, 'asignaciones_profesor']);
         Route::resource('grupo_profesors', GrupoProfesorController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
@@ -221,6 +224,14 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('comunicados', ComunicadoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
+
+        // GESTORIA SOLICITUDS
+        Route::resource('gestoria_solicituds', GestoriaSolicitudController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // REPORTES
+        Route::post('reportes/usuarios', [ReporteController::class, 'usuarios']);
     });
 });
 

@@ -110,18 +110,26 @@
                                                     : "S/A"
                                             }}
                                         </p>
-                                        <a
-                                            :href="item.grupo.link_reunion"
+                                        <template
                                             v-if="item.grupo.link_reunion"
-                                            >{{ item.link_reunion }}</a
                                         >
+                                            <a
+                                                :href="item.grupo.link_reunion"
+                                                target="_blank"
+                                                >Enlace Zoom del Curso (Click
+                                                Aqupi)</a
+                                            >
+                                        </template>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row" v-if="listAsignacionGruposEstudiante.length > 0">
+                <div
+                    class="row"
+                    v-if="listAsignacionGruposEstudiante.length > 0"
+                >
                     <div class="col-md-12 pb-3 paginacion_portal">
                         <b-pagination
                             class="rounded-0"

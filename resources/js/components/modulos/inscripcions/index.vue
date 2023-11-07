@@ -230,6 +230,28 @@
                                                                 class="fa fa-clipboard-list"
                                                             ></i>
                                                         </b-button>
+                                                        <b-button
+                                                            v-if="
+                                                                permisos.includes(
+                                                                    'inscripcions.destroy'
+                                                                )
+                                                            "
+                                                            size="sm"
+                                                            pill
+                                                            variant="outline-danger"
+                                                            class="btn-flat btn-block"
+                                                            title="Eliminar registro"
+                                                            @click="
+                                                                eliminaInscripcion(
+                                                                    row.item.id,
+                                                                    `<h4>¿Está seguro(a) de eliminar el registro con Nro. ${row.item.id}?</h4><br><h4>Esta acción eliminara todos los registros relacionados a este (solicitudes, examenes, etc...)</h4><h4>Esta acción no se podrá deshacer después</h4>`
+                                                                )
+                                                            "
+                                                        >
+                                                            <i
+                                                                class="fa fa-trash"
+                                                            ></i>
+                                                        </b-button>
                                                     </div>
                                                 </template>
                                             </b-table>
@@ -379,6 +401,58 @@ export default {
                     this.listRegistros = res.data.inscripcions;
                     this.totalRows = res.data.total;
                 });
+        },
+        eliminaInscripcion(id, descripcion) {
+            Swal.fire({
+                title: "¿Quierés eliminar este registro?",
+                html: `<strong>${descripcion}</strong>`,
+                showCancelButton: true,
+                confirmButtonColor: "#da1900",
+                confirmButtonText: "Si, eliminar",
+                cancelButtonText: "No, cancelar",
+                denyButtonText: `No, cancelar`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    axios
+                        .post(main_url + "/admin/inscripcions/" + id, {
+                            _method: "DELETE",
+                        })
+                        .then((res) => {
+                            this.getInscripcions();
+                            this.filter = "";
+                            Swal.fire({
+                                icon: "success",
+                                title: res.data.msj,
+                                showConfirmButton: false,
+                                timer: 1500,
+                            });
+                        })
+                        .catch((error) => {
+                            if (error.response) {
+                                if (error.response.status === 422) {
+                                    this.errors = error.response.data.errors;
+                                }
+                                if (
+                                    error.response.status === 420 ||
+                                    error.response.status === 419 ||
+                                    error.response.status === 401
+                                ) {
+                                    window.location = "/";
+                                }
+                                if (error.response.status === 500) {
+                                    Swal.fire({
+                                        icon: "error",
+                                        title: "Error",
+                                        html: error.response.data.message,
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                    });
+                                }
+                            }
+                        });
+                }
+            });
         },
         onFiltered(filteredItems) {
             // Trigger pagination to update the number of buttons/pages due to filtering

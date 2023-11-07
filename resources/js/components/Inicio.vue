@@ -11,9 +11,19 @@
         </section>
         <section class="content-header">
             <div class="container-fluid">
+                <div class="row mb-2" v-if="user.tipo == 'ESTUDIANTE'">
+                    <div class="col-md-12">
+                        <img
+                            width="100%"
+                            :src="url_principal + '/imgs/inicio_estudiante.jpg'"
+                            alt=""
+                        />
+                    </div>
+                </div>
                 <div class="row">
                     <div
-                        class="col-12 col-sm-6 col-md-6"
+                        class="col-12"
+                        :class="item.col ? item.col : 'col-sm-6 col-md-6'"
                         v-for="(item, index) in listInfoBox"
                         :key="index"
                     >
@@ -76,9 +86,11 @@ export default {
             htmlMision: "",
             htmlVision: "",
             htmlObjetivos: "",
+            url_principal: main_url,
         };
     },
     mounted() {
+        console.log(this.user);
         this.loadingWindow.close();
         this.getInfoBox();
     },

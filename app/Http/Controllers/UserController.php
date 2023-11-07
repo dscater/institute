@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AsignacionGrupo;
 use App\Models\Comunicado;
 use App\Models\Curso;
 use App\Models\Empresa;
 use App\Models\GestoriaSolicitud;
 use App\Models\GestoriaTip;
+use App\Models\GrupoProfesor;
 use App\Models\GrupoRecurso;
 use App\Models\HistorialAccion;
 use App\Models\Horario;
@@ -83,6 +85,11 @@ class UserController extends Controller
             'gestoria_tips.edit',
             'gestoria_tips.destroy',
 
+            'gestoria_solicituds.index',
+            'gestoria_solicituds.create',
+            'gestoria_solicituds.edit',
+            'gestoria_solicituds.destroy',
+
             'cursos.index',
             'cursos.create',
             'cursos.edit',
@@ -130,14 +137,60 @@ class UserController extends Controller
             'configuracion.index',
             'configuracion.edit',
 
-            // "reportes.usuarios"
+            "reportes.usuarios"
         ],
-        "AUXILIAR" => [],
+        "AUXILIAR" => [
+            'gestoria_tips.index',
+            'gestoria_tips.create',
+            'gestoria_tips.edit',
+            'gestoria_tips.destroy',
+
+            'cursos.index',
+            'cursos.create',
+            'cursos.edit',
+            'cursos.destroy',
+
+            'grupos.index',
+            'grupos.create',
+            'grupos.edit',
+            'grupos.destroy',
+
+            'inscripcions.index',
+            'inscripcions.create',
+            'inscripcions.edit',
+
+            'asignacion_grupos.index',
+            'asignacion_grupos.create',
+            'asignacion_grupos.edit',
+            'asignacion_grupos.destroy',
+
+            'profesors.index',
+            'profesors.create',
+            'profesors.edit',
+            'profesors.destroy',
+
+            'grupo_profesors.index',
+            'grupo_profesors.create',
+            'grupo_profesors.edit',
+            'grupo_profesors.destroy',
+
+            'horarios.index',
+            'horarios.create',
+            'horarios.edit',
+            'horarios.destroy',
+
+            'comunicados.index',
+            'comunicados.create',
+            'comunicados.edit',
+            'comunicados.destroy',
+        ],
         "PROFESOR" => [
             'grupo_recursos.index',
             'grupo_recursos.create',
             'grupo_recursos.edit',
             'grupo_recursos.destroy',
+
+            "grupos_profesor.index",
 
             'examen_nivelacions.index',
             'examen_nivelacions.create',
@@ -151,10 +204,11 @@ class UserController extends Controller
 
         ],
         "ESTUDIANTE" => [
+            "recursos.index",
+
             "estudiante_cursos.index",
             "grupo_recursos.estudiante_recursos",
-
-            "recursos.index"
+            "comunicados.estudiantes"
         ],
     ];
 
@@ -402,7 +456,7 @@ class UserController extends Controller
                 'cantidad' => count(Inscripcion::all()),
                 'color' => 'bg-dark',
                 'icon' => asset("imgs/icon_inscripcion.png"),
-                "url" => ""
+                "url" => "inscripcions.index"
             ];
         }
 
@@ -412,7 +466,7 @@ class UserController extends Controller
                 'cantidad' => count(Horario::all()),
                 'color' => 'bg-dark',
                 'icon' => asset("imgs/icon_horarios.png"),
-                "url" => ""
+                "url" => "horarios.index"
             ];
         }
 
@@ -422,7 +476,7 @@ class UserController extends Controller
                 'cantidad' => count(GestoriaSolicitud::all()),
                 'color' => 'bg-dark',
                 'icon' => asset("imgs/icon_solicitud.png"),
-                "url" => ""
+                "url" => "gestoria_solicituds.index"
             ];
         }
         if (in_array('gestoria_tips.index', $this->permisos[$tipo])) {
@@ -431,7 +485,7 @@ class UserController extends Controller
                 'cantidad' => count(GestoriaTip::all()),
                 'color' => 'bg-dark',
                 'icon' => asset("imgs/icon_tips.png"),
-                "url" => ""
+                "url" => "gestoria_tips.index"
             ];
         }
 
@@ -453,29 +507,87 @@ class UserController extends Controller
                 'cantidad' => count(Curso::all()),
                 'color' => 'bg-dark',
                 'icon' => asset("imgs/icon_recursos.png"),
-                "url" => ""
+                "url" => "cursos.index"
             ];
         }
 
         if (in_array('grupo_recursos.index', $this->permisos[$tipo])) {
+            $grupo_recursos = GrupoRecurso::all();
+            $user = Auth::user();
+            if ($user->tipo == 'PROFESOR') {
+                $id_grupos_user = GrupoProfesor::where("user_id", $user->id)->pluck("grupo_id");
+                $grupo_recursos = GrupoRecurso::whereIn("grupo_id", $id_grupos_user)->get();
+            }
             $array_infos[] = [
                 'label' => 'Recursos',
-                'cantidad' => count(GrupoRecurso::all()),
+                'cantidad' => count($grupo_recursos),
                 'color' => 'bg-dark',
                 'icon' => asset("imgs/icon_recursos.png"),
-                "url" => ""
+                "url" => "grupo_recursos.index"
             ];
         }
 
         if (in_array('comunicados.index', $this->permisos[$tipo])) {
+            $comunicados = Comunicado::all();
+            $user = Auth::user();
+            if ($user->tipo == 'PROFESOR') {
+                $id_grupos_user = GrupoProfesor::where("user_id", $user->id)->pluck("grupo_id");
+                $comunicados = Comunicado::whereIn("grupo_id", $id_grupos_user)->get();
+            }
+
             $array_infos[] = [
                 'label' => 'Comunicados',
-                'cantidad' => count(Comunicado1::all()),
+                'cantidad' => count($comunicados),
                 'color' => 'bg-dark',
                 'icon' => asset("imgs/icon_recursos.png"),
-                "url" => ""
+                "url" => "comunicados.index"
             ];
         }
+
+        if (in_array('estudiante_cursos.index', $this->permisos[$tipo])) {
+            $user = Auth::user();
+            $inscripcion = Inscripcion::where("user_id", $user->id)->get()->first();
+            $asignacion_grupos = AsignacionGrupo::where("inscripcion_id", $inscripcion->id)->get();
+            $array_infos[] = [
+                'label' => 'Cursos',
+                'cantidad' => count($asignacion_grupos),
+                'color' => 'bg-dark',
+                'icon' => asset("imgs/icon_recursos.png"),
+                "url" => "estudiante_cursos.index",
+                "col" => "col-md-4 col-sm-4"
+            ];
+        }
+
+        if (in_array('grupo_recursos.estudiante_recursos', $this->permisos[$tipo])) {
+            $user = Auth::user();
+            $inscripcion = Inscripcion::where("user_id", $user->id)->get()->first();
+            $id_grupos_user = AsignacionGrupo::where("inscripcion_id", $inscripcion->id)->pluck("grupo_id");
+            $grupo_recursos = GrupoRecurso::whereIn("grupo_id", $id_grupos_user)->get();
+            $array_infos[] = [
+                'label' => 'Recursos',
+                'cantidad' => count($grupo_recursos),
+                'color' => 'bg-dark',
+                'icon' => asset("imgs/icon_recursos.png"),
+                "url" => "grupo_recursos.estudiante_recursos",
+                "col" => "col-md-4 col-sm-4"
+            ];
+        }
+
+        if (in_array('comunicados.estudiantes', $this->permisos[$tipo])) {
+            $user = Auth::user();
+            $inscripcion = Inscripcion::where("user_id", $user->id)->get()->first();
+            $id_grupos_user = AsignacionGrupo::where("inscripcion_id", $inscripcion->id)->pluck("grupo_id");
+            $comunicados = Comunicado::whereIn("grupo_id", $id_grupos_user)->get();
+            $array_infos[] = [
+                'label' => 'Comunicados',
+                'cantidad' => count($comunicados),
+                'color' => 'bg-dark',
+                'icon' => asset("imgs/icon_recursos.png"),
+                "url" => "comunicados.estudiantes",
+                "col" => "col-md-4 col-sm-4"
+            ];
+        }
+
 
         return response()->JSON($array_infos);
     }

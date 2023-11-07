@@ -10,6 +10,7 @@ class GestoriaSolicitud extends Model
     use HasFactory;
 
     protected $fillable = [
+        "codigo",
         "nombres",
         "apellidos",
         "fecha_nac",
@@ -37,4 +38,10 @@ class GestoriaSolicitud extends Model
         "recomendado_por",
         "estado_solicitud",
     ];
+
+    protected $appends = ['full_name'];
+    public function getFullNameAttribute()
+    {
+        return $this->nombres . ' ' . $this->apellidos;
+    }
 }

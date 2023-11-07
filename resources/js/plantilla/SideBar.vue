@@ -196,7 +196,8 @@
                                 'examen_nivelacions.calificar_examen_index' ||
                             $route.name ==
                                 'examen_nivelacions.calificar_examen' ||
-                            $route.name == 'comunicados.index'
+                            $route.name == 'comunicados.index' ||
+                            $route.name == 'grupos_profesor.index'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"
@@ -209,6 +210,20 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes('grupos_profesor.index')
+                                "
+                            >
+                                <router-link
+                                    :to="{ name: 'grupos_profesor.index' }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Mis Grupos</p>
+                                </router-link>
+                            </li>
                             <li
                                 class="nav-item"
                                 v-if="permisos.includes('grupos.index')"
@@ -318,7 +333,8 @@
                         v-if="
                             permisos.includes('gestoria_servicios.index') ||
                             permisos.includes('gestoria_tips.index') ||
-                            permisos.includes('portal_gestoria.index')
+                            permisos.includes('portal_gestoria.index') ||
+                            permisos.includes('gestoria_solicituds.index')
                         "
                         :class="[
                             $route.name == 'gestoria_servicios.index' ||
@@ -330,7 +346,8 @@
                             $route.name ==
                                 'admin_portal_gestoria.gestoria_nosotros' ||
                             $route.name ==
-                                'admin_portal_gestoria.configuracion_gestoria'
+                                'admin_portal_gestoria.configuracion_gestoria' ||
+                            $route.name == 'gestoria_solicituds.index'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"
@@ -361,11 +378,21 @@
                                     <p>Servicios</p>
                                 </router-link>
                             </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes(
+                                        'gestoria_solicituds.index'
+                                    )
+                                "
+                            >
+                                <router-link
+                                    :to="{ name: 'gestoria_solicituds.index' }"
+                                    class="nav-link"
+                                >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Solicitudes de Servicios</p>
-                                </a>
+                                </router-link>
                             </li>
                             <li
                                 class="nav-item"
@@ -437,6 +464,37 @@
                             <i class="nav-icon fas fa-users"></i>
                             <p>Profesores</p>
                         </router-link>
+                    </li>
+                    <li
+                        class="nav-item"
+                        v-if="permisos.includes('reportes.usuarios')"
+                        :class="[
+                            $route.name == 'reportes.usuarios'
+                                ? 'menu-is-opening menu-open'
+                                : '',
+                        ]"
+                    >
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-file-pdf"></i>
+                            <p>
+                                Reportes
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li
+                                class="nav-item"
+                                v-if="permisos.includes('reportes.usuarios')"
+                            >
+                                <router-link
+                                    :to="{ name: 'reportes.usuarios' }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Usuarios</p>
+                                </router-link>
+                            </li>
+                        </ul>
                     </li>
                     <li
                         class="nav-item"

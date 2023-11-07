@@ -9,6 +9,7 @@ class InscripcionSolicitud extends Model
 {
     use HasFactory;
     protected $fillable = [
+        "codigo",
         "inscripcion_id",
         "curso_id",
         "nivel",

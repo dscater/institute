@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\GestoriaSolicitud;
+use App\Models\HistorialAccion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class GestoriaSolicitudController extends Controller
@@ -94,7 +96,7 @@ class GestoriaSolicitudController extends Controller
 
         DB::beginTransaction();
         try {
-            GestoriaSolicitud::create([
+            $nueva_solicitud = GestoriaSolicitud::create([
                 "nombres" => mb_strtoupper($request->nombres),
                 "apellidos" => mb_strtoupper($request->apellidos),
                 "fecha_nac" => $request->fecha_nac,
@@ -123,10 +125,58 @@ class GestoriaSolicitudController extends Controller
                 "estado_solicitud" => "PENDIENTE"
             ]);
 
+            $nueva_solicitud->codigo = "S." . $nueva_solicitud->id;
+            $nueva_solicitud->save();
             DB::commit();
             return response()->JSON([
                 'sw' => true,
                 'msj' => 'El registro se realizó de forma correcta',
+            ], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->JSON([
+                'sw' => false,
+                'message' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function index(Request $request)
+    {
+        $gestoria_solicituds = GestoriaSolicitud::orderBy("id", "desc")->get();
+        return response()->JSON(['gestoria_solicituds' => $gestoria_solicituds, 'total' => count($gestoria_solicituds)], 200);
+    }
+
+    public function show(GestoriaSolicitud $gestoria_solicitud)
+    {
+        return response()->JSON([
+            "gestoria_solicitud" => $gestoria_solicitud
+        ], 200);
+    }
+
+    public function update(GestoriaSolicitud $gestoria_solicitud, Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $datos_original = HistorialAccion::getDetalleRegistro($gestoria_solicitud, "gestoria_solicituds");
+            $gestoria_solicitud->update(array_map('mb_strtoupper', $request->all()));
+            $datos_nuevo = HistorialAccion::getDetalleRegistro($gestoria_solicitud, "gestoria_solicituds");
+            HistorialAccion::create([
+                'user_id' => Auth::user()->id,
+                'accion' => 'MODIFICACIÓN',
+                'descripcion' => 'EL USUARIO ' . Auth::user()->usuario . ' CAMBIO EL ESTADO DE UNA SOLICITUD DE GESTORÍA',
+                'datos_original' => $datos_original,
+                'datos_nuevo' => $datos_nuevo,
+                'modulo' => 'GESTORÍA SOLICITUDES',
+                'fecha' => date('Y-m-d'),
+                'hora' => date('H:i:s')
+            ]);
+
+            DB::commit();
+            return response()->JSON([
+                'sw' => true,
+                'gestoria_solicitud' => $gestoria_solicitud,
+                'msj' => 'El registro se actualizó de forma correcta'
             ], 200);
         } catch (\Exception $e) {
             DB::rollBack();

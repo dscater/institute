@@ -15,6 +15,7 @@ class CreateGestoriaSolicitudsTable extends Migration
     {
         Schema::create('gestoria_solicituds', function (Blueprint $table) {
             $table->id();
+            $table->string("codigo", 255)->nullable();
             $table->string("nombres", 255);
             $table->string("apellidos", 255);
             $table->date("fecha_nac");
