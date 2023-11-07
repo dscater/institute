@@ -32,6 +32,24 @@
                                             Nuevo
                                         </router-link>
                                     </div>
+                                    <div class="col-md-3">
+                                        <router-link
+                                            v-if="
+                                                permisos.includes(
+                                                    'examen_nivelacions.create'
+                                                )
+                                            "
+                                            :to="{
+                                                name: 'examen_nivelacions.calificar_examen_index',
+                                            }"
+                                            class="btn btn-success btn-flat btn-block"
+                                        >
+                                            <i
+                                                class="fa fa-clipboard-check"
+                                            ></i>
+                                            Calificar
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-body">

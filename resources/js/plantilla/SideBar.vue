@@ -179,7 +179,10 @@
                             $route.name == 'grupo_recursos.index' ||
                             $route.name == 'examen_nivelacions.index' ||
                             $route.name == 'examen_nivelacions.create' ||
-                            $route.name == 'examen_nivelacions.edit'
+                            $route.name == 'examen_nivelacions.edit' ||
+                            $route.name ==
+                                'examen_nivelacions.calificar_examen_index' ||
+                            $route.name == 'examen_nivelacions.calificar_examen'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"

@@ -373,6 +373,32 @@ export default new Router({
             props: true,
         },
 
+        // calificar examen estudiante
+        {
+            path: "/administracion/examen_nivelacions/calificar_examen",
+            name: "examen_nivelacions.calificar_examen_index",
+            component:
+                require("./components/modulos/calificar_examen/index.vue")
+                    .default,
+            props: true,
+        },
+        {
+            path: "/administracion/examen_nivelacions/calificar_examen/:id",
+            name: "examen_nivelacions.calificar_examen",
+            component: require("./components/modulos/calificar_examen/show.vue")
+                .default,
+            props: true,
+        },
+
+        // ver examen estudiante
+        {
+            path: "/administracion/examen_nivelacions/ver_examen/:id",
+            name: "examen_nivelacions.ver_examen",
+            component: require("./components/modulos/ver_examen/show.vue")
+                .default,
+            props: true,
+        },
+
         // Configuración
         {
             path: "/administracion/configuracion",

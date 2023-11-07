@@ -17,6 +17,7 @@ use App\Http\Controllers\GrupoProfesorController;
 use App\Http\Controllers\GrupoRecursoController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\InscripcionController;
+use App\Http\Controllers\InscripcionExamenController;
 use App\Http\Controllers\InscripcionSolicitudController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlanPagoController;
@@ -205,6 +206,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get("examen_nivelacions/getExamenesCurso/{curso}", [ExamenNivelacionController::class, 'getExamenesCurso']);
         Route::post("examen_nivelacions/registrar_examen_estudiante/{examen_nivelacion}", [ExamenNivelacionController::class, 'registrar_examen_estudiante']);
         Route::resource('examen_nivelacions', ExamenNivelacionController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // INSCRIPCION EXAMENS
+        Route::post("inscripcion_examens/registrar_calificacion/{inscripcion_examen}", [InscripcionExamenController::class, 'registrar_calificacion']);
+        Route::resource('inscripcion_examens', InscripcionExamenController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
     });

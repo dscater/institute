@@ -17,6 +17,19 @@ class InscripcionExamen extends Model
         "estado",
     ];
 
+    protected $appends = ["c_correctos", "c_incorrectos"];
+
+    public function getCCorrectosAttribute()
+    {
+        $correctos = InscripcionRespuesta::where("inscripcion_examen_id", $this->id)->where("calificacion", "CORRECTO")->get();
+        return count($correctos);
+    }
+    public function getCIncorrectosAttribute()
+    {
+        $incorrectos = InscripcionRespuesta::where("inscripcion_examen_id", $this->id)->where("calificacion", "!=", "CORRECTO")->get();
+        return count($incorrectos);
+    }
+
     public function inscripcion_respuestas()
     {
         return $this->hasMany(InscripcionRespuesta::class, 'inscripcion_examen_id');

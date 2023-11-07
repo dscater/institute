@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 07-11-2023 a las 16:44:36
+-- Tiempo de generación: 07-11-2023 a las 20:04:28
 -- Versión del servidor: 8.0.30
--- Versión de PHP: 7.4.19
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -731,7 +731,11 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (216, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN HORARIO', 'id: 4<br/>grupo_id: 3<br/>modalidad: PRESENCIAL<br/>dias: 0,1,1,1,1,1,0<br/>fecha_inicio: 2023-11-10<br/>fecha_fin: 2023-11-30<br/>hora_inicio: 08:00<br/>hora_fin: 12:00<br/>created_at: 2023-11-07 10:32:57<br/>updated_at: 2023-11-07 10:32:57<br/>', NULL, 'HORARIOS', '2023-11-07', '10:32:57', '2023-11-07 14:32:57', '2023-11-07 14:32:57'),
 (217, 11, 'CREACIÓN', 'EL USUARIO juanluis@gmail.com REGISTRO RECURSO', 'id: 4<br/>grupo_id: 3<br/>titulo: RECURSO #1 GRUPO 3<br/>link: https://www.instagram.com/<br/>fecha: 2023-11-07<br/>hora: 10:33<br/>created_at: 2023-11-07 10:33:55<br/>updated_at: 2023-11-07 10:33:55<br/>', NULL, 'RECURSOS', '2023-11-07', '10:33:55', '2023-11-07 14:33:55', '2023-11-07 14:33:55'),
 (218, 11, 'CREACIÓN', 'EL USUARIO juanluis@gmail.com REGISTRO UN EXAMEN DE NIVELACION', 'id: 4<br/>curso_id: 3<br/>created_at: 2023-11-07 10:41:22<br/>updated_at: 2023-11-07 10:41:22<br/>', NULL, 'EXAMEN DE NIVELACION', '2023-11-07', '10:41:23', '2023-11-07 14:41:23', '2023-11-07 14:41:23'),
-(219, 5, 'CREACIÓN', 'EL USUARIO marcos@gmail.com REALIZÓ UN EXAMEN DE NIVELACION', 'id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 2<br/>examen_nivelacion_id: 4<br/>puntaje: <br/>estado: PENDIENTE<br/>created_at: 2023-11-07 12:43:29<br/>updated_at: 2023-11-07 12:43:29<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-07', '12:43:29', '2023-11-07 16:43:29', '2023-11-07 16:43:29');
+(219, 5, 'CREACIÓN', 'EL USUARIO marcos@gmail.com REALIZÓ UN EXAMEN DE NIVELACION', 'id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 2<br/>examen_nivelacion_id: 4<br/>puntaje: <br/>estado: PENDIENTE<br/>created_at: 2023-11-07 12:43:29<br/>updated_at: 2023-11-07 12:43:29<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-07', '12:43:29', '2023-11-07 16:43:29', '2023-11-07 16:43:29'),
+(220, 11, 'MODIFICACIÓN', 'EL USUARIO juanluis@gmail.com CALIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-07 12:43:29<br/>estado: PENDIENTE<br/>examen_nivelacion_id: 4<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 2<br/>puntaje: 100<br/>updated_at: 2023-11-07 15:59:13<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-07', '15:59:13', '2023-11-07 19:59:13', '2023-11-07 19:59:13'),
+(221, 11, 'MODIFICACIÓN', 'EL USUARIO juanluis@gmail.com CALIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-07 12:43:29<br/>estado: PENDIENTE<br/>examen_nivelacion_id: 4<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 2<br/>puntaje: 90<br/>updated_at: 2023-11-07 16:00:41<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-07', '16:00:41', '2023-11-07 20:00:41', '2023-11-07 20:00:41'),
+(222, 11, 'MODIFICACIÓN', 'EL USUARIO juanluis@gmail.com CALIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-07 12:43:29<br/>estado: PENDIENTE<br/>examen_nivelacion_id: 4<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 2<br/>puntaje: 0<br/>updated_at: 2023-11-07 16:00:50<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-07', '16:00:50', '2023-11-07 20:00:50', '2023-11-07 20:00:50'),
+(223, 11, 'MODIFICACIÓN', 'EL USUARIO juanluis@gmail.com CALIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-07 12:43:29<br/>estado: PENDIENTE<br/>examen_nivelacion_id: 4<br/>id: 1<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 2<br/>puntaje: 90<br/>updated_at: 2023-11-07 16:01:46<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-07', '16:01:46', '2023-11-07 20:01:46', '2023-11-07 20:01:46');
 
 -- --------------------------------------------------------
 
@@ -816,7 +820,7 @@ CREATE TABLE `inscripcion_examens` (
 --
 
 INSERT INTO `inscripcion_examens` (`id`, `inscripcion_id`, `inscripcion_solicitud_id`, `examen_nivelacion_id`, `puntaje`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 2, 2, 4, NULL, 'PENDIENTE', '2023-11-07 16:43:29', '2023-11-07 16:43:29');
+(1, 2, 2, 4, 90.00, 'PENDIENTE', '2023-11-07 16:43:29', '2023-11-07 20:01:46');
 
 -- --------------------------------------------------------
 
@@ -840,15 +844,15 @@ CREATE TABLE `inscripcion_respuestas` (
 --
 
 INSERT INTO `inscripcion_respuestas` (`id`, `inscripcion_examen_id`, `examen_enunciado_id`, `enunciado_pregunta_id`, `respuesta`, `calificacion`, `created_at`, `updated_at`) VALUES
-(1, 1, 7, 10, 'My name is John', NULL, '2023-11-07 16:43:29', '2023-11-07 16:43:29'),
-(2, 1, 7, 11, 'I\'m seventeen years old', NULL, '2023-11-07 16:43:29', '2023-11-07 16:43:29'),
-(3, 1, 8, 12, 'one', NULL, '2023-11-07 16:43:29', '2023-11-07 16:43:29'),
-(4, 1, 8, 13, 'two', NULL, '2023-11-07 16:43:29', '2023-11-07 16:43:29'),
-(5, 1, 9, 14, 'monday', NULL, '2023-11-07 16:43:29', '2023-11-07 16:43:29'),
-(6, 1, 9, 15, 'tuesday', NULL, '2023-11-07 16:43:29', '2023-11-07 16:43:29'),
-(7, 1, 10, 16, 'at', NULL, '2023-11-07 16:43:29', '2023-11-07 16:43:29'),
-(8, 1, 11, 17, 'My brother\'s car is very nice', NULL, '2023-11-07 16:43:29', '2023-11-07 16:43:29'),
-(9, 1, 12, 18, 'that', NULL, '2023-11-07 16:43:29', '2023-11-07 16:43:29');
+(1, 1, 7, 10, 'My name is John', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:40'),
+(2, 1, 7, 11, 'I\'m seventeen years old', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:40'),
+(3, 1, 8, 12, 'one', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:40'),
+(4, 1, 8, 13, 'two', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:40'),
+(5, 1, 9, 14, 'monday', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:40'),
+(6, 1, 9, 15, 'tuesday', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:41'),
+(7, 1, 10, 16, 'at', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:41'),
+(8, 1, 11, 17, 'My brother\'s car is very nice', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:41'),
+(9, 1, 12, 18, 'that', 'INCORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:50');
 
 -- --------------------------------------------------------
 
@@ -1447,7 +1451,7 @@ ALTER TABLE `grupo_recursos`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
