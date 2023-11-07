@@ -245,7 +245,12 @@ class InscripcionController extends Controller
 
             $plan_pago = PlanPago::findOrFail($request->plan_pago_id);
 
-            $nueva_solicitud = InscripcionSolicitud::create([
+
+
+            $descPagoMayus = nl2br(mb_strtoupper($request->desc_pago));
+            $descPagoMayus = str_replace(['<BR/>', '<BR />'], '<br/>', $descPagoMayus);
+
+            $datos = [
                 "inscripcion_id" => $nueva_inscripcion->id,
                 "curso_id" => $request->curso_id,
                 "nivel" => $request->nivel,
@@ -254,9 +259,16 @@ class InscripcionController extends Controller
                 "plan_pago_id" => $request->plan_pago_id,
                 "plan_costo" => $plan_pago->costo,
                 "forma_pago" => mb_strtoupper($request->forma_pago),
+                "desc_pago" => $descPagoMayus,
                 "estado_asignado" => "NO",
                 "estado" => "PENDIENTE"
-            ]);
+            ];
+
+            if ($request->forma_pago == 'OTRO') {
+                $datos["desc_otro_pago"] = mb_strtoupper($request->desc_otro_pago);
+            }
+
+            $nueva_solicitud = InscripcionSolicitud::create($datos);
 
             if ($request->hasFile("archivo_pago")) {
                 $file = $request->archivo_pago;
@@ -264,6 +276,107 @@ class InscripcionController extends Controller
                 $nueva_solicitud->archivo_pago = $nom_archivo_pago;
                 $file->move(public_path() . '/files/', $nom_archivo_pago);
             }
+            $nueva_solicitud->save();
+
+            DB::commit();
+            return response()->JSON([
+                'sw' => true,
+                'msj' => 'El registro se realizó de forma correcta',
+            ], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->JSON([
+                'sw' => false,
+                'message' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function registrar_nueva_inscripcion(Request $request)
+    {
+        $inscripcion_validate = [
+            "pais_residencia" => "required|min:4",
+            "prov_dpto" => "required|min:4",
+            "fono" => "required",
+            "curso_id" => "required",
+            "nivel" => "required",
+            "se_entero" => "required",
+            "plan_pago_id" => "required",
+            "forma_pago" => "required",
+            "desc_pago" => "required|min:4",
+        ];
+
+        $mensajes = [
+            "pais_residencia.required" => "Debes ingresar un País de residencia",
+            "pais_residencia.min" => "El país de residencia debe tener al menos :min caracteres",
+            "prov_dpto.required" => "Debes ingresar una Provincia/Departamento",
+            "prov_dpto.min" => "El campo Provincia/Departamento debe tener al menos :min caracteres",
+            "fono.required" => "Debes ingresar un número de celular",
+            "curso_id.required" => "Debes seleccionar un curso",
+            "nivel.required" => "Debes seleccionar el nivel en el que te encuentras",
+            "se_entero.required" => "Debes seleccionar una opción de como te enteraste",
+            "desc_se_entero.required" => "Debes complentar el campo Describir otro (Como se entero del Curso)",
+            "desc_se_entero.min" => "El campo Describir otro (Como se entero del Curso) debe tener al menos :min caracteres",
+            "plan_pago_id.required" => "Debes seleccionar un plan de pago",
+            "forma_pago.required" => "Debes seleccionar una forma de pago",
+            "archivo_pago.max" => "El peso maximo permitido del archivo es de 4096 KB",
+            "desc_pago.required" => "Debes completar la descripción de la forma de pago",
+            "desc_pago.min" => "La descripción de la forma de pago debe tener al menos :min caracteres",
+            "desc_otro_pago.required" => "Tienes que describir la forma de pago(OTRO)",
+            "desc_otro_pago.min" => "La descripción de forma de pago(OTRO) debe tener al menos :min caracteres",
+        ];
+
+        if ($request->hasFile("archivo_pago")) {
+            $inscripcion_validate['archivo_pago'] = 'file|max:4096';
+        }
+
+        if ($request->se_entero == "OTRO") {
+            $inscripcion_validate['desc_se_entero'] = 'required|min:4';
+        }
+
+        if ($request->forma_pago == "OTRO") {
+            $inscripcion_validate['desc_otro_pago'] = 'required|min:4';
+        }
+
+        $request->validate($inscripcion_validate, $mensajes);
+
+        DB::beginTransaction();
+        try {
+            $user = Auth::user();
+            $inscripcion = Inscripcion::where("user_id", $user->id)->get()->first();
+
+            $plan_pago = PlanPago::findOrFail($request->plan_pago_id);
+
+            $descPagoMayus = nl2br(mb_strtoupper($request->desc_pago));
+            $descPagoMayus = str_replace(['<BR/>', '<BR />'], '<br/>', $descPagoMayus);
+
+            $datos = [
+                "inscripcion_id" => $inscripcion->id,
+                "curso_id" => $request->curso_id,
+                "nivel" => $request->nivel,
+                "se_entero" => mb_strtoupper($request->se_entero),
+                "desc_se_entero" => mb_strtoupper($request->desc_se_entero),
+                "plan_pago_id" => $request->plan_pago_id,
+                "plan_costo" => $plan_pago->costo,
+                "forma_pago" => mb_strtoupper($request->forma_pago),
+                "desc_pago" => $descPagoMayus,
+                "estado_asignado" => "NO",
+                "estado" => "PENDIENTE"
+            ];
+
+            if ($request->forma_pago == 'OTRO') {
+                $datos["desc_otro_pago"] = mb_strtoupper($request->desc_otro_pago);
+            }
+
+            $nueva_solicitud = InscripcionSolicitud::create($datos);
+
+            if ($request->hasFile("archivo_pago")) {
+                $file = $request->archivo_pago;
+                $nom_archivo_pago = time() . '_' . $nueva_solicitud->id . '.' . $file->getClientOriginalExtension();
+                $nueva_solicitud->archivo_pago = $nom_archivo_pago;
+                $file->move(public_path() . '/files/', $nom_archivo_pago);
+            }
+            $nueva_solicitud->save();
 
             DB::commit();
             return response()->JSON([

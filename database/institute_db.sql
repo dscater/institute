@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 07-11-2023 a las 01:15:26
+-- Tiempo de generación: 07-11-2023 a las 13:07:22
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -812,7 +812,9 @@ CREATE TABLE `inscripcion_solicituds` (
 --
 
 INSERT INTO `inscripcion_solicituds` (`id`, `inscripcion_id`, `curso_id`, `nivel`, `se_entero`, `desc_se_entero`, `plan_pago_id`, `plan_costo`, `forma_pago`, `archivo_pago`, `desc_pago`, `desc_otro_pago`, `estado_asignado`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 2, 7, 'NIVEL CERO', 'OTRO', 'UN CONOCIDO', 3, 400.00, 'DEPÓSITO BANCARIO', NULL, NULL, NULL, 'SI', 'ACEPTADO', '2023-10-31 17:52:08', '2023-11-04 21:17:52');
+(1, 2, 7, 'NIVEL CERO', 'OTRO', 'UN CONOCIDO', 3, 400.00, 'DEPÓSITO BANCARIO', NULL, NULL, NULL, 'SI', 'ACEPTADO', '2023-10-31 17:52:08', '2023-11-04 21:17:52'),
+(2, 2, 3, 'NIVEL BÁSICO', 'FACEBOOK', '', 3, 400.00, 'DEPÓSITO BANCARIO', NULL, NULL, NULL, 'NO', 'PENDIENTE', '2023-11-07 12:56:43', '2023-11-07 12:56:43'),
+(3, 2, 6, 'NIVEL CERO', 'FACEBOOK', '', 3, 400.00, 'OTRO', '1699362225_3.png', 'BANCO UNION<br />\r\nMARCOS MAMANI MAMANI<br />\r\nNRO. CUENTA: 100005454545<br />\r\nMONTO: 400 $us<br />', 'PAGO VIA QR', 'NO', 'PENDIENTE', '2023-11-07 13:03:45', '2023-11-07 13:03:45');
 
 -- --------------------------------------------------------
 
@@ -1399,7 +1401,7 @@ ALTER TABLE `inscripcion_respuestas`
 -- AUTO_INCREMENT de la tabla `inscripcion_solicituds`
 --
 ALTER TABLE `inscripcion_solicituds`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`

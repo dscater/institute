@@ -24,7 +24,7 @@
                 <div class="row">
                     <!-- PASOS -->
                     <div
-                        class="col-3 p-0 pt-3 contenedor_paso"
+                        class="col-4 p-0 pt-3 contenedor_paso"
                         :class="{ activo: paso_actual == 1 }"
                     >
                         <button class="bg-secundario" @click="muevePaso(1)">
@@ -33,7 +33,7 @@
                         </button>
                     </div>
                     <div
-                        class="col-3 p-0 pt-3 contenedor_paso"
+                        class="col-4 p-0 pt-3 contenedor_paso"
                         :class="{ activo: paso_actual == 2 }"
                     >
                         <button class="bg-secundario" @click="muevePaso(2)">
@@ -42,21 +42,12 @@
                         </button>
                     </div>
                     <div
-                        class="col-3 p-0 pt-3 contenedor_paso"
+                        class="col-4 p-0 pt-3 contenedor_paso"
                         :class="{ activo: paso_actual == 3 }"
                     >
                         <button class="bg-secundario" @click="muevePaso(3)">
                             <span class="numero_paso">3</span>
                             <span class="texto_paso">Pago</span>
-                        </button>
-                    </div>
-                    <div
-                        class="col-3 p-0 pt-3 contenedor_paso"
-                        :class="{ activo: paso_actual == 4 }"
-                    >
-                        <button class="bg-secundario" @click="muevePaso(4)">
-                            <span class="numero_paso">4</span>
-                            <span class="texto_paso">Finalizar</span>
                         </button>
                     </div>
                     <!-- FORMULARIO -->
@@ -79,6 +70,7 @@
                                             type="text"
                                             class="form-control w-full"
                                             v-model="oInscripcion.nombres"
+                                            readonly
                                         />
                                         <span
                                             class="error invalid-feedback d-block"
@@ -97,6 +89,7 @@
                                             type="text"
                                             class="form-control w-full"
                                             v-model="oInscripcion.apellidos"
+                                            readonly
                                         />
                                         <span
                                             class="error invalid-feedback d-block"
@@ -116,6 +109,7 @@
                                             type="text"
                                             class="form-control w-full"
                                             v-model="oInscripcion.nro_iden"
+                                            readonly
                                         />
                                         <span
                                             class="error invalid-feedback d-block"
@@ -136,6 +130,7 @@
                                             v-model="oInscripcion.fecha_nac"
                                             @change="calculaEdad"
                                             @keyup="calculaEdad"
+                                            readonly
                                         />
                                         <span
                                             class="error invalid-feedback d-block"
@@ -195,6 +190,7 @@
                                             type="text"
                                             class="form-control w-full"
                                             v-model="oInscripcion.nacionalidad"
+                                            readonly
                                         />
                                         <span
                                             class="error invalid-feedback d-block"
@@ -227,19 +223,12 @@
                                             }"
                                             >Sexo*:</label
                                         >
-                                        <select
+                                        <input
                                             type="text"
                                             class="form-control w-full"
                                             v-model="oInscripcion.sexo"
-                                        >
-                                            <option value="">
-                                                - Seleccione -
-                                            </option>
-                                            <option value="HOMBRE">
-                                                HOMBRE
-                                            </option>
-                                            <option value="MUJER">MUJER</option>
-                                        </select>
+                                            readonly
+                                        />
                                         <span
                                             class="error invalid-feedback d-block"
                                             v-if="errors.sexo"
@@ -275,6 +264,7 @@
                                             type="email"
                                             class="form-control w-full"
                                             v-model="oInscripcion.correo"
+                                            readonly
                                         />
                                         <span
                                             class="error invalid-feedback d-block"
@@ -299,7 +289,9 @@
                                             :class="{
                                                 'is-invalid': errors.curso_id,
                                             }"
-                                            v-model="oInscripcion.curso_id"
+                                            v-model="
+                                                oNuevaInscripcionSolicitud.curso_id
+                                            "
                                             filterable
                                             clearable
                                         >
@@ -329,7 +321,9 @@
                                             :class="{
                                                 'is-invalid': errors.nivel,
                                             }"
-                                            v-model="oInscripcion.nivel"
+                                            v-model="
+                                                oNuevaInscripcionSolicitud.nivel
+                                            "
                                             filterable
                                             clearable
                                         >
@@ -358,7 +352,9 @@
                                             :class="{
                                                 'is-invalid': errors.se_entero,
                                             }"
-                                            v-model="oInscripcion.se_entero"
+                                            v-model="
+                                                oNuevaInscripcionSolicitud.se_entero
+                                            "
                                             filterable
                                             clearable
                                         >
@@ -377,7 +373,10 @@
                                     </div>
                                     <div
                                         class="form-group col-md-4"
-                                        v-if="oInscripcion.se_entero == 'OTRO'"
+                                        v-if="
+                                            oNuevaInscripcionSolicitud.se_entero ==
+                                            'OTRO'
+                                        "
                                     >
                                         <label
                                             :class="{
@@ -390,7 +389,7 @@
                                             type="email"
                                             class="form-control w-full"
                                             v-model="
-                                                oInscripcion.desc_se_entero
+                                                oNuevaInscripcionSolicitud.desc_se_entero
                                             "
                                         />
                                         <span
@@ -418,7 +417,7 @@
                                                     class="card plan_pago mb-2"
                                                     :class="{
                                                         activo:
-                                                            oInscripcion.plan_pago_id ==
+                                                            oNuevaInscripcionSolicitud.plan_pago_id ==
                                                             1,
                                                     }"
                                                 >
@@ -455,7 +454,7 @@
                                                     class="card plan_pago mb-2"
                                                     :class="{
                                                         activo:
-                                                            oInscripcion.plan_pago_id ==
+                                                            oNuevaInscripcionSolicitud.plan_pago_id ==
                                                             3,
                                                     }"
                                                 >
@@ -492,7 +491,7 @@
                                                     class="card plan_pago mb-2"
                                                     :class="{
                                                         activo:
-                                                            oInscripcion.plan_pago_id ==
+                                                            oNuevaInscripcionSolicitud.plan_pago_id ==
                                                             2,
                                                     }"
                                                 >
@@ -539,7 +538,9 @@
                                             :class="{
                                                 'is-invalid': errors.forma_pago,
                                             }"
-                                            v-model="oInscripcion.forma_pago"
+                                            v-model="
+                                                oNuevaInscripcionSolicitud.forma_pago
+                                            "
                                             filterable
                                             clearable
                                         >
@@ -558,7 +559,10 @@
                                     </div>
                                     <div
                                         class="form-group col-md-4"
-                                        v-if="oInscripcion.forma_pago == 'OTRO'"
+                                        v-if="
+                                            oNuevaInscripcionSolicitud.forma_pago ==
+                                            'OTRO'
+                                        "
                                     >
                                         <label
                                             :class="{
@@ -571,7 +575,7 @@
                                             type="email"
                                             class="form-control w-full"
                                             v-model="
-                                                oInscripcion.desc_otro_pago
+                                                oNuevaInscripcionSolicitud.desc_otro_pago
                                             "
                                         />
                                         <span
@@ -610,7 +614,9 @@
                                         <el-input
                                             type="textarea"
                                             class="w-full"
-                                            v-model="oInscripcion.desc_pago"
+                                            v-model="
+                                                oNuevaInscripcionSolicitud.desc_pago
+                                            "
                                             autosize
                                             placeholder="Ejemplo:
 Mercado pago Argentina
@@ -650,7 +656,9 @@ Mercado Pago"
                                         <input
                                             type="text"
                                             class="form-control w-full"
-                                            v-model="oInscripcion.correo"
+                                            v-model="
+                                                oNuevaInscripcionSolicitud.correo
+                                            "
                                             readonly
                                         />
                                         <span
@@ -671,7 +679,9 @@ Mercado Pago"
                                         <input
                                             type="password"
                                             class="form-control w-full"
-                                            v-model="oInscripcion.password"
+                                            v-model="
+                                                oNuevaInscripcionSolicitud.password
+                                            "
                                         />
                                         <span
                                             class="error invalid-feedback d-block"
@@ -691,7 +701,7 @@ Mercado Pago"
                                             type="password"
                                             class="form-control w-full"
                                             v-model="
-                                                oInscripcion.password_confirmation
+                                                oNuevaInscripcionSolicitud.password_confirmation
                                             "
                                         />
                                         <span
@@ -718,7 +728,10 @@ Mercado Pago"
                                             Anterior
                                         </button>
                                     </div>
-                                    <div class="col-6" v-if="paso_actual < 4">
+                                    <div
+                                        class="col-6"
+                                        v-if="paso_actual < total_pasos"
+                                    >
                                         <button
                                             class="btn btn-success btn-block btn-flat"
                                             @click="cambiaPaso(1)"
@@ -729,7 +742,10 @@ Mercado Pago"
                                             ></span>
                                         </button>
                                     </div>
-                                    <div class="col-6" v-if="paso_actual == 4">
+                                    <div
+                                        class="col-6"
+                                        v-if="paso_actual == total_pasos"
+                                    >
                                         <button
                                             class="btn btn-success btn-block btn-flat"
                                             :disabled="enviando"
@@ -773,6 +789,17 @@ export default {
                 fono: "",
                 correo: "",
             },
+            oNuevaInscripcionSolicitud: {
+                pais_residencia: "",
+                prov_dpto: "",
+                fono: "",
+                curso_id: "",
+                nivel: "",
+                se_entero: "",
+                plan_pago_id: 3,
+                forma_pago: "",
+                desc_pago: "",
+            },
             plan_mensual: {
                 id: 0,
                 titulo: "PLAN MENSUAL",
@@ -792,7 +819,7 @@ export default {
                 detalles: "",
             },
             paso_actual: 1,
-            total_pasos: 4,
+            total_pasos: 3,
             listCursos: [],
             listNiveles: [
                 "NIVEL CERO",
@@ -885,87 +912,78 @@ export default {
         },
         setIdPlanPago(id) {
             console.log(id);
-            this.oInscripcion.plan_pago_id = id;
-            console.log(this.oInscripcion.plan_pago_id);
+            this.oNuevaInscripcionSolicitud.plan_pago_id = id;
+            console.log(this.oNuevaInscripcionSolicitud.plan_pago_id);
         },
         cargarArchivo(e) {
-            this.oInscripcion.archivo_pago = e.target.files[0];
+            this.oNuevaInscripcionSolicitud.archivo_pago = e.target.files[0];
         },
         realizarInscripcion() {
             this.enviando = true;
             try {
                 this.textoBtn = "Enviando...";
-                let url = main_url + "/portal/registrar_inscripcion";
+                let url =
+                    main_url +
+                    "/admin/inscripcions/registrar_nueva_inscripcion";
                 let config = {
                     headers: {
                         "Content-Type": "multipart/form-data",
                     },
                 };
                 let formdata = new FormData();
-                if (this.oInscripcion.nombres)
-                    formdata.append("nombres", this.oInscripcion.nombres);
-                if (this.oInscripcion.apellidos)
-                    formdata.append("apellidos", this.oInscripcion.apellidos);
-                if (this.oInscripcion.nro_iden)
-                    formdata.append("nro_iden", this.oInscripcion.nro_iden);
-                if (this.oInscripcion.fecha_nac)
-                    formdata.append("fecha_nac", this.oInscripcion.fecha_nac);
-                if (this.oInscripcion.edad)
-                    formdata.append("edad", this.oInscripcion.edad);
                 if (this.oInscripcion.pais_residencia)
                     formdata.append(
                         "pais_residencia",
                         this.oInscripcion.pais_residencia
                     );
-                if (this.oInscripcion.nacionalidad)
-                    formdata.append(
-                        "nacionalidad",
-                        this.oInscripcion.nacionalidad
-                    );
                 if (this.oInscripcion.prov_dpto)
                     formdata.append("prov_dpto", this.oInscripcion.prov_dpto);
-                if (this.oInscripcion.sexo)
-                    formdata.append("sexo", this.oInscripcion.sexo);
                 if (this.oInscripcion.fono)
                     formdata.append("fono", this.oInscripcion.fono);
-                if (this.oInscripcion.correo)
-                    formdata.append("correo", this.oInscripcion.correo);
-                if (this.oInscripcion.curso_id)
-                    formdata.append("curso_id", this.oInscripcion.curso_id);
-                if (this.oInscripcion.nivel)
-                    formdata.append("nivel", this.oInscripcion.nivel);
-                if (this.oInscripcion.se_entero)
-                    formdata.append("se_entero", this.oInscripcion.se_entero);
-                if (this.oInscripcion.desc_se_entero)
+                if (this.oNuevaInscripcionSolicitud.curso_id)
+                    formdata.append(
+                        "curso_id",
+                        this.oNuevaInscripcionSolicitud.curso_id
+                    );
+                if (this.oNuevaInscripcionSolicitud.nivel)
+                    formdata.append(
+                        "nivel",
+                        this.oNuevaInscripcionSolicitud.nivel
+                    );
+                if (this.oNuevaInscripcionSolicitud.se_entero)
+                    formdata.append(
+                        "se_entero",
+                        this.oNuevaInscripcionSolicitud.se_entero
+                    );
+                if (this.oNuevaInscripcionSolicitud.desc_se_entero)
                     formdata.append(
                         "desc_se_entero",
-                        this.oInscripcion.desc_se_entero
+                        this.oNuevaInscripcionSolicitud.desc_se_entero
                     );
-                if (this.oInscripcion.plan_pago_id)
+                if (this.oNuevaInscripcionSolicitud.plan_pago_id)
                     formdata.append(
                         "plan_pago_id",
-                        this.oInscripcion.plan_pago_id
+                        this.oNuevaInscripcionSolicitud.plan_pago_id
                     );
-                if (this.oInscripcion.forma_pago)
-                    formdata.append("forma_pago", this.oInscripcion.forma_pago);
-                if (this.oInscripcion.archivo_pago)
+                if (this.oNuevaInscripcionSolicitud.forma_pago)
+                    formdata.append(
+                        "forma_pago",
+                        this.oNuevaInscripcionSolicitud.forma_pago
+                    );
+                if (this.oNuevaInscripcionSolicitud.archivo_pago)
                     formdata.append(
                         "archivo_pago",
-                        this.oInscripcion.archivo_pago
+                        this.oNuevaInscripcionSolicitud.archivo_pago
                     );
-                if (this.oInscripcion.desc_pago)
-                    formdata.append("desc_pago", this.oInscripcion.desc_pago);
-                if (this.oInscripcion.desc_otro_pago)
+                if (this.oNuevaInscripcionSolicitud.desc_pago)
+                    formdata.append(
+                        "desc_pago",
+                        this.oNuevaInscripcionSolicitud.desc_pago
+                    );
+                if (this.oNuevaInscripcionSolicitud.desc_otro_pago)
                     formdata.append(
                         "desc_otro_pago",
-                        this.oInscripcion.desc_otro_pago
-                    );
-                if (this.oInscripcion.password)
-                    formdata.append("password", this.oInscripcion.password);
-                if (this.oInscripcion.password_confirmation)
-                    formdata.append(
-                        "password_confirmation",
-                        this.oInscripcion.password_confirmation
+                        this.oNuevaInscripcionSolicitud.desc_otro_pago
                     );
                 axios
                     .post(url, formdata, config)
@@ -978,8 +996,8 @@ export default {
                             confirmButtonText: "Aceptar",
                         });
                         this.errors = [];
-                        this.limpiarInscripcion();
                         this.enviando = false;
+                        this.$router.push({ name: "estudiante_cursos.index" });
                     })
                     .catch((error) => {
                         this.enviando = false;

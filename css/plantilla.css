@@ -53415,7 +53415,7 @@ a.text-muted:hover {
     --principal_transparent: #13161ce1;
     --principal_transparent2: #13161c88;
     --secundario: #ffffff;
-    --secundario_transparent: #ffffffd2;
+    --secundario_transparent: #b9f7f0b7;
     --secundario2: #08090b;
     --correcto: #d2e7c9;
     --secondary: #da1900;
@@ -53438,6 +53438,11 @@ a.text-muted:hover {
 
 .oculto {
     display: none;
+}
+
+input:read-only {
+    background-color: var(--secundario_transparent)!important;
+    color:black!important;
 }
 
 .bg-principal {

@@ -169,6 +169,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get("inscripcion_solicituds/aceptados_sin_asignar", [InscripcionSolicitudController::class, 'aceptados_sin_asignar']);
         Route::get("inscripcion_solicituds/{inscripcion_solicitud}", [InscripcionSolicitudController::class, 'show']);
         Route::put("inscripcion_solicituds/{inscripcion_solicitud}", [InscripcionSolicitudController::class, 'update']);
+        Route::post('/inscripcions/registrar_nueva_inscripcion', [InscripcionController::class, 'registrar_nueva_inscripcion']);
         Route::resource('inscripcions', InscripcionController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);

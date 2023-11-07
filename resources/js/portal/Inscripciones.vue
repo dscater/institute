@@ -729,7 +729,10 @@ Mercado Pago"
                                             Anterior
                                         </button>
                                     </div>
-                                    <div class="col-6" v-if="paso_actual < 4">
+                                    <div
+                                        class="col-6"
+                                        v-if="paso_actual < total_pasos"
+                                    >
                                         <button
                                             class="btn btn-success btn-block btn-flat"
                                             @click="cambiaPaso(1)"
@@ -740,7 +743,10 @@ Mercado Pago"
                                             ></span>
                                         </button>
                                     </div>
-                                    <div class="col-6" v-if="paso_actual == 4">
+                                    <div
+                                        class="col-6"
+                                        v-if="paso_actual == total_pasos"
+                                    >
                                         <button
                                             class="btn btn-success btn-block btn-flat"
                                             :disabled="enviando"
