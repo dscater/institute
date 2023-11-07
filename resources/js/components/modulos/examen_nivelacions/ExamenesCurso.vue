@@ -18,19 +18,88 @@
                                     <strong>Total preguntas: </strong
                                     >{{ item.total_preguntas }}
                                 </p>
+                                <template
+                                    v-if="
+                                        asignacion_grupo &&
+                                        asignacion_grupo.inscripcion_solicitud
+                                            .inscripcion_examen
+                                    "
+                                >
+                                    <p class="">
+                                        <strong>Revisión examen: </strong>
+                                        <span
+                                            class="text-sm badge"
+                                            :class="[
+                                                asignacion_grupo
+                                                    .inscripcion_solicitud
+                                                    .inscripcion_examen
+                                                    .estado == 'PENDIENTE'
+                                                    ? 'badge-danger'
+                                                    : 'badge-success',
+                                            ]"
+                                            >{{
+                                                asignacion_grupo
+                                                    .inscripcion_solicitud
+                                                    .inscripcion_examen.estado
+                                            }}</span
+                                        >
+                                    </p>
+                                    <p class="">
+                                        <strong>Calificación: </strong>
+                                        <span
+                                            class="text-sm badge"
+                                            :class="[
+                                                asignacion_grupo
+                                                    .inscripcion_solicitud
+                                                    .inscripcion_examen.puntaje
+                                                    ? 'badge-success'
+                                                    : 'badge-danger',
+                                            ]"
+                                            >{{
+                                                asignacion_grupo
+                                                    .inscripcion_solicitud
+                                                    .inscripcion_examen.puntaje
+                                                    ? asignacion_grupo
+                                                          .inscripcion_solicitud
+                                                          .inscripcion_examen
+                                                          .puntaje
+                                                    : "S/P"
+                                            }}</span
+                                        >
+                                    </p>
+                                </template>
                             </div>
                             <div class="col-md-3 mb-0">
                                 <router-link
+                                    v-if="
+                                        !asignacion_grupo.inscripcion_solicitud
+                                            .inscripcion_examen
+                                    "
                                     :to="{
                                         name: 'examen_nivelacions.realizar_examen',
                                         params: {
                                             id: item.id,
+                                            asignacion_id: asignacion_grupo_id,
                                         },
                                     }"
                                     class="btn btn-sm btn-success btn-flat btn-block"
                                 >
                                     <i class="fa fa-clipboard-list"></i>
                                     Realizar examen
+                                </router-link>
+                                <router-link
+                                    v-else
+                                    :to="{
+                                        name: 'examen_nivelacions.realizar_examen',
+                                        params: {
+                                            id: item.id,
+                                            asignacion_id: asignacion_grupo_id,
+                                        },
+                                    }"
+                                    class="btn btn-sm btn-primary btn-flat btn-block"
+                                >
+                                    <i class="fa fa-clipboard-list"></i>
+                                    Ver examen
                                 </router-link>
                             </div>
                         </div>
@@ -56,6 +125,22 @@ export default {
             type: Number,
             default: 0,
             requred: true,
+        },
+        asignacion_grupo_id: {
+            type: Number,
+            default: 0,
+            required: true,
+        },
+        asignacion_grupo: {
+            type: Object,
+            default: {
+                id: 0,
+                grupo_id: 0,
+                inscripcion_id: 0,
+                inscripcion_solicitud_id: 0,
+                curso_id: 0,
+            },
+            required: true,
         },
     },
     data() {

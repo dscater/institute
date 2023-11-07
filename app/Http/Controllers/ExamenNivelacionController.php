@@ -43,9 +43,7 @@ class ExamenNivelacionController extends Controller
         try {
             $user = Auth::user();
             $inscripcion = Inscripcion::where("user_id", $user->id)->get()->first();
-            $asignacion_grupo = AsignacionGrupo::where("curso_id", $examen_nivelacion->curso_id)
-                ->where("inscripcion_id", $inscripcion->id)
-                ->get()->last();
+            $asignacion_grupo = AsignacionGrupo::find($request->asignacion_id);
             if (!$asignacion_grupo) {
                 throw new Exception("Ocurrió un error inesperado, el examen que seleccióno no coincide con ningun curso asignado");
             }

@@ -22,6 +22,8 @@
                             </div>
                             <ExamenesCurso
                                 :curso_id="item.curso_id"
+                                :asignacion_grupo_id="item.id"
+                                :asignacion_grupo="item"
                             ></ExamenesCurso>
                         </div>
                     </div>

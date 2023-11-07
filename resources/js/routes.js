@@ -365,7 +365,7 @@ export default new Router({
 
         // realizar examen estudiante
         {
-            path: "/administracion/examen_nivelacions/realizar_examen/:id",
+            path: "/administracion/examen_nivelacions/realizar_examen/:id/:asignacion_id",
             name: "examen_nivelacions.realizar_examen",
             component:
                 require("./components/modulos/realizar_examen/create.vue")

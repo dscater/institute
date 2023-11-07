@@ -46,4 +46,9 @@ class InscripcionSolicitud extends Model
     {
         return $this->belongsTo(Curso::class, 'curso_id');
     }
+
+    public function inscripcion_examen()
+    {
+        return $this->hasOne(InscripcionExamen::class, 'inscripcion_solicitud_id');
+    }
 }

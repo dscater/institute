@@ -107,6 +107,11 @@ export default {
         ModalInfo,
     },
     props: {
+        asignacion_id: {
+            type: Number,
+            default: 0,
+            required: true,
+        },
         accion: {
             type: String,
             default: "nuevo",
@@ -173,7 +178,10 @@ export default {
                             "/admin/examen_nivelacions/registrar_examen_estudiante/" +
                             this.examen_nivelacion.id;
                         axios
-                            .post(url, { respuestas: this.respuestas })
+                            .post(url, {
+                                respuestas: this.respuestas,
+                                asignacion_id: asignacion_id,
+                            })
                             .then((res) => {
                                 this.enviando = false;
                                 Swal.fire({

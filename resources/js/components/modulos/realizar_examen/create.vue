@@ -26,6 +26,11 @@
                     <Formulario
                         :accion="'edit'"
                         :examen_nivelacion="oExamenNivelacion"
+                        :asignacion_id="
+                            typeof asignacion_id == 'string'
+                                ? parseInt(asignacion_id)
+                                : asignacion_id
+                        "
                     ></Formulario>
                 </div>
             </div>
@@ -36,7 +41,7 @@
 <script>
 import Formulario from "./Formulario.vue";
 export default {
-    props: ["id"],
+    props: ["id", "asignacion_id"],
     components: {
         Formulario,
     },
