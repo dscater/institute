@@ -77,6 +77,8 @@ Route::get('portal/getCursos', [CursoController::class, 'listaCursos']);
 Route::get('portal/getIndexCursos', [CursoController::class, 'index']);
 // inscripcion
 Route::post('/portal/registrar_inscripcion', [InscripcionController::class, 'registrar_inscripcion']);
+// horarios
+Route::get('/portal/horarios', [HorarioController::class, 'horarios']);
 // plan_pagos
 Route::get('/portal/get_plan_pagos', [PlanPagoController::class, 'index']);
 // gestoria_solicituds

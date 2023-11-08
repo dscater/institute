@@ -5,7 +5,9 @@
             class="navegacion banner-area relative about-banner"
             id="home"
             :style="
-                'background:url(' + url_principal + '/imgs/ImagenDeNavegaciónPortal.png)'
+                'background:url(' +
+                url_principal +
+                '/imgs/ImagenDeNavegaciónPortal.png)'
             "
         >
             <div class="overlay overlay-bg"></div>
@@ -46,116 +48,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <table class="table table-bordered">
-                            <thead class="bg-principal2">
-                                <tr>
-                                    <th class="text-white text-center">
-                                        CURSO
-                                    </th>
-                                    <th class="text-white text-center">
-                                        MODALIDAD
-                                    </th>
-                                    <th class="text-white text-center">
-                                        HORARIO
-                                    </th>
-                                    <th class="text-white text-center">
-                                        FECHA INICIO
-                                    </th>
-                                    <th class="text-white text-center">
-                                        FECHA FIN
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-secundario2">
-                                <tr>
-                                    <td class="text-white text-center">
-                                        Inglés
-                                    </td>
-                                    <td class="text-white text-center">
-                                        Virtual
-                                    </td>
-                                    <td class="text-white text-center">
-                                        18:30 a 20:30
-                                    </td>
-                                    <td class="text-white text-center">
-                                        12/10/2023
-                                    </td>
-                                    <td class="text-white text-center">
-                                        12/10/2023
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-white text-center">
-                                        Inglés
-                                    </td>
-                                    <td class="text-white text-center">
-                                        Virtual
-                                    </td>
-                                    <td class="text-white text-center">
-                                        18:30 a 20:30
-                                    </td>
-                                    <td class="text-white text-center">
-                                        12/10/2023
-                                    </td>
-                                    <td class="text-white text-center">
-                                        12/10/2023
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-white text-center">
-                                        Inglés
-                                    </td>
-                                    <td class="text-white text-center">
-                                        Virtual
-                                    </td>
-                                    <td class="text-white text-center">
-                                        18:30 a 20:30
-                                    </td>
-                                    <td class="text-white text-center">
-                                        12/10/2023
-                                    </td>
-                                    <td class="text-white text-center">
-                                        12/10/2023
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-white text-center">
-                                        Inglés
-                                    </td>
-                                    <td class="text-white text-center">
-                                        Virtual
-                                    </td>
-                                    <td class="text-white text-center">
-                                        18:30 a 20:30
-                                    </td>
-                                    <td class="text-white text-center">
-                                        12/10/2023
-                                    </td>
-                                    <td class="text-white text-center">
-                                        12/10/2023
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-white text-center">
-                                        Inglés
-                                    </td>
-                                    <td class="text-white text-center">
-                                        Virtual
-                                    </td>
-                                    <td class="text-white text-center">
-                                        18:30 a 20:30
-                                    </td>
-                                    <td class="text-white text-center">
-                                        12/10/2023
-                                    </td>
-                                    <td class="text-white text-center">
-                                        12/10/2023
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <div class="col-md-12" v-html="html_horarios"></div>
                 </div>
             </div>
         </section>
@@ -171,12 +64,22 @@ export default {
                 fullscreen: this.fullscreenLoading,
             }),
             url_principal: main_url,
+            listHorarios: [],
+            html_horarios: "",
         };
     },
     mounted() {
         this.loadingWindow.close();
+        this.getHorarios();
     },
-    methods: {},
+    methods: {
+        getHorarios() {
+            axios.get(main_url + "/portal/horarios").then((response) => {
+                this.listHorarios = response.data.horarios;
+                this.html_horarios = response.data.html;
+            });
+        },
+    },
 };
 </script>
 <style></style>

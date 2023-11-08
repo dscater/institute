@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AsignacionGrupo;
+use App\Models\Curso;
 use App\Models\HistorialAccion;
 use App\Models\Horario;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class HorarioController extends Controller
 {
@@ -37,6 +40,73 @@ class HorarioController extends Controller
         $horarios = Horario::with(["grupo"])->orderBy("id", "desc")->get();
         return response()->JSON(['horarios' => $horarios, 'total' => count($horarios)], 200);
     }
+
+    public function horarios()
+    {
+        $fecha_actual = date("Y-m-d");
+        $horarios = Horario::where("fecha_fin", ">=", $fecha_actual)->orderBY("hora_inicio", "asc")->get();
+
+        $dias = [0, 1, 2, 3, 4, 5, 6];
+        $dias_txt = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado'];
+
+        $array_horas = [];
+        $array_fechas = [];
+        $array_fecha_fin_aux = [];
+
+        $tabla_horarios = [];
+        $tabla_fechas = [];
+        foreach ($horarios  as $h) {
+
+            // buscar cursos del grupo
+            $id_cursos = AsignacionGrupo::where("grupo_id", $h->grupo_id)->pluck("curso_id");
+            $cursos = Curso::whereIn("id", $id_cursos)->get();
+
+            // asignar indices de los arrays para validaciones
+            $hora_string = $h->hora_inicio_t . ' - ' . $h->hora_fin_t;
+            $fecha_string = $h->fecha_inicio_t . ' al ' . $h->fecha_fin_t;
+
+            // ****************************************************
+            // armar el array para recorrer la tabla de horarios
+            // *************************************************
+            if (!in_array($hora_string, $array_horas)) {
+                $array_horas[] = $hora_string;
+            }
+            // inicializar array
+            if (!isset($tabla_horarios[$hora_string])) {
+                $tabla_horarios[$hora_string] = [
+                    1 => [],
+                    2 => [],
+                    3 => [],
+                    4 => [],
+                    5 => [],
+                    6 => [],
+                    0 => [],
+                ];
+            }
+            // recorrer y asignar los dias
+            foreach ($tabla_horarios[$hora_string] as $key_dia => $th) {
+                if ($h->array_dias[$key_dia] == 1) {
+                    // asignar cursos del grupo
+                    $tabla_horarios[$hora_string][$key_dia] = $cursos; //asignar el dia
+                }
+            }
+
+            // *************************************************
+            // armar el array para recorrer la tabla de fechas
+            // *************************************************
+            if (!in_array($fecha_string, $array_fechas)) {
+                $array_fechas[] = $fecha_string;
+                $array_fecha_fin_aux[] = $h->fecha_fin;
+                // agregar horario a la fecha
+                $tabla_fechas[$fecha_string] = $cursos;
+            }
+        }
+
+        $html = view("parcial.horarios", compact("tabla_horarios", "tabla_fechas", "array_horas", "array_fechas"))->render();
+
+        return response()->JSON(['html' => $html, 'horarios' => $horarios, 'total' => count($horarios)], 200);
+    }
+
     public function store(Request $request)
     {
         $this->validacion['array_dias'] = [
