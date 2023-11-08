@@ -30,7 +30,8 @@
         @else
             <Auth ruta="{{ route('base_path') }}" logo="{{ asset('imgs/' . $configuracion->first()->logo) }}"
                 empresa="{{ $configuracion->first()->razon_social }}" configuracion="{{ $configuracion->first() }}"
-                url_portal="{{ route('portal.inicio') }}">
+                url_portal="{{ route('portal.inicio') }}"
+                url_contrasena="{{ route('contrasena.recuperar_contrasena') }}">
             </Auth>
         @endif
     </div>

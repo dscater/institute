@@ -75,7 +75,7 @@
                     <div class="row">
                         <div class="col-12">
                             <a
-                                :href="url_portal"
+                                :href="url_contrasena"
                                 class="mt-2 font-weight-bold"
                                 v-loading.fullscreen.lock="fullscreenLoading"
                             >
@@ -124,6 +124,10 @@ export default {
         url_portal: {
             String,
             default: "/registro",
+        },
+        url_contrasena: {
+            String,
+            default: "/recuperar_contrasena",
         },
     },
     data() {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 07-11-2023 a las 22:29:05
+-- Tiempo de generación: 08-11-2023 a las 16:56:36
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -229,6 +229,28 @@ INSERT INTO `enunciado_preguntas` (`id`, `examen_enunciado_id`, `pregunta`, `tip
 (16, 10, 'the bus arrives _ london _ six o\'clock', 'LLENADO DOBLE INTERMEDIO CON OPCIONES', 'at, on, in', '2023-11-07 14:41:23', '2023-11-07 14:41:23'),
 (17, 11, 'choose the correct one:', 'ELIGE UNA OPCIÓN', 'My brothers\' car is very nice, My brother\'s car is very nice, My brothers car is very nice', '2023-11-07 14:41:23', '2023-11-07 14:41:23'),
 (18, 12, 'i don´t understand _ you say. Could your repeat it?', 'LLENADO INTERMEDIO CON OPCIONES', 'that, what, which', '2023-11-07 14:41:23', '2023-11-07 14:41:23');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `envio_correos`
+--
+
+CREATE TABLE `envio_correos` (
+  `id` bigint UNSIGNED NOT NULL,
+  `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `envio_correos`
+--
+
+INSERT INTO `envio_correos` (`id`, `correo`, `nombre`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'correosyseventos@gmail.com', 'Institute', 'vzxihjayuqaxorwc', '2023-11-08 16:26:26', '2023-11-08 16:26:26');
 
 -- --------------------------------------------------------
 
@@ -759,7 +781,12 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (235, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD DE GESTORÍA', 'antecedentes_penales: OTRO<br/>apellidos: MARTINEZ MARTINEZ<br/>codigo: S.1<br/>correo: carlosm@gmail.com<br/>created_at: 2023-11-02 18:45:56<br/>cuenta_bancaria: SI<br/>deportado_otro_pais: SI<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>edad: 23<br/>estado: <br/>estado_solicitud: NO RESPONDE<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>familiar_deportado: SI<br/>familiares_eeuu: SI<br/>fecha_nac: 2000-01-01<br/>fono: 7777777<br/>gana_aproximadamente: 10000.00<br/>id: 1<br/>motivo: MOTIVO DEPORTACIÓN<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>nacionalidad: BOLIVIANO<br/>nombres: CARLOS<br/>parentesco: HERMANOS<br/>recomendado_por: LO VI EN FACEBOOK<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>sexo: HOMBRE<br/>solicito_visa: SI<br/>trabajo_actual: TRABAJO ACTUAL<br/>updated_at: 2023-11-07 18:11:19<br/>', 'antecedentes_penales: OTRO<br/>apellidos: MARTINEZ MARTINEZ<br/>codigo: S.1<br/>correo: carlosm@gmail.com<br/>created_at: 2023-11-02 18:45:56<br/>cuenta_bancaria: SI<br/>deportado_otro_pais: SI<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>edad: 23<br/>estado: <br/>estado_solicitud: DESCARTADO<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>familiar_deportado: SI<br/>familiares_eeuu: SI<br/>fecha_nac: 2000-01-01<br/>fono: 7777777<br/>gana_aproximadamente: 10000.00<br/>id: 1<br/>motivo: MOTIVO DEPORTACIÓN<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>nacionalidad: BOLIVIANO<br/>nombres: CARLOS<br/>parentesco: HERMANOS<br/>recomendado_por: LO VI EN FACEBOOK<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>sexo: HOMBRE<br/>solicito_visa: SI<br/>trabajo_actual: TRABAJO ACTUAL<br/>updated_at: 2023-11-07 18:11:21<br/>', 'GESTORÍA SOLICITUDES', '2023-11-07', '18:11:21', '2023-11-07 22:11:21', '2023-11-07 22:11:21'),
 (236, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD DE GESTORÍA', 'antecedentes_penales: OTRO<br/>apellidos: MARTINEZ MARTINEZ<br/>codigo: S.1<br/>correo: carlosm@gmail.com<br/>created_at: 2023-11-02 18:45:56<br/>cuenta_bancaria: SI<br/>deportado_otro_pais: SI<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>edad: 23<br/>estado: <br/>estado_solicitud: DESCARTADO<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>familiar_deportado: SI<br/>familiares_eeuu: SI<br/>fecha_nac: 2000-01-01<br/>fono: 7777777<br/>gana_aproximadamente: 10000.00<br/>id: 1<br/>motivo: MOTIVO DEPORTACIÓN<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>nacionalidad: BOLIVIANO<br/>nombres: CARLOS<br/>parentesco: HERMANOS<br/>recomendado_por: LO VI EN FACEBOOK<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>sexo: HOMBRE<br/>solicito_visa: SI<br/>trabajo_actual: TRABAJO ACTUAL<br/>updated_at: 2023-11-07 18:11:21<br/>', 'antecedentes_penales: OTRO<br/>apellidos: MARTINEZ MARTINEZ<br/>codigo: S.1<br/>correo: carlosm@gmail.com<br/>created_at: 2023-11-02 18:45:56<br/>cuenta_bancaria: SI<br/>deportado_otro_pais: SI<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>edad: 23<br/>estado: <br/>estado_solicitud: ATENDIDO<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>familiar_deportado: SI<br/>familiares_eeuu: SI<br/>fecha_nac: 2000-01-01<br/>fono: 7777777<br/>gana_aproximadamente: 10000.00<br/>id: 1<br/>motivo: MOTIVO DEPORTACIÓN<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>nacionalidad: BOLIVIANO<br/>nombres: CARLOS<br/>parentesco: HERMANOS<br/>recomendado_por: LO VI EN FACEBOOK<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>sexo: HOMBRE<br/>solicito_visa: SI<br/>trabajo_actual: TRABAJO ACTUAL<br/>updated_at: 2023-11-07 18:11:23<br/>', 'GESTORÍA SOLICITUDES', '2023-11-07', '18:11:23', '2023-11-07 22:11:23', '2023-11-07 22:11:23'),
 (237, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD DE GESTORÍA', 'antecedentes_penales: OTRO<br/>apellidos: MARTINEZ MARTINEZ<br/>codigo: S.1<br/>correo: carlosm@gmail.com<br/>created_at: 2023-11-02 18:45:56<br/>cuenta_bancaria: SI<br/>deportado_otro_pais: SI<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>edad: 23<br/>estado: <br/>estado_solicitud: ATENDIDO<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>familiar_deportado: SI<br/>familiares_eeuu: SI<br/>fecha_nac: 2000-01-01<br/>fono: 7777777<br/>gana_aproximadamente: 10000.00<br/>id: 1<br/>motivo: MOTIVO DEPORTACIÓN<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>nacionalidad: BOLIVIANO<br/>nombres: CARLOS<br/>parentesco: HERMANOS<br/>recomendado_por: LO VI EN FACEBOOK<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>sexo: HOMBRE<br/>solicito_visa: SI<br/>trabajo_actual: TRABAJO ACTUAL<br/>updated_at: 2023-11-07 18:11:23<br/>', 'antecedentes_penales: OTRO<br/>apellidos: MARTINEZ MARTINEZ<br/>codigo: S.1<br/>correo: carlosm@gmail.com<br/>created_at: 2023-11-02 18:45:56<br/>cuenta_bancaria: SI<br/>deportado_otro_pais: SI<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>edad: 23<br/>estado: <br/>estado_solicitud: NO RESPONDE<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>familiar_deportado: SI<br/>familiares_eeuu: SI<br/>fecha_nac: 2000-01-01<br/>fono: 7777777<br/>gana_aproximadamente: 10000.00<br/>id: 1<br/>motivo: MOTIVO DEPORTACIÓN<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>nacionalidad: BOLIVIANO<br/>nombres: CARLOS<br/>parentesco: HERMANOS<br/>recomendado_por: LO VI EN FACEBOOK<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>sexo: HOMBRE<br/>solicito_visa: SI<br/>trabajo_actual: TRABAJO ACTUAL<br/>updated_at: 2023-11-07 18:23:08<br/>', 'GESTORÍA SOLICITUDES', '2023-11-07', '18:23:08', '2023-11-07 22:23:08', '2023-11-07 22:23:08'),
-(238, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD DE GESTORÍA', 'antecedentes_penales: OTRO<br/>apellidos: MARTINEZ MARTINEZ<br/>codigo: S.1<br/>correo: carlosm@gmail.com<br/>created_at: 2023-11-02 18:45:56<br/>cuenta_bancaria: SI<br/>deportado_otro_pais: SI<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>edad: 23<br/>estado: <br/>estado_solicitud: NO RESPONDE<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>familiar_deportado: SI<br/>familiares_eeuu: SI<br/>fecha_nac: 2000-01-01<br/>fono: 7777777<br/>gana_aproximadamente: 10000.00<br/>id: 1<br/>motivo: MOTIVO DEPORTACIÓN<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>nacionalidad: BOLIVIANO<br/>nombres: CARLOS<br/>parentesco: HERMANOS<br/>recomendado_por: LO VI EN FACEBOOK<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>sexo: HOMBRE<br/>solicito_visa: SI<br/>trabajo_actual: TRABAJO ACTUAL<br/>updated_at: 2023-11-07 18:23:08<br/>', 'antecedentes_penales: OTRO<br/>apellidos: MARTINEZ MARTINEZ<br/>codigo: S.1<br/>correo: carlosm@gmail.com<br/>created_at: 2023-11-02 18:45:56<br/>cuenta_bancaria: SI<br/>deportado_otro_pais: SI<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>edad: 23<br/>estado: <br/>estado_solicitud: ATENDIDO<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>familiar_deportado: SI<br/>familiares_eeuu: SI<br/>fecha_nac: 2000-01-01<br/>fono: 7777777<br/>gana_aproximadamente: 10000.00<br/>id: 1<br/>motivo: MOTIVO DEPORTACIÓN<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>nacionalidad: BOLIVIANO<br/>nombres: CARLOS<br/>parentesco: HERMANOS<br/>recomendado_por: LO VI EN FACEBOOK<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>sexo: HOMBRE<br/>solicito_visa: SI<br/>trabajo_actual: TRABAJO ACTUAL<br/>updated_at: 2023-11-07 18:23:10<br/>', 'GESTORÍA SOLICITUDES', '2023-11-07', '18:23:10', '2023-11-07 22:23:10', '2023-11-07 22:23:10');
+(238, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD DE GESTORÍA', 'antecedentes_penales: OTRO<br/>apellidos: MARTINEZ MARTINEZ<br/>codigo: S.1<br/>correo: carlosm@gmail.com<br/>created_at: 2023-11-02 18:45:56<br/>cuenta_bancaria: SI<br/>deportado_otro_pais: SI<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>edad: 23<br/>estado: <br/>estado_solicitud: NO RESPONDE<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>familiar_deportado: SI<br/>familiares_eeuu: SI<br/>fecha_nac: 2000-01-01<br/>fono: 7777777<br/>gana_aproximadamente: 10000.00<br/>id: 1<br/>motivo: MOTIVO DEPORTACIÓN<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>nacionalidad: BOLIVIANO<br/>nombres: CARLOS<br/>parentesco: HERMANOS<br/>recomendado_por: LO VI EN FACEBOOK<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>sexo: HOMBRE<br/>solicito_visa: SI<br/>trabajo_actual: TRABAJO ACTUAL<br/>updated_at: 2023-11-07 18:23:08<br/>', 'antecedentes_penales: OTRO<br/>apellidos: MARTINEZ MARTINEZ<br/>codigo: S.1<br/>correo: carlosm@gmail.com<br/>created_at: 2023-11-02 18:45:56<br/>cuenta_bancaria: SI<br/>deportado_otro_pais: SI<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>edad: 23<br/>estado: <br/>estado_solicitud: ATENDIDO<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>familiar_deportado: SI<br/>familiares_eeuu: SI<br/>fecha_nac: 2000-01-01<br/>fono: 7777777<br/>gana_aproximadamente: 10000.00<br/>id: 1<br/>motivo: MOTIVO DEPORTACIÓN<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>nacionalidad: BOLIVIANO<br/>nombres: CARLOS<br/>parentesco: HERMANOS<br/>recomendado_por: LO VI EN FACEBOOK<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>sexo: HOMBRE<br/>solicito_visa: SI<br/>trabajo_actual: TRABAJO ACTUAL<br/>updated_at: 2023-11-07 18:23:10<br/>', 'GESTORÍA SOLICITUDES', '2023-11-07', '18:23:10', '2023-11-07 22:23:10', '2023-11-07 22:23:10'),
+(239, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LAS CREDENCIALES DE ENVIO DE CORREOS', 'id: 1<br/>correo: correosyseventos@gmail.com<br/>nombre: Institute<br/>password: vzxihjayuqaxorwc<br/>created_at: 2023-11-08 12:26:26<br/>updated_at: 2023-11-08 12:26:26<br/>', NULL, 'ENVIO DE CORREOS', '2023-11-08', '12:26:26', '2023-11-08 16:26:26', '2023-11-08 16:26:26'),
+(240, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LAS CREDENCIALES DE ENVIO DE CORREOS', 'id: 1<br/>correo: correosyseventos@gmail.com<br/>nombre: Institute<br/>password: vzxihjayuqaxorwc<br/>created_at: 2023-11-08 12:26:26<br/>updated_at: 2023-11-08 12:26:26<br/>', NULL, 'ENVIO DE CORREOS', '2023-11-08', '12:26:39', '2023-11-08 16:26:39', '2023-11-08 16:26:39'),
+(241, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN USUARIO', 'id: 2<br/>usuario: juan@gmail.com<br/>nombre: JUAN<br/>paterno: PERES<br/>materno: MAMANI<br/>dir: LOS OLIVOS<br/>correo: JUAN@GMAIL.COM<br/>fono: 7777777<br/>password: $2y$10$PyYyeiVACluSevqQ9FEOm.jLPw744pSMyVy3Ek7DwvDo/bveMFj4q<br/>tipo: ADMINISTRADOR<br/>foto: default.png<br/>acceso: 1<br/>fecha_registro: 2023-10-07<br/>created_at: 2023-10-07 19:33:20<br/>updated_at: 2023-10-07 19:39:10<br/>', 'id: 2<br/>usuario: juan@gmail.com<br/>nombre: JUAN<br/>paterno: PERES<br/>materno: MAMANI<br/>dir: LOS OLIVOS<br/>correo: VICTORGONZALO.AS@GMAIL.COM<br/>fono: 7777777<br/>password: $2y$10$PyYyeiVACluSevqQ9FEOm.jLPw744pSMyVy3Ek7DwvDo/bveMFj4q<br/>tipo: ADMINISTRADOR<br/>foto: default.png<br/>acceso: 1<br/>fecha_registro: 2023-10-07<br/>created_at: 2023-10-07 19:33:20<br/>updated_at: 2023-11-08 12:37:58<br/>', 'USUARIOS', '2023-11-08', '12:37:58', '2023-11-08 16:37:58', '2023-11-08 16:37:58'),
+(242, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN USUARIO', 'id: 2<br/>usuario: juan@gmail.com<br/>nombre: JUAN<br/>paterno: PERES<br/>materno: MAMANI<br/>dir: LOS OLIVOS<br/>correo: VICTORGONZALO.AS@GMAIL.COM<br/>fono: 7777777<br/>password: $2y$10$PyYyeiVACluSevqQ9FEOm.jLPw744pSMyVy3Ek7DwvDo/bveMFj4q<br/>tipo: ADMINISTRADOR<br/>foto: default.png<br/>acceso: 1<br/>fecha_registro: 2023-10-07<br/>created_at: 2023-10-07 19:33:20<br/>updated_at: 2023-11-08 12:37:58<br/>', 'id: 2<br/>usuario: victorgonzalo.as@gmail.com<br/>nombre: JUAN<br/>paterno: PERES<br/>materno: MAMANI<br/>dir: LOS OLIVOS<br/>correo: victorgonzalo.as@gmail.com<br/>fono: 7777777<br/>password: $2y$10$PyYyeiVACluSevqQ9FEOm.jLPw744pSMyVy3Ek7DwvDo/bveMFj4q<br/>tipo: ADMINISTRADOR<br/>foto: default.png<br/>acceso: 1<br/>fecha_registro: 2023-10-07<br/>created_at: 2023-10-07 19:33:20<br/>updated_at: 2023-11-08 12:39:02<br/>', 'USUARIOS', '2023-11-08', '12:39:02', '2023-11-08 16:39:02', '2023-11-08 16:39:02'),
+(243, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN USUARIO', 'id: 2<br/>usuario: victorgonzalo.as@gmail.com<br/>nombre: JUAN<br/>paterno: PERES<br/>materno: MAMANI<br/>dir: LOS OLIVOS<br/>correo: victorgonzalo.as@gmail.com<br/>fono: 7777777<br/>password: $2y$10$0zDT1yKo.p/VfrlLMdZ2R.crem.MX0/26JFHOdA2FJssdu5DBFcWe<br/>tipo: ADMINISTRADOR<br/>foto: default.png<br/>acceso: 1<br/>fecha_registro: 2023-10-07<br/>created_at: 2023-10-07 19:33:20<br/>updated_at: 2023-11-08 12:55:24<br/>', 'id: 2<br/>usuario: juan@gmail.com<br/>nombre: JUAN<br/>paterno: PERES<br/>materno: MAMANI<br/>dir: LOS OLIVOS<br/>correo: juan@gmail.com<br/>fono: 7777777<br/>password: $2y$10$x7Y89S.ziR0AuMQvI16ex.ckDsy3lb.mJlRy2IruS4qg7eiQLSC2G<br/>tipo: ADMINISTRADOR<br/>foto: default.png<br/>acceso: 1<br/>fecha_registro: 2023-10-07<br/>created_at: 2023-10-07 19:33:20<br/>updated_at: 2023-11-08 12:56:29<br/>', 'USUARIOS', '2023-11-08', '12:56:29', '2023-11-08 16:56:29', '2023-11-08 16:56:29');
 
 -- --------------------------------------------------------
 
@@ -962,7 +989,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (30, '2023_10_24_122358_create_comunicados_table', 5),
 (31, '2023_10_24_122629_create_profesors_table', 5),
 (32, '2023_10_31_104720_create_plan_pagos_table', 6),
-(33, '2023_11_02_184740_create_gestoria_tips_table', 7);
+(33, '2023_11_02_184740_create_gestoria_tips_table', 7),
+(34, '2023_11_08_121007_create_envio_correos_table', 8),
+(35, '2023_11_08_121146_create_recuperacions_table', 8);
 
 -- --------------------------------------------------------
 
@@ -1082,6 +1111,28 @@ INSERT INTO `profesors` (`id`, `nombres`, `apellidos`, `ci`, `nacionalidad`, `pa
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `recuperacions`
+--
+
+CREATE TABLE `recuperacions` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `estado` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `recuperacions`
+--
+
+INSERT INTO `recuperacions` (`id`, `user_id`, `correo`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 2, 'victorgonzalo.as@gmail.com', 1, '2023-11-08 16:47:10', '2023-11-08 16:55:24');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `red_socials`
 --
 
@@ -1132,7 +1183,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `dir`, `correo`, `fono`, `password`, `tipo`, `foto`, `acceso`, `fecha_registro`, `created_at`, `updated_at`) VALUES
 (1, 'admin@gmail.com', 'admin', 'admin', NULL, '', 'admin@gmail.com', NULL, '$2y$10$RrCZZySOwPej2gMFWsrjMe6dLzfaL5Q88h4J75I1FesEBRNPwq1x.', 'ADMINISTRADOR', NULL, 1, '2023-10-05', NULL, NULL),
-(2, 'juan@gmail.com', 'JUAN', 'PERES', 'MAMANI', 'LOS OLIVOS', 'JUAN@GMAIL.COM', '7777777', '$2y$10$PyYyeiVACluSevqQ9FEOm.jLPw744pSMyVy3Ek7DwvDo/bveMFj4q', 'ADMINISTRADOR', 'default.png', 1, '2023-10-07', '2023-10-07 23:33:20', '2023-10-07 23:39:10'),
+(2, 'juan@gmail.com', 'JUAN', 'PERES', 'MAMANI', 'LOS OLIVOS', 'juan@gmail.com', '7777777', '$2y$10$x7Y89S.ziR0AuMQvI16ex.ckDsy3lb.mJlRy2IruS4qg7eiQLSC2G', 'ADMINISTRADOR', 'default.png', 1, '2023-10-07', '2023-10-07 23:33:20', '2023-11-08 16:56:29'),
 (3, 'maria@gmail.com', 'MARIA', 'MAMANI', 'MAMANI', 'LOS OLIVOS', 'MARIA@GMAIL.COM', '', '$2y$10$bd0rITfeftm3JW7h.vktRO7406W9Mykg1X2dukizhYvjqZfrzQsTi', 'AUXILIAR', 'default.png', 1, '2023-10-07', '2023-10-07 23:47:44', '2023-10-20 15:19:04'),
 (5, 'marcos@gmail.com', 'MARCOS', 'MAMANI MAMANI', NULL, 'LA PAZ - BOLIVIA', 'marcos@gmail.com', '7777777', '$2y$10$w.iN4dL8Pj/dTt/0kWD1oeQvb26B4mi2s/imbyJotYGTRui42RGKy', 'ESTUDIANTE', NULL, 1, '2023-10-31', '2023-10-31 17:52:08', '2023-10-31 17:52:08'),
 (6, 'felipe@gmail.com', 'Felipe', 'gutierrez martines', NULL, 'los olivos #32', 'felipe@gmail.com', '777777', '$2y$10$8gDTDoXbvcslnnkzc/qSY.qPv65eIxrpgVKCTtX7vnuYR6/UGP2Me', 'PROFESOR', '1699148587_6.jpg', 1, '2023-11-04', '2023-11-05 01:43:07', '2023-11-05 17:03:02'),
@@ -1197,6 +1248,12 @@ ALTER TABLE `cursos`
 ALTER TABLE `enunciado_preguntas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `enunciado_preguntas_examen_enunciado_id_foreign` (`examen_enunciado_id`);
+
+--
+-- Indices de la tabla `envio_correos`
+--
+ALTER TABLE `envio_correos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `examen_enunciados`
@@ -1347,6 +1404,12 @@ ALTER TABLE `profesors`
   ADD UNIQUE KEY `profesors_correo_unique` (`correo`);
 
 --
+-- Indices de la tabla `recuperacions`
+--
+ALTER TABLE `recuperacions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `red_socials`
 --
 ALTER TABLE `red_socials`
@@ -1413,6 +1476,12 @@ ALTER TABLE `enunciado_preguntas`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT de la tabla `envio_correos`
+--
+ALTER TABLE `envio_correos`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `examen_enunciados`
 --
 ALTER TABLE `examen_enunciados`
@@ -1476,7 +1545,7 @@ ALTER TABLE `grupo_recursos`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
@@ -1512,7 +1581,7 @@ ALTER TABLE `inscripcion_solicituds`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -1543,6 +1612,12 @@ ALTER TABLE `portal_gestorias`
 --
 ALTER TABLE `profesors`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `recuperacions`
+--
+ALTER TABLE `recuperacions`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `red_socials`

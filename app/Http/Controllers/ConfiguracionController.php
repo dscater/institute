@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CorreoContrasena;
 use App\Models\Configuracion;
+use App\Models\EnvioCorreo;
 use App\Models\HistorialAccion;
+use App\Models\Recuperacion;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Hash;
 
 class ConfiguracionController extends Controller
 {
@@ -110,5 +118,104 @@ class ConfiguracionController extends Controller
     public function url_asset()
     {
         return asset("");
+    }
+
+    public function recuperar_contrasena()
+    {
+        return view("recuperar_contrasena");
+    }
+
+    public function envia_correo(Request $request)
+    {
+        $request->validate([
+            "correo" => "required|email"
+        ], [
+            "correo.required" => "Debes ingresar un correo",
+            "correo.email" => "Debes ingresar un correo valido"
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $envio_correo = EnvioCorreo::first();
+
+            if ($envio_correo) {
+                $name = $envio_correo->nombre;
+                $correo_envio = $envio_correo->correo;
+                $password = $envio_correo->password;
+                // Configurar el servicio de correo con la configuración de Gmail dinámicamente
+                Config::set([
+                    'mail.mailers.smtp.host' => 'smtp.gmail.com',
+                    'mail.mailers.smtp.port' => 465,
+                    'mail.mailers.smtp.encryption' => "ssl",
+                    'mail.mailers.smtp.username' => $correo_envio,
+                    'mail.mailers.smtp.password' => $password,
+                    'mail.from.address' => $correo_envio,
+                    'mail.from.name' => $name,
+                ]);
+
+
+                $correo_usuario = $request->correo;
+                // buscar usuario correo
+                $user = User::where("correo", $correo_usuario)->where("acceso", 1)->get()->first();
+                if ($user) {
+                    // crear recuperacion
+                    $nueva_recuperacion = Recuperacion::create([
+                        "user_id" => $user->id,
+                        "correo" => $correo_usuario,
+                        "estado" => 0,
+                    ]);
+
+                    $url_recuperacion = route('contrasena.form_nueva_contrasena', $nueva_recuperacion->id);
+
+                    Mail::to($correo_usuario)
+                        ->send(new CorreoContrasena($user->full_name, $url_recuperacion));
+
+                    DB::commit();
+                    return redirect()->route('contrasena.recuperar_contrasena')->with("success", "Te enviamos un link de recuperación a tu correo.");
+                } else {
+                    throw new Exception("Error, el correo ingresado no se encuentra o esta inhabilitado");
+                }
+            } else {
+                throw new Exception("Error del sistema. No se pudo realizar el envío del correo, contactese con un administrador. Error correo no registrado.");
+            }
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with("error", $e->getMessage());
+        }
+    }
+
+    public function form_nueva_contrasena(Recuperacion $recuperacion)
+    {
+        return view("form_nueva_contrasena", compact("recuperacion"));
+    }
+
+    public function actualiza_contrasena(Request $request, Recuperacion $recuperacion)
+    {
+        $request->validate([
+            'password' => 'required|min:8|confirmed',
+        ], [
+            "password.required" => "Debes ingresar una contraseña",
+            "password.min" => "La contraseña debe tener al menos :min caracteres",
+            'password.confirmed' => 'La confirmación de la contraseña no coincide',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            if ($recuperacion->estado == 1) {
+                throw new Exception("Este link de recuperación ya fue usado, por favor vuelve a solicitar la recuperación de tu contraseña");
+            }
+
+            $user = User::findOrFail($recuperacion->user_id);
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            $recuperacion->estado = 1;
+            $recuperacion->save();
+            DB::commit();
+            return redirect()->route('contrasena.form_nueva_contrasena', $recuperacion->id)->with("success", "Contraseña restablecida correctamente");
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with("error", $e->getMessage());
+        }
     }
 }

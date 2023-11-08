@@ -93,6 +93,52 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Envío de correos</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label>Correo*:</label>
+                                        <input
+                                            type="email"
+                                            class="form-control"
+                                            v-model="oEnvioCorreo.correo"
+                                        />
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <label>Nombre*:</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            v-model="oEnvioCorreo.nombre"
+                                        />
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <label>Contraseña*:</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            v-model="oEnvioCorreo.password"
+                                        />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button
+                                            class="btn btn-success btn-flat btn-block"
+                                            @click="actualizarEnvioCorreo"
+                                        >
+                                            <i class="fa fa-edit"></i>
+                                            Actualizar información
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -280,14 +326,63 @@ export default {
                 actividad: "",
                 logo: "",
             },
+            oEnvioCorreo: {
+                correo: "",
+                nombre: "",
+                password: "",
+            },
             errors: [],
         };
     },
     mounted() {
         this.loadingWindow.close();
         this.getConfiguracion();
+        this.getEnvioCorreo();
     },
     methods: {
+        getEnvioCorreo() {
+            axios.get(main_url + "/admin/envio_correos").then((response) => {
+                if (response.data.envio_correo) {
+                    this.oEnvioCorreo = response.data.envio_correo;
+                }
+            });
+        },
+        actualizarEnvioCorreo() {
+            axios
+                .post(main_url + "/admin/envio_correos", this.oEnvioCorreo)
+                .then((response) => {
+                    Swal.fire({
+                        icon: "success",
+                        title: response.data.msj,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                })
+                .catch((error) => {
+                    if (error.response) {
+                        if (error.response.status === 422) {
+                            this.errors = error.response.data.errors;
+                        }
+                        if (
+                            error.response.status === 420 ||
+                            error.response.status === 419 ||
+                            error.response.status === 401
+                        ) {
+                            window.location = "/";
+                        }
+                        if (error.response.status === 500) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Error",
+                                html: error.response.data.message,
+                                showConfirmButton: false,
+                                timer: 2000,
+                            });
+                        }
+                    }
+                });
+        },
+
         getFile(e) {
             this.oConfiguracion.logo = e.target.files[0];
         },

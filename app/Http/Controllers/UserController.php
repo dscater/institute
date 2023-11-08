@@ -290,9 +290,12 @@ class UserController extends Controller
         $request->validate($this->validacion, $this->mensajes);
         DB::beginTransaction();
         try {
+
             $datos_original = HistorialAccion::getDetalleRegistro($usuario, "users");
             $usuario->update(array_map('mb_strtoupper', $request->except('foto')));
-
+            $usuario->correo = $request->correo;
+            $usuario->usuario = $request->correo;
+            $usuario->save();
             if (trim($request->password) != '') {
                 $usuario->password = Hash::make($usuario->password);
             }

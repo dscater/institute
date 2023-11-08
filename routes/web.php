@@ -7,6 +7,7 @@ use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ConfiguracionGestoriaController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\EnvioCorreoController;
 use App\Http\Controllers\ExamenNivelacionController;
 use App\Http\Controllers\GestoriaBannerController;
 use App\Http\Controllers\GestoriaNosotrosController;
@@ -38,6 +39,12 @@ Route::get('/getLogo', [ConfiguracionController::class, 'getLogo'])->name("getLo
 // LOGIN
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
+
+// RECUPERAR CONTRASEÑA
+Route::get('/recuperar_contrasena', [ConfiguracionController::class, 'recuperar_contrasena'])->name("contrasena.recuperar_contrasena");
+Route::post('/recuperar_contrasena', [ConfiguracionController::class, 'envia_correo'])->name("contrasena.envia_correo");
+Route::get('/form_nueva_contrasena/{recuperacion}', [ConfiguracionController::class, 'form_nueva_contrasena'])->name("contrasena.form_nueva_contrasena");
+Route::put('/form_nueva_contrasena/{recuperacion}', [ConfiguracionController::class, 'actualiza_contrasena'])->name("contrasena.actualiza_contrasena");
 
 // CONFIGURACIÓN
 Route::get('/configuracion/getConfiguracion', [ConfiguracionController::class, 'getConfiguracion']);
@@ -230,13 +237,15 @@ Route::middleware(['auth'])->group(function () {
             'index', 'store', 'update', 'destroy', 'show'
         ]);
 
+        // ENVIO CORREOS
+        Route::resource('envio_correos', EnvioCorreoController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
         // REPORTES
         Route::post('reportes/usuarios', [ReporteController::class, 'usuarios']);
     });
 });
-
-
-
 
 // ADMINISTRACIÓN
 Route::get('/administracion/{optional?}', function () {
