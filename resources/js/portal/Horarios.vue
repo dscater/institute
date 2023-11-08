@@ -33,8 +33,8 @@
         <!-- Start popular-course Area -->
         <section class="popular-course-area section-gap pt-3">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-6 ml-auto mr-auto">
+                <div class="row pt-5">
+                    <!-- <div class="col-md-6 ml-auto mr-auto">
                         <div class="input-group mb-3">
                             <input
                                 type="text"
@@ -47,7 +47,7 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-12" v-html="html_horarios"></div>
                 </div>
             </div>
