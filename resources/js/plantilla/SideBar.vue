@@ -467,9 +467,25 @@
                     </li>
                     <li
                         class="nav-item"
-                        v-if="permisos.includes('reportes.usuarios')"
+                        v-if="
+                            permisos.includes('reportes.usuarios') ||
+                            permisos.includes('reportes.profesors') ||
+                            permisos.includes('reportes.profesors') ||
+                            permisos.includes('reportes.estudiantes') ||
+                            permisos.includes('reportes.estudiantes_grupos') ||
+                            permisos.includes('reportes.horarios') ||
+                            permisos.includes('reportes.examen_nivelacion') ||
+                            permisos.includes('reportes.gestoria_solicituds')
+                        "
                         :class="[
-                            $route.name == 'reportes.usuarios'
+                            $route.name == 'reportes.usuarios' ||
+                            $route.name == 'reportes.profesors' ||
+                            $route.name == 'reportes.profesors' ||
+                            $route.name == 'reportes.estudiantes' ||
+                            $route.name == 'reportes.estudiantes_grupos' ||
+                            $route.name == 'reportes.horarios' ||
+                            $route.name == 'reportes.examen_nivelacion' ||
+                            $route.name == 'reportes.gestoria_solicituds'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"
@@ -491,7 +507,95 @@
                                     class="nav-link"
                                 >
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Usuarios</p>
+                                    <p>Lista de Usuarios</p>
+                                </router-link>
+                            </li>
+                            <li
+                                class="nav-item"
+                                v-if="permisos.includes('reportes.profesors')"
+                            >
+                                <router-link
+                                    :to="{ name: 'reportes.profesors' }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Lista de Profesores</p>
+                                </router-link>
+                            </li>
+                            <li
+                                class="nav-item"
+                                v-if="permisos.includes('reportes.estudiantes')"
+                            >
+                                <router-link
+                                    :to="{ name: 'reportes.estudiantes' }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Lista de Estudiantes</p>
+                                </router-link>
+                            </li>
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes(
+                                        'reportes.estudiantes_grupos'
+                                    )
+                                "
+                            >
+                                <router-link
+                                    :to="{
+                                        name: 'reportes.estudiantes_grupos',
+                                    }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Lista de Estudiantes por Grupos</p>
+                                </router-link>
+                            </li>
+                            <li
+                                class="nav-item"
+                                v-if="permisos.includes('reportes.horarios')"
+                            >
+                                <router-link
+                                    :to="{ name: 'reportes.horarios' }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Horarios</p>
+                                </router-link>
+                            </li>
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes(
+                                        'reportes.examen_nivelacion'
+                                    )
+                                "
+                            >
+                                <router-link
+                                    :to="{ name: 'reportes.examen_nivelacion' }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Examen de Nivelación</p>
+                                </router-link>
+                            </li>
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes(
+                                        'reportes.gestoria_solicituds'
+                                    )
+                                "
+                            >
+                                <router-link
+                                    :to="{
+                                        name: 'reportes.gestoria_solicituds',
+                                    }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Solicitud de Servicios Gestoría Visa</p>
                                 </router-link>
                             </li>
                         </ul>

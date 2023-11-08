@@ -21,6 +21,7 @@ class Inscripcion extends Model
         "prov_dpto",
         "sexo",
         "fono",
+        "estado_ultima_solicitud",
         "correo",
     ];
 

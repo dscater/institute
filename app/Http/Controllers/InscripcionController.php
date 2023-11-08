@@ -250,6 +250,7 @@ class InscripcionController extends Controller
                 "sexo" => mb_strtoupper($request->sexo),
                 "fono" => $request->fono,
                 "correo" => $request->correo,
+                "estado_ultima_solicitud" => "PENDIENTE",
             ]);
 
             $plan_pago = PlanPago::findOrFail($request->plan_pago_id);
@@ -354,6 +355,8 @@ class InscripcionController extends Controller
         try {
             $user = Auth::user();
             $inscripcion = Inscripcion::where("user_id", $user->id)->get()->first();
+            $inscripcion->estado_ultima_solicitud = "PENDIENTE";
+            $inscripcion->save();
 
             $plan_pago = PlanPago::findOrFail($request->plan_pago_id);
 

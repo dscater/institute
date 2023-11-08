@@ -26,6 +26,7 @@ class CreateInscripcionsTable extends Migration
             $table->string("prov_dpto", 255);
             $table->string("sexo", 100);
             $table->string("fono", 155);
+            $table->string("estado_ultima_solicitud", 155);
             $table->string("correo", 255)->unique();
             $table->timestamps();
 

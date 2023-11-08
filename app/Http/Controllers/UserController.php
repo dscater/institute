@@ -137,7 +137,13 @@ class UserController extends Controller
             'configuracion.index',
             'configuracion.edit',
 
-            "reportes.usuarios"
+            "reportes.usuarios",
+            "reportes.profesors",
+            "reportes.estudiantes",
+            "reportes.estudiantes_grupos",
+            "reportes.horarios",
+            "reportes.examen_nivelacion",
+            "reportes.gestoria_solicituds",
         ],
         "AUXILIAR" => [
             'gestoria_tips.index',

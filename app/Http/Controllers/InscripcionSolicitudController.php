@@ -41,6 +41,11 @@ class InscripcionSolicitudController extends Controller
         try {
             $datos_original = HistorialAccion::getDetalleRegistro($inscripcion_solicitud, "inscripcion_solicituds");
             $inscripcion_solicitud->update(array_map('mb_strtoupper', $request->all()));
+
+            $inscripcion = $inscripcion_solicitud->inscripcion;
+            $inscripcion->estado_ultima_solicitud = $request->estado;
+            $inscripcion->save();
+
             $datos_nuevo = HistorialAccion::getDetalleRegistro($inscripcion_solicitud, "inscripcion_solicituds");
             HistorialAccion::create([
                 'user_id' => Auth::user()->id,

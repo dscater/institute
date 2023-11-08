@@ -48,4 +48,9 @@ class Grupo extends Model
     {
         return $this->hasMany(Comunicado::class, 'grupo_id')->orderBy("id", "desc");
     }
+
+    public function asignacion_grupos()
+    {
+        return $this->hasMany(AsignacionGrupo::class, 'grupo_id');
+    }
 }

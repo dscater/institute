@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Usuarios</title>
+    <title>Gestoria Solicitudes</title>
     <style type="text/css">
         * {
             font-family: sans-serif;
@@ -156,60 +156,72 @@
         <h2 class="titulo">
             {{ $configuracion->first()->nombre_sistema }}
         </h2>
-        <h4 class="texto">LISTA DE USUARIOS</h4>
+        <h4 class="texto">SOLICITUD DE SERVICIO DE GESTORÍA</h4>
         <h4 class="fecha">Expedido: {{ date('d-m-Y') }}</h4>
     </div>
     <table border="1">
         <thead class="bg-principal">
             <tr>
-                <th width="3%">N°</th>
-                <th width="5%">FOTO</th>
-                <th>USUARIO</th>
-                <th>PATERNO</th>
-                <th>MATERNO</th>
-                <th>NOMBRE(S)</th>
-                <th>C.I.</th>
-                <th>FEC. NAC.</th>
-                <th>GENERO</th>
-                <th>CARGO</th>
-                <th>FECHA INGRESO</th>
-                <th>TALLER</th>
-                <th>DIRECCIÓN</th>
-                <th>TELÉFONO/CELULAR</th>
-                <th>TIPO DE PERSONAL</th>
-                <th>% DISCAPACIDAD</th>
-                <th>TIPO DE USUARIO</th>
-                <th>VALIDEZ CREDENCIAL</th>
+                <th width="2%">CÓDIGO</th>
+                <th>NOMBRE COMPLETO</th>
+                <th>FECHA DE NACIMIENTO</th>
+                <th>EDAD</th>
+                <th>NACIONALIDAD</th>
                 <th>ESTADO</th>
-                <th width="9%">FECHA DE REGISTRO</th>
+                <th>SEXO</th>
+                <th>TELÉFONO/CELULAR</th>
+                <th>FAMILIARES EN ESTADOS UNIDOS</th>
+                <th>PARENTESCO</th>
+                <th>FAMILIAR DEPORTADO</th>
+                <th>MOTIVO</th>
+                <th>DEPORTADO DE OTRO PAÍS</th>
+                <th>MOTIVO</th>
+                <th>ANTECEDENTES PENALES</th>
+                <th>DESCRIPCIÓN OTRO</th>
+                <th>ESTUDIOS</th>
+                <th>TRABAJO ACTUAL</th>
+                <th>SOLICITUD VISA ANTERIORMENTE</th>
+                <th>MOTIVO RECHAZO</th>
+                <th>TIENE CUENTA BANCARIA</th>
+                <th>GANA APROXIMADAMENTE</th>
+                <th>REDES SOCIALES</th>
+                <th>EMAIL</th>
+                <th>RECOMENDADO POR</th>
+                <th>ESTADO</th>
             </tr>
         </thead>
         <tbody>
             @php
                 $cont = 1;
             @endphp
-            @foreach ($usuarios as $user)
+            @foreach ($gestoria_solicituds as $value)
                 <tr>
-                    <td class="centreado">{{ $cont++ }}</td>
-                    <td class="img_celda"><img src="{{ asset('imgs/users/' . $user->foto) }}" alt="Foto"></td>
-                    <td>{{ $user->usuario }}</td>
-                    <td class="centreado">{{ $user->paterno }}</td>
-                    <td class="centreado">{{ $user->materno }}</td>
-                    <td class="centreado">{{ $user->nombre }}</td>
-                    <td class="centreado">{{ $user->full_ci }}</td>
-                    <td class="centreado">{{ $user->fecha_nac }}</td>
-                    <td class="centreado">{{ $user->genero }}</td>
-                    <td class="centreado">{{ $user->cargo }}</td>
-                    <td class="centreado">{{ $user->fecha_ingreso }}</td>
-                    <td class="centreado">{{ $user->taller }}</td>
-                    <td class="centreado">{{ $user->dir }}</td>
-                    <td class="centreado">{{ $user->fono }}</td>
-                    <td class="centreado">{{ $user->tipo_personal }}</td>
-                    <td class="centreado">{{ $user->p_discapacidad }}</td>
-                    <td class="centreado">{{ $user->tipo }}</td>
-                    <td class="centreado">{{ $user->validez_credencial }}</td>
-                    <td class="centreado">{{ $user->estado == 1 ? 'ACTIVO' : 'RETIRADO' }}</td>
-                    <td class="centreado">{{ $user->fecha_registro }}</td>
+                    <td class="centreado">{{ $value->codigo }}</td>
+                    <td class="centreado">{{ $value->full_name }}</td>
+                    <td class="centreado">{{ $value->fecha_nac }}</td>
+                    <td class="centreado">{{ $value->edad }}</td>
+                    <td class="centreado">{{ $value->nacionalidad }}</td>
+                    <td class="centreado">{{ $value->estado }}</td>
+                    <td class="centreado">{{ $value->sexo }}</td>
+                    <td class="centreado">{{ $value->fono }}</td>
+                    <td class="centreado">{{ $value->familiares_eeuu }}</td>
+                    <td class="centreado">{{ $value->parentesco }}</td>
+                    <td class="centreado">{{ $value->familiar_deportado }}</td>
+                    <td class="centreado">{{ $value->motivo }}</td>
+                    <td class="centreado">{{ $value->deportado_otro_pais }}</td>
+                    <td class="centreado">{{ $value->motivo_otro_pais }}</td>
+                    <td class="centreado">{{ $value->antecedentes_penales }}</td>
+                    <td class="centreado">{{ $value->des_antecedentes }}</td>
+                    <td class="centreado">{!! $value->estudios !!}</td>
+                    <td class="centreado">{{ $value->trabajo_actual }}</td>
+                    <td class="centreado">{{ $value->solicito_visa }}</td>
+                    <td class="centreado">{{ $value->motivo_rechazo }}</td>
+                    <td class="centreado">{{ $value->cuenta_bancaria }}</td>
+                    <td class="centreado">{{ $value->gana_aproximadamente }}</td>
+                    <td class="centreado">{!! $value->redes_sociales !!}</td>
+                    <td class="centreado">{{ $value->correo }}</td>
+                    <td class="centreado">{!! $value->recomendado_por !!}</td>
+                    <td class="centreado">{{ $value->estado_solicitud }}</td>
                 </tr>
             @endforeach
         </tbody>

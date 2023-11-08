@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Usuarios</title>
+    <title>Estudiantes por Grupos</title>
     <style type="text/css">
         * {
             font-family: sans-serif;
@@ -20,7 +20,7 @@
             width: 100%;
             border-collapse: collapse;
             table-layout: fixed;
-            margin-top: 20px;
+            margin-top: 0px;
             page-break-before: avoid;
         }
 
@@ -144,6 +144,12 @@
         .img_celda img {
             width: 45px;
         }
+
+        .nom_grupo {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 4px;
+        }
     </style>
 </head>
 
@@ -156,64 +162,51 @@
         <h2 class="titulo">
             {{ $configuracion->first()->nombre_sistema }}
         </h2>
-        <h4 class="texto">LISTA DE USUARIOS</h4>
+        <h4 class="texto">LISTA DE ESTUDIANTES POR GRUPOS</h4>
         <h4 class="fecha">Expedido: {{ date('d-m-Y') }}</h4>
     </div>
-    <table border="1">
-        <thead class="bg-principal">
-            <tr>
-                <th width="3%">N°</th>
-                <th width="5%">FOTO</th>
-                <th>USUARIO</th>
-                <th>PATERNO</th>
-                <th>MATERNO</th>
-                <th>NOMBRE(S)</th>
-                <th>C.I.</th>
-                <th>FEC. NAC.</th>
-                <th>GENERO</th>
-                <th>CARGO</th>
-                <th>FECHA INGRESO</th>
-                <th>TALLER</th>
-                <th>DIRECCIÓN</th>
-                <th>TELÉFONO/CELULAR</th>
-                <th>TIPO DE PERSONAL</th>
-                <th>% DISCAPACIDAD</th>
-                <th>TIPO DE USUARIO</th>
-                <th>VALIDEZ CREDENCIAL</th>
-                <th>ESTADO</th>
-                <th width="9%">FECHA DE REGISTRO</th>
-            </tr>
-        </thead>
-        <tbody>
-            @php
-                $cont = 1;
-            @endphp
-            @foreach ($usuarios as $user)
+    @foreach ($grupos as $grupo)
+        <h4 class="nom_grupo">{{ $grupo->nombre }}</h4>
+        <table border="1">
+            <thead class="bg-principal">
                 <tr>
-                    <td class="centreado">{{ $cont++ }}</td>
-                    <td class="img_celda"><img src="{{ asset('imgs/users/' . $user->foto) }}" alt="Foto"></td>
-                    <td>{{ $user->usuario }}</td>
-                    <td class="centreado">{{ $user->paterno }}</td>
-                    <td class="centreado">{{ $user->materno }}</td>
-                    <td class="centreado">{{ $user->nombre }}</td>
-                    <td class="centreado">{{ $user->full_ci }}</td>
-                    <td class="centreado">{{ $user->fecha_nac }}</td>
-                    <td class="centreado">{{ $user->genero }}</td>
-                    <td class="centreado">{{ $user->cargo }}</td>
-                    <td class="centreado">{{ $user->fecha_ingreso }}</td>
-                    <td class="centreado">{{ $user->taller }}</td>
-                    <td class="centreado">{{ $user->dir }}</td>
-                    <td class="centreado">{{ $user->fono }}</td>
-                    <td class="centreado">{{ $user->tipo_personal }}</td>
-                    <td class="centreado">{{ $user->p_discapacidad }}</td>
-                    <td class="centreado">{{ $user->tipo }}</td>
-                    <td class="centreado">{{ $user->validez_credencial }}</td>
-                    <td class="centreado">{{ $user->estado == 1 ? 'ACTIVO' : 'RETIRADO' }}</td>
-                    <td class="centreado">{{ $user->fecha_registro }}</td>
+                    <th width="3%">N°</th>
+                    <th>NOMBRE COMPLETO</th>
+                    <th>NRO. IDENTIFICACIÓN</th>
+                    <th>FECHA DE NACIMIENTO</th>
+                    <th>EDAD</th>
+                    <th>PAÍS DE RESIDENCIA</th>
+                    <th>NACIONALIDAD</th>
+                    <th>PROVINCIA/DEPARTAMENTO</th>
+                    <th>SEXO</th>
+                    <th>TELÉFONO/CELULAR</th>
+                    <th>EMAIL</th>
+                    <th>CURSO</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @php
+                    $cont = 1;
+                @endphp
+                @foreach ($grupo->asignacion_grupos as $value)
+                    <tr>
+                        <td class="centreado">{{ $cont++ }}</td>
+                        <td class="centreado">{{ $value->inscripcion->full_name }}</td>
+                        <td class="centreado">{{ $value->inscripcion->nro_iden }}</td>
+                        <td class="centreado">{{ $value->inscripcion->fecha_nac }}</td>
+                        <td class="centreado">{{ $value->inscripcion->edad }}</td>
+                        <td class="centreado">{{ $value->inscripcion->pais_residencia }}</td>
+                        <td class="centreado">{{ $value->inscripcion->nacionalidad }}</td>
+                        <td class="centreado">{{ $value->inscripcion->prov_dpto }}</td>
+                        <td class="centreado">{{ $value->inscripcion->sexo }}</td>
+                        <td class="centreado">{{ $value->inscripcion->fono }}</td>
+                        <td class="centreado">{{ $value->inscripcion->correo }}</td>
+                        <td class="centreado">{{ $value->curso->nombre }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @endforeach
 </body>
 
 </html>

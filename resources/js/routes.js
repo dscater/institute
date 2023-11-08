@@ -459,6 +459,51 @@ export default new Router({
                 .default,
             props: true,
         },
+        {
+            path: "/administracion/reportes/profesors",
+            name: "reportes.profesors",
+            component: require("./components/modulos/reportes/profesors.vue")
+                .default,
+            props: true,
+        },
+        {
+            path: "/administracion/reportes/estudiantes",
+            name: "reportes.estudiantes",
+            component: require("./components/modulos/reportes/estudiantes.vue")
+                .default,
+            props: true,
+        },
+        {
+            path: "/administracion/reportes/estudiantes_grupos",
+            name: "reportes.estudiantes_grupos",
+            component:
+                require("./components/modulos/reportes/estudiantes_grupos.vue")
+                    .default,
+            props: true,
+        },
+        {
+            path: "/administracion/reportes/horarios",
+            name: "reportes.horarios",
+            component: require("./components/modulos/reportes/horarios.vue")
+                .default,
+            props: true,
+        },
+        {
+            path: "/administracion/reportes/examen_nivelacion",
+            name: "reportes.examen_nivelacion",
+            component:
+                require("./components/modulos/reportes/examen_nivelacion.vue")
+                    .default,
+            props: true,
+        },
+        {
+            path: "/administracion/reportes/gestoria_solicituds",
+            name: "reportes.gestoria_solicituds",
+            component:
+                require("./components/modulos/reportes/gestoria_solicituds.vue")
+                    .default,
+            props: true,
+        },
 
         // PÁGINA NO ENCONTRADA
         {

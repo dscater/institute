@@ -246,6 +246,23 @@ Route::middleware(['auth'])->group(function () {
 
         // REPORTES
         Route::post('reportes/usuarios', [ReporteController::class, 'usuarios']);
+
+        Route::post('reportes/profesors', [ReporteController::class, 'profesors']);
+        Route::post('reportes/profesors_excel', [ReporteController::class, 'profesors_excel']);
+
+        Route::post('reportes/estudiantes', [ReporteController::class, 'estudiantes']);
+        Route::post('reportes/estudiantes_excel', [ReporteController::class, 'estudiantes_excel']);
+
+        Route::post('reportes/estudiantes_grupos', [ReporteController::class, 'estudiantes_grupos']);
+        Route::post('reportes/estudiantes_grupos_excel', [ReporteController::class, 'estudiantes_grupos_excel']);
+
+        Route::post('reportes/horarios', [ReporteController::class, 'horarios']);
+        Route::post('reportes/horarios_excel', [ReporteController::class, 'horarios_excel']);
+
+        Route::post('reportes/examen_nivelacion', [ReporteController::class, 'examen_nivelacion']);
+
+        Route::post('reportes/gestoria_solicituds', [ReporteController::class, 'gestoria_solicituds']);
+        Route::post('reportes/gestoria_solicituds_excel', [ReporteController::class, 'gestoria_solicituds_excel']);
     });
 });
 

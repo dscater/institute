@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Usuarios</title>
+    <title>Horarios</title>
     <style type="text/css">
         * {
             font-family: sans-serif;
@@ -156,60 +156,36 @@
         <h2 class="titulo">
             {{ $configuracion->first()->nombre_sistema }}
         </h2>
-        <h4 class="texto">LISTA DE USUARIOS</h4>
+        <h4 class="texto">LISTA DE HORARIOS</h4>
         <h4 class="fecha">Expedido: {{ date('d-m-Y') }}</h4>
     </div>
     <table border="1">
         <thead class="bg-principal">
             <tr>
                 <th width="3%">N°</th>
-                <th width="5%">FOTO</th>
-                <th>USUARIO</th>
-                <th>PATERNO</th>
-                <th>MATERNO</th>
-                <th>NOMBRE(S)</th>
-                <th>C.I.</th>
-                <th>FEC. NAC.</th>
-                <th>GENERO</th>
-                <th>CARGO</th>
-                <th>FECHA INGRESO</th>
-                <th>TALLER</th>
-                <th>DIRECCIÓN</th>
-                <th>TELÉFONO/CELULAR</th>
-                <th>TIPO DE PERSONAL</th>
-                <th>% DISCAPACIDAD</th>
-                <th>TIPO DE USUARIO</th>
-                <th>VALIDEZ CREDENCIAL</th>
-                <th>ESTADO</th>
-                <th width="9%">FECHA DE REGISTRO</th>
+                <th>GRUPO</th>
+                <th>MODALIDAD</th>
+                <th>DÍAS</th>
+                <th>FECHA INICIO</th>
+                <th>FECHA FIN</th>
+                <th>HORA INICIO</th>
+                <th>HORA FIN</th>
             </tr>
         </thead>
         <tbody>
             @php
                 $cont = 1;
             @endphp
-            @foreach ($usuarios as $user)
+            @foreach ($horarios as $value)
                 <tr>
                     <td class="centreado">{{ $cont++ }}</td>
-                    <td class="img_celda"><img src="{{ asset('imgs/users/' . $user->foto) }}" alt="Foto"></td>
-                    <td>{{ $user->usuario }}</td>
-                    <td class="centreado">{{ $user->paterno }}</td>
-                    <td class="centreado">{{ $user->materno }}</td>
-                    <td class="centreado">{{ $user->nombre }}</td>
-                    <td class="centreado">{{ $user->full_ci }}</td>
-                    <td class="centreado">{{ $user->fecha_nac }}</td>
-                    <td class="centreado">{{ $user->genero }}</td>
-                    <td class="centreado">{{ $user->cargo }}</td>
-                    <td class="centreado">{{ $user->fecha_ingreso }}</td>
-                    <td class="centreado">{{ $user->taller }}</td>
-                    <td class="centreado">{{ $user->dir }}</td>
-                    <td class="centreado">{{ $user->fono }}</td>
-                    <td class="centreado">{{ $user->tipo_personal }}</td>
-                    <td class="centreado">{{ $user->p_discapacidad }}</td>
-                    <td class="centreado">{{ $user->tipo }}</td>
-                    <td class="centreado">{{ $user->validez_credencial }}</td>
-                    <td class="centreado">{{ $user->estado == 1 ? 'ACTIVO' : 'RETIRADO' }}</td>
-                    <td class="centreado">{{ $user->fecha_registro }}</td>
+                    <td class="centreado">{{ $value->grupo->nombre }}</td>
+                    <td class="centreado">{{ $value->modalidad }}</td>
+                    <td class="centreado">{{ $value->dias_txt }}</td>
+                    <td class="centreado">{{ $value->fecha_inicio_t }}</td>
+                    <td class="centreado">{{ $value->fecha_fin_t }}</td>
+                    <td class="centreado">{{ $value->hora_inicio_t }}</td>
+                    <td class="centreado">{{ $value->hora_fin_t }}</td>
                 </tr>
             @endforeach
         </tbody>

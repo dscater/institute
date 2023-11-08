@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 08-11-2023 a las 16:56:36
+-- Tiempo de generación: 08-11-2023 a las 20:45:18
 -- Versión del servidor: 8.0.30
--- Versión de PHP: 8.1.10
+-- Versión de PHP: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -414,7 +414,8 @@ CREATE TABLE `gestoria_solicituds` (
 --
 
 INSERT INTO `gestoria_solicituds` (`id`, `codigo`, `nombres`, `apellidos`, `fecha_nac`, `edad`, `nacionalidad`, `estado`, `sexo`, `fono`, `familiares_eeuu`, `parentesco`, `familiar_deportado`, `motivo`, `deportado_otro_pais`, `motivo_otro_pais`, `antecedentes_penales`, `desc_antecedentes`, `estudios`, `trabajo_actual`, `solicito_visa`, `motivo_rechazo`, `cuenta_bancaria`, `gana_aproximadamente`, `redes_sociales`, `correo`, `recomendado_por`, `estado_solicitud`, `created_at`, `updated_at`) VALUES
-(1, 'S.1', 'CARLOS', 'MARTINEZ MARTINEZ', '2000-01-01', 23, 'BOLIVIANO', '', 'HOMBRE', '7777777', 'SI', 'HERMANOS', 'SI', 'MOTIVO DEPORTACIÓN', 'SI', 'MOTIVO DEPORTACIÓN OTRO PAÍS', 'OTRO', 'DESCRIPCIÓN DE ANTECEDENTES OTRO', 'LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS', 'TRABAJO ACTUAL', 'SI', 'MOTIVO RECHAZO SOLICITUD', 'SI', 10000.00, 'HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM', 'carlosm@gmail.com', 'LO VI EN FACEBOOK', 'ATENDIDO', '2023-11-02 22:45:56', '2023-11-07 22:23:10');
+(1, 'S.1', 'CARLOS', 'MARTINEZ MARTINEZ', '2000-01-01', 23, 'BOLIVIANO', '', 'HOMBRE', '7777777', 'SI', 'HERMANOS', 'SI', 'MOTIVO DEPORTACIÓN', 'SI', 'MOTIVO DEPORTACIÓN OTRO PAÍS', 'OTRO', 'DESCRIPCIÓN DE ANTECEDENTES OTRO', 'LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS', 'TRABAJO ACTUAL', 'SI', 'MOTIVO RECHAZO SOLICITUD', 'SI', 10000.00, 'HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM', 'carlosm@gmail.com', 'LO VI EN FACEBOOK', 'ATENDIDO', '2023-11-02 22:45:56', '2023-11-07 22:23:10'),
+(2, 'S.2', 'JORGE LUIS', 'MARTINEZ MARTINEZ', '2003-03-03', 20, 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '7888888', 'NO', '', 'NO', '', 'NO', '', 'NO', '', 'LIC. EN ECONOMIA', 'AUXILIAR CONTABLE', 'NO', '', 'SI', 9000.00, 'HTTPS://WWW.YOUTUBE.COM', 'jorgeluis@gmail.com', 'LO VI EN TIKTOK', 'PENDIENTE', '2023-11-08 20:11:41', '2023-11-08 20:11:41');
 
 -- --------------------------------------------------------
 
@@ -835,6 +836,7 @@ CREATE TABLE `inscripcions` (
   `prov_dpto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sexo` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fono` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `estado_ultima_solicitud` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'PENDIENTE',
   `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -844,10 +846,11 @@ CREATE TABLE `inscripcions` (
 -- Volcado de datos para la tabla `inscripcions`
 --
 
-INSERT INTO `inscripcions` (`id`, `user_id`, `nombres`, `apellidos`, `nro_iden`, `fecha_nac`, `edad`, `pais_residencia`, `nacionalidad`, `prov_dpto`, `sexo`, `fono`, `correo`, `created_at`, `updated_at`) VALUES
-(2, 5, 'MARCOS', 'MAMANI MAMANI', '12345', '2000-01-01', 23, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '7777777', 'marcos@gmail.com', '2023-10-31 17:52:08', '2023-10-31 17:52:08'),
-(3, 8, 'ROXANA', 'MAMANI MAMANI', '67678', '2003-01-01', 20, 'BOLIVIA', 'BOLIVIANA', 'LA PAZ', 'MUJER', '7999999', 'roxana@gmail.com', '2023-11-07 13:11:50', '2023-11-07 13:11:50'),
-(4, 9, 'MAX', 'PONCE', '32322', '2000-01-01', 23, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '777777', 'max@gmail.com', '2023-11-07 13:16:31', '2023-11-07 13:16:31');
+INSERT INTO `inscripcions` (`id`, `user_id`, `nombres`, `apellidos`, `nro_iden`, `fecha_nac`, `edad`, `pais_residencia`, `nacionalidad`, `prov_dpto`, `sexo`, `fono`, `estado_ultima_solicitud`, `correo`, `created_at`, `updated_at`) VALUES
+(2, 5, 'MARCOS', 'MAMANI MAMANI', '12345', '2000-01-01', 23, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '7777777', 'ACEPTADO', 'marcos@gmail.com', '2023-10-31 17:52:08', '2023-10-31 17:52:08'),
+(3, 8, 'ROXANA', 'MAMANI MAMANI', '67678', '2003-01-01', 20, 'BOLIVIA', 'BOLIVIANA', 'LA PAZ', 'MUJER', '7999999', 'PENDIENTE', 'roxana@gmail.com', '2023-11-07 13:11:50', '2023-11-07 13:11:50'),
+(4, 9, 'MAX', 'PONCE', '32322', '2000-01-01', 23, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '777777', 'ACEPTADO', 'max@gmail.com', '2023-11-07 13:16:31', '2023-11-07 13:16:31'),
+(5, 12, 'LUIS', 'CARVAJAL GONZALES', '544544', '1999-01-01', 24, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '7666666', 'PENDIENTE', 'luis@gmail.com', '2023-11-08 20:09:48', '2023-11-08 20:09:48');
 
 -- --------------------------------------------------------
 
@@ -940,7 +943,8 @@ INSERT INTO `inscripcion_solicituds` (`id`, `codigo`, `inscripcion_id`, `curso_i
 (2, 'C.2', 2, 3, 'NIVEL BÁSICO', 'FACEBOOK', '', 3, 400.00, 'DEPÓSITO BANCARIO', NULL, NULL, NULL, 'SI', 'ACEPTADO', '2023-11-07 12:56:43', '2023-11-07 14:07:55'),
 (3, 'C.3', 2, 6, 'NIVEL CERO', 'FACEBOOK', '', 3, 400.00, 'OTRO', '1699362225_3.png', 'BANCO UNION<br />\r\nMARCOS MAMANI MAMANI<br />\r\nNRO. CUENTA: 100005454545<br />\r\nMONTO: 400 $us<br />', 'PAGO VIA QR', 'NO', 'PENDIENTE', '2023-11-07 13:03:45', '2023-11-07 13:03:45'),
 (4, 'C.4', 3, 1, 'NIVEL CERO', 'TIKTOK', '', 1, 49.99, 'DEPÓSITO BANCARIO', '1699362710_4.png', 'BANCO UNION<br />\r\nMARIA MAMANI<br />\r\nMONTO: 49.99<br />\r\nNRO. CUENTA: 1000034343', NULL, 'SI', 'ACEPTADO', '2023-11-07 13:11:50', '2023-11-07 13:58:53'),
-(5, 'C.5', 4, 7, 'NIVEL BÁSICO', 'INSTAGRAM', '', 3, 400.00, 'WESTERN UNION', '1699362991_5.pdf', 'WESTER UNION<br />\r\nMAX PONCE', NULL, 'SI', 'ACEPTADO', '2023-11-07 13:16:31', '2023-11-07 13:58:37');
+(5, 'C.5', 4, 7, 'NIVEL BÁSICO', 'INSTAGRAM', '', 3, 400.00, 'WESTERN UNION', '1699362991_5.pdf', 'WESTER UNION<br />\r\nMAX PONCE', NULL, 'SI', 'ACEPTADO', '2023-11-07 13:16:31', '2023-11-07 13:58:37'),
+(6, 'C.6', 5, 3, 'NIVEL BÁSICO', 'INSTAGRAM', '', 2, 130.00, 'DEPÓSITO BANCARIO', '1699474188_6.png', 'BANCO UNION<br />\r\nLUIS CARVAJAL<br />\r\nMONTO: 130<br />\r\nNRO. CUENTA: 10000033333', NULL, 'NO', 'PENDIENTE', '2023-11-08 20:09:48', '2023-11-08 20:09:48');
 
 -- --------------------------------------------------------
 
@@ -1190,7 +1194,8 @@ INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `dir`, `co
 (8, 'roxana@gmail.com', 'ROXANA', 'MAMANI MAMANI', NULL, 'LA PAZ - BOLIVIA', 'roxana@gmail.com', '7999999', '$2y$10$cdSiPQQZ1WXd6tucfs5L8uMqFAklzf7WFr2ltVAUEieI/wsTus42e', 'ESTUDIANTE', NULL, 1, '2023-11-07', '2023-11-07 13:11:50', '2023-11-07 13:11:50'),
 (9, 'max@gmail.com', 'MAX', 'PONCE', NULL, 'LA PAZ - BOLIVIA', 'max@gmail.com', '777777', '$2y$10$6jdKoSvkXNrl7agUS9DfYuymVPV7.MsmMZy9IIZUT5sw1AddzTvna', 'ESTUDIANTE', NULL, 1, '2023-11-07', '2023-11-07 13:16:31', '2023-11-07 13:16:31'),
 (10, 'manuel@gmail.com', 'manuel', 'paredes gonzales', NULL, 'los olivos', 'manuel@gmail.com', '7888888', '$2y$10$oO9sg7RbCB376kiFKCaX4egOISpOc75VE7Gzglq7KCctvJLy/DHqS', 'PROFESOR', NULL, 1, '2023-11-07', '2023-11-07 14:00:37', '2023-11-07 14:00:37'),
-(11, 'juanluis@gmail.com', 'juan luis', 'caceres cortez', NULL, 'los olivos', 'juanluis@gmail.com', '799999', '$2y$10$CgvPDe2OTj623Ffux4h.QuzhcOaa5IBipn37Dj9ehDK2Z9VSpLt4O', 'PROFESOR', NULL, 1, '2023-11-07', '2023-11-07 14:07:06', '2023-11-07 14:07:06');
+(11, 'juanluis@gmail.com', 'juan luis', 'caceres cortez', NULL, 'los olivos', 'juanluis@gmail.com', '799999', '$2y$10$CgvPDe2OTj623Ffux4h.QuzhcOaa5IBipn37Dj9ehDK2Z9VSpLt4O', 'PROFESOR', NULL, 1, '2023-11-07', '2023-11-07 14:07:06', '2023-11-07 14:07:06'),
+(12, 'luis@gmail.com', 'LUIS', 'CARVAJAL GONZALES', NULL, 'LA PAZ - BOLIVIA', 'luis@gmail.com', '7666666', '$2y$10$n/zlM/JfzUUs7JBDX4BgjORR9BaUZtQrUXHsZSFPRSMEinv9z/6su', 'ESTUDIANTE', NULL, 1, '2023-11-08', '2023-11-08 20:09:48', '2023-11-08 20:09:48');
 
 --
 -- Índices para tablas volcadas
@@ -1515,7 +1520,7 @@ ALTER TABLE `gestoria_servicios`
 -- AUTO_INCREMENT de la tabla `gestoria_solicituds`
 --
 ALTER TABLE `gestoria_solicituds`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `gestoria_tips`
@@ -1557,7 +1562,7 @@ ALTER TABLE `horarios`
 -- AUTO_INCREMENT de la tabla `inscripcions`
 --
 ALTER TABLE `inscripcions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion_examens`
@@ -1575,7 +1580,7 @@ ALTER TABLE `inscripcion_respuestas`
 -- AUTO_INCREMENT de la tabla `inscripcion_solicituds`
 --
 ALTER TABLE `inscripcion_solicituds`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -1629,7 +1634,7 @@ ALTER TABLE `red_socials`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas

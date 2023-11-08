@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Reportes - Lista de Usuarios</h1>
+                        <h1>Reportes - Lista de Profesores</h1>
                     </div>
                 </div>
             </div>
@@ -54,84 +54,42 @@
                                                 class="form-group col-md-12"
                                                 v-if="
                                                     oReporte.filtro ==
-                                                    'Tipo de usuario'
+                                                    'Profesor'
                                                 "
                                             >
                                                 <label
                                                     :class="{
                                                         'text-danger':
-                                                            errors.tipo,
+                                                            errors.profesor_id,
                                                     }"
                                                     >Seleccione*</label
                                                 >
                                                 <el-select
-                                                    v-model="oReporte.tipo"
+                                                    v-model="
+                                                        oReporte.profesor_id
+                                                    "
                                                     filterable
                                                     placeholder="Seleccione"
                                                     class="d-block"
                                                     :class="{
                                                         'is-invalid':
-                                                            errors.tipo,
+                                                            errors.profesor_id,
                                                     }"
                                                 >
                                                     <el-option
-                                                        v-for="item in listTipos"
-                                                        :key="item"
-                                                        :label="item"
-                                                        :value="item"
+                                                        v-for="item in listProfesors"
+                                                        :key="item.id"
+                                                        :value="item.id"
+                                                        :label="item.full_name"
                                                     >
                                                     </el-option>
                                                 </el-select>
                                                 <span
                                                     class="error invalid-feedback"
-                                                    v-if="errors.tipo"
-                                                    v-text="errors.tipo[0]"
-                                                ></span>
-                                            </div>
-                                            <div
-                                                class="form-group col-md-12"
-                                                v-if="
-                                                    oReporte.filtro ==
-                                                    'Rango de fechas'
-                                                "
-                                            >
-                                                <label
-                                                    :class="{
-                                                        'text-danger':
-                                                            errors.fecha_ini,
-                                                        'text-danger':
-                                                            errors.fecha_fin,
-                                                    }"
-                                                    >Indice un rango de
-                                                    fechas*</label
-                                                >
-                                                <el-date-picker
-                                                    class="w-full d-block"
-                                                    :class="{
-                                                        'is-invalid':
-                                                            errors.fecha_ini,
-                                                        'is-invalid':
-                                                            errors.fecha_fin,
-                                                    }"
-                                                    v-model="aFechas"
-                                                    type="daterange"
-                                                    range-separator="a"
-                                                    start-placeholder="Fecha Inicial"
-                                                    end-placeholder="Fecha Final"
-                                                    format="dd/MM/yyyy"
-                                                    value-format="yyyy-MM-dd"
-                                                    @change="obtieneFechas()"
-                                                >
-                                                </el-date-picker>
-                                                <span
-                                                    class="error invalid-feedback"
-                                                    v-if="errors.fecha_ini"
-                                                    v-text="errors.fecha_ini[0]"
-                                                ></span>
-                                                <span
-                                                    class="error invalid-feedback"
-                                                    v-if="errors.fecha_fin"
-                                                    v-text="errors.fecha_fin[0]"
+                                                    v-if="errors.profesor_id"
+                                                    v-text="
+                                                        errors.profesor_id[0]
+                                                    "
                                                 ></span>
                                             </div>
                                         </div>
@@ -143,8 +101,17 @@
                                                 class="bg-success w-full"
                                                 :loading="enviando"
                                                 @click="generaReporte()"
-                                                >{{ textoBtn }}</el-button
-                                            >
+                                                v-html="textoBtnPdf"
+                                            ></el-button>
+                                        </div>
+                                        <div class="col-md-12 mt-1">
+                                            <el-button
+                                                type="success"
+                                                class="bg-success w-full"
+                                                :loading="enviando"
+                                                @click="generaReporteExcel()"
+                                                v-html="textoBtnExcel"
+                                            ></el-button>
                                         </div>
                                         <div class="col-md-12">
                                             <el-button
@@ -175,26 +142,39 @@ export default {
             errors: [],
             oReporte: {
                 filtro: "Todos",
-                tipo: "",
-                fecha_ini: "",
-                fecha_fin: "",
+                profesor_id: "",
             },
             aFechas: [],
             enviando: false,
-            textoBtn: "Generar Reporte",
-            listFiltro: [
-                "Todos",
-                "Tipo de usuario",
-                // "Rango de fechas",
-            ],
-            listTipos: ["ADMINISTRADOR", "AUXILIAR"],
+            listFiltro: ["Todos", "Profesor"],
+            listProfesors: [],
             errors: [],
         };
     },
+    computed: {
+        textoBtnPdf() {
+            if (this.enviando) {
+                return `Generando... <i class="fa fa-spinner fa-spin"></i>`;
+            }
+            return `Generar Reporte PDF <i class="fa fa-file-pdf"></i>`;
+        },
+        textoBtnExcel() {
+            if (this.enviando) {
+                return `Generando... <i class="fa fa-spinner fa-spin"></i>`;
+            }
+            return `Generar Reporte EXCEL <i class="fa fa-file-excel"></i>`;
+        },
+    },
     mounted() {
         this.loadingWindow.close();
+        this.getProfesors();
     },
     methods: {
+        getProfesors() {
+            axios.get(main_url + "/admin/profesors").then((response) => {
+                this.listProfesors = response.data.profesors;
+            });
+        },
         limpiarFormulario() {
             this.oReporte.filtro = "Todos";
         },
@@ -205,7 +185,7 @@ export default {
             };
             axios
                 .post(
-                    main_url + "/admin/reportes/usuarios",
+                    main_url + "/admin/reportes/profesors",
                     this.oReporte,
                     config
                 )
@@ -217,6 +197,51 @@ export default {
                     });
                     let urlReporte = URL.createObjectURL(pdfBlob);
                     window.open(urlReporte);
+                })
+                .catch(async (error) => {
+                    let responseObj = await error.response.data.text();
+                    responseObj = JSON.parse(responseObj);
+                    console.log(error);
+                    this.enviando = false;
+                    if (error.response) {
+                        if (error.response.status === 422) {
+                            this.errors = responseObj.errors;
+                        }
+                        if (
+                            error.response.status === 420 ||
+                            error.response.status === 419 ||
+                            error.response.status === 401
+                        ) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Error",
+                                html: responseObj.message,
+                                showConfirmButton: false,
+                                timer: 2000,
+                            });
+                            window.location = "/";
+                        }
+                    }
+                });
+        },
+        generaReporteExcel() {
+            this.enviando = true;
+            let config = {
+                responseType: "blob",
+            };
+            axios
+                .post("/admin/reportes/profesors_excel", this.oReporte, config)
+                .then((response) => {
+                    var fileURL = window.URL.createObjectURL(
+                        new Blob([response.data])
+                    );
+                    var fileLink = document.createElement("a");
+                    fileLink.href = fileURL;
+                    fileLink.setAttribute("download", "profesors.xlsx");
+                    document.body.appendChild(fileLink);
+                    this.enviando = false;
+                    fileLink.click();
+                    this.descargando = false;
                 })
                 .catch(async (error) => {
                     let responseObj = await error.response.data.text();
