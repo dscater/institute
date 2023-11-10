@@ -51,7 +51,7 @@ body {
 }
 
 .page-item.disabled .page-link {
-    cursor: not-allowed!important;
+    cursor: not-allowed !important;
 }
 
 .btn-warning:not(:disabled):not(.disabled):active,
@@ -266,6 +266,9 @@ h6 {
 }
 
 @media (max-width: 991px) {
+    .txt_iniciar_sesion {
+        display: none;
+    }
     .item-slick1 {
         height: calc(100vh - 70px) !important;
     }

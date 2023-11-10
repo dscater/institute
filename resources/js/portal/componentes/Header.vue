@@ -6,15 +6,30 @@
                     <div
                         class="col-lg-6 col-sm-6 col-4 header-top-left no-padding"
                     >
-                        <a href=""
+                        <a
+                            :href="
+                                contacto.fono1
+                                    ? 'https://wa.me/' +
+                                      contacto.fono1.replace(' ', '')
+                                    : ''
+                            "
+                            target="_blank"
                             ><span class="lnr lnr-phone-handset"></span>
                             <span class="text">{{ contacto.fono1 }}</span></a
                         >
-                        <a href="" v-if="contacto.fono2 != ''"
+                        <a
+                            v-if="contacto.fono2 != ''"
+                            :href="
+                                contacto.fono2
+                                    ? 'https://wa.me/' +
+                                      contacto.fono2?.replace(' ', '')
+                                    : ''
+                            "
+                            target="_blank"
                             ><span class="lnr lnr-phone-handset"></span>
                             <span class="text">{{ contacto.fono2 }}</span></a
                         >
-                        <a href="mailto:info@tomorrowstoday.com"
+                        <a :href="'mailto:' + contacto.correo"
                             ><span class="lnr lnr-envelope"></span>
                             <span class="text">{{ contacto.correo }}</span></a
                         >
@@ -45,7 +60,10 @@
                             </li>
                             <li>
                                 <a href="/administracion"
-                                    ><i class="fa fa-sign-in-alt"></i
+                                    ><span class="txt_iniciar_sesion"
+                                        >Iniciar sesión</span
+                                    >
+                                    <i class="fa fa-sign-in-alt"></i
                                 ></a>
                             </li>
                         </ul>

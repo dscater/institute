@@ -558,11 +558,178 @@
                                         ></span>
                                     </div>
                                     <div
-                                        class="form-group col-md-4"
+                                        class="col-md-4"
+                                        v-if="
+                                            oNuevaInscripcionSolicitud.forma_pago == 'ZELLE'
+                                        "
+                                    >
+                                        <p
+                                            class="w-100 border border-white rounded p-3 text-white mb-2"
+                                            v-html="
+                                                informacion_zelle.descripcion
+                                            "
+                                        ></p>
+                                        <template
+                                            v-if="
+                                                informacion_zelle.tipo_archivo ==
+                                                'imagen'
+                                            "
+                                        >
+                                            <div
+                                                class="w-100 text-center contenedor_imagen_forma_pago"
+                                            >
+                                                <img
+                                                    width="320px"
+                                                    :src="
+                                                        informacion_zelle.url_archivo
+                                                    "
+                                                    alt=""
+                                                />
+                                            </div>
+                                        </template>
+                                        <a
+                                            :href="
+                                                informacion_zelle.url_archivo
+                                            "
+                                            target="_blank"
+                                            v-else
+                                            >Ver archivo</a
+                                        >
+                                    </div>
+                                    <div
+                                        class="col-md-4"
                                         v-if="
                                             oNuevaInscripcionSolicitud.forma_pago ==
-                                            'OTRO'
+                                            'WESTERN UNION'
                                         "
+                                    >
+                                        <p
+                                            class="w-100 border border-white rounded p-3 text-white mb-2"
+                                            v-html="
+                                                informacion_western.descripcion
+                                            "
+                                        ></p>
+                                        <template
+                                            v-if="
+                                                informacion_western.tipo_archivo ==
+                                                'imagen'
+                                            "
+                                        >
+                                            <div
+                                                class="w-100 text-center contenedor_imagen_forma_pago"
+                                            >
+                                                <img
+                                                    width="320px"
+                                                    :src="
+                                                        informacion_western.url_archivo
+                                                    "
+                                                    alt=""
+                                                />
+                                            </div>
+                                        </template>
+                                        <a
+                                            :href="
+                                                informacion_western.url_archivo
+                                            "
+                                            v-else
+                                            >Ver archivo</a
+                                        >
+                                    </div>
+                                    <div
+                                        class="col-md-4"
+                                        v-if="
+                                            oNuevaInscripcionSolicitud.forma_pago ==
+                                            'DEPÓSITO BANCARIO'
+                                        "
+                                    >
+                                        <p
+                                            class="w-100 border border-white rounded p-3 text-white mb-2"
+                                            v-html="
+                                                informacion_deposito.descripcion
+                                            "
+                                        ></p>
+                                        <template
+                                            v-if="
+                                                informacion_deposito.tipo_archivo ==
+                                                'imagen'
+                                            "
+                                        >
+                                            <div
+                                                class="w-100 text-center contenedor_imagen_forma_pago"
+                                            >
+                                                <img
+                                                    width="320px"
+                                                    :src="
+                                                        informacion_deposito.url_archivo
+                                                    "
+                                                    alt=""
+                                                />
+                                            </div>
+                                        </template>
+                                        <a
+                                            :href="
+                                                informacion_deposito.url_archivo
+                                            "
+                                            v-else
+                                            >Ver archivo</a
+                                        >
+                                    </div>
+                                    <div
+                                        class="col-md-4"
+                                        v-if="
+                                            oNuevaInscripcionSolicitud.forma_pago ==
+                                            'MERCADO PAGO'
+                                        "
+                                    >
+                                        <p
+                                            class="w-100 border border-white rounded p-3 text-white mb-2"
+                                            v-html="
+                                                informacion_mercado.descripcion
+                                            "
+                                        ></p>
+                                        <template
+                                            v-if="
+                                                informacion_mercado.tipo_archivo ==
+                                                'imagen'
+                                            "
+                                        >
+                                            <div
+                                                class="w-100 text-center contenedor_imagen_forma_pago"
+                                            >
+                                                <img
+                                                    width="320px"
+                                                    :src="
+                                                        informacion_mercado.url_archivo
+                                                    "
+                                                    alt=""
+                                                />
+                                            </div>
+                                        </template>
+                                        <a
+                                            :href="
+                                                informacion_mercado.url_archivo
+                                            "
+                                            v-else
+                                            >Ver archivo</a
+                                        >
+                                    </div>
+                                    <div
+                                        class="col-md-4"
+                                        v-if="
+                                            oNuevaInscripcionSolicitud.forma_pago ==
+                                            'OTRAS FORMAS DE PAGO'
+                                        "
+                                    >
+                                        <p
+                                            class="w-100 border border-white rounded p-3 text-white mb-2"
+                                            v-html="
+                                                informacion_otros.descripcion
+                                            "
+                                        ></p>
+                                    </div>
+                                    <!-- <div
+                                        class="form-group col-md-4"
+                                        v-if="oNuevaInscripcionSolicitud.forma_pago == 'OTRO'"
                                     >
                                         <label
                                             :class="{
@@ -575,7 +742,7 @@
                                             type="email"
                                             class="form-control w-full"
                                             v-model="
-                                                oNuevaInscripcionSolicitud.desc_otro_pago
+                                                oInscripcion.desc_otro_pago
                                             "
                                         />
                                         <span
@@ -583,8 +750,8 @@
                                             v-if="errors.desc_otro_pago"
                                             v-text="errors.desc_otro_pago[0]"
                                         ></span>
-                                    </div>
-                                    <div class="form-group col-md-4">
+                                    </div> -->
+                                    <!-- <div class="form-group col-md-4">
                                         <label
                                             :class="{
                                                 'text-danger':
@@ -603,8 +770,8 @@
                                             v-if="errors.archivo_pago"
                                             v-text="errors.archivo_pago[0]"
                                         ></span>
-                                    </div>
-                                    <div class="form-group col-md-4">
+                                    </div> -->
+                                    <!-- <div class="form-group col-md-4">
                                         <label
                                             :class="{
                                                 'text-danger': errors.desc_pago,
@@ -614,9 +781,7 @@
                                         <el-input
                                             type="textarea"
                                             class="w-full"
-                                            v-model="
-                                                oNuevaInscripcionSolicitud.desc_pago
-                                            "
+                                            v-model="oInscripcion.desc_pago"
                                             autosize
                                             placeholder="Ejemplo:
 Mercado pago Argentina
@@ -632,7 +797,7 @@ Mercado Pago"
                                             v-if="errors.desc_pago"
                                             v-text="errors.desc_pago[0]"
                                         ></span>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <!-- PASO 4 -->
@@ -818,6 +983,32 @@ export default {
                 costo: "0",
                 detalles: "",
             },
+            informacion_zelle: {
+                url_archivo: "",
+                archivo: null,
+                descripcion: "Pago zelle\nDescripción pago zelle",
+            },
+            informacion_western: {
+                url_archivo: "",
+                archivo: null,
+                descripcion: "Pago western union\nDescripción pago western",
+            },
+            informacion_deposito: {
+                url_archivo: main_url + "/imgs/qr_institute.png",
+                archivo: null,
+                descripcion:
+                    "Deposito bancario\nNro. de cuenta: 100000000000000000000000",
+            },
+            informacion_mercado: {
+                url_archivo: "",
+                archivo: null,
+                descripcion:
+                    "Mercado pago Argentina\nJuan Perez\nCVU: 00000333333333\nAlias: Tomorrowistoday\nCUIT/CUIL: 2000999999\nMercado Pago",
+            },
+            informacion_otros: {
+                descripcion:
+                    "Otros tipos de pagos\nDescripción de otros tipos de pagos",
+            },
             paso_actual: 1,
             total_pasos: 3,
             listCursos: [],
@@ -839,7 +1030,7 @@ export default {
                 "WESTERN UNION",
                 "DEPÓSITO BANCARIO",
                 "MERCADO PAGO",
-                "OTRO",
+                "OTRAS FORMAS DE PAGO",
             ],
             errors: [],
             enviando: false,
@@ -901,6 +1092,21 @@ export default {
                     this.plan_anual.titulo = res.data.plan_anual.titulo;
                     this.plan_anual.costo = res.data.plan_anual.costo;
                     this.plan_anual.detalles = res.data.plan_anual.detalles;
+                }
+                if (res.data.informacion_zelle) {
+                    this.informacion_zelle = res.data.informacion_zelle;
+                }
+                if (res.data.informacion_western) {
+                    this.informacion_western = res.data.informacion_western;
+                }
+                if (res.data.informacion_deposito) {
+                    this.informacion_deposito = res.data.informacion_deposito;
+                }
+                if (res.data.informacion_mercado) {
+                    this.informacion_mercado = res.data.informacion_mercado;
+                }
+                if (res.data.informacion_otros) {
+                    this.informacion_otros = res.data.informacion_otros;
                 }
             });
         },
@@ -970,21 +1176,21 @@ export default {
                         "forma_pago",
                         this.oNuevaInscripcionSolicitud.forma_pago
                     );
-                if (this.oNuevaInscripcionSolicitud.archivo_pago)
-                    formdata.append(
-                        "archivo_pago",
-                        this.oNuevaInscripcionSolicitud.archivo_pago
-                    );
-                if (this.oNuevaInscripcionSolicitud.desc_pago)
-                    formdata.append(
-                        "desc_pago",
-                        this.oNuevaInscripcionSolicitud.desc_pago
-                    );
-                if (this.oNuevaInscripcionSolicitud.desc_otro_pago)
-                    formdata.append(
-                        "desc_otro_pago",
-                        this.oNuevaInscripcionSolicitud.desc_otro_pago
-                    );
+                // if (this.oNuevaInscripcionSolicitud.archivo_pago)
+                //     formdata.append(
+                //         "archivo_pago",
+                //         this.oNuevaInscripcionSolicitud.archivo_pago
+                //     );
+                // if (this.oNuevaInscripcionSolicitud.desc_pago)
+                //     formdata.append(
+                //         "desc_pago",
+                //         this.oNuevaInscripcionSolicitud.desc_pago
+                //     );
+                // if (this.oNuevaInscripcionSolicitud.desc_otro_pago)
+                //     formdata.append(
+                //         "desc_otro_pago",
+                //         this.oNuevaInscripcionSolicitud.desc_otro_pago
+                //     );
                 axios
                     .post(url, formdata, config)
                     .then((res) => {

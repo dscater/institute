@@ -166,7 +166,6 @@ class InscripcionController extends Controller
             "se_entero" => "required",
             "plan_pago_id" => "required",
             "forma_pago" => "required",
-            "desc_pago" => "required|min:4",
         ];
 
         $mensajes = [
@@ -255,8 +254,6 @@ class InscripcionController extends Controller
 
             $plan_pago = PlanPago::findOrFail($request->plan_pago_id);
 
-
-
             $descPagoMayus = nl2br(mb_strtoupper($request->desc_pago));
             $descPagoMayus = str_replace(['<BR/>', '<BR />'], '<br/>', $descPagoMayus);
 
@@ -274,20 +271,20 @@ class InscripcionController extends Controller
                 "estado" => "PENDIENTE"
             ];
 
-            if ($request->forma_pago == 'OTRO') {
-                $datos["desc_otro_pago"] = mb_strtoupper($request->desc_otro_pago);
-            }
+            // if ($request->forma_pago == 'OTRO') {
+            //     $datos["desc_otro_pago"] = mb_strtoupper($request->desc_otro_pago);
+            // }
 
             $nueva_solicitud = InscripcionSolicitud::create($datos);
             $nueva_solicitud->codigo = "C." . $nueva_solicitud->id;
             $nueva_solicitud->save();
-            if ($request->hasFile("archivo_pago")) {
-                $file = $request->archivo_pago;
-                $nom_archivo_pago = time() . '_' . $nueva_solicitud->id . '.' . $file->getClientOriginalExtension();
-                $nueva_solicitud->archivo_pago = $nom_archivo_pago;
-                $file->move(public_path() . '/files/', $nom_archivo_pago);
-            }
-            $nueva_solicitud->save();
+            // if ($request->hasFile("archivo_pago")) {
+            //     $file = $request->archivo_pago;
+            //     $nom_archivo_pago = time() . '_' . $nueva_solicitud->id . '.' . $file->getClientOriginalExtension();
+            //     $nueva_solicitud->archivo_pago = $nom_archivo_pago;
+            //     $file->move(public_path() . '/files/', $nom_archivo_pago);
+            // }
+            // $nueva_solicitud->save();
 
             DB::commit();
             return response()->JSON([
@@ -314,7 +311,6 @@ class InscripcionController extends Controller
             "se_entero" => "required",
             "plan_pago_id" => "required",
             "forma_pago" => "required",
-            "desc_pago" => "required|min:4",
         ];
 
         $mensajes = [
@@ -377,20 +373,20 @@ class InscripcionController extends Controller
                 "estado" => "PENDIENTE"
             ];
 
-            if ($request->forma_pago == 'OTRO') {
-                $datos["desc_otro_pago"] = mb_strtoupper($request->desc_otro_pago);
-            }
+            // if ($request->forma_pago == 'OTRO') {
+            //     $datos["desc_otro_pago"] = mb_strtoupper($request->desc_otro_pago);
+            // }
 
             $nueva_solicitud = InscripcionSolicitud::create($datos);
             $nueva_solicitud->codigo = "C." . $nueva_solicitud->id;
             $nueva_solicitud->save();
-            if ($request->hasFile("archivo_pago")) {
-                $file = $request->archivo_pago;
-                $nom_archivo_pago = time() . '_' . $nueva_solicitud->id . '.' . $file->getClientOriginalExtension();
-                $nueva_solicitud->archivo_pago = $nom_archivo_pago;
-                $file->move(public_path() . '/files/', $nom_archivo_pago);
-            }
-            $nueva_solicitud->save();
+            // if ($request->hasFile("archivo_pago")) {
+            //     $file = $request->archivo_pago;
+            //     $nom_archivo_pago = time() . '_' . $nueva_solicitud->id . '.' . $file->getClientOriginalExtension();
+            //     $nueva_solicitud->archivo_pago = $nom_archivo_pago;
+            //     $file->move(public_path() . '/files/', $nom_archivo_pago);
+            // }
+            // $nueva_solicitud->save();
 
             DB::commit();
             return response()->JSON([

@@ -8,15 +8,31 @@
                 <div
                     class="footer-text m-0 col-lg-12 col-md-12 text-center mb-2"
                 >
-                    <a href=""
+                    <a
+                        :href="
+                            contacto.fono1
+                                ? 'https://wa.me/' +
+                                  contacto.fono1.replace(' ', '')
+                                : ''
+                        "
+                        target="_blank"
                         ><span class="lnr lnr-phone-handset"></span>
                         <span class="text">{{ contacto.fono1 }}</span></a
                     >
-                    <a href="" class="ml-3" v-if="contacto.fono2 != ''"
+                    <a
+                        v-if="contacto.fono2 != ''"
+                        :href="
+                            contacto.fono2
+                                ? 'https://wa.me/' +
+                                  contacto.fono2?.replace(' ', '')
+                                : ''
+                        "
+                        target="_blank"
+                        class="ml-3"
                         ><span class="lnr lnr-phone-handset"></span>
                         <span class="text">{{ contacto.fono2 }}</span></a
                     >
-                    <a :href="contacto.correo" class="ml-3"
+                    <a :href="'mailto:' + contacto.correo" class="ml-3"
                         ><span class="lnr lnr-envelope"></span>
                         <span class="text">{{ contacto.correo }}</span></a
                     >

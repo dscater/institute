@@ -173,17 +173,10 @@
                                                 ><b>Forma de Pago:</b></b-col
                                             >
                                             <b-col>
-                                                <span
-                                                    v-if="
-                                                        item.forma_pago !=
-                                                        'OTRO'
-                                                    "
-                                                    >{{ item.forma_pago }}</span
-                                                >
-                                                <span v-else>{{
-                                                    item.desc_otro_pago
+                                                <span>{{
+                                                    item.forma_pago
                                                 }}</span>
-                                                <span
+                                                <!-- <span
                                                     class="cursor-pointer"
                                                     @click="
                                                         muestraInfoFormaPago(
@@ -192,8 +185,8 @@
                                                     "
                                                     ><i
                                                         class="fa fa-info-circle"
-                                                    ></i></span
-                                            ></b-col>
+                                                    ></i></span> -->
+                                            </b-col>
                                         </b-row>
                                         <b-row class="mb-2">
                                             <b-col sm="5" class="text-sm-right"
