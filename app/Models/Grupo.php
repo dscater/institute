@@ -16,7 +16,10 @@ class Grupo extends Model
     public function getCursoAttribute()
     {
         $asignacion_grupo = AsignacionGrupo::where("grupo_id", $this->id)->get()->first();
-        return $asignacion_grupo->curso;
+        if ($asignacion_grupo) {
+            return $asignacion_grupo->curso;
+        }
+        return null;
     }
 
 
