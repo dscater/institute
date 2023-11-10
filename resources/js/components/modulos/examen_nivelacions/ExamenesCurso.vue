@@ -1,22 +1,18 @@
 <template>
     <div class="col-md-12 mb-3 contenedor_link_examen">
         <div class="row">
-            <div
-                class="col-md-12"
-                v-if="listExamenes.length > 0"
-                v-for="item in listExamenes"
-            >
+            <div class="col-md-12" v-if="oExamenNivelacion">
                 <div class="card">
                     <div class="card-body">
                         <div class="row fila_examen">
                             <div class="col-md-12">
                                 <p class="">
                                     <strong>Código de examen: </strong
-                                    >{{ item.id }}
+                                    >{{ oExamenNivelacion.id }}
                                 </p>
                                 <p class="">
                                     <strong>Total preguntas: </strong
-                                    >{{ item.total_preguntas }}
+                                    >{{ oExamenNivelacion.total_preguntas }}
                                 </p>
                                 <template
                                     v-if="
@@ -73,7 +69,7 @@
                                     :to="{
                                         name: 'examen_nivelacions.realizar_examen',
                                         params: {
-                                            id: item.id,
+                                            id: oExamenNivelacion.id,
                                             asignacion_id: asignacion_grupo_id,
                                         },
                                     }"
@@ -102,11 +98,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12" v-if="listExamenes.length == 0">
+            <div class="col-md-12" v-if="!oExamenNivelacion">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="w-100 text-center font-weight-bold text-md">
-                            SIN RECURSOS AÚN
+                            NO SE CARGÓ NINGUN EXAMEN AÚN
                         </h4>
                     </div>
                 </div>
@@ -141,7 +137,7 @@ export default {
     },
     data() {
         return {
-            listExamenes: [],
+            oExamenNivelacion: null,
             oCurso: null,
         };
     },
@@ -158,7 +154,7 @@ export default {
                 )
                 .then((response) => {
                     this.oCurso = response.data;
-                    this.listExamenes = this.oCurso.examen_nivelacions;
+                    this.oExamenNivelacion = this.oCurso.examen_nivelacion;
                 });
         },
     },

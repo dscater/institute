@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comunicado;
 use App\Models\Grupo;
+use App\Models\GrupoProfesor;
 use App\Models\HistorialAccion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,15 @@ class ComunicadoController extends Controller
     public function index(Request $request)
     {
         $comunicados = Comunicado::with(["grupo"])->orderBy("id", "desc")->get();
+        $user = Auth::user();
+        $tipo_user = $user->tipo;
+        if ($tipo_user == 'PROFESOR') {
+            $id_grupos_user = GrupoProfesor::where("user_id", $user->id)->pluck("grupo_id");
+            $comunicados = Comunicado::with(["grupo"])->whereIn("grupo_id", $id_grupos_user)->orderBy("id", "desc")->get();
+        }
+        if ($tipo_user == 'ESTUDIANTE') {
+        }
+
         return response()->JSON(['comunicados' => $comunicados, 'total' => count($comunicados)], 200);
     }
 

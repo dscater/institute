@@ -26,12 +26,15 @@ class ExamenNivelacionController extends Controller
 
     public function getExamenesCurso(Curso $curso)
     {
-        return response()->JSON($curso->load(["examen_nivelacions"]));
+        return response()->JSON($curso->load(["examen_nivelacion"]));
     }
 
     public function registrar_examen_estudiante(ExamenNivelacion $examen_nivelacion, Request $request)
     {
-        $errors = self::validacionRespuetasExamen($request->respuestas);
+        $errors = [];
+        if ($request->omitir == 'no') {
+            $errors = self::validacionRespuetasExamen($request->respuestas);
+        }
 
         if (count($errors) > 0) {
             return response()->JSON([
@@ -47,12 +50,18 @@ class ExamenNivelacionController extends Controller
             if (!$asignacion_grupo) {
                 throw new Exception("Ocurrió un error inesperado, el examen que seleccióno no coincide con ningun curso asignado");
             }
-            $nuevo_inscripcion_examen = InscripcionExamen::create([
+            $datos_inscripcion_examen = [
                 "inscripcion_id" => $inscripcion->id,
                 "inscripcion_solicitud_id" => $asignacion_grupo->inscripcion_solicitud_id,
                 "examen_nivelacion_id" => $examen_nivelacion->id,
                 "estado" => "PENDIENTE",
-            ]);
+            ];
+            if ($request->omitir == 'si') {
+                $datos_inscripcion_examen["puntaje"] = 0;
+                $datos_inscripcion_examen["estado"] = 'REVISADO';
+            }
+
+            $nuevo_inscripcion_examen = InscripcionExamen::create($datos_inscripcion_examen);
 
             $respuestas = $request->respuestas;
             foreach ($respuestas as $r) {
@@ -92,6 +101,15 @@ class ExamenNivelacionController extends Controller
 
     public function store(Request $request)
     {
+        $errors = [];
+        $existeExamenCurso = ExamenNivelacion::where("curso_id", $request->curso_id)->get()->first();
+        if ($existeExamenCurso) {
+            $errors["curso_id"] = ["El curso que seleccionó ya cuenta con un examen de nivelación registrado"];
+            return response()->JSON([
+                "errors" => $errors
+            ], 422);
+        }
+
         // validar formulario
         $curso_id = $request->curso_id;
         $examen_enunciados = $request->examen_enunciados;
@@ -171,7 +189,17 @@ class ExamenNivelacionController extends Controller
     }
 
     public function update(Request $request, ExamenNivelacion $examen_nivelacion)
-    {       // validar formulario
+    {
+        $errors = [];
+        $existeExamenCurso = ExamenNivelacion::where("curso_id", $request->curso_id)->where("id", "!=", $examen_nivelacion->id)->get()->first();
+        if ($existeExamenCurso) {
+            $errors["curso_id"] = ["El curso que seleccionó ya cuenta con un examen de nivelación registrado"];
+            return response()->JSON([
+                "errors" => $errors
+            ], 422);
+        }
+
+        // validar formulario
         $curso_id = $request->curso_id;
         $examen_enunciados = $request->examen_enunciados;
         $errors = self::validacionFormularioExamenNivelacion($curso_id, $examen_enunciados);

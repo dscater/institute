@@ -92,7 +92,7 @@
                                                 'text-danger':
                                                     errors.imagen_inicio,
                                             }"
-                                            >Imagen</label
+                                            >Imagen (945 x 720)</label
                                         >
                                         <input
                                             type="file"

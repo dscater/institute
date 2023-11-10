@@ -24,7 +24,7 @@
                             v-if="oRespuesta"
                             :class="{
                                 seleccionado:
-                                    oRespuesta.respuesta.trim() ==
+                                    oRespuesta.respuesta?.trim() ==
                                     item_opcion.trim(),
                             }"
                             v-for="(
@@ -61,7 +61,7 @@
                             v-if="oRespuesta"
                             :class="{
                                 seleccionado:
-                                    oRespuesta.respuesta.trim() ==
+                                    oRespuesta.respuesta?.trim() ==
                                     item_opcion.trim(),
                             }"
                         >
@@ -85,7 +85,7 @@
                             v-if="oRespuesta"
                             :class="{
                                 seleccionado:
-                                    oRespuesta.respuesta.trim() ==
+                                    oRespuesta.respuesta?.trim() ==
                                     item_opcion.trim(),
                             }"
                         >

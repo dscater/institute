@@ -86,6 +86,36 @@
                                                 empty-filtered-text="Sin resultados"
                                                 :filter="filter"
                                             >
+                                                <template
+                                                    #cell(estado_solicitud)="row"
+                                                >
+                                                    <span
+                                                        class="text-md badge"
+                                                        :class="{
+                                                            'badge-danger':
+                                                                row.item
+                                                                    .estado_solicitud ==
+                                                                'PENDIENTE',
+                                                            'badge-success':
+                                                                row.item
+                                                                    .estado_solicitud ==
+                                                                'ATENDIDO',
+                                                            'badge-primary':
+                                                                row.item
+                                                                    .estado_solicitud ==
+                                                                'NO RESPONDE',
+                                                            'badge-warning':
+                                                                row.item
+                                                                    .estado_solicitud ==
+                                                                'DESCARTADO',
+                                                        }"
+                                                    >
+                                                        {{
+                                                            row.item
+                                                                .estado_solicitud
+                                                        }}
+                                                    </span>
+                                                </template>
                                                 <template #cell(mas)="row">
                                                     <b-button
                                                         variant="success"

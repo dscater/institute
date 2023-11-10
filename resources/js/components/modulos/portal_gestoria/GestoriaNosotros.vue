@@ -62,7 +62,7 @@
                                             :class="{
                                                 'text-danger': errors.imagen,
                                             }"
-                                            >Imagen</label
+                                            >Imagen (945 x 720)</label
                                         >
                                         <input
                                             type="file"

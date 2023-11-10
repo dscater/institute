@@ -195,33 +195,31 @@
     @endphp
     @inject('configuracion', 'App\Models\Configuracion')
     @foreach ($cursos as $key_curso => $curso)
-        @if (count($curso->examen_nivelacions))
-            @foreach ($curso->examen_nivelacions as $key_ee => $en)
-                <div class="encabezado">
-                    <div class="logo">
-                        <img src="{{ asset('imgs/' . $configuracion->first()->logo) }}">
+        @if ($curso->examen_nivelacion)
+            @php
+                $en = $curso->examen_nivelacion;
+            @endphp
+            <div class="encabezado">
+                <div class="logo">
+                    <img src="{{ asset('imgs/' . $configuracion->first()->logo) }}">
+                </div>
+                <h2 class="titulo">
+                    {{ $configuracion->first()->nombre_sistema }}
+                </h2>
+                <h4 class="texto">EXAMEN DE NIVELACIÓN</h4>
+                <h4 class="texto">{{ $curso->nombre }}</h4>
+                <h4 class="texto">Código examen: {{ $en->id }}</h4>
+            </div>
+            <div class="contenedor_examen">
+                @foreach ($en->examen_enunciados as $key => $ee)
+                    <p class="text_examen enunciado">{{ $key + 1 }}) {{ $ee->enunciado }}</p>
+                    <div class="contenedor_preguntas">
+                        @foreach ($ee->enunciado_preguntas as $key_preg => $ep)
+                            @include('reportes.parcial.preguntas')
+                        @endforeach
                     </div>
-                    <h2 class="titulo">
-                        {{ $configuracion->first()->nombre_sistema }}
-                    </h2>
-                    <h4 class="texto">EXAMEN DE NIVELACIÓN</h4>
-                    <h4 class="texto">{{ $curso->nombre }}</h4>
-                    <h4 class="texto">Código examen: {{ $en->id }}</h4>
-                </div>
-                <div class="contenedor_examen">
-                    @foreach ($en->examen_enunciados as $key => $ee)
-                        <p class="text_examen enunciado">{{ $key + 1 }}) {{ $ee->enunciado }}</p>
-                        <div class="contenedor_preguntas">
-                            @foreach ($ee->enunciado_preguntas as $key_preg => $ep)
-                                @include('reportes.parcial.preguntas')
-                            @endforeach
-                        </div>
-                    @endforeach
-                </div>
-                @if ($key_ee < count($curso->examen_nivelacions) - 1)
-                    <div class="break_page"></div>
-                @endif
-            @endforeach
+                @endforeach
+            </div>
             @if ($key_curso < count($cursos) - 1)
                 <div class="break_page"></div>
             @endif

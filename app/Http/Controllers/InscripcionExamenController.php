@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AsignacionGrupo;
+use App\Models\GrupoProfesor;
 use App\Models\HistorialAccion;
 use App\Models\InscripcionExamen;
 use App\Models\InscripcionRespuesta;
@@ -17,6 +19,18 @@ class InscripcionExamenController extends Controller
         $inscripcion_examens = InscripcionExamen::with(["examen_nivelacion", "inscripcion", "inscripcion_solicitud.curso"])
             ->orderby("id", "desc")
             ->paginate($per_page);
+
+        if (Auth::user()->tipo == 'PROFESOR') {
+            $user = Auth::user();
+            $id_grupos_user = GrupoProfesor::where("user_id", $user->id)->pluck("grupo_id");
+            $id_cursos_asignaciones = AsignacionGrupo::whereIn("grupo_id", $id_grupos_user)->pluck("curso_id");
+            $inscripcion_examens = InscripcionExamen::select("inscripcion_examens.*")
+                ->with(["examen_nivelacion", "inscripcion", "inscripcion_solicitud.curso"])
+                ->join("inscripcion_solicituds", "inscripcion_solicituds.id", "=", "inscripcion_examens.inscripcion_solicitud_id")
+                ->whereIn("inscripcion_solicituds.curso_id", $id_cursos_asignaciones)
+                ->orderby("id", "desc")
+                ->paginate($per_page);
+        }
         return response()->JSON([
             'inscripcion_examens' => $inscripcion_examens, 'total' => count($inscripcion_examens),
             'per_page' => $per_page

@@ -6,7 +6,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="menu-content text-principal col-lg-8">
                         <div class="title text-center">
-                            <h1 class="mb-10">CURSOS DESTACADOS</h1>
+                            <h1 class="mb-10">ÚLTIMOS CURSOS</h1>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 10-11-2023 a las 17:15:59
+-- Tiempo de generación: 10-11-2023 a las 18:38:24
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -91,7 +91,8 @@ CREATE TABLE `comunicados` (
 --
 
 INSERT INTO `comunicados` (`id`, `grupo_id`, `titulo`, `descripcion`, `fecha`, `hora`, `created_at`, `updated_at`) VALUES
-(2, 3, 'COMUNICADO DESDE USUARIO PROFESOR', 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM. TOMAR NOTA', '2023-11-07', '16:46:00', '2023-11-07 20:46:28', '2023-11-07 20:46:28');
+(2, 3, 'COMUNICADO DESDE USUARIO PROFESOR', 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM. TOMAR NOTA', '2023-11-07', '16:46:00', '2023-11-07 20:46:28', '2023-11-07 20:46:28'),
+(3, 1, 'COMUNIDO GRUPO 1', 'COMUNICADO DESDE USE PROFESOR', '2023-11-10', '14:30:00', '2023-11-10 18:30:08', '2023-11-10 18:30:08');
 
 -- --------------------------------------------------------
 
@@ -228,7 +229,9 @@ INSERT INTO `enunciado_preguntas` (`id`, `examen_enunciado_id`, `pregunta`, `tip
 (15, 9, 'martes _', 'SELECCIÓN', 'tuesday, thursday', '2023-11-07 14:41:23', '2023-11-07 14:41:23'),
 (16, 10, 'the bus arrives _ london _ six o\'clock', 'LLENADO DOBLE INTERMEDIO CON OPCIONES', 'at, on, in', '2023-11-07 14:41:23', '2023-11-07 14:41:23'),
 (17, 11, 'choose the correct one:', 'ELIGE UNA OPCIÓN', 'My brothers\' car is very nice, My brother\'s car is very nice, My brothers car is very nice', '2023-11-07 14:41:23', '2023-11-07 14:41:23'),
-(18, 12, 'i don´t understand _ you say. Could your repeat it?', 'LLENADO INTERMEDIO CON OPCIONES', 'that, what, which', '2023-11-07 14:41:23', '2023-11-07 14:41:23');
+(18, 12, 'i don´t understand _ you say. Could your repeat it?', 'LLENADO INTERMEDIO CON OPCIONES', 'that, what, which', '2023-11-07 14:41:23', '2023-11-07 14:41:23'),
+(19, 13, 'monday _', 'LLENADO INTERMEDIO', NULL, '2023-11-10 18:35:18', '2023-11-10 18:35:18'),
+(20, 14, 'hoy es lunes', 'LLENADO', NULL, '2023-11-10 18:35:18', '2023-11-10 18:35:18');
 
 -- --------------------------------------------------------
 
@@ -280,7 +283,9 @@ INSERT INTO `examen_enunciados` (`id`, `examen_nivelacion_id`, `enunciado`, `tip
 (9, 4, 'elige el día de la semana correcto', 'SELECCIÓN', '2023-11-07 14:41:23', '2023-11-07 14:41:23'),
 (10, 4, 'selecciona la opcion correcta', 'LLENADO DOBLE INTERMEDIO CON OPCIONES', '2023-11-07 14:41:23', '2023-11-07 14:41:23'),
 (11, 4, 'Seleccione la opcion correcta', 'ELIGE UNA OPCIÓN', '2023-11-07 14:41:23', '2023-11-07 14:41:23'),
-(12, 4, 'selecciona la palabra que correspanda', 'LLENADO INTERMEDIO CON OPCIONES', '2023-11-07 14:41:23', '2023-11-07 14:41:23');
+(12, 4, 'selecciona la palabra que correspanda', 'LLENADO INTERMEDIO CON OPCIONES', '2023-11-07 14:41:23', '2023-11-07 14:41:23'),
+(13, 5, 'traduce los días', 'LLENADO INTERMEDIO', '2023-11-10 18:35:18', '2023-11-10 18:35:18'),
+(14, 5, 'Tuesday _', 'LLENADO', '2023-11-10 18:35:18', '2023-11-10 18:35:18');
 
 -- --------------------------------------------------------
 
@@ -301,7 +306,8 @@ CREATE TABLE `examen_nivelacions` (
 
 INSERT INTO `examen_nivelacions` (`id`, `curso_id`, `created_at`, `updated_at`) VALUES
 (2, 7, '2023-11-06 21:31:29', '2023-11-06 21:31:29'),
-(4, 3, '2023-11-07 14:41:22', '2023-11-07 14:41:22');
+(4, 3, '2023-11-07 14:41:22', '2023-11-07 14:41:22'),
+(5, 1, '2023-11-10 18:35:18', '2023-11-10 18:35:18');
 
 -- --------------------------------------------------------
 
@@ -414,7 +420,7 @@ CREATE TABLE `gestoria_solicituds` (
 --
 
 INSERT INTO `gestoria_solicituds` (`id`, `codigo`, `nombres`, `apellidos`, `fecha_nac`, `edad`, `nacionalidad`, `estado`, `sexo`, `fono`, `familiares_eeuu`, `parentesco`, `familiar_deportado`, `motivo`, `deportado_otro_pais`, `motivo_otro_pais`, `antecedentes_penales`, `desc_antecedentes`, `estudios`, `trabajo_actual`, `solicito_visa`, `motivo_rechazo`, `cuenta_bancaria`, `gana_aproximadamente`, `redes_sociales`, `correo`, `recomendado_por`, `estado_solicitud`, `created_at`, `updated_at`) VALUES
-(1, 'S.1', 'CARLOS', 'MARTINEZ MARTINEZ', '2000-01-01', 23, 'BOLIVIANO', '', 'HOMBRE', '7777777', 'SI', 'HERMANOS', 'SI', 'MOTIVO DEPORTACIÓN', 'SI', 'MOTIVO DEPORTACIÓN OTRO PAÍS', 'OTRO', 'DESCRIPCIÓN DE ANTECEDENTES OTRO', 'LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS', 'TRABAJO ACTUAL', 'SI', 'MOTIVO RECHAZO SOLICITUD', 'SI', 10000.00, 'HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM', 'carlosm@gmail.com', 'LO VI EN FACEBOOK', 'ATENDIDO', '2023-11-02 22:45:56', '2023-11-07 22:23:10'),
+(1, 'S.1', 'CARLOS', 'MARTINEZ MARTINEZ', '2000-01-01', 23, 'BOLIVIANO', '', 'HOMBRE', '7777777', 'SI', 'HERMANOS', 'SI', 'MOTIVO DEPORTACIÓN', 'SI', 'MOTIVO DEPORTACIÓN OTRO PAÍS', 'OTRO', 'DESCRIPCIÓN DE ANTECEDENTES OTRO', 'LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS', 'TRABAJO ACTUAL', 'SI', 'MOTIVO RECHAZO SOLICITUD', 'SI', 10000.00, 'HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM', 'carlosm@gmail.com', 'LO VI EN FACEBOOK', 'ATENDIDO', '2023-11-02 22:45:56', '2023-11-10 17:48:02'),
 (2, 'S.2', 'JORGE LUIS', 'MARTINEZ MARTINEZ', '2003-03-03', 20, 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '7888888', 'NO', '', 'NO', '', 'NO', '', 'NO', '', 'LIC. EN ECONOMIA', 'AUXILIAR CONTABLE', 'NO', '', 'SI', 9000.00, 'HTTPS://WWW.YOUTUBE.COM', 'jorgeluis@gmail.com', 'LO VI EN TIKTOK', 'PENDIENTE', '2023-11-08 20:11:41', '2023-11-08 20:11:41');
 
 -- --------------------------------------------------------
@@ -465,7 +471,8 @@ INSERT INTO `grupos` (`id`, `nombre`, `descripcion`, `link_reunion`, `estado`, `
 (1, 'GRUPO #1', 'DESCRIPCION GRUPO #1', NULL, 'ACTIVO', '2023-11-03 16:06:11', '2023-11-03 16:06:11'),
 (2, 'GRUPO #2', 'GRUPO DE PRUEBA', NULL, 'ACTIVO', '2023-11-05 18:10:19', '2023-11-05 18:11:28'),
 (3, 'GRUPO 3', 'GRUPO #3', 'https://www.youtube.com/', 'ACTIVO', '2023-11-07 14:07:23', '2023-11-07 21:11:17'),
-(4, 'GRUPO #4', 'DESC 4', NULL, 'ACTIVO', '2023-11-10 01:50:24', '2023-11-10 01:50:24');
+(4, 'GRUPO #4', 'DESC 4', NULL, 'ACTIVO', '2023-11-10 01:50:24', '2023-11-10 01:50:24'),
+(6, 'GRUPO #5', 'DESC5', NULL, 'ACTIVO', '2023-11-10 17:42:08', '2023-11-10 17:42:08');
 
 -- --------------------------------------------------------
 
@@ -920,7 +927,20 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (377, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS MENSUAL', 'id: 1<br/>titulo: Plan Mensual<br/>costo: 49.99<br/>detalles: Plataforma interactiva<br />\r\nMateriales digitales<br />\r\nRecursos tecnologicos<br />\r\nClases en vivo<br />\r\nCursos de preparación<br />\r\nBecas academicas<br/>created_at: <br/>updated_at: 2023-11-10 11:37:14<br/>', NULL, 'PLAN DE PAGOS', '2023-11-10', '12:57:11', '2023-11-10 16:57:11', '2023-11-10 16:57:11'),
 (378, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS TRIMESTRAL', 'id: 2<br/>titulo: Plan Trimestral<br/>costo: 130.00<br/>detalles: Ahora USD 123<br />\r\nPlataforma interactiva<br />\r\nMateriales digitales<br />\r\nRecursos tecnologicos<br />\r\nClases en vivo<br />\r\nCursos de preparación<br />\r\nBecas academicas<br/>created_at: <br/>updated_at: 2023-11-10 11:37:14<br/>', NULL, 'PLAN DE PAGOS', '2023-11-10', '12:57:11', '2023-11-10 16:57:11', '2023-11-10 16:57:11'),
 (379, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ EL PLAN DE PAGOS ANUAL', 'id: 3<br/>titulo: Plan Anual<br/>costo: 400.00<br/>detalles: Ahora USD 214<br />\r\nPlataforma interactiva<br />\r\nMateriales digitales<br />\r\nRecursos tecnologicos<br />\r\nClases en vivo<br />\r\nCursos de preparación<br />\r\nBecas academicas<br/>created_at: <br/>updated_at: 2023-11-10 11:37:14<br/>', NULL, 'PLAN DE PAGOS', '2023-11-10', '12:57:11', '2023-11-10 16:57:11', '2023-11-10 16:57:11'),
-(380, 1, 'MODIFICAICÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LA INFORMACIÓN DE FORMA DE PAGOS', 'id: 3<br/>forma_pago: <br/>archivo: <br/>tipo_archivo: <br/>descripcion: <br/>created_at: <br/>updated_at: 2023-11-10 11:37:14<br/>', NULL, 'INFORMACIÓN PAGOS', '2023-11-10', '12:57:11', '2023-11-10 16:57:11', '2023-11-10 16:57:11');
+(380, 1, 'MODIFICAICÓN', 'EL USUARIO admin@gmail.com ACTUALIZÓ LA INFORMACIÓN DE FORMA DE PAGOS', 'id: 3<br/>forma_pago: <br/>archivo: <br/>tipo_archivo: <br/>descripcion: <br/>created_at: <br/>updated_at: 2023-11-10 11:37:14<br/>', NULL, 'INFORMACIÓN PAGOS', '2023-11-10', '12:57:11', '2023-11-10 16:57:11', '2023-11-10 16:57:11'),
+(381, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN GRUPO', 'id: 6<br/>nombre: GRUPO #5<br/>descripcion: DESC5<br/>link_reunion: <br/>estado: ACTIVO<br/>created_at: 2023-11-10 13:42:08<br/>updated_at: 2023-11-10 13:42:08<br/>', NULL, 'GRUPOS', '2023-11-10', '13:42:08', '2023-11-10 17:42:08', '2023-11-10 17:42:08'),
+(382, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD DE GESTORÍA', 'id: 1<br/>codigo: S.1<br/>nombres: CARLOS<br/>apellidos: MARTINEZ MARTINEZ<br/>fecha_nac: 2000-01-01<br/>edad: 23<br/>nacionalidad: BOLIVIANO<br/>estado: <br/>sexo: HOMBRE<br/>fono: 7777777<br/>familiares_eeuu: SI<br/>parentesco: HERMANOS<br/>familiar_deportado: SI<br/>motivo: MOTIVO DEPORTACIÓN<br/>deportado_otro_pais: SI<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>antecedentes_penales: OTRO<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>trabajo_actual: TRABAJO ACTUAL<br/>solicito_visa: SI<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>cuenta_bancaria: SI<br/>gana_aproximadamente: 10000.00<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>correo: carlosm@gmail.com<br/>recomendado_por: LO VI EN FACEBOOK<br/>estado_solicitud: ATENDIDO<br/>created_at: 2023-11-02 18:45:56<br/>updated_at: 2023-11-07 18:23:10<br/>', 'id: 1<br/>codigo: S.1<br/>nombres: CARLOS<br/>apellidos: MARTINEZ MARTINEZ<br/>fecha_nac: 2000-01-01<br/>edad: 23<br/>nacionalidad: BOLIVIANO<br/>estado: <br/>sexo: HOMBRE<br/>fono: 7777777<br/>familiares_eeuu: SI<br/>parentesco: HERMANOS<br/>familiar_deportado: SI<br/>motivo: MOTIVO DEPORTACIÓN<br/>deportado_otro_pais: SI<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>antecedentes_penales: OTRO<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>trabajo_actual: TRABAJO ACTUAL<br/>solicito_visa: SI<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>cuenta_bancaria: SI<br/>gana_aproximadamente: 10000.00<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>correo: carlosm@gmail.com<br/>recomendado_por: LO VI EN FACEBOOK<br/>estado_solicitud: NO RESPONDE<br/>created_at: 2023-11-02 18:45:56<br/>updated_at: 2023-11-10 13:47:52<br/>', 'GESTORÍA SOLICITUDES', '2023-11-10', '13:47:52', '2023-11-10 17:47:52', '2023-11-10 17:47:52'),
+(383, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD DE GESTORÍA', 'id: 1<br/>codigo: S.1<br/>nombres: CARLOS<br/>apellidos: MARTINEZ MARTINEZ<br/>fecha_nac: 2000-01-01<br/>edad: 23<br/>nacionalidad: BOLIVIANO<br/>estado: <br/>sexo: HOMBRE<br/>fono: 7777777<br/>familiares_eeuu: SI<br/>parentesco: HERMANOS<br/>familiar_deportado: SI<br/>motivo: MOTIVO DEPORTACIÓN<br/>deportado_otro_pais: SI<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>antecedentes_penales: OTRO<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>trabajo_actual: TRABAJO ACTUAL<br/>solicito_visa: SI<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>cuenta_bancaria: SI<br/>gana_aproximadamente: 10000.00<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>correo: carlosm@gmail.com<br/>recomendado_por: LO VI EN FACEBOOK<br/>estado_solicitud: NO RESPONDE<br/>created_at: 2023-11-02 18:45:56<br/>updated_at: 2023-11-10 13:47:52<br/>', 'id: 1<br/>codigo: S.1<br/>nombres: CARLOS<br/>apellidos: MARTINEZ MARTINEZ<br/>fecha_nac: 2000-01-01<br/>edad: 23<br/>nacionalidad: BOLIVIANO<br/>estado: <br/>sexo: HOMBRE<br/>fono: 7777777<br/>familiares_eeuu: SI<br/>parentesco: HERMANOS<br/>familiar_deportado: SI<br/>motivo: MOTIVO DEPORTACIÓN<br/>deportado_otro_pais: SI<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>antecedentes_penales: OTRO<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>trabajo_actual: TRABAJO ACTUAL<br/>solicito_visa: SI<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>cuenta_bancaria: SI<br/>gana_aproximadamente: 10000.00<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>correo: carlosm@gmail.com<br/>recomendado_por: LO VI EN FACEBOOK<br/>estado_solicitud: DESCARTADO<br/>created_at: 2023-11-02 18:45:56<br/>updated_at: 2023-11-10 13:47:57<br/>', 'GESTORÍA SOLICITUDES', '2023-11-10', '13:47:57', '2023-11-10 17:47:57', '2023-11-10 17:47:57'),
+(384, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD DE GESTORÍA', 'id: 1<br/>codigo: S.1<br/>nombres: CARLOS<br/>apellidos: MARTINEZ MARTINEZ<br/>fecha_nac: 2000-01-01<br/>edad: 23<br/>nacionalidad: BOLIVIANO<br/>estado: <br/>sexo: HOMBRE<br/>fono: 7777777<br/>familiares_eeuu: SI<br/>parentesco: HERMANOS<br/>familiar_deportado: SI<br/>motivo: MOTIVO DEPORTACIÓN<br/>deportado_otro_pais: SI<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>antecedentes_penales: OTRO<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>trabajo_actual: TRABAJO ACTUAL<br/>solicito_visa: SI<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>cuenta_bancaria: SI<br/>gana_aproximadamente: 10000.00<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>correo: carlosm@gmail.com<br/>recomendado_por: LO VI EN FACEBOOK<br/>estado_solicitud: DESCARTADO<br/>created_at: 2023-11-02 18:45:56<br/>updated_at: 2023-11-10 13:47:57<br/>', 'id: 1<br/>codigo: S.1<br/>nombres: CARLOS<br/>apellidos: MARTINEZ MARTINEZ<br/>fecha_nac: 2000-01-01<br/>edad: 23<br/>nacionalidad: BOLIVIANO<br/>estado: <br/>sexo: HOMBRE<br/>fono: 7777777<br/>familiares_eeuu: SI<br/>parentesco: HERMANOS<br/>familiar_deportado: SI<br/>motivo: MOTIVO DEPORTACIÓN<br/>deportado_otro_pais: SI<br/>motivo_otro_pais: MOTIVO DEPORTACIÓN OTRO PAÍS<br/>antecedentes_penales: OTRO<br/>desc_antecedentes: DESCRIPCIÓN DE ANTECEDENTES OTRO<br/>estudios: LIC. EN ECONOMÍA<br />\r\nING. EN SISTEMAS<br/>trabajo_actual: TRABAJO ACTUAL<br/>solicito_visa: SI<br/>motivo_rechazo: MOTIVO RECHAZO SOLICITUD<br/>cuenta_bancaria: SI<br/>gana_aproximadamente: 10000.00<br/>redes_sociales: HTTPS://WWW.FACEBOOK.COM<br />\r\nHTTPS://WWW.INSTAGRAM.COM<br/>correo: carlosm@gmail.com<br/>recomendado_por: LO VI EN FACEBOOK<br/>estado_solicitud: ATENDIDO<br/>created_at: 2023-11-02 18:45:56<br/>updated_at: 2023-11-10 13:48:02<br/>', 'GESTORÍA SOLICITUDES', '2023-11-10', '13:48:02', '2023-11-10 17:48:02', '2023-11-10 17:48:02'),
+(385, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD', 'id: 8<br/>codigo: C.8<br/>inscripcion_id: 6<br/>curso_id: 7<br/>nivel: NIVEL BÁSICO<br/>se_entero: OTRO<br/>desc_se_entero: DESCRIPCION OTRO<br/>plan_pago_id: 3<br/>plan_costo: 400.00<br/>forma_pago: ZELLE<br/>archivo_pago: <br/>desc_pago: <br/>desc_otro_pago: <br/>estado_asignado: NO<br/>estado: PENDIENTE<br/>created_at: 2023-11-10 13:15:16<br/>updated_at: 2023-11-10 13:15:16<br/>', 'id: 8<br/>codigo: C.8<br/>inscripcion_id: 6<br/>curso_id: 7<br/>nivel: NIVEL BÁSICO<br/>se_entero: OTRO<br/>desc_se_entero: DESCRIPCION OTRO<br/>plan_pago_id: 3<br/>plan_costo: 400.00<br/>forma_pago: ZELLE<br/>archivo_pago: <br/>desc_pago: <br/>desc_otro_pago: <br/>estado_asignado: NO<br/>estado: NO RESPONDE<br/>created_at: 2023-11-10 13:15:16<br/>updated_at: 2023-11-10 13:48:54<br/>', 'INSCRIPCION SOLICITUD', '2023-11-10', '13:48:54', '2023-11-10 17:48:54', '2023-11-10 17:48:54'),
+(386, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD', 'id: 8<br/>codigo: C.8<br/>inscripcion_id: 6<br/>curso_id: 7<br/>nivel: NIVEL BÁSICO<br/>se_entero: OTRO<br/>desc_se_entero: DESCRIPCION OTRO<br/>plan_pago_id: 3<br/>plan_costo: 400.00<br/>forma_pago: ZELLE<br/>archivo_pago: <br/>desc_pago: <br/>desc_otro_pago: <br/>estado_asignado: NO<br/>estado: NO RESPONDE<br/>created_at: 2023-11-10 13:15:16<br/>updated_at: 2023-11-10 13:48:54<br/>', 'id: 8<br/>codigo: C.8<br/>inscripcion_id: 6<br/>curso_id: 7<br/>nivel: NIVEL BÁSICO<br/>se_entero: OTRO<br/>desc_se_entero: DESCRIPCION OTRO<br/>plan_pago_id: 3<br/>plan_costo: 400.00<br/>forma_pago: ZELLE<br/>archivo_pago: <br/>desc_pago: <br/>desc_otro_pago: <br/>estado_asignado: NO<br/>estado: DESCARTADO<br/>created_at: 2023-11-10 13:15:16<br/>updated_at: 2023-11-10 13:48:56<br/>', 'INSCRIPCION SOLICITUD', '2023-11-10', '13:48:56', '2023-11-10 17:48:56', '2023-11-10 17:48:56'),
+(387, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD', 'id: 8<br/>codigo: C.8<br/>inscripcion_id: 6<br/>curso_id: 7<br/>nivel: NIVEL BÁSICO<br/>se_entero: OTRO<br/>desc_se_entero: DESCRIPCION OTRO<br/>plan_pago_id: 3<br/>plan_costo: 400.00<br/>forma_pago: ZELLE<br/>archivo_pago: <br/>desc_pago: <br/>desc_otro_pago: <br/>estado_asignado: NO<br/>estado: DESCARTADO<br/>created_at: 2023-11-10 13:15:16<br/>updated_at: 2023-11-10 13:48:56<br/>', 'id: 8<br/>codigo: C.8<br/>inscripcion_id: 6<br/>curso_id: 7<br/>nivel: NIVEL BÁSICO<br/>se_entero: OTRO<br/>desc_se_entero: DESCRIPCION OTRO<br/>plan_pago_id: 3<br/>plan_costo: 400.00<br/>forma_pago: ZELLE<br/>archivo_pago: <br/>desc_pago: <br/>desc_otro_pago: <br/>estado_asignado: NO<br/>estado: ACEPTADO<br/>created_at: 2023-11-10 13:15:16<br/>updated_at: 2023-11-10 13:48:58<br/>', 'INSCRIPCION SOLICITUD', '2023-11-10', '13:48:58', '2023-11-10 17:48:58', '2023-11-10 17:48:58'),
+(388, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD', 'id: 7<br/>codigo: C.7<br/>inscripcion_id: 6<br/>curso_id: 1<br/>nivel: NIVEL CERO<br/>se_entero: FACEBOOK<br/>desc_se_entero: <br/>plan_pago_id: 1<br/>plan_costo: 49.99<br/>forma_pago: DEPÓSITO BANCARIO<br/>archivo_pago: <br/>desc_pago: <br/>desc_otro_pago: <br/>estado_asignado: NO<br/>estado: PENDIENTE<br/>created_at: 2023-11-10 13:07:30<br/>updated_at: 2023-11-10 13:07:30<br/>', 'id: 7<br/>codigo: C.7<br/>inscripcion_id: 6<br/>curso_id: 1<br/>nivel: NIVEL CERO<br/>se_entero: FACEBOOK<br/>desc_se_entero: <br/>plan_pago_id: 1<br/>plan_costo: 49.99<br/>forma_pago: DEPÓSITO BANCARIO<br/>archivo_pago: <br/>desc_pago: <br/>desc_otro_pago: <br/>estado_asignado: NO<br/>estado: ACEPTADO<br/>created_at: 2023-11-10 13:07:30<br/>updated_at: 2023-11-10 13:49:04<br/>', 'INSCRIPCION SOLICITUD', '2023-11-10', '13:49:04', '2023-11-10 17:49:04', '2023-11-10 17:49:04'),
+(389, 5, 'CREACIÓN', 'EL USUARIO marcos@gmail.com REALIZÓ UN EXAMEN DE NIVELACION', 'id: 3<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>examen_nivelacion_id: 2<br/>puntaje: 0<br/>estado: PENDIENTE<br/>created_at: 2023-11-10 14:11:35<br/>updated_at: 2023-11-10 14:11:35<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-10', '14:11:36', '2023-11-10 18:11:36', '2023-11-10 18:11:36'),
+(390, 3, 'MODIFICACIÓN', 'EL USUARIO maria@gmail.com MODIFICÓ UN EXAMEN DE NIVELACION', 'id: 4<br/>curso_id: 3<br/>created_at: 2023-11-07 10:41:22<br/>updated_at: 2023-11-07 10:41:22<br/>', 'id: 4<br/>curso_id: 3<br/>created_at: 2023-11-07 10:41:22<br/>updated_at: 2023-11-07 10:41:22<br/>', 'EXAMEN DE NIVELACION', '2023-11-10', '14:18:28', '2023-11-10 18:18:28', '2023-11-10 18:18:28'),
+(391, 6, 'CREACIÓN', 'EL USUARIO felipe@gmail.com REGISTRO UN GRUPO', 'id: 3<br/>grupo_id: 1<br/>titulo: COMUNIDO GRUPO 1<br/>descripcion: COMUNICADO DESDE USE PROFESOR<br/>fecha: 2023-11-10<br/>hora: 14:30<br/>created_at: 2023-11-10 14:30:08<br/>updated_at: 2023-11-10 14:30:08<br/>', NULL, 'GRUPOS', '2023-11-10', '14:30:08', '2023-11-10 18:30:08', '2023-11-10 18:30:08'),
+(392, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN EXAMEN DE NIVELACION', 'id: 5<br/>curso_id: 1<br/>created_at: 2023-11-10 14:35:18<br/>updated_at: 2023-11-10 14:35:18<br/>', NULL, 'EXAMEN DE NIVELACION', '2023-11-10', '14:35:18', '2023-11-10 18:35:18', '2023-11-10 18:35:18'),
+(393, 8, 'CREACIÓN', 'EL USUARIO roxana@gmail.com REALIZÓ UN EXAMEN DE NIVELACION', 'id: 4<br/>inscripcion_id: 3<br/>inscripcion_solicitud_id: 4<br/>examen_nivelacion_id: 5<br/>puntaje: 0<br/>estado: REVISADO<br/>created_at: 2023-11-10 14:35:41<br/>updated_at: 2023-11-10 14:35:41<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-10', '14:35:41', '2023-11-10 18:35:41', '2023-11-10 18:35:41');
 
 -- --------------------------------------------------------
 
@@ -1011,7 +1031,7 @@ INSERT INTO `inscripcions` (`id`, `user_id`, `nombres`, `apellidos`, `nro_iden`,
 (3, 8, 'ROXANA', 'MAMANI MAMANI', '67678', '2003-01-01', 20, 'BOLIVIA', 'BOLIVIANA', 'LA PAZ', 'MUJER', '7999999', 'PENDIENTE', 'roxana@gmail.com', '2023-11-07 13:11:50', '2023-11-07 13:11:50'),
 (4, 9, 'MAX', 'PONCE', '32322', '2000-01-01', 23, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '777777', 'ACEPTADO', 'max@gmail.com', '2023-11-07 13:16:31', '2023-11-07 13:16:31'),
 (5, 12, 'LUIS', 'CARVAJAL GONZALES', '544544', '1999-01-01', 24, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '7666666', 'PENDIENTE', 'luis@gmail.com', '2023-11-08 20:09:48', '2023-11-08 20:09:48'),
-(6, 13, 'MARGARITA', 'SOLIZ', '43434', '2000-03-03', 23, 'BOLIVIA', 'BOLIVIANA', 'SANTA CRUZ', 'MUJER', '7888888', 'PENDIENTE', 'margarita@gmail.com', '2023-11-10 17:07:30', '2023-11-10 17:07:30');
+(6, 13, 'MARGARITA', 'SOLIZ', '43434', '2000-03-03', 23, 'BOLIVIA', 'BOLIVIANA', 'SANTA CRUZ', 'MUJER', '7888888', 'ACEPTADO', 'margarita@gmail.com', '2023-11-10 17:07:30', '2023-11-10 17:48:58');
 
 -- --------------------------------------------------------
 
@@ -1035,7 +1055,9 @@ CREATE TABLE `inscripcion_examens` (
 --
 
 INSERT INTO `inscripcion_examens` (`id`, `inscripcion_id`, `inscripcion_solicitud_id`, `examen_nivelacion_id`, `puntaje`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 2, 2, 4, 90.00, 'REVISADO', '2023-11-07 16:43:29', '2023-11-07 20:07:46');
+(1, 2, 2, 4, 90.00, 'REVISADO', '2023-11-07 16:43:29', '2023-11-07 20:07:46'),
+(3, 2, 1, 2, 0.00, 'REVISADO', '2023-11-10 18:11:35', '2023-11-10 18:11:35'),
+(4, 3, 4, 5, 0.00, 'REVISADO', '2023-11-10 18:35:41', '2023-11-10 18:35:41');
 
 -- --------------------------------------------------------
 
@@ -1048,7 +1070,7 @@ CREATE TABLE `inscripcion_respuestas` (
   `inscripcion_examen_id` bigint UNSIGNED NOT NULL,
   `examen_enunciado_id` bigint UNSIGNED NOT NULL,
   `enunciado_pregunta_id` bigint UNSIGNED NOT NULL,
-  `respuesta` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `respuesta` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `calificacion` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1067,7 +1089,14 @@ INSERT INTO `inscripcion_respuestas` (`id`, `inscripcion_examen_id`, `examen_enu
 (6, 1, 9, 15, 'tuesday', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:41'),
 (7, 1, 10, 16, 'at', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:41'),
 (8, 1, 11, 17, 'My brother\'s car is very nice', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:41'),
-(9, 1, 12, 18, 'that', 'INCORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:50');
+(9, 1, 12, 18, 'that', 'INCORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:50'),
+(10, 3, 2, 2, NULL, NULL, '2023-11-10 18:11:35', '2023-11-10 18:11:35'),
+(11, 3, 2, 7, NULL, NULL, '2023-11-10 18:11:35', '2023-11-10 18:11:35'),
+(12, 3, 3, 4, NULL, NULL, '2023-11-10 18:11:35', '2023-11-10 18:11:35'),
+(13, 3, 3, 8, NULL, NULL, '2023-11-10 18:11:35', '2023-11-10 18:11:35'),
+(14, 3, 6, 9, NULL, NULL, '2023-11-10 18:11:35', '2023-11-10 18:11:35'),
+(15, 4, 13, 19, NULL, NULL, '2023-11-10 18:35:41', '2023-11-10 18:35:41'),
+(16, 4, 14, 20, NULL, NULL, '2023-11-10 18:35:41', '2023-11-10 18:35:41');
 
 -- --------------------------------------------------------
 
@@ -1106,8 +1135,8 @@ INSERT INTO `inscripcion_solicituds` (`id`, `codigo`, `inscripcion_id`, `curso_i
 (4, 'C.4', 3, 1, 'NIVEL CERO', 'TIKTOK', '', 1, 49.99, 'DEPÓSITO BANCARIO', '1699362710_4.png', 'BANCO UNION<br />\r\nMARIA MAMANI<br />\r\nMONTO: 49.99<br />\r\nNRO. CUENTA: 1000034343', NULL, 'SI', 'ACEPTADO', '2023-11-07 13:11:50', '2023-11-07 13:58:53'),
 (5, 'C.5', 4, 7, 'NIVEL BÁSICO', 'INSTAGRAM', '', 3, 400.00, 'WESTERN UNION', '1699362991_5.pdf', 'WESTER UNION<br />\r\nMAX PONCE', NULL, 'SI', 'ACEPTADO', '2023-11-07 13:16:31', '2023-11-07 13:58:37'),
 (6, 'C.6', 5, 3, 'NIVEL BÁSICO', 'INSTAGRAM', '', 2, 130.00, 'DEPÓSITO BANCARIO', '1699474188_6.png', 'BANCO UNION<br />\r\nLUIS CARVAJAL<br />\r\nMONTO: 130<br />\r\nNRO. CUENTA: 10000033333', NULL, 'NO', 'PENDIENTE', '2023-11-08 20:09:48', '2023-11-08 20:09:48'),
-(7, 'C.7', 6, 1, 'NIVEL CERO', 'FACEBOOK', '', 1, 49.99, 'DEPÓSITO BANCARIO', NULL, '', NULL, 'NO', 'PENDIENTE', '2023-11-10 17:07:30', '2023-11-10 17:07:30'),
-(8, 'C.8', 6, 7, 'NIVEL BÁSICO', 'OTRO', 'DESCRIPCION OTRO', 3, 400.00, 'ZELLE', NULL, '', NULL, 'NO', 'PENDIENTE', '2023-11-10 17:15:16', '2023-11-10 17:15:16');
+(7, 'C.7', 6, 1, 'NIVEL CERO', 'FACEBOOK', '', 1, 49.99, 'DEPÓSITO BANCARIO', NULL, '', NULL, 'NO', 'ACEPTADO', '2023-11-10 17:07:30', '2023-11-10 17:49:04'),
+(8, 'C.8', 6, 7, 'NIVEL BÁSICO', 'OTRO', 'DESCRIPCION OTRO', 3, 400.00, 'ZELLE', NULL, '', NULL, 'NO', 'ACEPTADO', '2023-11-10 17:15:16', '2023-11-10 17:48:58');
 
 -- --------------------------------------------------------
 
@@ -1619,7 +1648,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT de la tabla `comunicados`
 --
 ALTER TABLE `comunicados`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `configuracions`
@@ -1649,7 +1678,7 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT de la tabla `enunciado_preguntas`
 --
 ALTER TABLE `enunciado_preguntas`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `envio_correos`
@@ -1661,13 +1690,13 @@ ALTER TABLE `envio_correos`
 -- AUTO_INCREMENT de la tabla `examen_enunciados`
 --
 ALTER TABLE `examen_enunciados`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `examen_nivelacions`
 --
 ALTER TABLE `examen_nivelacions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `gestoria_banners`
@@ -1703,7 +1732,7 @@ ALTER TABLE `gestoria_tips`
 -- AUTO_INCREMENT de la tabla `grupos`
 --
 ALTER TABLE `grupos`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo_profesors`
@@ -1721,7 +1750,7 @@ ALTER TABLE `grupo_recursos`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=381;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=394;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
@@ -1745,13 +1774,13 @@ ALTER TABLE `inscripcions`
 -- AUTO_INCREMENT de la tabla `inscripcion_examens`
 --
 ALTER TABLE `inscripcion_examens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion_respuestas`
 --
 ALTER TABLE `inscripcion_respuestas`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion_solicituds`

@@ -110,6 +110,11 @@ class UserController extends Controller
             'asignacion_grupos.edit',
             'asignacion_grupos.destroy',
 
+            'examen_nivelacions.index',
+            'examen_nivelacions.create',
+            'examen_nivelacions.edit',
+            'examen_nivelacions.destroy',
+
             'profesors.index',
             'profesors.create',
             'profesors.edit',
@@ -170,6 +175,11 @@ class UserController extends Controller
             'asignacion_grupos.edit',
             'asignacion_grupos.destroy',
 
+            'examen_nivelacions.index',
+            'examen_nivelacions.create',
+            'examen_nivelacions.edit',
+            'examen_nivelacions.destroy',
+
             'profesors.index',
             'profesors.create',
             'profesors.edit',
@@ -189,6 +199,11 @@ class UserController extends Controller
             'comunicados.create',
             'comunicados.edit',
             'comunicados.destroy',
+
+            'gestoria_solicituds.index',
+            'gestoria_solicituds.create',
+            'gestoria_solicituds.edit',
+            'gestoria_solicituds.destroy',
         ],
         "PROFESOR" => [
             'grupo_recursos.index',
@@ -198,10 +213,7 @@ class UserController extends Controller
 
             "grupos_profesor.index",
 
-            'examen_nivelacions.index',
-            'examen_nivelacions.create',
-            'examen_nivelacions.edit',
-            'examen_nivelacions.destroy',
+            'examen_nivelacions.calificar_examen_index',
 
             'comunicados.index',
             'comunicados.create',

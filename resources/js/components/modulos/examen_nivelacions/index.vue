@@ -32,7 +32,7 @@
                                             Nuevo
                                         </router-link>
                                     </div>
-                                    <div class="col-md-3">
+                                    <!-- <div class="col-md-3">
                                         <router-link
                                             v-if="
                                                 permisos.includes(
@@ -49,7 +49,7 @@
                                             ></i>
                                             Calificar
                                         </router-link>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="card-body">

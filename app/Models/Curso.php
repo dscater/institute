@@ -33,8 +33,8 @@ class Curso extends Model
         }
     }
 
-    public function examen_nivelacions()
+    public function examen_nivelacion()
     {
-        return $this->hasMany(ExamenNivelacion::class, 'curso_id')->orderBy("id", "desc");
+        return $this->hasOne(ExamenNivelacion::class, 'curso_id');
     }
 }

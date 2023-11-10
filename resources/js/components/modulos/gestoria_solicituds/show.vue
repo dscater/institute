@@ -322,7 +322,7 @@
                                                         'badge-success':
                                                             oGestoriaSolSolicitud.estado_solicitud ==
                                                             'ATENDIDO',
-                                                        'badge-info':
+                                                        'badge-primary':
                                                             oGestoriaSolSolicitud.estado_solicitud ==
                                                             'NO RESPONDE',
                                                         'badge-warning':
@@ -353,7 +353,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <button
-                                                    class="btn btn-info btn-block btn-flat"
+                                                    class="btn btn-primary btn-block btn-flat"
                                                     @click="
                                                         updateEstado(
                                                             'NO RESPONDE'
@@ -453,7 +453,7 @@ export default {
                 estado == "ATENDIDO"
                     ? "badge-success"
                     : estado == "NO RESPONDE"
-                    ? "badge-info"
+                    ? "badge-primary"
                     : "badge-warning";
             Swal.fire({
                 icon: "question",

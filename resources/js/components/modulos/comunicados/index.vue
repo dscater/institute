@@ -198,7 +198,7 @@ export default {
             fields: [
                 {
                     key: "id",
-                    label: "Nro.",
+                    label: "Código",
                     sortable: true,
                 },
                 { key: "grupo.nombre", label: "Grupo", sortable: true },

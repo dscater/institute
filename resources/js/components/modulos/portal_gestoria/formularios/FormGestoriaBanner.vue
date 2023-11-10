@@ -28,7 +28,7 @@
                                     :class="{
                                         'text-danger': errors.img,
                                     }"
-                                    >Seleccionar imagen*</label
+                                    >Seleccionar imagen (1920 x 860)*</label
                                 >
                                 <input
                                     type="file"

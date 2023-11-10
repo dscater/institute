@@ -323,7 +323,23 @@
                                     class="nav-link"
                                 >
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Exámen de nivelación</p>
+                                    <p>Examen de nivelación</p>
+                                </router-link>
+                            </li>
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes(
+                                        'examen_nivelacions.calificar_examen_index'
+                                    )
+                                "
+                            >
+                                <router-link
+                                    :to="{ name: 'examen_nivelacions.calificar_examen_index' }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Examen de nivelación</p>
                                 </router-link>
                             </li>
                         </ul>

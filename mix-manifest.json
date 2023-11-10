@@ -43,6 +43,7 @@
     "/imgs/logo_n.png": "/imgs/logo_n.png",
     "/imgs/logo_transparent.png": "/imgs/logo_transparent.png",
     "/imgs/pinmap.gif": "/imgs/pinmap.gif",
+    "/imgs/qr_institute.png": "/imgs/qr_institute.png",
     "/imgs/renewal.png": "/imgs/renewal.png",
     "/imgs/traveller.png": "/imgs/traveller.png",
     "/imgs/users/1699148587_6.jpg": "/imgs/users/1699148587_6.jpg",
@@ -123,8 +124,5 @@
     "/fonts/Poppins/Poppins-Thin.ttf": "/fonts/Poppins/Poppins-Thin.ttf",
     "/fonts/Poppins/Poppins-ThinItalic.ttf": "/fonts/Poppins/Poppins-ThinItalic.ttf",
     "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.ttf": "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.ttf",
-    "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff": "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff",
-    "/imgs/qr_institute.png": "/imgs/qr_institute.png",
-    "/imgs/1699630438_1.png": "/imgs/1699630438_1.png",
-    "/imgs/1699630565_1.png": "/imgs/1699630565_1.png"
+    "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff": "/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff"
 }

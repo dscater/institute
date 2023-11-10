@@ -86,7 +86,15 @@
                 <button
                     class="btn btn-success btn-block btn-flat"
                     v-html="txtBtnRegistrar"
-                    @click="enviarFormulario"
+                    @click="enviarFormulario('no')"
+                    :disabled="enviando"
+                ></button>
+            </div>
+            <div class="col-md-3 mb-4">
+                <button
+                    class="btn btn-warning btn-block btn-flat"
+                    v-html="txtBtnOmitir"
+                    @click="enviarFormulario('si')"
                     :disabled="enviando"
                 ></button>
             </div>
@@ -145,6 +153,13 @@ export default {
                 return `<i class="fa fa-paper-plane"></i> ENVIAR EXAMEN`;
             }
         },
+        txtBtnOmitir() {
+            if (this.enviando) {
+                return `<i class="fa fa-spinner fa-spin"></i> ENVIANDO...`;
+            } else {
+                return `<i class="fa fa-times"></i> OMITIR EXAMEN`;
+            }
+        },
     },
     data() {
         return {
@@ -160,13 +175,21 @@ export default {
         }, 300);
     },
     methods: {
-        enviarFormulario() {
+        enviarFormulario(omitir) {
+            let mensaje = "¿Estas seguro(a) de envíar el examen?";
+            let txt_btn_enviar = "Si, enviar examen";
+            if (omitir == "si") {
+                mensaje =
+                    "¿Estas seguro(a) de omitir el examen?<br />Esto hara que tengas un puntaje de 0";
+                txt_btn_enviar = "Si, omitir examen";
+            }
+
             Swal.fire({
                 icon: "question",
-                title: "¿Estas seguro(a) de envíar el examen?",
+                title: mensaje,
                 showCancelButton: true,
                 confirmButtonColor: "#03a898",
-                confirmButtonText: "Si, enviar examen",
+                confirmButtonText: txt_btn_enviar,
                 cancelButtonText: "No, cancelar",
                 denyButtonText: `No, cancelar`,
             }).then((result) => {
@@ -180,7 +203,8 @@ export default {
                         axios
                             .post(url, {
                                 respuestas: this.respuestas,
-                                asignacion_id: asignacion_id,
+                                asignacion_id: this.asignacion_id,
+                                omitir: omitir,
                             })
                             .then((res) => {
                                 this.enviando = false;

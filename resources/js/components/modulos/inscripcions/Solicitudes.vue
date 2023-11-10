@@ -203,7 +203,7 @@
                                                         'badge-success':
                                                             item.estado ==
                                                             'ACEPTADO',
-                                                        'badge-info':
+                                                        'badge-primary':
                                                             item.estado ==
                                                             'NO RESPONDE',
                                                         'badge-warning':
@@ -238,7 +238,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <button
-                                                    class="btn btn-info btn-block btn-flat"
+                                                    class="btn btn-primary btn-block btn-flat"
                                                     @click="
                                                         updateEstado(
                                                             item,
@@ -335,7 +335,7 @@ export default {
                 estado == "ACEPTADO"
                     ? "badge-success"
                     : estado == "NO RESPONDE"
-                    ? "badge-info"
+                    ? "badge-primary"
                     : "badge-warning";
             Swal.fire({
                 icon: "question",
