@@ -103,6 +103,36 @@
                                                     >
                                                 </template>
 
+                                                <template
+                                                    #cell(estado_ultima_solicitud)="row"
+                                                >
+                                                    <span
+                                                        class="badge"
+                                                        :class="{
+                                                            'badge-success':
+                                                                row.item
+                                                                    .estado_ultima_solicitud ==
+                                                                'ACEPTADO',
+                                                            'badge-primary':
+                                                                row.item
+                                                                    .estado_ultima_solicitud ==
+                                                                'NO RESPONDE',
+                                                            'badge-warning':
+                                                                row.item
+                                                                    .estado_ultima_solicitud ==
+                                                                'DESCARTADO',
+                                                            'badge-danger':
+                                                                row.item
+                                                                    .estado_ultima_solicitud ==
+                                                                'PENDIENTE',
+                                                        }"
+                                                        >{{
+                                                            row.item
+                                                                .estado_ultima_solicitud
+                                                        }}</span
+                                                    >
+                                                </template>
+
                                                 <template #cell(mas)="row">
                                                     <b-button
                                                         variant="success"
@@ -334,6 +364,11 @@ export default {
                 {
                     key: "cantidad_solicitudes_pendientes",
                     label: "Solicitudes Pendientes",
+                    sortable: true,
+                },
+                {
+                    key: "estado_ultima_solicitud",
+                    label: "Estado",
                     sortable: true,
                 },
                 { key: "mas", label: "Ver mas" },

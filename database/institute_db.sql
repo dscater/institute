@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 10-11-2023 a las 18:38:24
+-- Tiempo de generación: 19-11-2023 a las 00:35:32
 -- Versión del servidor: 8.0.30
--- Versión de PHP: 8.1.10
+-- Versión de PHP: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,7 @@ INSERT INTO `asignacion_grupos` (`id`, `grupo_id`, `inscripcion_id`, `inscripcio
 (1, 1, 2, 1, 7, '2023-11-04 21:17:52', '2023-11-04 21:21:15'),
 (2, 1, 4, 5, 7, '2023-11-07 13:58:37', '2023-11-07 13:58:45'),
 (3, 2, 3, 4, 1, '2023-11-07 13:58:53', '2023-11-07 13:58:53'),
-(4, 3, 2, 2, 3, '2023-11-07 14:07:55', '2023-11-07 14:07:55');
+(4, 4, 2, 2, 3, '2023-11-07 14:07:55', '2023-11-18 22:49:45');
 
 -- --------------------------------------------------------
 
@@ -57,6 +57,8 @@ CREATE TABLE `banners` (
   `id` bigint UNSIGNED NOT NULL,
   `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `posicion` int NOT NULL,
+  `titulo` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descripcion` varchar(400) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -65,9 +67,9 @@ CREATE TABLE `banners` (
 -- Volcado de datos para la tabla `banners`
 --
 
-INSERT INTO `banners` (`id`, `img`, `posicion`, `created_at`, `updated_at`) VALUES
-(1, '1698252099_1.png', 1, '2023-10-20 15:56:47', '2023-10-25 16:41:39'),
-(2, '1698252105_2.png', 2, '2023-10-20 16:02:52', '2023-10-25 16:41:45');
+INSERT INTO `banners` (`id`, `img`, `posicion`, `titulo`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, '1698252099_1.png', 1, 'Tomorrow\'s Today', 'Descripción imagen 1', '2023-10-20 15:56:47', '2023-11-18 22:26:28'),
+(2, '1698252105_2.png', 2, NULL, NULL, '2023-10-20 16:02:52', '2023-11-18 22:30:38');
 
 -- --------------------------------------------------------
 
@@ -92,7 +94,9 @@ CREATE TABLE `comunicados` (
 
 INSERT INTO `comunicados` (`id`, `grupo_id`, `titulo`, `descripcion`, `fecha`, `hora`, `created_at`, `updated_at`) VALUES
 (2, 3, 'COMUNICADO DESDE USUARIO PROFESOR', 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM. TOMAR NOTA', '2023-11-07', '16:46:00', '2023-11-07 20:46:28', '2023-11-07 20:46:28'),
-(3, 1, 'COMUNIDO GRUPO 1', 'COMUNICADO DESDE USE PROFESOR', '2023-11-10', '14:30:00', '2023-11-10 18:30:08', '2023-11-10 18:30:08');
+(3, 1, 'COMUNIDO GRUPO 1', 'COMUNICADO DESDE USE PROFESOR', '2023-11-10', '14:30:00', '2023-11-10 18:30:08', '2023-11-10 18:30:08'),
+(4, 3, 'COMUNICADO GRUPO 3', 'DESC. COMUNICADO', '2023-11-10', '14:39:00', '2023-11-10 18:39:35', '2023-11-10 18:39:35'),
+(5, 6, 'COMUNICADO GRUPO 5', 'COMUNICADO 5', '2023-11-10', '14:40:00', '2023-11-10 18:40:14', '2023-11-10 18:40:14');
 
 -- --------------------------------------------------------
 
@@ -319,6 +323,8 @@ CREATE TABLE `gestoria_banners` (
   `id` bigint UNSIGNED NOT NULL,
   `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `posicion` int NOT NULL,
+  `titulo` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descripcion` varchar(400) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -327,9 +333,9 @@ CREATE TABLE `gestoria_banners` (
 -- Volcado de datos para la tabla `gestoria_banners`
 --
 
-INSERT INTO `gestoria_banners` (`id`, `img`, `posicion`, `created_at`, `updated_at`) VALUES
-(1, '1698252229_1.webp', 1, '2023-10-23 17:32:58', '2023-10-25 16:43:49'),
-(2, '1698252254_2.jpg', 2, '2023-10-23 17:34:03', '2023-10-25 16:44:14');
+INSERT INTO `gestoria_banners` (`id`, `img`, `posicion`, `titulo`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, '1698252229_1.webp', 1, 'TÍTULO IMAGEN 1 GESTORÍA', 'DESCRIPCIÓN IMAGEN 1', '2023-10-23 17:32:58', '2023-11-18 22:32:05'),
+(2, '1698252254_2.jpg', 2, NULL, NULL, '2023-10-23 17:34:03', '2023-10-25 16:44:14');
 
 -- --------------------------------------------------------
 
@@ -940,7 +946,21 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (390, 3, 'MODIFICACIÓN', 'EL USUARIO maria@gmail.com MODIFICÓ UN EXAMEN DE NIVELACION', 'id: 4<br/>curso_id: 3<br/>created_at: 2023-11-07 10:41:22<br/>updated_at: 2023-11-07 10:41:22<br/>', 'id: 4<br/>curso_id: 3<br/>created_at: 2023-11-07 10:41:22<br/>updated_at: 2023-11-07 10:41:22<br/>', 'EXAMEN DE NIVELACION', '2023-11-10', '14:18:28', '2023-11-10 18:18:28', '2023-11-10 18:18:28'),
 (391, 6, 'CREACIÓN', 'EL USUARIO felipe@gmail.com REGISTRO UN GRUPO', 'id: 3<br/>grupo_id: 1<br/>titulo: COMUNIDO GRUPO 1<br/>descripcion: COMUNICADO DESDE USE PROFESOR<br/>fecha: 2023-11-10<br/>hora: 14:30<br/>created_at: 2023-11-10 14:30:08<br/>updated_at: 2023-11-10 14:30:08<br/>', NULL, 'GRUPOS', '2023-11-10', '14:30:08', '2023-11-10 18:30:08', '2023-11-10 18:30:08'),
 (392, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN EXAMEN DE NIVELACION', 'id: 5<br/>curso_id: 1<br/>created_at: 2023-11-10 14:35:18<br/>updated_at: 2023-11-10 14:35:18<br/>', NULL, 'EXAMEN DE NIVELACION', '2023-11-10', '14:35:18', '2023-11-10 18:35:18', '2023-11-10 18:35:18'),
-(393, 8, 'CREACIÓN', 'EL USUARIO roxana@gmail.com REALIZÓ UN EXAMEN DE NIVELACION', 'id: 4<br/>inscripcion_id: 3<br/>inscripcion_solicitud_id: 4<br/>examen_nivelacion_id: 5<br/>puntaje: 0<br/>estado: REVISADO<br/>created_at: 2023-11-10 14:35:41<br/>updated_at: 2023-11-10 14:35:41<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-10', '14:35:41', '2023-11-10 18:35:41', '2023-11-10 18:35:41');
+(393, 8, 'CREACIÓN', 'EL USUARIO roxana@gmail.com REALIZÓ UN EXAMEN DE NIVELACION', 'id: 4<br/>inscripcion_id: 3<br/>inscripcion_solicitud_id: 4<br/>examen_nivelacion_id: 5<br/>puntaje: 0<br/>estado: REVISADO<br/>created_at: 2023-11-10 14:35:41<br/>updated_at: 2023-11-10 14:35:41<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-10', '14:35:41', '2023-11-10 18:35:41', '2023-11-10 18:35:41'),
+(394, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN GRUPO', 'id: 4<br/>grupo_id: 3<br/>titulo: COMUNICADO GRUPO 3<br/>descripcion: DESC. COMUNICADO<br/>fecha: 2023-11-10<br/>hora: 14:39<br/>created_at: 2023-11-10 14:39:35<br/>updated_at: 2023-11-10 14:39:35<br/>', NULL, 'GRUPOS', '2023-11-10', '14:39:35', '2023-11-10 18:39:35', '2023-11-10 18:39:35'),
+(395, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN GRUPO', 'id: 5<br/>grupo_id: 6<br/>titulo: COMUNICADO GRUPO 5<br/>descripcion: COMUNICADO 5<br/>fecha: 2023-11-10<br/>hora: 14:40<br/>created_at: 2023-11-10 14:40:14<br/>updated_at: 2023-11-10 14:40:14<br/>', NULL, 'GRUPOS', '2023-11-10', '14:40:14', '2023-11-10 18:40:14', '2023-11-10 18:40:14'),
+(396, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN HORARIO', 'created_at: 2023-11-05 13:55:54<br/>dias: 0,1,1,1,1,1,0<br/>fecha_fin: 2023-11-12<br/>fecha_inicio: 2023-11-06<br/>grupo_id: 1<br/>hora_fin: 18:30:00<br/>hora_inicio: 17:00:00<br/>id: 1<br/>modalidad: PRESENCIAL<br/>updated_at: 2023-11-05 14:06:37<br/>', 'created_at: 2023-11-05 13:55:54<br/>dias: 0,1,1,1,1,1,0<br/>fecha_fin: 2023-11-30<br/>fecha_inicio: 2023-11-10<br/>grupo_id: 1<br/>hora_fin: 18:30:00<br/>hora_inicio: 17:00:00<br/>id: 1<br/>modalidad: PRESENCIAL<br/>updated_at: 2023-11-18 17:51:26<br/>', 'HORARIOS', '2023-11-18', '17:51:26', '2023-11-18 21:51:26', '2023-11-18 21:51:26'),
+(397, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN CURSO', 'created_at: 2023-11-18 18:13:35<br/>descripcion: DESC<br/>fecha_registro: 2023-11-18<br/>id: 8<br/>imagen: <br/>nombre: CURSO #8<br/>updated_at: 2023-11-18 18:13:35<br/>', NULL, 'CURSOS', '2023-11-18', '18:13:35', '2023-11-18 22:13:35', '2023-11-18 22:13:35'),
+(398, 1, 'ELIMINACIÓN', 'EL USUARIO admin@gmail.com ELIMINÓ UN CURSO', 'created_at: 2023-11-18 18:13:35<br/>descripcion: DESC<br/>fecha_registro: 2023-11-18<br/>id: 8<br/>imagen: <br/>nombre: CURSO #8<br/>updated_at: 2023-11-18 18:13:35<br/>', NULL, 'CURSOS', '2023-11-18', '18:13:37', '2023-11-18 22:13:37', '2023-11-18 22:13:37'),
+(399, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UN GRUPO', 'created_at: 2023-11-18 18:18:51<br/>descripcion: DESC<br/>estado: ACTIVO<br/>id: 7<br/>link_reunion: <br/>nombre: GRUPO NUEVO<br/>updated_at: 2023-11-18 18:18:51<br/>', NULL, 'GRUPOS', '2023-11-18', '18:18:51', '2023-11-18 22:18:51', '2023-11-18 22:18:51'),
+(400, 1, 'ELIMINACIÓN', 'EL USUARIO admin@gmail.com ELIMINÓ UN GRUPO', 'created_at: 2023-11-18 18:18:51<br/>descripcion: DESC<br/>estado: ACTIVO<br/>id: 7<br/>link_reunion: <br/>nombre: GRUPO NUEVO<br/>updated_at: 2023-11-18 18:18:51<br/>', NULL, 'GRUPOS', '2023-11-18', '18:18:54', '2023-11-18 22:18:54', '2023-11-18 22:18:54'),
+(401, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN BANNER', 'created_at: 2023-10-20 11:56:47<br/>descripcion: <br/>id: 1<br/>img: 1698252099_1.png<br/>posicion: 1<br/>titulo: <br/>updated_at: 2023-10-25 12:41:39<br/>', 'created_at: 2023-10-20 11:56:47<br/>descripcion: Descripción imagen 1<br/>id: 1<br/>img: 1698252099_1.png<br/>posicion: 1<br/>titulo: Tomorrow\'s Today<br/>updated_at: 2023-11-18 18:26:28<br/>', 'BANNERS', '2023-11-18', '18:26:28', '2023-11-18 22:26:28', '2023-11-18 22:26:28'),
+(402, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN BANNER', 'created_at: 2023-10-20 12:02:52<br/>descripcion: <br/>id: 2<br/>img: 1698252105_2.png<br/>posicion: 2<br/>titulo: <br/>updated_at: 2023-10-25 12:41:45<br/>', 'created_at: 2023-10-20 12:02:52<br/>descripcion: <br/>id: 2<br/>img: 1698252105_2.png<br/>posicion: 2<br/>titulo: <br/>updated_at: 2023-11-18 18:30:38<br/>', 'BANNERS', '2023-11-18', '18:30:38', '2023-11-18 22:30:38', '2023-11-18 22:30:38'),
+(403, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UN BANNER DE GESTORÍA', 'created_at: 2023-10-23 13:32:58<br/>descripcion: <br/>id: 1<br/>img: 1698252229_1.webp<br/>posicion: 1<br/>titulo: <br/>updated_at: 2023-10-25 12:43:49<br/>', 'created_at: 2023-10-23 13:32:58<br/>descripcion: DESCRIPCIÓN IMAGEN 1<br/>id: 1<br/>img: 1698252229_1.webp<br/>posicion: 1<br/>titulo: TÍTULO IMAGEN 1 GESTORÍA<br/>updated_at: 2023-11-18 18:32:05<br/>', 'GESTORÍA BANNERS', '2023-11-18', '18:32:05', '2023-11-18 22:32:05', '2023-11-18 22:32:05'),
+(404, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-07 10:07:55<br/>curso_id: 3<br/>grupo_id: 3<br/>id: 4<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 2<br/>updated_at: 2023-11-07 10:07:55<br/>', 'created_at: 2023-11-07 10:07:55<br/>curso_id: 3<br/>grupo_id: 4<br/>id: 4<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 2<br/>updated_at: 2023-11-18 18:49:45<br/>', 'ASIGNACIÓN DE GRUPOS', '2023-11-18', '18:49:45', '2023-11-18 22:49:45', '2023-11-18 22:49:45'),
+(405, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com CALIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-10 14:11:35<br/>estado: APROBÓ<br/>examen_nivelacion_id: 2<br/>id: 3<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>puntaje: 90<br/>updated_at: 2023-11-18 19:58:14<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-18', '19:58:14', '2023-11-18 23:58:14', '2023-11-18 23:58:14'),
+(406, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com CALIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-10 14:11:35<br/>estado: ABANDONÓ<br/>examen_nivelacion_id: 2<br/>id: 3<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>puntaje: 90<br/>updated_at: 2023-11-18 20:00:25<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-18', '20:00:25', '2023-11-19 00:00:25', '2023-11-19 00:00:25'),
+(407, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com CALIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-10 14:11:35<br/>estado: ABANDONÓ<br/>examen_nivelacion_id: 2<br/>id: 3<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>puntaje: <br/>updated_at: 2023-11-18 20:00:32<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-18', '20:00:32', '2023-11-19 00:00:32', '2023-11-19 00:00:32');
 
 -- --------------------------------------------------------
 
@@ -966,7 +986,7 @@ CREATE TABLE `horarios` (
 --
 
 INSERT INTO `horarios` (`id`, `grupo_id`, `modalidad`, `dias`, `fecha_inicio`, `fecha_fin`, `hora_inicio`, `hora_fin`, `created_at`, `updated_at`) VALUES
-(1, 1, 'PRESENCIAL', '0,1,1,1,1,1,0', '2023-11-06', '2023-11-12', '17:00:00', '18:30:00', '2023-11-05 17:55:54', '2023-11-05 18:06:37'),
+(1, 1, 'PRESENCIAL', '0,1,1,1,1,1,0', '2023-11-10', '2023-11-30', '17:00:00', '18:30:00', '2023-11-05 17:55:54', '2023-11-18 21:51:26'),
 (3, 2, 'VIRTUAL', '1,0,0,0,0,0,1', '2023-11-08', '2023-11-20', '18:00:00', '20:00:00', '2023-11-07 14:32:30', '2023-11-07 14:32:30'),
 (4, 3, 'PRESENCIAL', '0,1,1,1,1,1,0', '2023-11-10', '2023-11-30', '08:00:00', '12:00:00', '2023-11-07 14:32:57', '2023-11-07 14:32:57');
 
@@ -1031,7 +1051,8 @@ INSERT INTO `inscripcions` (`id`, `user_id`, `nombres`, `apellidos`, `nro_iden`,
 (3, 8, 'ROXANA', 'MAMANI MAMANI', '67678', '2003-01-01', 20, 'BOLIVIA', 'BOLIVIANA', 'LA PAZ', 'MUJER', '7999999', 'PENDIENTE', 'roxana@gmail.com', '2023-11-07 13:11:50', '2023-11-07 13:11:50'),
 (4, 9, 'MAX', 'PONCE', '32322', '2000-01-01', 23, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '777777', 'ACEPTADO', 'max@gmail.com', '2023-11-07 13:16:31', '2023-11-07 13:16:31'),
 (5, 12, 'LUIS', 'CARVAJAL GONZALES', '544544', '1999-01-01', 24, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '7666666', 'PENDIENTE', 'luis@gmail.com', '2023-11-08 20:09:48', '2023-11-08 20:09:48'),
-(6, 13, 'MARGARITA', 'SOLIZ', '43434', '2000-03-03', 23, 'BOLIVIA', 'BOLIVIANA', 'SANTA CRUZ', 'MUJER', '7888888', 'ACEPTADO', 'margarita@gmail.com', '2023-11-10 17:07:30', '2023-11-10 17:48:58');
+(6, 13, 'MARGARITA', 'SOLIZ', '43434', '2000-03-03', 23, 'BOLIVIA', 'BOLIVIANA', 'SANTA CRUZ', 'MUJER', '7888888', 'ACEPTADO', 'margarita@gmail.com', '2023-11-10 17:07:30', '2023-11-10 17:48:58'),
+(7, 14, 'ERIC', 'CORTEZ CORTEZ', '66666', '2004-11-11', 19, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '777777', 'PENDIENTE', 'eric12@gmail.com', '2023-11-18 22:43:20', '2023-11-18 22:43:20');
 
 -- --------------------------------------------------------
 
@@ -1056,7 +1077,7 @@ CREATE TABLE `inscripcion_examens` (
 
 INSERT INTO `inscripcion_examens` (`id`, `inscripcion_id`, `inscripcion_solicitud_id`, `examen_nivelacion_id`, `puntaje`, `estado`, `created_at`, `updated_at`) VALUES
 (1, 2, 2, 4, 90.00, 'REVISADO', '2023-11-07 16:43:29', '2023-11-07 20:07:46'),
-(3, 2, 1, 2, 0.00, 'REVISADO', '2023-11-10 18:11:35', '2023-11-10 18:11:35'),
+(3, 2, 1, 2, NULL, 'ABANDONÓ', '2023-11-10 18:11:35', '2023-11-19 00:00:32'),
 (4, 3, 4, 5, 0.00, 'REVISADO', '2023-11-10 18:35:41', '2023-11-10 18:35:41');
 
 -- --------------------------------------------------------
@@ -1090,11 +1111,11 @@ INSERT INTO `inscripcion_respuestas` (`id`, `inscripcion_examen_id`, `examen_enu
 (7, 1, 10, 16, 'at', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:41'),
 (8, 1, 11, 17, 'My brother\'s car is very nice', 'CORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:41'),
 (9, 1, 12, 18, 'that', 'INCORRECTO', '2023-11-07 16:43:29', '2023-11-07 20:00:50'),
-(10, 3, 2, 2, NULL, NULL, '2023-11-10 18:11:35', '2023-11-10 18:11:35'),
-(11, 3, 2, 7, NULL, NULL, '2023-11-10 18:11:35', '2023-11-10 18:11:35'),
-(12, 3, 3, 4, NULL, NULL, '2023-11-10 18:11:35', '2023-11-10 18:11:35'),
-(13, 3, 3, 8, NULL, NULL, '2023-11-10 18:11:35', '2023-11-10 18:11:35'),
-(14, 3, 6, 9, NULL, NULL, '2023-11-10 18:11:35', '2023-11-10 18:11:35'),
+(10, 3, 2, 2, NULL, NULL, '2023-11-10 18:11:35', '2023-11-18 23:58:14'),
+(11, 3, 2, 7, NULL, NULL, '2023-11-10 18:11:35', '2023-11-18 23:58:14'),
+(12, 3, 3, 4, NULL, NULL, '2023-11-10 18:11:35', '2023-11-18 23:58:14'),
+(13, 3, 3, 8, NULL, NULL, '2023-11-10 18:11:35', '2023-11-18 23:58:14'),
+(14, 3, 6, 9, NULL, NULL, '2023-11-10 18:11:35', '2023-11-18 23:58:14'),
 (15, 4, 13, 19, NULL, NULL, '2023-11-10 18:35:41', '2023-11-10 18:35:41'),
 (16, 4, 14, 20, NULL, NULL, '2023-11-10 18:35:41', '2023-11-10 18:35:41');
 
@@ -1136,7 +1157,8 @@ INSERT INTO `inscripcion_solicituds` (`id`, `codigo`, `inscripcion_id`, `curso_i
 (5, 'C.5', 4, 7, 'NIVEL BÁSICO', 'INSTAGRAM', '', 3, 400.00, 'WESTERN UNION', '1699362991_5.pdf', 'WESTER UNION<br />\r\nMAX PONCE', NULL, 'SI', 'ACEPTADO', '2023-11-07 13:16:31', '2023-11-07 13:58:37'),
 (6, 'C.6', 5, 3, 'NIVEL BÁSICO', 'INSTAGRAM', '', 2, 130.00, 'DEPÓSITO BANCARIO', '1699474188_6.png', 'BANCO UNION<br />\r\nLUIS CARVAJAL<br />\r\nMONTO: 130<br />\r\nNRO. CUENTA: 10000033333', NULL, 'NO', 'PENDIENTE', '2023-11-08 20:09:48', '2023-11-08 20:09:48'),
 (7, 'C.7', 6, 1, 'NIVEL CERO', 'FACEBOOK', '', 1, 49.99, 'DEPÓSITO BANCARIO', NULL, '', NULL, 'NO', 'ACEPTADO', '2023-11-10 17:07:30', '2023-11-10 17:49:04'),
-(8, 'C.8', 6, 7, 'NIVEL BÁSICO', 'OTRO', 'DESCRIPCION OTRO', 3, 400.00, 'ZELLE', NULL, '', NULL, 'NO', 'ACEPTADO', '2023-11-10 17:15:16', '2023-11-10 17:48:58');
+(8, 'C.8', 6, 7, 'NIVEL BÁSICO', 'OTRO', 'DESCRIPCION OTRO', 3, 400.00, 'ZELLE', NULL, '', NULL, 'NO', 'ACEPTADO', '2023-11-10 17:15:16', '2023-11-10 17:48:58'),
+(9, 'C.9', 7, 1, 'NIVEL CERO', 'INSTAGRAM', '', 3, 400.00, 'ZELLE', '1700347400_9.pdf', '', NULL, 'NO', 'PENDIENTE', '2023-11-18 22:43:20', '2023-11-18 22:43:20');
 
 -- --------------------------------------------------------
 
@@ -1389,7 +1411,8 @@ INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `dir`, `co
 (10, 'manuel@gmail.com', 'manuel', 'paredes gonzales', NULL, 'los olivos', 'manuel@gmail.com', '7888888', '$2y$10$oO9sg7RbCB376kiFKCaX4egOISpOc75VE7Gzglq7KCctvJLy/DHqS', 'PROFESOR', NULL, 1, '2023-11-07', '2023-11-07 14:00:37', '2023-11-07 14:00:37'),
 (11, 'juanluis@gmail.com', 'juan luis', 'caceres cortez', NULL, 'los olivos', 'juanluis@gmail.com', '799999', '$2y$10$CgvPDe2OTj623Ffux4h.QuzhcOaa5IBipn37Dj9ehDK2Z9VSpLt4O', 'PROFESOR', NULL, 1, '2023-11-07', '2023-11-07 14:07:06', '2023-11-07 14:07:06'),
 (12, 'luis@gmail.com', 'LUIS', 'CARVAJAL GONZALES', NULL, 'LA PAZ - BOLIVIA', 'luis@gmail.com', '7666666', '$2y$10$n/zlM/JfzUUs7JBDX4BgjORR9BaUZtQrUXHsZSFPRSMEinv9z/6su', 'ESTUDIANTE', NULL, 1, '2023-11-08', '2023-11-08 20:09:48', '2023-11-08 20:09:48'),
-(13, 'margarita@gmail.com', 'MARGARITA', 'SOLIZ', NULL, 'SANTA CRUZ - BOLIVIA', 'margarita@gmail.com', '7888888', '$2y$10$QuCrk.6s/eHUKJiQBpjMNe7Kdd6E.HDD2gf0eKC3M927y7IqctpsC', 'ESTUDIANTE', NULL, 1, '2023-11-10', '2023-11-10 17:07:30', '2023-11-10 17:07:30');
+(13, 'margarita@gmail.com', 'MARGARITA', 'SOLIZ', NULL, 'SANTA CRUZ - BOLIVIA', 'margarita@gmail.com', '7888888', '$2y$10$QuCrk.6s/eHUKJiQBpjMNe7Kdd6E.HDD2gf0eKC3M927y7IqctpsC', 'ESTUDIANTE', NULL, 1, '2023-11-10', '2023-11-10 17:07:30', '2023-11-10 17:07:30'),
+(14, 'eric12@gmail.com', 'ERIC', 'CORTEZ CORTEZ', NULL, 'LA PAZ - BOLIVIA', 'eric12@gmail.com', '777777', '$2y$10$40OnwsnTQiQ7Dh/2gvJl5u1HLwjSlSlnqOnDvvk/bfIAmm35e4Wb2', 'ESTUDIANTE', NULL, 1, '2023-11-18', '2023-11-18 22:43:20', '2023-11-18 22:43:20');
 
 --
 -- Índices para tablas volcadas
@@ -1648,7 +1671,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT de la tabla `comunicados`
 --
 ALTER TABLE `comunicados`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `configuracions`
@@ -1672,7 +1695,7 @@ ALTER TABLE `contactos`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `enunciado_preguntas`
@@ -1732,7 +1755,7 @@ ALTER TABLE `gestoria_tips`
 -- AUTO_INCREMENT de la tabla `grupos`
 --
 ALTER TABLE `grupos`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo_profesors`
@@ -1750,7 +1773,7 @@ ALTER TABLE `grupo_recursos`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=394;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=408;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
@@ -1768,7 +1791,7 @@ ALTER TABLE `informacion_pagos`
 -- AUTO_INCREMENT de la tabla `inscripcions`
 --
 ALTER TABLE `inscripcions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion_examens`
@@ -1786,7 +1809,7 @@ ALTER TABLE `inscripcion_respuestas`
 -- AUTO_INCREMENT de la tabla `inscripcion_solicituds`
 --
 ALTER TABLE `inscripcion_solicituds`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -1840,7 +1863,7 @@ ALTER TABLE `red_socials`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas

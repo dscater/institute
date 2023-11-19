@@ -57,6 +57,9 @@ class BannerController extends Controller
             $request["img"] = "default.png";
             $request["mostrar_boton"] = (int)$request["mostrar_boton"];
             $nuevo_banner = Banner::create(array_map('mb_strtoupper', $request->all()));
+            $nuevo_banner->titulo = $request->titulo;
+            $nuevo_banner->descripcion = $request->descripcion;
+            $nuevo_banner->save();
             // cargando imagen
             $nom_img = time() . '_' . $nuevo_banner->id . '.' . $file_img->getClientOriginalExtension();
             $nuevo_banner->img = $nom_img;
@@ -100,7 +103,8 @@ class BannerController extends Controller
             $datos_original = HistorialAccion::getDetalleRegistro($banner, "banners");
             $request["mostrar_boton"] = (int)$request["mostrar_boton"];
             $banner->update(array_map('mb_strtoupper', $request->except("img")));
-
+            $banner->titulo = $request->titulo;
+            $banner->descripcion = $request->descripcion;
             if ($request->hasFile("img")) {
                 $antiguo = $banner->img;
                 if ($antiguo != 'default.png') {

@@ -15,7 +15,10 @@
                     <div class="col-md-3">
                         <router-link
                             :to="{
-                                name: 'examen_nivelacions.calificar_examen_index',
+                                name: 'examen_nivelacions.examenes_grupo',
+                                params: {
+                                    id: grupo_id,
+                                },
                             }"
                             class="btn btn-default btn-flat btn-block"
                         >
@@ -70,7 +73,7 @@
 <script>
 import Formulario from "./Formulario.vue";
 export default {
-    props: ["id"],
+    props: ["id", "grupo_id"],
     components: {
         Formulario,
     },

@@ -80,6 +80,46 @@
                                     v-text="errors.posicion[0]"
                                 ></span>
                             </div>
+                            <div class="form-group col-md-12">
+                                <label
+                                    :class="{
+                                        'text-danger': errors.titulo,
+                                    }"
+                                    >Título</label
+                                >
+                                <el-input
+                                    placeholder="Título"
+                                    :class="{ 'is-invalid': errors.titulo }"
+                                    v-model="banner.titulo"
+                                    clearable
+                                ></el-input>
+                                <span
+                                    class="error invalid-feedback"
+                                    v-if="errors.titulo"
+                                    v-text="errors.titulo[0]"
+                                ></span>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label
+                                    :class="{
+                                        'text-danger': errors.descripcion,
+                                    }"
+                                    >Descripción</label
+                                >
+                                <el-input
+                                    placeholder="Descripción"
+                                    :class="{
+                                        'is-invalid': errors.descripcion,
+                                    }"
+                                    v-model="banner.descripcion"
+                                    clearable
+                                ></el-input>
+                                <span
+                                    class="error invalid-feedback"
+                                    v-if="errors.descripcion"
+                                    v-text="errors.descripcion[0]"
+                                ></span>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -122,6 +162,8 @@ export default {
                 img: null,
                 url_img: "",
                 posicion: 1,
+                titulo: "",
+                descripcion: "",
             },
         },
     },
@@ -187,6 +229,14 @@ export default {
                 formdata.append(
                     "posicion",
                     this.banner.posicion ? this.banner.posicion : ""
+                );
+                formdata.append(
+                    "titulo",
+                    this.banner.titulo ? this.banner.titulo : ""
+                );
+                formdata.append(
+                    "descripcion",
+                    this.banner.descripcion ? this.banner.descripcion : ""
                 );
                 if (this.accion == "edit") {
                     url = main_url + "/admin/banners/" + this.banner.id;
@@ -268,6 +318,8 @@ export default {
             this.errors = [];
             this.banner.img = null;
             this.banner.posicion = "";
+            this.banner.titulo = "";
+            this.banner.descripcion = "";
             this.$refs.input_file.value = null;
             this.src_imagen_cargada = "";
         },

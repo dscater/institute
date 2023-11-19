@@ -9,6 +9,34 @@
                     :style="'background-image: url(' + item.url_img + ')'"
                 >
                     <!-- <div class="overlay overlay-bg"></div> -->
+                    <div class="container-fluid h-full info_slider">
+                        <div class="flex-col-l-m h-full p-t-100 p-b-30">
+                            <div
+                                class="layer-slick1 animated visible-false"
+                                data-appear="rollIn"
+                                data-delay="0"
+                                v-if="item.titulo && item.titulo.trim() != ''"
+                            >
+                                <span class="ltext-202 respon2">{{
+                                    item.titulo
+                                }}</span>
+                            </div>
+
+                            <div
+                                class="layer-slick1 animated visible-false"
+                                data-appear="lightSpeedIn"
+                                data-delay="800"
+                                v-if="
+                                    item.descripcion &&
+                                    item.descripcion.trim() != ''
+                                "
+                            >
+                                <h2 class="ltext-104 p-t-19 p-b-43 respon1">
+                                    {{ item.descripcion }}
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

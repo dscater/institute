@@ -12,6 +12,8 @@ class Banner extends Model
     protected $fillable = [
         "img",
         "posicion",
+        "titulo",
+        "descripcion",
     ];
 
     protected $appends = ["url_img"];

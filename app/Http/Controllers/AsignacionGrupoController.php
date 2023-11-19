@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\AsignacionGrupo;
+use App\Models\Grupo;
 use App\Models\HistorialAccion;
 use App\Models\Inscripcion;
 use App\Models\InscripcionSolicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Svg\Tag\Rect;
 
 class AsignacionGrupoController extends Controller
 {
@@ -28,6 +30,18 @@ class AsignacionGrupoController extends Controller
     {
         $asignacion_grupos = AsignacionGrupo::with(["grupo", "curso", "inscripcion", "inscripcion_solicitud"])->orderBy("id", "desc")->get();
         return response()->JSON(['asignacion_grupos' => $asignacion_grupos, 'total' => count($asignacion_grupos)], 200);
+    }
+
+    public function asignaciones_existentes(Request $request)
+    {
+        $id_grupos = AsignacionGrupo::distinct()->pluck("grupo_id");
+        $per_page = 18;
+        $grupos = Grupo::whereIn("id", $id_grupos)->orderBy("id", "desc")->paginate($per_page);
+        return response()->JSON([
+            "grupos" => $grupos,
+            "id_grupos" => $id_grupos,
+            "per_page" => $per_page,
+        ]);
     }
 
     public function asignaciones_estudiante(Request $request)

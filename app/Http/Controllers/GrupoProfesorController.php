@@ -51,13 +51,20 @@ class GrupoProfesorController extends Controller
         $request->validate($this->validacion, $this->mensajes);
         DB::beginTransaction();
         try {
-            // VALIDAR ASIGNACION DEL PROFESOR EN EL MISMO GRUPO
             $profesor = Profesor::findOrFail($request->profesor_id);
             $grupo = Grupo::findOrFail($request->grupo_id);
+            // VALIDAR QUE EL GRUPO NO TENGA UNA ASIGNACIÓN 
+            $existe_asignacion_grupo = GrupoProfesor::where("grupo_id", $request->grupo_id)->get()->first();
+            if ($existe_asignacion_grupo) {
+                throw new Exception("El grupo " . $grupo->nombre . " ya cuenta con un profesor asignado ");
+            }
+
+            // VALIDAR ASIGNACION DEL PROFESOR EN EL MISMO GRUPO
             $existe_asignacion_grupo = GrupoProfesor::where("profesor_id", $request->profesor_id)->where("grupo_id", $request->grupo_id)->get()->first();
             if ($existe_asignacion_grupo) {
                 throw new Exception("El profesor " . $profesor->full_name . " ya fue asignado al grupo " . $grupo->nombre);
             }
+
             // crear el GrupoProfesor
             $request["fecha_registro"] = date("Y-m-d");
             $request["user_id"] = $profesor->user_id;
@@ -102,6 +109,13 @@ class GrupoProfesorController extends Controller
         try {
             $profesor = Profesor::findOrFail($request->profesor_id);
             $grupo = Grupo::findOrFail($request->grupo_id);
+            // VALIDAR QUE EL GRUPO NO TENGA UNA ASIGNACIÓN 
+            $existe_asignacion_grupo = GrupoProfesor::where("grupo_id", $request->grupo_id)
+                ->where("id", "!=", $grupo_profesor->id)
+                ->get()->first();
+            if ($existe_asignacion_grupo) {
+                throw new Exception("El grupo " . $grupo->nombre . " ya cuenta con un profesor asignado ");
+            }
             $existe_asignacion_grupo = GrupoProfesor::where("profesor_id", $request->profesor_id)->where("grupo_id", $request->grupo_id)
                 ->where("id", "!=", $grupo_profesor->id)->get()->first();
             if ($existe_asignacion_grupo) {

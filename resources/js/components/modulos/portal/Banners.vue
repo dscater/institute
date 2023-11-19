@@ -221,6 +221,8 @@ export default {
                     sortable: true,
                 },
                 { key: "img", label: "Imagen", sortable: true },
+                { key: "titulo", label: "Título", sortable: true },
+                { key: "descripcion", label: "Descripción", sortable: true },
                 { key: "accion", label: "Acción" },
             ],
             loading: true,
@@ -230,8 +232,8 @@ export default {
                 id: 0,
                 img: null,
                 posicion: "",
-                desc1: "",
-                desc2: "",
+                titulo: "",
+                descripcion: "",
                 muestra_boton: 0,
             },
             currentPage: 1,
@@ -258,6 +260,8 @@ export default {
             this.oBanner.id = item.id;
             this.oBanner.url_img = item.url_img ? item.url_img : "";
             this.oBanner.posicion = item.posicion ? item.posicion : "";
+            this.oBanner.titulo = item.titulo ? item.titulo : "";
+            this.oBanner.descripcion = item.descripcion ? item.descripcion : "";
             this.modal_accion = "edit";
             this.muestra_modal = true;
         },
@@ -347,6 +351,8 @@ export default {
         limpiaBanner() {
             this.oBanner.img = null;
             this.oBanner.posicion = 1;
+            this.oBanner.titulo = "";
+            this.oBanner.descripcion = "";
         },
         formatoFecha(date) {
             return this.$moment(String(date)).format("DD/MM/YYYY");

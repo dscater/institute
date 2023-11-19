@@ -111,6 +111,26 @@
                                     v-model="puntaje"
                                 />
                             </div>
+                            <div class="col-md-12 form-group">
+                                <label>Puntaje final:</label>
+                                <el-select
+                                    type="number"
+                                    class="w-100"
+                                    v-model="estado"
+                                >
+                                    <el-option
+                                        v-for="item in [
+                                            'APROBÓ',
+                                            'REPROBÓ',
+                                            'ABANDONÓ',
+                                        ]"
+                                        :key="item"
+                                        :value="item"
+                                        :label="item"
+                                    >
+                                    </el-option>
+                                </el-select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -198,6 +218,7 @@ export default {
             muestra_modal: false,
             enviando: false,
             puntaje: 0,
+            estado: this.inscripcion_examen.estado,
             c_correctos: 0,
             c_incorrectos: 0,
         };
@@ -231,6 +252,7 @@ export default {
                         axios
                             .post(url, {
                                 puntaje: this.puntaje,
+                                estado: this.estado,
                                 respuestas: this.respuestas,
                             })
                             .then((res) => {

@@ -51,7 +51,7 @@ class HorarioController extends Controller
 
         $array_horas = [];
         $array_fechas = [];
-        $array_fecha_fin_aux = [];
+        $array_fechas_aux = [];
 
         $tabla_horarios = [];
         $tabla_fechas = [];
@@ -96,9 +96,23 @@ class HorarioController extends Controller
             // *************************************************
             if (!in_array($fecha_string, $array_fechas)) {
                 $array_fechas[] = $fecha_string;
-                $array_fecha_fin_aux[] = $h->fecha_fin;
+                $array_fechas_aux[] = $h->fecha_fin;
                 // agregar horario a la fecha
-                $tabla_fechas[$fecha_string] = $cursos;
+                if (count($cursos) > 0) {
+                    foreach ($cursos as $c) {
+                        $tabla_fechas[$fecha_string][] = $c;
+                    }
+                } else {
+                    $tabla_fechas[$fecha_string][] = $cursos[0];
+                }
+            } else {
+                if (count($cursos) > 0) {
+                    foreach ($cursos as $c) {
+                        $tabla_fechas[$fecha_string][] = $c;
+                    }
+                } else {
+                    $tabla_fechas[$fecha_string][] = $cursos[0];
+                }
             }
         }
 

@@ -10,7 +10,7 @@
             <img
                 :src="configuracion.path_image"
                 alt="Logo"
-                class="brand-image img-circle elevation-3"
+                class="brand-image"
                 style="opacity: 0.8"
             />
             <span
@@ -197,7 +197,10 @@
                             $route.name ==
                                 'examen_nivelacions.calificar_examen' ||
                             $route.name == 'comunicados.index' ||
-                            $route.name == 'grupos_profesor.index'
+                            $route.name == 'grupos_profesor.index' ||
+                            $route.name ==
+                                'asignacion_grupos.ver_grupo_asignacion' ||
+                            $route.name == 'examen_nivelacions.examenes_grupo'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"
@@ -335,8 +338,20 @@
                                 "
                             >
                                 <router-link
-                                    :to="{ name: 'examen_nivelacions.calificar_examen_index' }"
+                                    :to="{
+                                        name: 'examen_nivelacions.calificar_examen_index',
+                                    }"
                                     class="nav-link"
+                                    :class="[
+                                        $route.name ==
+                                            'examen_nivelacions.calificar_examen_index' ||
+                                        $route.name ==
+                                            'examen_nivelacions.examenes_grupo' ||
+                                        $route.name ==
+                                            'examen_nivelacions.calificar_examen'
+                                            ? 'active'
+                                            : '',
+                                    ]"
                                 >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Examen de nivelación</p>

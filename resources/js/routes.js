@@ -293,6 +293,14 @@ export default new Router({
                     .default,
             props: true,
         },
+        {
+            path: "/administracion/asignacion_grupos/ver_grupo_asignacion/:id",
+            name: "asignacion_grupos.ver_grupo_asignacion",
+            component:
+                require("./components/modulos/asignacion_grupos/VerGrupoAsignacion.vue")
+                    .default,
+            props: true,
+        },
 
         // Profesors
         {
@@ -383,7 +391,7 @@ export default new Router({
 
         // calificar examen estudiante
         {
-            path: "/administracion/examen_nivelacions/calificar_examen",
+            path: "/administracion/examen_nivelacions/calificar_examenes",
             name: "examen_nivelacions.calificar_examen_index",
             component:
                 require("./components/modulos/calificar_examen/index.vue")
@@ -391,7 +399,15 @@ export default new Router({
             props: true,
         },
         {
-            path: "/administracion/examen_nivelacions/calificar_examen/:id",
+            path: "/administracion/examen_nivelacions/calificar_examen/examenes_grupo/:id",
+            name: "examen_nivelacions.examenes_grupo",
+            component:
+                require("./components/modulos/calificar_examen/VerExamenesGrupo.vue")
+                    .default,
+            props: true,
+        },
+        {
+            path: "/administracion/examen_nivelacions/calificar_examen/examenes_grupo/:grupo_id/:id",
             name: "examen_nivelacions.calificar_examen",
             component: require("./components/modulos/calificar_examen/show.vue")
                 .default,

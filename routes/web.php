@@ -188,6 +188,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // ASIGNACION GRUPOS
+        Route::get("asignacion_grupos/asignaciones_existentes", [AsignacionGrupoController::class, 'asignaciones_existentes']);
         Route::get("asignacion_grupos/asignaciones_estudiante", [AsignacionGrupoController::class, 'asignaciones_estudiante']);
         Route::resource('asignacion_grupos', AsignacionGrupoController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
@@ -223,6 +224,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // INSCRIPCION EXAMENS
+        Route::get("inscripcion_examens/getExamenesGrupo/{grupo}", [InscripcionExamenController::class, 'getExamenesGrupo']);
         Route::post("inscripcion_examens/registrar_calificacion/{inscripcion_examen}", [InscripcionExamenController::class, 'registrar_calificacion']);
         Route::resource('inscripcion_examens', InscripcionExamenController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'

@@ -28,59 +28,33 @@
                 <div class="row">
                     <div
                         class="col-md-4"
-                        v-for="item in listInscripcionExamens"
+                        v-for="item in listAsignacionGruposProfesor"
                     >
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <h4 class="text-md">
-                                            {{
-                                                item.inscripcion_solicitud.curso
-                                                    .nombre
-                                            }}
-                                        </h4>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <p class="mb-1">
-                                            <strong>Estudiante: </strong>
-                                            {{ item.inscripcion.full_name }}
-                                        </p>
-                                        <p class="mb-1">
-                                            <strong>Código Examen: </strong>
-                                            {{ item.examen_nivelacion.id }}
-                                        </p>
-                                        <p class="mb-1">
-                                            <strong>Puntaje: </strong>
-                                            {{ item.puntaje }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-12 text-center">
                                         <router-link
                                             :to="{
-                                                name: 'examen_nivelacions.calificar_examen',
-                                                params: {
-                                                    id: item.id,
-                                                },
+                                                name: 'examen_nivelacions.examenes_grupo',
+                                                params: { id: item.grupo.id },
                                             }"
-                                            class="btn btn-success btn-flat btn-block"
+                                            class="w-100 text-lg text-success text-center font-weight-bold"
                                         >
-                                            <i
-                                                class="fa fa-clipboard-check"
-                                            ></i>
-                                            Calificar
+                                            {{ item.grupo.nombre }}
                                         </router-link>
+                                        <h4
+                                            class="w-100 text-md text-center font-weight-bold"
+                                        >
+                                            {{ item.grupo.curso.nombre }}
+                                        </h4>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row" v-if="listInscripcionExamens.length > 0">
+                <div class="row" v-if="listAsignacionGruposProfesor.length > 0">
                     <div class="col-md-12 pb-3 paginacion_portal">
                         <b-pagination
                             class="rounded-0"
@@ -107,8 +81,7 @@ export default {
             loadingWindow: Loading.service({
                 fullscreen: this.fullscreenLoading,
             }),
-            listInscripcionExamens: [],
-            listGrupos: [],
+            listAsignacionGruposProfesor: [],
             search: "",
             currentPage: 1,
             perPage: 10,
@@ -117,27 +90,27 @@ export default {
     },
     mounted() {
         this.loadingWindow.close();
-        this.getInscripcionExamens();
+        this.getAsignacionesGruposProfesor();
     },
     methods: {
-        getInscripcionExamens(page = 1) {
+        getAsignacionesGruposProfesor(page = 1) {
+            this.showOverlay = true;
+            let url = main_url + "/admin/grupo_profesors/asignaciones_profesor";
             axios
-                .get(main_url + "/admin/inscripcion_examens", {
+                .get(url, {
                     params: { page: page, per_page: this.per_page },
                 })
                 .then((response) => {
-                    this.rows = response.data.inscripcion_examens.total;
+                    this.rows = response.data.grupo_profesors.total;
                     this.perPage = response.data.per_page;
-                    this.listInscripcionExamens =
-                        response.data.inscripcion_examens.data;
+
+                    this.listAsignacionGruposProfesor =
+                        response.data.grupo_profesors.data;
+                    this.oInscripcion = response.data.inscripcion;
                 });
         },
     },
 };
 </script>
 
-<style>
-.contenedor_examen_nivelacions .img_examen_nivelacion {
-    height: 100px;
-}
-</style>
+<style></style>

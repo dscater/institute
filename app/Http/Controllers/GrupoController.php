@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AsignacionGrupo;
+use App\Models\Comunicado;
 use App\Models\Grupo;
 use App\Models\GrupoProfesor;
+use App\Models\GrupoRecurso;
 use App\Models\HistorialAccion;
+use App\Models\Horario;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -89,7 +94,7 @@ class GrupoController extends Controller
     public function show(Grupo $grupo)
     {
         return response()->JSON([
-            "grupo" => $grupo
+            "grupo" => $grupo->load(["asignacion_grupos.inscripcion", "asignacion_grupos.inscripcion_solicitud.inscripcion_examen", "grupo_profesor.profesor.user"])
         ], 200);
     }
 
@@ -167,6 +172,27 @@ class GrupoController extends Controller
     {
         DB::beginTransaction();
         try {
+            $existe_registros = AsignacionGrupo::where("grupo_id", $grupo->id)->get();
+            if (count($existe_registros) > 0) {
+                throw new Exception("No es posible eliminar el grupo porque tiene registros en Asignaciones de Grupos");
+            }
+            $existe_registros = Comunicado::where("grupo_id", $grupo->id)->get();
+            if (count($existe_registros) > 0) {
+                throw new Exception("No es posible eliminar el grupo porque tiene comunicados");
+            }
+            $existe_registros = GrupoProfesor::where("grupo_id", $grupo->id)->get();
+            if (count($existe_registros) > 0) {
+                throw new Exception("No es posible eliminar el grupo porque existen profesores asignados a este");
+            }
+            $existe_registros = GrupoRecurso::where("grupo_id", $grupo->id)->get();
+            if (count($existe_registros) > 0) {
+                throw new Exception("No es posible eliminar el grupo porque tiene recursos existentes");
+            }
+            $existe_registros = Horario::where("grupo_id", $grupo->id)->get();
+            if (count($existe_registros) > 0) {
+                throw new Exception("No es posible eliminar el grupo porque tiene un horario registrado");
+            }
+
             $datos_original = HistorialAccion::getDetalleRegistro($grupo, "grupos");
             $grupo->delete();
             HistorialAccion::create([

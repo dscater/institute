@@ -16,6 +16,24 @@ class AsignacionGrupo extends Model
         "curso_id",
     ];
 
+    protected $appends = ["abandono"];
+
+    public function getAbandonoAttribute()
+    {
+        $grupo = $this->grupo;
+        if ($grupo->horario) {
+            $fecha_actual = date("Y-m-d");
+            $inscripcion_solicitud = $this->inscripcion_solicitud;
+            if ($grupo->horario->fecha_fin < $fecha_actual) {
+                if (!$inscripcion_solicitud->inscripcion_examen) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return false;
+    }
+
     public function grupo()
     {
         return $this->belongsTo(Grupo::class, 'grupo_id');

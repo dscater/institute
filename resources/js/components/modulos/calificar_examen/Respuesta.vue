@@ -22,14 +22,14 @@
                         <span v-html="llenadoIntermedio"></span>
                         <span
                             v-if="oRespuesta"
-                            :class="{
-                                seleccionado:
-                                    oRespuesta.respuesta.trim() ==
-                                    item_opcion.trim(),
-                            }"
                             v-for="(
                                 item_opcion, index_opcion
                             ) in pregunta.array_opciones"
+                            :class="{
+                                seleccionado:
+                                    oRespuesta.respuesta?.trim() ==
+                                    item_opcion.trim(),
+                            }"
                             >{{ item_opcion }}
 
                             <span
@@ -61,7 +61,7 @@
                             v-if="oRespuesta"
                             :class="{
                                 seleccionado:
-                                    oRespuesta.respuesta.trim() ==
+                                    oRespuesta.respuesta?.trim() ==
                                     item_opcion.trim(),
                             }"
                         >
@@ -85,7 +85,7 @@
                             v-if="oRespuesta"
                             :class="{
                                 seleccionado:
-                                    oRespuesta.respuesta.trim() ==
+                                    oRespuesta.respuesta?.trim() ==
                                     item_opcion.trim(),
                             }"
                         >

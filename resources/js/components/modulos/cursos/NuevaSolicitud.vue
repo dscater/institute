@@ -560,7 +560,8 @@
                                     <div
                                         class="col-md-4"
                                         v-if="
-                                            oNuevaInscripcionSolicitud.forma_pago == 'ZELLE'
+                                            oNuevaInscripcionSolicitud.forma_pago ==
+                                            'ZELLE'
                                         "
                                     >
                                         <p
@@ -727,37 +728,13 @@
                                             "
                                         ></p>
                                     </div>
-                                    <!-- <div
-                                        class="form-group col-md-4"
-                                        v-if="oNuevaInscripcionSolicitud.forma_pago == 'OTRO'"
-                                    >
-                                        <label
-                                            :class="{
-                                                'text-danger':
-                                                    errors.desc_otro_pago,
-                                            }"
-                                            >Describir*:</label
-                                        >
-                                        <input
-                                            type="email"
-                                            class="form-control w-full"
-                                            v-model="
-                                                oInscripcion.desc_otro_pago
-                                            "
-                                        />
-                                        <span
-                                            class="error invalid-feedback d-block"
-                                            v-if="errors.desc_otro_pago"
-                                            v-text="errors.desc_otro_pago[0]"
-                                        ></span>
-                                    </div> -->
-                                    <!-- <div class="form-group col-md-4">
+                                    <div class="form-group col-md-4">
                                         <label
                                             :class="{
                                                 'text-danger':
                                                     errors.archivo_pago,
                                             }"
-                                            >Adjuntar archivo:</label
+                                            >Adjuntar comprobante*:</label
                                         >
                                         <input
                                             type="file"
@@ -770,34 +747,7 @@
                                             v-if="errors.archivo_pago"
                                             v-text="errors.archivo_pago[0]"
                                         ></span>
-                                    </div> -->
-                                    <!-- <div class="form-group col-md-4">
-                                        <label
-                                            :class="{
-                                                'text-danger': errors.desc_pago,
-                                            }"
-                                            >Descripción*:</label
-                                        >
-                                        <el-input
-                                            type="textarea"
-                                            class="w-full"
-                                            v-model="oInscripcion.desc_pago"
-                                            autosize
-                                            placeholder="Ejemplo:
-Mercado pago Argentina
-Juan Perez
-CVU: 00000333333333
-Alias: Tomorrowistoday
-CUIT/CUIL: 2000999999
-Mercado Pago"
-                                        >
-                                        </el-input>
-                                        <span
-                                            class="error invalid-feedback d-block"
-                                            v-if="errors.desc_pago"
-                                            v-text="errors.desc_pago[0]"
-                                        ></span>
-                                    </div> -->
+                                    </div>
                                 </div>
                             </div>
                             <!-- PASO 4 -->

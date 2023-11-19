@@ -223,6 +223,8 @@ export default {
                     sortable: true,
                 },
                 { key: "img", label: "Imagen", sortable: true },
+                { key: "titulo", label: "Título", sortable: true },
+                { key: "descripcion", label: "Descripción", sortable: true },
                 { key: "accion", label: "Acción" },
             ],
             loading: true,
@@ -232,8 +234,8 @@ export default {
                 id: 0,
                 img: null,
                 posicion: "",
-                desc1: "",
-                desc2: "",
+                titulo: "",
+                descripcion: "",
                 muestra_boton: 0,
             },
             currentPage: 1,
@@ -260,6 +262,10 @@ export default {
             this.oGestoriaBanner.id = item.id;
             this.oGestoriaBanner.url_img = item.url_img ? item.url_img : "";
             this.oGestoriaBanner.posicion = item.posicion ? item.posicion : "";
+            this.oGestoriaBanner.titulo = item.titulo ? item.titulo : "";
+            this.oGestoriaBanner.descripcion = item.descripcion
+                ? item.descripcion
+                : "";
             this.modal_accion = "edit";
             this.muestra_modal = true;
         },
@@ -349,6 +355,8 @@ export default {
         limpiaGestoriaBanner() {
             this.oGestoriaBanner.img = null;
             this.oGestoriaBanner.posicion = 1;
+            this.oGestoriaBanner.titulo = "";
+            this.oGestoriaBanner.descripcion = "";
         },
         formatoFecha(date) {
             return this.$moment(String(date)).format("DD/MM/YYYY");

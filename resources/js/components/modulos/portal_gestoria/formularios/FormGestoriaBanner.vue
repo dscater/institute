@@ -80,6 +80,48 @@
                                     v-text="errors.posicion[0]"
                                 ></span>
                             </div>
+                            <div class="form-group col-md-12">
+                                <label
+                                    :class="{
+                                        'text-danger': errors.titulo,
+                                    }"
+                                    >Título</label
+                                >
+                                <el-input
+                                    placeholder="Título"
+                                    :class="{ 'is-invalid': errors.titulo }"
+                                    v-model="gestoria_banner.titulo"
+                                    clearable
+                                >
+                                </el-input>
+                                <span
+                                    class="error invalid-feedback"
+                                    v-if="errors.titulo"
+                                    v-text="errors.titulo[0]"
+                                ></span>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label
+                                    :class="{
+                                        'text-danger': errors.descripcion,
+                                    }"
+                                    >Descripción</label
+                                >
+                                <el-input
+                                    placeholder="Descripción"
+                                    :class="{
+                                        'is-invalid': errors.descripcion,
+                                    }"
+                                    v-model="gestoria_banner.descripcion"
+                                    clearable
+                                >
+                                </el-input>
+                                <span
+                                    class="error invalid-feedback"
+                                    v-if="errors.descripcion"
+                                    v-text="errors.descripcion[0]"
+                                ></span>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -183,13 +225,33 @@ export default {
                     },
                 };
                 let formdata = new FormData();
-                formdata.append("img", this.gestoria_banner.img ? this.gestoria_banner.img : "");
+                formdata.append(
+                    "img",
+                    this.gestoria_banner.img ? this.gestoria_banner.img : ""
+                );
                 formdata.append(
                     "posicion",
-                    this.gestoria_banner.posicion ? this.gestoria_banner.posicion : ""
+                    this.gestoria_banner.posicion
+                        ? this.gestoria_banner.posicion
+                        : ""
+                );
+                formdata.append(
+                    "titulo",
+                    this.gestoria_banner.titulo
+                        ? this.gestoria_banner.titulo
+                        : ""
+                );
+                formdata.append(
+                    "descripcion",
+                    this.gestoria_banner.descripcion
+                        ? this.gestoria_banner.descripcion
+                        : ""
                 );
                 if (this.accion == "edit") {
-                    url = main_url + "/admin/gestoria_banners/" + this.gestoria_banner.id;
+                    url =
+                        main_url +
+                        "/admin/gestoria_banners/" +
+                        this.gestoria_banner.id;
                     formdata.append("_method", "PUT");
                 }
                 axios
@@ -268,6 +330,8 @@ export default {
             this.errors = [];
             this.gestoria_banner.img = null;
             this.gestoria_banner.posicion = "";
+            this.gestoria_banner.titulo = "";
+            this.gestoria_banner.descripcion = "";
             this.$refs.input_file.value = null;
             this.src_imagen_cargada = "";
         },

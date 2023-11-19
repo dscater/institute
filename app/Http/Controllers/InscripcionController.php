@@ -166,6 +166,7 @@ class InscripcionController extends Controller
             "se_entero" => "required",
             "plan_pago_id" => "required",
             "forma_pago" => "required",
+            "archivo_pago" => "required|file|max:4096"
         ];
 
         $mensajes = [
@@ -198,6 +199,7 @@ class InscripcionController extends Controller
             "desc_se_entero.min" => "El campo Describir otro (Como se entero del Curso) debe tener al menos :min caracteres",
             "plan_pago_id.required" => "Debes seleccionar un plan de pago",
             "forma_pago.required" => "Debes seleccionar una forma de pago",
+            "archivo_pago.required" => "Debes cargar el archivo de comprobante de pago",
             "archivo_pago.max" => "El peso maximo permitido del archivo es de 4096 KB",
             "desc_pago.required" => "Debes completar la descripción de la forma de pago",
             "desc_pago.min" => "La descripción de la forma de pago debe tener al menos :min caracteres",
@@ -278,13 +280,13 @@ class InscripcionController extends Controller
             $nueva_solicitud = InscripcionSolicitud::create($datos);
             $nueva_solicitud->codigo = "C." . $nueva_solicitud->id;
             $nueva_solicitud->save();
-            // if ($request->hasFile("archivo_pago")) {
-            //     $file = $request->archivo_pago;
-            //     $nom_archivo_pago = time() . '_' . $nueva_solicitud->id . '.' . $file->getClientOriginalExtension();
-            //     $nueva_solicitud->archivo_pago = $nom_archivo_pago;
-            //     $file->move(public_path() . '/files/', $nom_archivo_pago);
-            // }
-            // $nueva_solicitud->save();
+            if ($request->hasFile("archivo_pago")) {
+                $file = $request->archivo_pago;
+                $nom_archivo_pago = time() . '_' . $nueva_solicitud->id . '.' . $file->getClientOriginalExtension();
+                $nueva_solicitud->archivo_pago = $nom_archivo_pago;
+                $file->move(public_path() . '/files/', $nom_archivo_pago);
+            }
+            $nueva_solicitud->save();
 
             DB::commit();
             return response()->JSON([
@@ -311,6 +313,7 @@ class InscripcionController extends Controller
             "se_entero" => "required",
             "plan_pago_id" => "required",
             "forma_pago" => "required",
+            "archivo_pago" => "required|file|max:4096"
         ];
 
         $mensajes = [
@@ -326,6 +329,7 @@ class InscripcionController extends Controller
             "desc_se_entero.min" => "El campo Describir otro (Como se entero del Curso) debe tener al menos :min caracteres",
             "plan_pago_id.required" => "Debes seleccionar un plan de pago",
             "forma_pago.required" => "Debes seleccionar una forma de pago",
+            "archivo_pago.required" => "Debes cargar el archivo de comprobante de pago",
             "archivo_pago.max" => "El peso maximo permitido del archivo es de 4096 KB",
             "desc_pago.required" => "Debes completar la descripción de la forma de pago",
             "desc_pago.min" => "La descripción de la forma de pago debe tener al menos :min caracteres",
@@ -380,13 +384,13 @@ class InscripcionController extends Controller
             $nueva_solicitud = InscripcionSolicitud::create($datos);
             $nueva_solicitud->codigo = "C." . $nueva_solicitud->id;
             $nueva_solicitud->save();
-            // if ($request->hasFile("archivo_pago")) {
-            //     $file = $request->archivo_pago;
-            //     $nom_archivo_pago = time() . '_' . $nueva_solicitud->id . '.' . $file->getClientOriginalExtension();
-            //     $nueva_solicitud->archivo_pago = $nom_archivo_pago;
-            //     $file->move(public_path() . '/files/', $nom_archivo_pago);
-            // }
-            // $nueva_solicitud->save();
+            if ($request->hasFile("archivo_pago")) {
+                $file = $request->archivo_pago;
+                $nom_archivo_pago = time() . '_' . $nueva_solicitud->id . '.' . $file->getClientOriginalExtension();
+                $nueva_solicitud->archivo_pago = $nom_archivo_pago;
+                $file->move(public_path() . '/files/', $nom_archivo_pago);
+            }
+            $nueva_solicitud->save();
 
             DB::commit();
             return response()->JSON([

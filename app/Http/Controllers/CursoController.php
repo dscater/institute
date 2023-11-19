@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AsignacionGrupo;
 use App\Models\Curso;
+use App\Models\ExamenNivelacion;
 use App\Models\HistorialAccion;
 use App\Models\Inscripcion;
+use App\Models\InscripcionSolicitud;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -166,6 +170,19 @@ class CursoController extends Controller
     {
         DB::beginTransaction();
         try {
+            $existe_registros = AsignacionGrupo::where("curso_id", $curso->id)->get();
+            if (count($existe_registros) > 0) {
+                throw new Exception("No es posible eliminar el curso porque esta siendo utilizado en Asignaciones de Grupo");
+            }
+            $existe_registros = ExamenNivelacion::where("curso_id", $curso->id)->get();
+            if (count($existe_registros) > 0) {
+                throw new Exception("No es posible eliminar el curso porque tiene examenes de nivelación registrados");
+            }
+            $existe_registros = InscripcionSolicitud::where("curso_id", $curso->id)->get();
+            if (count($existe_registros) > 0) {
+                throw new Exception("No es posible eliminar el curso porque existen inscripciones en este");
+            }
+
             $antiguo = $curso->imagen;
             if ($antiguo != 'default.jpg') {
                 \File::delete(public_path() . '/imgs/cursos/' . $antiguo);

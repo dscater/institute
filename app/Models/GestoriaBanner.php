@@ -11,6 +11,8 @@ class GestoriaBanner extends Model
     protected $fillable = [
         "img",
         "posicion",
+        "titulo",
+        "descripcion"
     ];
 
     protected $appends = ["url_img"];

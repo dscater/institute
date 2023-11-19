@@ -194,6 +194,20 @@
                                         </b-row>
                                         <b-row class="mb-2">
                                             <b-col sm="5" class="text-sm-right"
+                                                ><b
+                                                    >Comprobante de pago:</b
+                                                ></b-col
+                                            >
+                                            <b-col>
+                                                <a
+                                                    :href="item.url_archivo"
+                                                    target="_blank"
+                                                    >Ver comprobante</a
+                                                >
+                                            </b-col>
+                                        </b-row>
+                                        <b-row class="mb-2">
+                                            <b-col sm="5" class="text-sm-right"
                                                 ><b>Estado solicitud:</b></b-col
                                             >
                                             <b-col

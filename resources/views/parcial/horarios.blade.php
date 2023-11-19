@@ -89,12 +89,12 @@
                 @foreach ($array_fechas as $af)
                     <tr>
                         <td class="text-white text-center">{{ $af }}</td>
-                        <td class="text-white text-center">
+                        <td class="text-white text-left">
                             @if (count($tabla_fechas[$af]))
                                 @foreach ($tabla_fechas[$af] as $key => $c)
-                                    {{ $c->nombre }}
+                                    <span class="text-xl badge badge-success bg-principal2 p-2 font-weight-bold">{{ $c->nombre }}</span>
                                     @if ($key < count($tabla_fechas[$af]) - 1)
-                                        <span>,</span>
+                                        <span> </span>
                                     @endif
                                 @endforeach
                             @endif

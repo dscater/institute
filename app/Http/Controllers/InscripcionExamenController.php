@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AsignacionGrupo;
+use App\Models\Grupo;
 use App\Models\GrupoProfesor;
 use App\Models\HistorialAccion;
 use App\Models\InscripcionExamen;
@@ -37,6 +38,18 @@ class InscripcionExamenController extends Controller
         ], 200);
     }
 
+    public function getExamenesGrupo(Grupo $grupo, Request $request)
+    {
+        $id_solicituds = AsignacionGrupo::where("grupo_id", $grupo->id)->pluck("inscripcion_solicitud_id");
+
+        $per_page = 18;
+        $inscripcion_examens = InscripcionExamen::with(["examen_nivelacion", "inscripcion", "inscripcion_solicitud.curso"])
+            ->whereIn("inscripcion_solicitud_id", $id_solicituds)->paginate($per_page);
+        return response()->JSON([
+            "inscripcion_examens" => $inscripcion_examens
+        ]);
+    }
+
     public function show(InscripcionExamen $inscripcion_examen)
     {
         return response()->JSON([
@@ -46,7 +59,10 @@ class InscripcionExamenController extends Controller
 
     public function registrar_calificacion(InscripcionExamen $inscripcion_examen, Request $request)
     {
-        $errors = self::validaCalificacionExamen($request->puntaje, $request->respuestas);
+        $errors = [];
+        if ($request->estado != 'ABANDONÓ') {
+            $errors = self::validaCalificacionExamen($request->puntaje, $request->respuestas);
+        }
 
         if (count($errors) > 0) {
             return response()->JSON([
@@ -66,7 +82,7 @@ class InscripcionExamenController extends Controller
 
             $inscripcion_examen->update([
                 "puntaje" => $request->puntaje,
-                "estado" => "REVISADO",
+                "estado" => $request->estado,
             ]);
 
             $datos_original = HistorialAccion::getDetalleRegistro($inscripcion_examen, "inscripcion_examens");

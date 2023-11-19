@@ -54,6 +54,11 @@ class Grupo extends Model
 
     public function asignacion_grupos()
     {
-        return $this->hasMany(AsignacionGrupo::class, 'grupo_id');
+        return $this->hasMany(AsignacionGrupo::class, 'grupo_id')->orderBy("id", "desc");
+    }
+
+    public function grupo_profesor()
+    {
+        return $this->hasOne(GrupoProfesor::class, 'grupo_id');
     }
 }
