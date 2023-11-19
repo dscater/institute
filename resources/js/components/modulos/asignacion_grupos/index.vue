@@ -52,7 +52,7 @@
                 <div class="row" v-if="listGrupos.length > 0">
                     <div class="col-md-4" v-for="item in listGrupos">
                         <div class="card">
-                            <div class="card-body text-center">
+                            <div class="card-body text-center pb-2 pt-2">
                                 <router-link
                                     class="w-100 text-lg text-success text-center font-weight-bold"
                                     :to="{
@@ -69,6 +69,14 @@
                                 >
                                     {{ item.curso.nombre }}
                                 </h4>
+                                <router-link
+                                    class="btn btn-success text-xs"
+                                    :to="{
+                                        name: 'asignacion_grupos.ver_grupo_asignacion',
+                                        params: { id: item.id },
+                                    }"
+                                    >Ver grupo</router-link
+                                >
                             </div>
                         </div>
                     </div>

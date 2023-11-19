@@ -32,6 +32,17 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
+// VACIAR CACHE
+Route::get('/cache_clear', function () {
+    Artisan::call("route:clear");
+    Artisan::call("route:cache");
+    Artisan::call("view:clear");
+    Artisan::call("config:cache");
+    Artisan::call("optimize");
+
+    return 'Cache borrada correctamente<br/><a href="' . url("/") . '">Volver al inicio<a>';
+});
+
 // PORTAL
 Route::get('/url_asset', [ConfiguracionController::class, 'url_asset'])->name("url_asset");
 Route::get('/getLogo', [ConfiguracionController::class, 'getLogo'])->name("getLogo");
@@ -265,6 +276,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::post('reportes/gestoria_solicituds', [ReporteController::class, 'gestoria_solicituds']);
         Route::post('reportes/gestoria_solicituds_excel', [ReporteController::class, 'gestoria_solicituds_excel']);
+
+        Route::post('reportes/historial_estudiante', [ReporteController::class, 'historial_estudiante']);
+        Route::post('reportes/historial_estudiante_excel', [ReporteController::class, 'historial_estudiante_excel']);
     });
 });
 

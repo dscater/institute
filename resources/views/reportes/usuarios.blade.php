@@ -168,18 +168,10 @@
                 <th>PATERNO</th>
                 <th>MATERNO</th>
                 <th>NOMBRE(S)</th>
-                <th>C.I.</th>
-                <th>FEC. NAC.</th>
-                <th>GENERO</th>
-                <th>CARGO</th>
-                <th>FECHA INGRESO</th>
-                <th>TALLER</th>
                 <th>DIRECCIÓN</th>
+                <th>EMAIL</th>
                 <th>TELÉFONO/CELULAR</th>
-                <th>TIPO DE PERSONAL</th>
-                <th>% DISCAPACIDAD</th>
                 <th>TIPO DE USUARIO</th>
-                <th>VALIDEZ CREDENCIAL</th>
                 <th>ESTADO</th>
                 <th width="9%">FECHA DE REGISTRO</th>
             </tr>
@@ -191,24 +183,16 @@
             @foreach ($usuarios as $user)
                 <tr>
                     <td class="centreado">{{ $cont++ }}</td>
-                    <td class="img_celda"><img src="{{ asset('imgs/users/' . $user->foto) }}" alt="Foto"></td>
+                    <td class="img_celda"><img src="{{ $user->path_image }}" alt="Foto"></td>
                     <td>{{ $user->usuario }}</td>
                     <td class="centreado">{{ $user->paterno }}</td>
                     <td class="centreado">{{ $user->materno }}</td>
                     <td class="centreado">{{ $user->nombre }}</td>
-                    <td class="centreado">{{ $user->full_ci }}</td>
-                    <td class="centreado">{{ $user->fecha_nac }}</td>
-                    <td class="centreado">{{ $user->genero }}</td>
-                    <td class="centreado">{{ $user->cargo }}</td>
-                    <td class="centreado">{{ $user->fecha_ingreso }}</td>
-                    <td class="centreado">{{ $user->taller }}</td>
                     <td class="centreado">{{ $user->dir }}</td>
+                    <td class="centreado">{{ $user->correo }}</td>
                     <td class="centreado">{{ $user->fono }}</td>
-                    <td class="centreado">{{ $user->tipo_personal }}</td>
-                    <td class="centreado">{{ $user->p_discapacidad }}</td>
                     <td class="centreado">{{ $user->tipo }}</td>
-                    <td class="centreado">{{ $user->validez_credencial }}</td>
-                    <td class="centreado">{{ $user->estado == 1 ? 'ACTIVO' : 'RETIRADO' }}</td>
+                    <td class="centreado">{{ $user->estado == 1 ? 'HABILITADO' : 'DESHABILITADO' }}</td>
                     <td class="centreado">{{ $user->fecha_registro }}</td>
                 </tr>
             @endforeach

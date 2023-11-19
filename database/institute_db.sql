@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 19-11-2023 a las 00:35:32
+-- Tiempo de generación: 19-11-2023 a las 17:37:24
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -45,7 +45,8 @@ INSERT INTO `asignacion_grupos` (`id`, `grupo_id`, `inscripcion_id`, `inscripcio
 (1, 1, 2, 1, 7, '2023-11-04 21:17:52', '2023-11-04 21:21:15'),
 (2, 1, 4, 5, 7, '2023-11-07 13:58:37', '2023-11-07 13:58:45'),
 (3, 2, 3, 4, 1, '2023-11-07 13:58:53', '2023-11-07 13:58:53'),
-(4, 4, 2, 2, 3, '2023-11-07 14:07:55', '2023-11-18 22:49:45');
+(4, 4, 2, 2, 3, '2023-11-07 14:07:55', '2023-11-18 22:49:45'),
+(5, 2, 7, 9, 1, '2023-11-19 17:36:45', '2023-11-19 17:36:45');
 
 -- --------------------------------------------------------
 
@@ -960,7 +961,11 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (404, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com MODIFICÓ UNA ASIGNACIÓN DE GRUPO', 'created_at: 2023-11-07 10:07:55<br/>curso_id: 3<br/>grupo_id: 3<br/>id: 4<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 2<br/>updated_at: 2023-11-07 10:07:55<br/>', 'created_at: 2023-11-07 10:07:55<br/>curso_id: 3<br/>grupo_id: 4<br/>id: 4<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 2<br/>updated_at: 2023-11-18 18:49:45<br/>', 'ASIGNACIÓN DE GRUPOS', '2023-11-18', '18:49:45', '2023-11-18 22:49:45', '2023-11-18 22:49:45'),
 (405, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com CALIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-10 14:11:35<br/>estado: APROBÓ<br/>examen_nivelacion_id: 2<br/>id: 3<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>puntaje: 90<br/>updated_at: 2023-11-18 19:58:14<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-18', '19:58:14', '2023-11-18 23:58:14', '2023-11-18 23:58:14'),
 (406, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com CALIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-10 14:11:35<br/>estado: ABANDONÓ<br/>examen_nivelacion_id: 2<br/>id: 3<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>puntaje: 90<br/>updated_at: 2023-11-18 20:00:25<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-18', '20:00:25', '2023-11-19 00:00:25', '2023-11-19 00:00:25'),
-(407, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com CALIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-10 14:11:35<br/>estado: ABANDONÓ<br/>examen_nivelacion_id: 2<br/>id: 3<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>puntaje: <br/>updated_at: 2023-11-18 20:00:32<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-18', '20:00:32', '2023-11-19 00:00:32', '2023-11-19 00:00:32');
+(407, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com CALIFICÓ UN EXAMEN DE NIVELACION', 'created_at: 2023-11-10 14:11:35<br/>estado: ABANDONÓ<br/>examen_nivelacion_id: 2<br/>id: 3<br/>inscripcion_id: 2<br/>inscripcion_solicitud_id: 1<br/>puntaje: <br/>updated_at: 2023-11-18 20:00:32<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-18', '20:00:32', '2023-11-19 00:00:32', '2023-11-19 00:00:32'),
+(408, 6, 'MODIFICACIÓN', 'EL USUARIO felipe@gmail.com ACTUALIZÓ EL LINK DE UN GRUPO', 'id: 1<br/>nombre: GRUPO #1<br/>descripcion: DESCRIPCION GRUPO #1<br/>link_reunion: <br/>estado: ACTIVO<br/>created_at: 2023-11-03 12:06:11<br/>updated_at: 2023-11-03 12:06:11<br/>', 'id: 1<br/>nombre: GRUPO #1<br/>descripcion: DESCRIPCION GRUPO #1<br/>link_reunion: <br/>estado: ACTIVO<br/>created_at: 2023-11-03 12:06:11<br/>updated_at: 2023-11-03 12:06:11<br/>', 'GRUPOS', '2023-11-19', '11:33:01', '2023-11-19 15:33:01', '2023-11-19 15:33:01'),
+(409, 1, 'MODIFICACIÓN', 'EL USUARIO admin@gmail.com CAMBIO EL ESTADO DE UNA SOLICITUD', 'id: 9<br/>codigo: C.9<br/>inscripcion_id: 7<br/>curso_id: 1<br/>nivel: NIVEL CERO<br/>se_entero: INSTAGRAM<br/>desc_se_entero: <br/>plan_pago_id: 3<br/>plan_costo: 400.00<br/>forma_pago: ZELLE<br/>archivo_pago: 1700347400_9.pdf<br/>desc_pago: <br/>desc_otro_pago: <br/>estado_asignado: NO<br/>estado: PENDIENTE<br/>created_at: 2023-11-18 18:43:20<br/>updated_at: 2023-11-18 18:43:20<br/>', 'id: 9<br/>codigo: C.9<br/>inscripcion_id: 7<br/>curso_id: 1<br/>nivel: NIVEL CERO<br/>se_entero: INSTAGRAM<br/>desc_se_entero: <br/>plan_pago_id: 3<br/>plan_costo: 400.00<br/>forma_pago: ZELLE<br/>archivo_pago: 1700347400_9.pdf<br/>desc_pago: <br/>desc_otro_pago: <br/>estado_asignado: NO<br/>estado: ACEPTADO<br/>created_at: 2023-11-18 18:43:20<br/>updated_at: 2023-11-19 13:36:17<br/>', 'INSCRIPCION SOLICITUD', '2023-11-19', '13:36:17', '2023-11-19 17:36:17', '2023-11-19 17:36:17'),
+(410, 1, 'CREACIÓN', 'EL USUARIO admin@gmail.com REGISTRO UNA ASIGNACIÓN DE GRUPO', 'id: 5<br/>grupo_id: 2<br/>inscripcion_id: 7<br/>inscripcion_solicitud_id: 9<br/>curso_id: 1<br/>created_at: 2023-11-19 13:36:45<br/>updated_at: 2023-11-19 13:36:45<br/>', NULL, 'ASIGNACIÓN DE GRUPOS', '2023-11-19', '13:36:45', '2023-11-19 17:36:45', '2023-11-19 17:36:45'),
+(411, 14, 'CREACIÓN', 'EL USUARIO eric12@gmail.com REALIZÓ UN EXAMEN DE NIVELACION', 'id: 5<br/>inscripcion_id: 7<br/>inscripcion_solicitud_id: 9<br/>examen_nivelacion_id: 5<br/>puntaje: 0<br/>estado: REVISADO<br/>created_at: 2023-11-19 13:37:05<br/>updated_at: 2023-11-19 13:37:05<br/>', NULL, 'INSCRIPCIÓN EXAMENES', '2023-11-19', '13:37:05', '2023-11-19 17:37:05', '2023-11-19 17:37:05');
 
 -- --------------------------------------------------------
 
@@ -1052,7 +1057,7 @@ INSERT INTO `inscripcions` (`id`, `user_id`, `nombres`, `apellidos`, `nro_iden`,
 (4, 9, 'MAX', 'PONCE', '32322', '2000-01-01', 23, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '777777', 'ACEPTADO', 'max@gmail.com', '2023-11-07 13:16:31', '2023-11-07 13:16:31'),
 (5, 12, 'LUIS', 'CARVAJAL GONZALES', '544544', '1999-01-01', 24, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '7666666', 'PENDIENTE', 'luis@gmail.com', '2023-11-08 20:09:48', '2023-11-08 20:09:48'),
 (6, 13, 'MARGARITA', 'SOLIZ', '43434', '2000-03-03', 23, 'BOLIVIA', 'BOLIVIANA', 'SANTA CRUZ', 'MUJER', '7888888', 'ACEPTADO', 'margarita@gmail.com', '2023-11-10 17:07:30', '2023-11-10 17:48:58'),
-(7, 14, 'ERIC', 'CORTEZ CORTEZ', '66666', '2004-11-11', 19, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '777777', 'PENDIENTE', 'eric12@gmail.com', '2023-11-18 22:43:20', '2023-11-18 22:43:20');
+(7, 14, 'ERIC', 'CORTEZ CORTEZ', '66666', '2004-11-11', 19, 'BOLIVIA', 'BOLIVIANO', 'LA PAZ', 'HOMBRE', '777777', 'ACEPTADO', 'eric12@gmail.com', '2023-11-18 22:43:20', '2023-11-19 17:36:17');
 
 -- --------------------------------------------------------
 
@@ -1078,7 +1083,8 @@ CREATE TABLE `inscripcion_examens` (
 INSERT INTO `inscripcion_examens` (`id`, `inscripcion_id`, `inscripcion_solicitud_id`, `examen_nivelacion_id`, `puntaje`, `estado`, `created_at`, `updated_at`) VALUES
 (1, 2, 2, 4, 90.00, 'REVISADO', '2023-11-07 16:43:29', '2023-11-07 20:07:46'),
 (3, 2, 1, 2, NULL, 'ABANDONÓ', '2023-11-10 18:11:35', '2023-11-19 00:00:32'),
-(4, 3, 4, 5, 0.00, 'REVISADO', '2023-11-10 18:35:41', '2023-11-10 18:35:41');
+(4, 3, 4, 5, 0.00, 'REVISADO', '2023-11-10 18:35:41', '2023-11-10 18:35:41'),
+(5, 7, 9, 5, 0.00, 'REVISADO', '2023-11-19 17:37:05', '2023-11-19 17:37:05');
 
 -- --------------------------------------------------------
 
@@ -1117,7 +1123,9 @@ INSERT INTO `inscripcion_respuestas` (`id`, `inscripcion_examen_id`, `examen_enu
 (13, 3, 3, 8, NULL, NULL, '2023-11-10 18:11:35', '2023-11-18 23:58:14'),
 (14, 3, 6, 9, NULL, NULL, '2023-11-10 18:11:35', '2023-11-18 23:58:14'),
 (15, 4, 13, 19, NULL, NULL, '2023-11-10 18:35:41', '2023-11-10 18:35:41'),
-(16, 4, 14, 20, NULL, NULL, '2023-11-10 18:35:41', '2023-11-10 18:35:41');
+(16, 4, 14, 20, NULL, NULL, '2023-11-10 18:35:41', '2023-11-10 18:35:41'),
+(17, 5, 13, 19, NULL, NULL, '2023-11-19 17:37:05', '2023-11-19 17:37:05'),
+(18, 5, 14, 20, NULL, NULL, '2023-11-19 17:37:05', '2023-11-19 17:37:05');
 
 -- --------------------------------------------------------
 
@@ -1158,7 +1166,7 @@ INSERT INTO `inscripcion_solicituds` (`id`, `codigo`, `inscripcion_id`, `curso_i
 (6, 'C.6', 5, 3, 'NIVEL BÁSICO', 'INSTAGRAM', '', 2, 130.00, 'DEPÓSITO BANCARIO', '1699474188_6.png', 'BANCO UNION<br />\r\nLUIS CARVAJAL<br />\r\nMONTO: 130<br />\r\nNRO. CUENTA: 10000033333', NULL, 'NO', 'PENDIENTE', '2023-11-08 20:09:48', '2023-11-08 20:09:48'),
 (7, 'C.7', 6, 1, 'NIVEL CERO', 'FACEBOOK', '', 1, 49.99, 'DEPÓSITO BANCARIO', NULL, '', NULL, 'NO', 'ACEPTADO', '2023-11-10 17:07:30', '2023-11-10 17:49:04'),
 (8, 'C.8', 6, 7, 'NIVEL BÁSICO', 'OTRO', 'DESCRIPCION OTRO', 3, 400.00, 'ZELLE', NULL, '', NULL, 'NO', 'ACEPTADO', '2023-11-10 17:15:16', '2023-11-10 17:48:58'),
-(9, 'C.9', 7, 1, 'NIVEL CERO', 'INSTAGRAM', '', 3, 400.00, 'ZELLE', '1700347400_9.pdf', '', NULL, 'NO', 'PENDIENTE', '2023-11-18 22:43:20', '2023-11-18 22:43:20');
+(9, 'C.9', 7, 1, 'NIVEL CERO', 'INSTAGRAM', '', 3, 400.00, 'ZELLE', '1700347400_9.pdf', '', NULL, 'SI', 'ACEPTADO', '2023-11-18 22:43:20', '2023-11-19 17:36:45');
 
 -- --------------------------------------------------------
 
@@ -1659,7 +1667,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `asignacion_grupos`
 --
 ALTER TABLE `asignacion_grupos`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `banners`
@@ -1773,7 +1781,7 @@ ALTER TABLE `grupo_recursos`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=408;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=412;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
@@ -1797,13 +1805,13 @@ ALTER TABLE `inscripcions`
 -- AUTO_INCREMENT de la tabla `inscripcion_examens`
 --
 ALTER TABLE `inscripcion_examens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion_respuestas`
 --
 ALTER TABLE `inscripcion_respuestas`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion_solicituds`

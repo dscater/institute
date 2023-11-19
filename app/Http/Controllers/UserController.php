@@ -145,6 +145,7 @@ class UserController extends Controller
             "reportes.usuarios",
             "reportes.profesors",
             "reportes.estudiantes",
+            "reportes.historial_estudiante",
             "reportes.estudiantes_grupos",
             "reportes.horarios",
             "reportes.examen_nivelacion",

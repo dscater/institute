@@ -35,7 +35,7 @@ class GrupoProfesorController extends Controller
         $user = Auth::user();
         $profesor = Profesor::where("user_id", $user->id)->get()->first();
         $per_page = 10;
-        $grupo_profesors = GrupoProfesor::with(["profesor", "grupo.horario"])
+        $grupo_profesors = GrupoProfesor::with(["profesor", "grupo.horario", "grupo.asignacion_grupos"])
             ->orderBy("id", "desc")
             ->where("profesor_id", $profesor->id)
             ->paginate($per_page);

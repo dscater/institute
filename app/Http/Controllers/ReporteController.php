@@ -8,6 +8,7 @@ use App\Models\GestoriaSolicitud;
 use App\Models\Grupo;
 use App\Models\Horario;
 use App\Models\Inscripcion;
+use App\Models\InscripcionSolicitud;
 use App\Models\Profesor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -68,7 +69,7 @@ class ReporteController extends Controller
     public function usuarios(Request $request)
     {
         $filtro =  $request->filtro;
-        $usuarios = User::where('id', '!=', 1)->orderBy("paterno", "ASC")->get();
+        $usuarios = User::where('id', '!=', 1)->whereNotIn("tipo", ["ESTUDIANTE", "PROFESOR"])->orderBy("paterno", "ASC")->get();
 
         if ($filtro == 'Tipo de usuario') {
             $request->validate([
@@ -378,6 +379,169 @@ class ReporteController extends Controller
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
         $writer->save('php://output');
     }
+
+
+    public function historial_estudiante(Request $request)
+    {
+        $request->validate([
+            "estudiante_id" => "required"
+        ], [
+            "estudiante_id.required" => "Debes seleccionar un estudiante"
+        ]);
+
+        $estudiante_id =  $request->estudiante_id;
+
+        $inscripcion = Inscripcion::findOrFail($estudiante_id);
+
+        $inscripcion_solicituds = InscripcionSolicitud::where("inscripcion_id", $inscripcion->id)->get();
+
+        $pdf = PDF::loadView('reportes.historial_estudiante', compact('inscripcion', 'inscripcion_solicituds'))->setPaper('letter', 'portrait');
+
+        // ENUMERAR LAS PÁGINAS USANDO CANVAS
+        $pdf->output();
+        $dom_pdf = $pdf->getDomPDF();
+        $canvas = $dom_pdf->get_canvas();
+        $alto = $canvas->get_height();
+        $ancho = $canvas->get_width();
+        $canvas->page_text($ancho - 90, $alto - 25, "Página {PAGE_NUM} de {PAGE_COUNT}", null, 9, array(0, 0, 0));
+
+        return $pdf->download('historial_estudiante.pdf');
+    }
+    public function historial_estudiante_excel(Request $request)
+    {
+        $request->validate([
+            "estudiante_id" => "required"
+        ], [
+            "estudiante_id.required" => "Debes seleccionar un estudiante"
+        ]);
+
+        $estudiante_id =  $request->estudiante_id;
+
+        $inscripcion = Inscripcion::findOrFail($estudiante_id);
+
+        $inscripcion_solicituds = InscripcionSolicitud::where("inscripcion_id", $inscripcion->id)->get();
+
+        // ENCABEZADO EXCEL
+        $spreadsheet = new Spreadsheet();
+        $spreadsheet->getProperties()
+            ->setCreator("ADMIN")
+            ->setLastModifiedBy('Administración')
+            ->setTitle('ListaEstudiantes')
+            ->setSubject('ListaEstudiantes')
+            ->setDescription('ListaEstudiantes')
+            ->setKeywords('PHPSpreadsheet')
+            ->setCategory('Listado');
+
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $spreadsheet->getDefaultStyle()->getFont()->setName('Arial');
+
+        // CONTENIDO ARCHIVO
+        $fila = 1;
+        $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+        $drawing->setName('logo');
+        $drawing->setDescription('logo');
+        $drawing->setPath(public_path() . '/imgs/' . Configuracion::first()->logo); // put your path and image here
+        $drawing->setCoordinates('A' . $fila);
+        $drawing->setOffsetX(5);
+        $drawing->setOffsetY(0);
+        $drawing->setHeight(60);
+        $drawing->setWorksheet($sheet);
+        $fila++;
+        $fila++;
+        $sheet->setCellValue('A' . $fila, "HISTORIAL DE ESTUDIANTE");
+        $sheet->mergeCells("A" . $fila . ":H" . $fila);  //COMBINAR CELDAS
+        $sheet->getStyle('A' . $fila . ':H' . $fila)->getAlignment()->setHorizontal('center');
+        $sheet->getStyle('A' . $fila . ':H' . $fila)->applyFromArray($this->styleTexto);
+        $fila++;
+        $fila++;
+
+        $sheet->setCellValue('A' . $fila, "Nombre completo: " . $inscripcion->full_name);
+        $sheet->mergeCells("A" . $fila . ":D" . $fila);  //COMBINAR CELDAS
+        $sheet->getStyle('A' . $fila . ':D' . $fila)->applyFromArray($this->estilo_conenido);
+        $sheet->setCellValue('E' . $fila, "Nro. Identificación: " . $inscripcion->nro_iden);
+        $sheet->mergeCells("E" . $fila . ":H" . $fila);  //COMBINAR CELDAS
+        $sheet->getStyle('E' . $fila . ':H' . $fila)->applyFromArray($this->estilo_conenido);
+        $fila++;
+        $sheet->setCellValue('A' . $fila, "Email: " . $inscripcion->correo);
+        $sheet->mergeCells("A" . $fila . ":D" . $fila);  //COMBINAR CELDAS
+        $sheet->getStyle('A' . $fila . ':D' . $fila)->applyFromArray($this->estilo_conenido);
+        $sheet->setCellValue('E' . $fila, "Edad: " . $inscripcion->edad . ' años');
+        $sheet->mergeCells("E" . $fila . ":H" . $fila);  //COMBINAR CELDAS
+        $sheet->getStyle('E' . $fila . ':H' . $fila)->applyFromArray($this->estilo_conenido);
+        $fila++;
+        $sheet->setCellValue('A' . $fila, "País residencia: " . $inscripcion->pais_residencia);
+        $sheet->mergeCells("A" . $fila . ":D" . $fila);  //COMBINAR CELDAS
+        $sheet->getStyle('A' . $fila . ':D' . $fila)->applyFromArray($this->estilo_conenido);
+        $sheet->setCellValue('E' . $fila, "Teléfono: " . $inscripcion->fono);
+        $sheet->mergeCells("E" . $fila . ":H" . $fila);  //COMBINAR CELDAS
+        $sheet->getStyle('E' . $fila . ':H' . $fila)->applyFromArray($this->estilo_conenido);
+        $fila++;
+        $fila++;
+
+        $sheet->setCellValue('A' . $fila, "LISTA DE SOLICITUDES");
+        $sheet->mergeCells("A" . $fila . ":H" . $fila);  //COMBINAR CELDAS
+        $sheet->getStyle('A' . $fila . ':H' . $fila)->getAlignment()->setHorizontal('center');
+        $sheet->getStyle('A' . $fila . ':H' . $fila)->applyFromArray($this->styleTexto);
+        $fila++;
+        $fila++;
+
+        $sheet->setCellValue('A' . $fila, 'N°');
+        $sheet->setCellValue('B' . $fila, 'CÓDIGO');
+        $sheet->setCellValue('C' . $fila, 'CURSO');
+        $sheet->setCellValue('D' . $fila, 'NIVEL');
+        $sheet->setCellValue('E' . $fila, 'PLAN DE PAGO');
+        $sheet->setCellValue('F' . $fila, 'FORMA DE PAGO');
+        $sheet->setCellValue('G' . $fila, 'FECHA DE INSCRIPCIÓN');
+        $sheet->setCellValue('H' . $fila, 'ESTADO');
+        $sheet->getStyle('A' . $fila . ':H' . $fila)->applyFromArray($this->styleArray2);
+        $fila++;
+
+        $cont = 1;
+        foreach ($inscripcion_solicituds as $value) {
+            $sheet->setCellValue('A' . $fila, $cont++);
+            $sheet->setCellValue('B' . $fila, $value->codigo);
+            $sheet->setCellValue('C' . $fila, $value->curso->nombre);
+            $sheet->setCellValue('D' . $fila, $value->nivel);
+            $sheet->setCellValue('E' . $fila, mb_strtoupper($value->plan_pago->titulo));
+            $sheet->setCellValue('F' . $fila, $value->forma_pago);
+            $sheet->setCellValue('G' . $fila, date('d/m/Y', strtotime($value->created_at)));
+            $sheet->setCellValue('H' . $fila, $value->estado);
+            $sheet->getStyle('A' . $fila . ':H' . $fila)->applyFromArray($this->estilo_conenido);
+            $fila++;
+        }
+
+        $sheet->getColumnDimension('A')->setWidth(8);
+        $sheet->getColumnDimension('B')->setWidth(15);
+        $sheet->getColumnDimension('C')->setWidth(20);
+        $sheet->getColumnDimension('D')->setWidth(20);
+        $sheet->getColumnDimension('E')->setWidth(20);
+        $sheet->getColumnDimension('F')->setWidth(20);
+        $sheet->getColumnDimension('G')->setWidth(15);
+        $sheet->getColumnDimension('H')->setWidth(15);
+
+        foreach (range('A', 'H') as $columnID) {
+            $sheet->getStyle($columnID)->getAlignment()->setWrapText(true);
+        }
+
+        // PARA IMPRESIONES
+        $sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+        $sheet->getPageMargins()->setTop(0.5);
+        $sheet->getPageMargins()->setRight(0.1);
+        $sheet->getPageMargins()->setLeft(0.1);
+        $sheet->getPageMargins()->setBottom(0.1);
+        $sheet->getPageSetup()->setPrintArea('A:H');
+        $sheet->getPageSetup()->setFitToWidth(1);
+        $sheet->getPageSetup()->setFitToHeight(0);
+
+        // DESCARGA DEL ARCHIVO
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="HistorialEstudiante.xlsx"');
+        header('Cache-Control: max-age=0');
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $writer->save('php://output');
+    }
+
     public function estudiantes_grupos(Request $request)
     {
         $filtro =  $request->filtro;

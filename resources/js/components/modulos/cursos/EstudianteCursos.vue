@@ -42,18 +42,21 @@
                         class="col-md-12"
                         v-for="item in listAsignacionGruposEstudiante"
                     >
-                        <div class="card">
-                            <div class="card-body p-0">
-                                <div class="row">
-                                    <div class="col-md-4 p-0">
-                                        <img
-                                            :src="item.curso.url_imagen"
-                                            alt="Curso"
-                                            style="width: 100%"
-                                        />
-                                    </div>
-                                    <div class="col-md-8 p-4">
-                                        <h4>{{ item.curso.nombre }}</h4>
+                        <div class="contenedor_curso">
+                            <div class="imagen_curso">
+                                <img
+                                    :src="item.curso.url_imagen"
+                                    alt="Curso"
+                                    style="width: 100%"
+                                />
+                            </div>
+                            <div class="detalles_curso">
+                                <div class="contenedor_info_curso">
+                                    <div class="info_curso">
+                                        <h4 class="mb-2 w-100 text-center">
+                                            {{ item.grupo.nombre }}
+                                        </h4>
+                                        <h5>{{ item.curso.nombre }}</h5>
                                         <p>
                                             <strong>Estado:</strong>
                                             {{ item.grupo.estado }}
@@ -117,9 +120,47 @@
                                                 :href="item.grupo.link_reunion"
                                                 target="_blank"
                                                 >Enlace Zoom del Curso (Click
-                                                Aqupi)</a
+                                                Aquí)</a
                                             >
                                         </template>
+                                    </div>
+                                    <div class="info_detalles">
+                                        <h4 class="w-100 text-center">
+                                            Estado calificación
+                                        </h4>
+                                        <template
+                                            v-if="
+                                                item.inscripcion_solicitud
+                                                    .inscripcion_examen
+                                            "
+                                        >
+                                            <p
+                                                class="w-100 text-center font-weight-bold"
+                                            >
+                                                {{
+                                                    item.inscripcion_solicitud
+                                                        .inscripcion_examen
+                                                        .estado
+                                                }}
+                                            </p>
+                                            <p class="w-100 text-center">
+                                                Calificación:
+                                                <span
+                                                    class="font-weight-bold"
+                                                    >{{
+                                                        item
+                                                            .inscripcion_solicitud
+                                                            .inscripcion_examen
+                                                            .puntaje
+                                                    }}</span
+                                                >
+                                            </p>
+                                        </template>
+                                        <template v-else
+                                            ><h6 class="text-gray">
+                                                PENDIENTE
+                                            </h6></template
+                                        >
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +238,57 @@ export default {
 </script>
 
 <style>
-.contenedor_cursos .img_curso {
-    height: 100px;
+.contenedor_cursos .contenedor_curso {
+    display: flex;
+    background-color: white;
+}
+
+.contenedor_cursos .imagen_curso {
+    display: flex;
+    max-width: 800px;
+    width: 40%;
+}
+
+.contenedor_cursos .imagen_curso .img_curso {
+    height: 100%;
+}
+
+.contenedor_cursos .detalles_curso {
+    flex: 1;
+}
+
+.contenedor_cursos .contenedor_info_curso {
+    display: flex;
+    height: 100%;
+}
+.contenedor_cursos .contenedor_info_curso .info_curso {
+    width: 60%;
+    border-right: solid 2px #c4c4c4;
+    padding: 15px;
+}
+.contenedor_cursos .contenedor_info_curso .info_detalles {
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    .contenedor_cursos .imagen_curso {
+        width: 100%;
+    }
+    .contenedor_cursos .contenedor_info_curso .info_curso {
+        width: 100%;
+        border-right: none;
+        border-bottom: solid 2px #c4c4c4;
+    }
+    .contenedor_cursos .contenedor_curso {
+        flex-direction: column;
+    }
+    .contenedor_cursos .contenedor_info_curso {
+        flex-direction: column;
+    }
 }
 </style>

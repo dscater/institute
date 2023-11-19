@@ -490,6 +490,13 @@ export default new Router({
             props: true,
         },
         {
+            path: "/administracion/reportes/historial_estudiante",
+            name: "reportes.historial_estudiante",
+            component: require("./components/modulos/reportes/historial_estudiante.vue")
+                .default,
+            props: true,
+        },        
+        {
             path: "/administracion/reportes/estudiantes_grupos",
             name: "reportes.estudiantes_grupos",
             component:

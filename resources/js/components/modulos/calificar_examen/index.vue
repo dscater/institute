@@ -31,7 +31,7 @@
                         v-for="item in listAsignacionGruposProfesor"
                     >
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body pb-2 pt-2">
                                 <div class="row">
                                     <div class="col-md-12 text-center">
                                         <router-link
@@ -48,6 +48,14 @@
                                         >
                                             {{ item.grupo.curso.nombre }}
                                         </h4>
+                                        <router-link
+                                            class="btn btn-success text-xs"
+                                            :to="{
+                                                name: 'examen_nivelacions.examenes_grupo',
+                                                params: { id: item.grupo.id },
+                                            }"
+                                            >Ver grupo</router-link
+                                        >
                                     </div>
                                 </div>
                             </div>

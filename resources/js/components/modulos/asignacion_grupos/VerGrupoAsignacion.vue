@@ -15,7 +15,18 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3" v-if="user.tipo == 'PROFESOR'">
+                        <router-link
+                            :to="{
+                                name: 'grupos_profesor.index',
+                            }"
+                            class="btn btn-default btn-flat btn-block"
+                        >
+                            <i class="fa fa-arrow-left"></i>
+                            Volver
+                        </router-link>
+                    </div>
+                    <div class="col-md-3" v-if="user.tipo != 'PROFESOR'">
                         <router-link
                             :to="{
                                 name: 'asignacion_grupos.index',
@@ -125,11 +136,11 @@
                                     </div>
                                     <div
                                         class="col-md-12"
-                                        v-if="oGrupo.grupo_profesor"
+                                        v-if="oGrupo && oGrupo.grupo_profesor"
                                     >
                                         <div class="text-center">
                                             <img
-                                                class="profile-user-img img-fluid img-circle"
+                                                class="profile-user-img img-fluid img-circle border-1 border-success"
                                                 :src="
                                                     oGrupo.grupo_profesor
                                                         .profesor.user

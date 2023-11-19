@@ -222,6 +222,11 @@
                                 <router-link
                                     :to="{ name: 'grupos_profesor.index' }"
                                     class="nav-link"
+                                    :class="{
+                                        active:
+                                            $route.name ==
+                                            'asignacion_grupos.ver_grupo_asignacion',
+                                    }"
                                 >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Mis Grupos</p>
@@ -506,7 +511,8 @@
                             permisos.includes('reportes.estudiantes_grupos') ||
                             permisos.includes('reportes.horarios') ||
                             permisos.includes('reportes.examen_nivelacion') ||
-                            permisos.includes('reportes.gestoria_solicituds')
+                            permisos.includes('reportes.gestoria_solicituds') ||
+                            permisos.includes('reportes.historial_estudiante')
                         "
                         :class="[
                             $route.name == 'reportes.usuarios' ||
@@ -516,7 +522,8 @@
                             $route.name == 'reportes.estudiantes_grupos' ||
                             $route.name == 'reportes.horarios' ||
                             $route.name == 'reportes.examen_nivelacion' ||
-                            $route.name == 'reportes.gestoria_solicituds'
+                            $route.name == 'reportes.gestoria_solicituds' ||
+                            $route.name == 'reportes.historial_estudiante'
                                 ? 'menu-is-opening menu-open'
                                 : '',
                         ]"
@@ -581,6 +588,24 @@
                                 >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Lista de Estudiantes por Grupos</p>
+                                </router-link>
+                            </li>
+                            <li
+                                class="nav-item"
+                                v-if="
+                                    permisos.includes(
+                                        'reportes.historial_estudiante'
+                                    )
+                                "
+                            >
+                                <router-link
+                                    :to="{
+                                        name: 'reportes.historial_estudiante',
+                                    }"
+                                    class="nav-link"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Historial de Estudiante</p>
                                 </router-link>
                             </li>
                             <li
