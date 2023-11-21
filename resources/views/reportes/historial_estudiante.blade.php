@@ -209,7 +209,11 @@
                     <td>{{ mb_strtoupper($value->plan_pago->titulo) }}</td>
                     <td>{{ $value->forma_pago }}</td>
                     <td class="centreado">{{ date('d/m/Y', strtotime($value->created_at)) }}</td>
-                    <td class="centreado">{{ $value->estado }}</td>
+                    <td class="centreado">
+                        @if($value->inscripcion_examen)
+                        
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         </tbody>
