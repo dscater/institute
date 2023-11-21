@@ -19,6 +19,8 @@ class CreateAsignacionGruposTable extends Migration
             $table->unsignedBigInteger("inscripcion_id");
             $table->unsignedBigInteger("inscripcion_solicitud_id");
             $table->unsignedBigInteger("curso_id");
+            $table->double("calificacion", 8, 2)->nullable();
+            $table->string("estado", 255)->default("PENDIENTE");
             $table->timestamps();
 
             $table->foreign("grupo_id")->on("grupos")->references("id");

@@ -126,25 +126,36 @@
                                     </div>
                                     <div class="info_detalles">
                                         <h4 class="w-100 text-center">
-                                            Estado calificación
+                                            Calificación del Curso
                                         </h4>
+                                        <template v-if="!item.abandono">
+                                            <h6
+                                                class="w-100 text-center text-gray"
+                                            >
+                                                {{ item.estado }}
+                                            </h6>
+                                            <p>
+                                                <strong>Calificación: </strong
+                                                >{{ item.calificacion }}
+                                            </p>
+                                        </template>
+                                        <template v-else
+                                            ><h6 class="text-gray">
+                                                ABANDONÓ
+                                            </h6></template
+                                        >
                                         <template
                                             v-if="
                                                 item.inscripcion_solicitud
                                                     .inscripcion_examen
                                             "
                                         >
-                                            <p
-                                                class="w-100 text-center font-weight-bold"
-                                            >
-                                                {{
-                                                    item.inscripcion_solicitud
-                                                        .inscripcion_examen
-                                                        .estado
-                                                }}
-                                            </p>
+                                            <h5 class="w-100 text-center">
+                                                Examen del curso
+                                            </h5>
+
                                             <p class="w-100 text-center">
-                                                Calificación:
+                                                Puntaje:
                                                 <span
                                                     class="font-weight-bold"
                                                     >{{
@@ -156,11 +167,6 @@
                                                 >
                                             </p>
                                         </template>
-                                        <template v-else
-                                            ><h6 class="text-gray">
-                                                PENDIENTE
-                                            </h6></template
-                                        >
                                     </div>
                                 </div>
                             </div>

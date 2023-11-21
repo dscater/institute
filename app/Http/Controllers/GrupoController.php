@@ -94,7 +94,7 @@ class GrupoController extends Controller
     public function show(Grupo $grupo)
     {
         return response()->JSON([
-            "grupo" => $grupo->load(["asignacion_grupos.inscripcion", "asignacion_grupos.inscripcion_solicitud.inscripcion_examen", "grupo_profesor.profesor.user"])
+            "grupo" => $grupo->load(["asignacion_grupos.inscripcion", "asignacion_grupos.inscripcion_solicitud.inscripcion_examen.examen_nivelacion", "asignacion_grupos.inscripcion_solicitud.curso", "grupo_profesor.profesor.user"])
         ], 200);
     }
 

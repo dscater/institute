@@ -101,6 +101,58 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
+                                    <!-- <div class="col-md-12 form-group">
+                                        <label>Driver*:</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            v-model="oEnvioCorreo.driver"
+                                        />
+                                        <span
+                                            class="error invalid-feedback d-block"
+                                            v-if="errors.driver"
+                                            v-text="errors.driver[0]"
+                                        ></span>
+                                    </div> -->
+                                    <div class="col-md-12 form-group">
+                                        <label>Host*:</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            v-model="oEnvioCorreo.host"
+                                        />
+                                        <span
+                                            class="error invalid-feedback d-block"
+                                            v-if="errors.host"
+                                            v-text="errors.host[0]"
+                                        ></span>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <label>Puerto*:</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            v-model="oEnvioCorreo.puerto"
+                                        />
+                                        <span
+                                            class="error invalid-feedback d-block"
+                                            v-if="errors.puerto"
+                                            v-text="errors.puerto[0]"
+                                        ></span>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <label>Encriptado*:</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            v-model="oEnvioCorreo.encryptado"
+                                        />
+                                        <span
+                                            class="error invalid-feedback d-block"
+                                            v-if="errors.encryptado"
+                                            v-text="errors.encryptado[0]"
+                                        ></span>
+                                    </div>
                                     <div class="col-md-12 form-group">
                                         <label>Correo*:</label>
                                         <input
@@ -108,6 +160,11 @@
                                             class="form-control"
                                             v-model="oEnvioCorreo.correo"
                                         />
+                                        <span
+                                            class="error invalid-feedback d-block"
+                                            v-if="errors.correo"
+                                            v-text="errors.correo[0]"
+                                        ></span>
                                     </div>
                                     <div class="col-md-12 form-group">
                                         <label>Nombre*:</label>
@@ -116,6 +173,11 @@
                                             class="form-control"
                                             v-model="oEnvioCorreo.nombre"
                                         />
+                                        <span
+                                            class="error invalid-feedback d-block"
+                                            v-if="errors.nombre"
+                                            v-text="errors.nombre[0]"
+                                        ></span>
                                     </div>
                                     <div class="col-md-12 form-group">
                                         <label>Contraseña*:</label>
@@ -124,6 +186,11 @@
                                             class="form-control"
                                             v-model="oEnvioCorreo.password"
                                         />
+                                        <span
+                                            class="error invalid-feedback d-block"
+                                            v-if="errors.password"
+                                            v-text="errors.password[0]"
+                                        ></span>
                                     </div>
                                     <div class="col-md-3">
                                         <button
@@ -327,9 +394,13 @@ export default {
                 logo: "",
             },
             oEnvioCorreo: {
+                host: "",
+                puerto: "",
+                encryptado: "",
                 correo: "",
                 nombre: "",
                 password: "",
+                driver: "",
             },
             errors: [],
         };

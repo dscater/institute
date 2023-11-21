@@ -139,14 +139,17 @@ class ConfiguracionController extends Controller
             $envio_correo = EnvioCorreo::first();
 
             if ($envio_correo) {
+                $host = $envio_correo->host;
+                $puerto = $envio_correo->puerto;
+                $encryptado = $envio_correo->encryptado;
                 $name = $envio_correo->nombre;
                 $correo_envio = $envio_correo->correo;
                 $password = $envio_correo->password;
                 // Configurar el servicio de correo con la configuración de Gmail dinámicamente
                 Config::set([
-                    'mail.mailers.smtp.host' => 'smtp.gmail.com',
-                    'mail.mailers.smtp.port' => 465,
-                    'mail.mailers.smtp.encryption' => "ssl",
+                    'mail.mailers.smtp.host' => $host,
+                    'mail.mailers.smtp.port' => $puerto,
+                    'mail.mailers.smtp.encryption' => $encryptado,
                     'mail.mailers.smtp.username' => $correo_envio,
                     'mail.mailers.smtp.password' => $password,
                     'mail.from.address' => $correo_envio,

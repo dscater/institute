@@ -145,6 +145,10 @@
         .img_celda img {
             width: 45px;
         }
+
+        .text-gray {
+            color: rgb(145, 145, 145);
+        }
     </style>
 </head>
 
@@ -210,8 +214,15 @@
                     <td>{{ $value->forma_pago }}</td>
                     <td class="centreado">{{ date('d/m/Y', strtotime($value->created_at)) }}</td>
                     <td class="centreado">
-                        @if($value->inscripcion_examen)
-                        
+                        @if ($value->asignacion_grupo)
+                            @if (!$value->asignacion_grupo->abandono)
+                                {{ $value->asignacion_grupo->estado }}<br />
+                                Calificación: {{ $value->asignacion_grupo->calificacion }}
+                            @else
+                                ABANDONÓ
+                            @endif
+                        @else
+                            <i class="text-gray">Sin asignar</i>
                         @endif
                     </td>
                 </tr>

@@ -32,10 +32,13 @@
                         </router-link>
                     </div>
                 </div>
-                <div class="row">
+                <div
+                    class="row"
+                    v-if="oGrupo && oGrupo.asignacion_grupos.length > 0"
+                >
                     <div
                         class="col-md-4"
-                        v-for="item in listInscripcionExamens"
+                        v-for="item in oGrupo.asignacion_grupos"
                     >
                         <div class="card">
                             <div class="card-body">
@@ -54,33 +57,84 @@
                                             {{ item.inscripcion.full_name }}
                                         </p>
                                         <p class="mb-1">
-                                            <strong>Código Examen: </strong>
-                                            {{ item.examen_nivelacion.id }}
+                                            <strong>Estado: </strong>
+                                            {{ item.estado }}
                                         </p>
                                         <p class="mb-1">
-                                            <strong>Puntaje: </strong>
-                                            {{ item.puntaje }}
+                                            <strong>Calificación: </strong>
+                                            {{ item.calificacion }}
                                         </p>
+                                        <hr />
+                                        <template
+                                            v-if="
+                                                item.inscripcion_solicitud
+                                                    .inscripcion_examen
+                                            "
+                                        >
+                                            <p class="mb-1">
+                                                <strong>Código Examen: </strong>
+                                                {{
+                                                    item.inscripcion_solicitud
+                                                        .inscripcion_examen
+                                                        .examen_nivelacion.id
+                                                }}
+                                            </p>
+                                            <p class="mb-1">
+                                                <strong>Puntaje: </strong>
+                                                {{
+                                                    item.inscripcion_solicitud
+                                                        .inscripcion_examenpuntaje
+                                                }}
+                                            </p>
+                                        </template>
+                                        <template v-else>
+                                            <p
+                                                class="text-gray font-weight-bold mb-4"
+                                            >
+                                                Aún no realizó el examen
+                                            </p>
+                                        </template>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer">
                                 <div class="row">
-                                    <div class="col-md-3">
-                                        <router-link
-                                            :to="{
-                                                name: 'examen_nivelacions.calificar_examen',
-                                                params: {
-                                                    id: item.id,
-                                                    grupo_id: id,
-                                                },
-                                            }"
+                                    <div class="col-md-6">
+                                        <button
                                             class="btn btn-success btn-flat btn-block"
+                                            @click="
+                                                muestraModalCalificacion(item)
+                                            "
                                         >
                                             <i
                                                 class="fa fa-clipboard-check"
                                             ></i>
-                                            Calificar
+                                            Calificación del Curso
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="col-md-6"
+                                        v-if="
+                                            item.inscripcion_solicitud
+                                                .inscripcion_examen
+                                        "
+                                    >
+                                        <router-link
+                                            :to="{
+                                                name: 'examen_nivelacions.calificar_examen',
+                                                params: {
+                                                    id: item
+                                                        .inscripcion_solicitud
+                                                        .inscripcion_examen.id,
+                                                    grupo_id: id,
+                                                },
+                                            }"
+                                            class="btn btn-primary btn-flat btn-block"
+                                        >
+                                            <i
+                                                class="fa fa-clipboard-check"
+                                            ></i>
+                                            Calificar Examen
                                         </router-link>
                                     </div>
                                 </div>
@@ -88,7 +142,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" v-if="listInscripcionExamens.length > 0">
+                <div class="row" v-else>
+                    <div class="col-md-12">
+                        <h4 class="w-100 text-center text-gray">
+                            NO SE ENCONTRARÓN REGISTROS
+                        </h4>
+                    </div>
+                </div>
+                <div class="row" v-if="oGrupo">
                     <div class="col-md-12 pb-3 paginacion_portal">
                         <b-pagination
                             class="rounded-0"
@@ -101,13 +162,25 @@
                     </div>
                 </div>
             </div>
+            <CalificacionCurso
+                :muestra_modal="muestra_modal"
+                @close="
+                    muestra_modal = false;
+                    getGrupo();
+                "
+                :asignacion_grupo="oAsignacionGrupo"
+            ></CalificacionCurso>
         </section>
     </div>
 </template>
 
 <script>
+import CalificacionCurso from "./CalificacionCurso.vue";
 export default {
     props: ["id"],
+    components: {
+        CalificacionCurso,
+    },
     data() {
         return {
             user: JSON.parse(localStorage.getItem("user")),
@@ -116,13 +189,27 @@ export default {
             loadingWindow: Loading.service({
                 fullscreen: this.fullscreenLoading,
             }),
-            listInscripcionExamens: [],
             listGrupos: [],
             search: "",
             currentPage: 1,
             perPage: 10,
             rows: 10,
             oGrupo: null,
+            muestra_modal: false,
+            oAsignacionGrupo: {
+                id: 0,
+                grupo_id: "",
+                inscripcion_id: "",
+                inscripcion_solicitud_id: "",
+                curso_id: "",
+                estado: "",
+                inscripcion: {
+                    full_name: "",
+                },
+                curso: {
+                    nombre: "",
+                },
+            },
         };
     },
     mounted() {
@@ -135,27 +222,11 @@ export default {
                 .get(main_url + "/admin/grupos/" + this.id)
                 .then((response) => {
                     this.oGrupo = response.data.grupo;
-                    if (this.oGrupo) {
-                        this.getInscripcionExamens();
-                    }
                 });
         },
-        getInscripcionExamens(page = 1) {
-            axios
-                .get(
-                    main_url +
-                        "/admin/inscripcion_examens/getExamenesGrupo/" +
-                        this.id,
-                    {
-                        params: { page: page, per_page: this.per_page },
-                    }
-                )
-                .then((response) => {
-                    this.rows = response.data.inscripcion_examens.total;
-                    this.perPage = response.data.per_page;
-                    this.listInscripcionExamens =
-                        response.data.inscripcion_examens.data;
-                });
+        muestraModalCalificacion(item) {
+            this.muestra_modal = true;
+            this.oAsignacionGrupo = item;
         },
     },
 };

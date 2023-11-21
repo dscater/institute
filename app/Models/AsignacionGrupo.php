@@ -14,6 +14,8 @@ class AsignacionGrupo extends Model
         "inscripcion_id",
         "inscripcion_solicitud_id",
         "curso_id",
+        "calificacion",
+        "estado"
     ];
 
     protected $appends = ["abandono"];

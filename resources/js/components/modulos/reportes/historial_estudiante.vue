@@ -44,7 +44,11 @@
                                                         v-for="item in listEstudiantes"
                                                         :key="item.id"
                                                         :value="item.id"
-                                                        :label="item.full_name"
+                                                        :label="
+                                                            item.full_name +
+                                                            ' - ' +
+                                                            item.correo
+                                                        "
                                                     >
                                                     </el-option>
                                                 </el-select>
@@ -203,7 +207,10 @@ export default {
                     );
                     var fileLink = document.createElement("a");
                     fileLink.href = fileURL;
-                    fileLink.setAttribute("download", "historial_estudiante.xlsx");
+                    fileLink.setAttribute(
+                        "download",
+                        "historial_estudiante.xlsx"
+                    );
                     document.body.appendChild(fileLink);
                     this.enviando = false;
                     fileLink.click();

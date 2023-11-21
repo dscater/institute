@@ -60,9 +60,7 @@ class InscripcionExamenController extends Controller
     public function registrar_calificacion(InscripcionExamen $inscripcion_examen, Request $request)
     {
         $errors = [];
-        if ($request->estado != 'ABANDONÓ') {
-            $errors = self::validaCalificacionExamen($request->puntaje, $request->respuestas);
-        }
+        $errors = self::validaCalificacionExamen($request->puntaje, $request->respuestas);
 
         if (count($errors) > 0) {
             return response()->JSON([
@@ -84,6 +82,12 @@ class InscripcionExamenController extends Controller
                 "puntaje" => $request->puntaje,
                 "estado" => $request->estado,
             ]);
+
+            if ($request->estado == 'ABANDONÓ') {
+                $inscripcion_examen->update([
+                    "estado" => "REVISADO"
+                ]);
+            }
 
             $datos_original = HistorialAccion::getDetalleRegistro($inscripcion_examen, "inscripcion_examens");
             HistorialAccion::create([

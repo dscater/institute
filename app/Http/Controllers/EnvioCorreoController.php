@@ -11,12 +11,20 @@ use Illuminate\Support\Facades\DB;
 class EnvioCorreoController extends Controller
 {
     public $validacion = [
+        "driver" => "required",
+        "host" => "required",
+        "puerto" => "required",
+        "encryptado" => "required",
         "correo" => "required|email",
         "nombre" => "required|min:4",
         "password" => "required|min:4",
     ];
 
     public $mensajes = [
+        "driver.required" => "Este campo es obligatorio",
+        "host.required" => "Este campo es obligatorio",
+        "puerto.required" => "Este campo es obligatorio",
+        "encryptado.required" => "Este campo es obligatorio",
         "correo.required" => "Este campo es obligatorio",
         "correo.email" => "Debes ingresar un correo valido",
         "nombre.required" => "Este campo es obligatorio",

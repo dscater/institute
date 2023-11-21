@@ -52,4 +52,9 @@ class InscripcionSolicitud extends Model
     {
         return $this->hasOne(InscripcionExamen::class, 'inscripcion_solicitud_id');
     }
+
+    public function asignacion_grupo()
+    {
+        return $this->hasOne(AsignacionGrupo::class, 'inscripcion_solicitud_id');
+    }
 }

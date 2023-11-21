@@ -44,6 +44,50 @@ class AsignacionGrupoController extends Controller
         ]);
     }
 
+    public function actualizar_estado(AsignacionGrupo $asignacion_grupo, Request $request)
+    {
+
+        $request->validate([
+            "estado" => "required",
+            "calificacion" => "required|numeric|min:0|max:100"
+        ], [
+            "calificacion.required" => "Debes ingresar una calificación",
+            "calificacion.min" => "Debes ingresar una calificación mayor o igual que :min",
+            "calificacion.max" => "La calificación no debe ser mayor que :max",
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $datos_original = HistorialAccion::getDetalleRegistro($asignacion_grupo, "asignacion_grupos");
+            $asignacion_grupo->estado = $request->estado;
+            $asignacion_grupo->calificacion = $request->calificacion;
+            $asignacion_grupo->save();
+            $datos_nuevo = HistorialAccion::getDetalleRegistro($asignacion_grupo, "asignacion_grupos");
+            HistorialAccion::create([
+                'user_id' => Auth::user()->id,
+                'accion' => 'MODIFICACIÓN',
+                'descripcion' => 'EL USUARIO ' . Auth::user()->usuario . ' MODIFICÓ EL ESTADO DE UNA ASIGNACIÓN DE GRUPO',
+                'datos_original' => $datos_original,
+                'datos_nuevo' => $datos_nuevo,
+                'modulo' => 'ASIGNACIÓN DE GRUPOS',
+                'fecha' => date('Y-m-d'),
+                'hora' => date('H:i:s')
+            ]);
+            DB::commit();
+            return response()->JSON([
+                'sw' => true,
+                'asignacion_grupo' => $asignacion_grupo,
+                'msj' => 'El registro se actualizó correctamente',
+            ], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->JSON([
+                'sw' => false,
+                'message' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
     public function asignaciones_estudiante(Request $request)
     {
         $asignacion_grupos = [];

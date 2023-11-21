@@ -1126,11 +1126,11 @@ export default {
                         "forma_pago",
                         this.oNuevaInscripcionSolicitud.forma_pago
                     );
-                // if (this.oNuevaInscripcionSolicitud.archivo_pago)
-                //     formdata.append(
-                //         "archivo_pago",
-                //         this.oNuevaInscripcionSolicitud.archivo_pago
-                //     );
+                if (this.oNuevaInscripcionSolicitud.archivo_pago)
+                    formdata.append(
+                        "archivo_pago",
+                        this.oNuevaInscripcionSolicitud.archivo_pago
+                    );
                 // if (this.oNuevaInscripcionSolicitud.desc_pago)
                 //     formdata.append(
                 //         "desc_pago",

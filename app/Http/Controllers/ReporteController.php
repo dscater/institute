@@ -506,7 +506,16 @@ class ReporteController extends Controller
             $sheet->setCellValue('E' . $fila, mb_strtoupper($value->plan_pago->titulo));
             $sheet->setCellValue('F' . $fila, $value->forma_pago);
             $sheet->setCellValue('G' . $fila, date('d/m/Y', strtotime($value->created_at)));
-            $sheet->setCellValue('H' . $fila, $value->estado);
+            if ($value->asignacion_grupo) {
+                if (!$value->asignacion_grupo->abandono) {
+                    $calificacion = "\nCalificación: " . $value->asignacion_grupo->calificacion;
+                    $sheet->setCellValue('H' . $fila, $value->asignacion_grupo->estado . $calificacion);
+                } else {
+                    $sheet->setCellValue('H' . $fila, 'ABANDONÓ');
+                }
+            } else {
+                $sheet->setCellValue('H' . $fila, "sin asignar");
+            }
             $sheet->getStyle('A' . $fila . ':H' . $fila)->applyFromArray($this->estilo_conenido);
             $fila++;
         }

@@ -10,8 +10,12 @@ class EnvioCorreo extends Model
     use HasFactory;
 
     protected $fillable = [
+        "host",
+        "puerto",
+        "encryptado",
         "correo",
         "nombre",
         "password",
+        "driver"
     ];
 }

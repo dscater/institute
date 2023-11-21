@@ -111,26 +111,6 @@
                                     v-model="puntaje"
                                 />
                             </div>
-                            <div class="col-md-12 form-group">
-                                <label>Puntaje final:</label>
-                                <el-select
-                                    type="number"
-                                    class="w-100"
-                                    v-model="estado"
-                                >
-                                    <el-option
-                                        v-for="item in [
-                                            'APROBÓ',
-                                            'REPROBÓ',
-                                            'ABANDONÓ',
-                                        ]"
-                                        :key="item"
-                                        :value="item"
-                                        :label="item"
-                                    >
-                                    </el-option>
-                                </el-select>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -252,7 +232,6 @@ export default {
                         axios
                             .post(url, {
                                 puntaje: this.puntaje,
-                                estado: this.estado,
                                 respuestas: this.respuestas,
                             })
                             .then((res) => {

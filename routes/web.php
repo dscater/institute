@@ -199,6 +199,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // ASIGNACION GRUPOS
+        Route::post("asignacion_grupos/actualizar_estado/{asignacion_grupo}", [AsignacionGrupoController::class, 'actualizar_estado']);
         Route::get("asignacion_grupos/asignaciones_existentes", [AsignacionGrupoController::class, 'asignaciones_existentes']);
         Route::get("asignacion_grupos/asignaciones_estudiante", [AsignacionGrupoController::class, 'asignaciones_estudiante']);
         Route::resource('asignacion_grupos', AsignacionGrupoController::class)->only([
