@@ -7,7 +7,7 @@
             :style="
                 'background:url(' +
                 url_principal +
-                '/imgs/ImagenDeNavegaciónPortal.png)'
+                '/imgs/imagennavegacion.png)'
             "
         >
             <div class="overlay overlay-bg"></div>
