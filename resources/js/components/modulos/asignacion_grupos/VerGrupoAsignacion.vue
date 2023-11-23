@@ -84,34 +84,18 @@
                                                                     class="font-weight-bold"
                                                                 >
                                                                     {{
-                                                                        item
-                                                                            .inscripcion_solicitud
-                                                                            .inscripcion_examen
-                                                                            ? item
-                                                                                  .inscripcion_solicitud
-                                                                                  .inscripcion_examen
-                                                                                  .estado
-                                                                            : item.abandono
-                                                                            ? "ABANDONÓ"
-                                                                            : "PENDIENTE"
+                                                                        item.estado
                                                                     }}</span
                                                                 >
                                                             </div>
                                                             <div
                                                                 class="detalle"
                                                             >
-                                                                Puntaje examen:
+                                                                Calificación:
                                                                 <span
                                                                     class="font-weight-bold"
                                                                     >{{
-                                                                        item
-                                                                            .inscripcion_solicitud
-                                                                            .inscripcion_examen
-                                                                            ? item
-                                                                                  .inscripcion_solicitud
-                                                                                  .inscripcion_examen
-                                                                                  .puntaje
-                                                                            : ""
+                                                                        item.calificacion
                                                                     }}</span
                                                                 >
                                                             </div>

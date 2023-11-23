@@ -1,5 +1,5 @@
 <template>
-    <div class="contenedor_cursos">
+    <div class="contenedor_cursos_portal">
         <!-- start banner Area -->
         <section
             class="navegacion banner-area relative about-banner"
@@ -235,60 +235,60 @@ export default {
 };
 </script>
 <style>
-.contenedor_cursos .contenedor_curso {
+.contenedor_cursos_portal .contenedor_curso {
     margin-bottom: 15px;
     overflow: hidden;
 }
-.contenedor_cursos .contenedor_curso .thumb {
+.contenedor_cursos_portal .contenedor_curso .thumb {
     height: 194px;
     overflow: hidden;
 }
-.contenedor_cursos .contenedor_curso .thumb img {
+.contenedor_cursos_portal .contenedor_curso .thumb img {
     height: 100%;
     -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }
-.contenedor_cursos .contenedor_curso .meta {
+.contenedor_cursos_portal .contenedor_curso .meta {
     margin-top: -26px;
     z-index: 2;
     position: inherit;
     padding: 0px 10px;
 }
-.contenedor_cursos .contenedor_curso .meta p {
+.contenedor_cursos_portal .contenedor_curso .meta p {
     font-size: 12px;
     font-weight: 300;
     color: #fff;
     margin-bottom: 0px;
 }
-.contenedor_cursos .contenedor_curso .meta p .lnr {
+.contenedor_cursos_portal .contenedor_curso .meta p .lnr {
     margin: 0px 5px;
 }
-.contenedor_cursos .contenedor_curso .meta h4 {
+.contenedor_cursos_portal .contenedor_curso .meta h4 {
     color: #fff;
 }
 
-.contenedor_cursos .contenedor_curso .details {
+.contenedor_cursos_portal .contenedor_curso .details {
     background-color: var(--secundario);
 }
 
-.contenedor_cursos .contenedor_curso .details h4 {
+.contenedor_cursos_portal .contenedor_curso .details h4 {
     -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
     margin: 20px 0px;
 }
-.contenedor_cursos .contenedor_curso .details h4:hover {
+.contenedor_cursos_portal .contenedor_curso .details h4:hover {
     color: var(--principal2_hover) !important;
 }
 @media (max-width: 576px) {
-    .contenedor_cursos .contenedor_curso {
+    .contenedor_cursos_portal .contenedor_curso {
         margin: 15px;
     }
 }
-.contenedor_cursos .contenedor_curso:hover .thumb img {
+.contenedor_cursos_portal .contenedor_curso:hover .thumb img {
     transform: scale(1.1);
 }
 </style>
