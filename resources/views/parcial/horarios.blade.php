@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="overflow: auto;">
     <div class="col-md-12">
         <table class="table table-bordered">
             <thead class="bg-principal2">
@@ -92,7 +92,8 @@
                         <td class="text-white text-left">
                             @if (count($tabla_fechas[$af]))
                                 @foreach ($tabla_fechas[$af] as $key => $c)
-                                    <span class="text-xl badge badge-success bg-principal2 p-2 font-weight-bold">{{ $c->nombre }}</span>
+                                    <span
+                                        class="text-xl badge badge-success bg-principal2 p-2 font-weight-bold">{{ $c->nombre }}</span>
                                     @if ($key < count($tabla_fechas[$af]) - 1)
                                         <span> </span>
                                     @endif
